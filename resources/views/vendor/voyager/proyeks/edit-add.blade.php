@@ -7,64 +7,6 @@
 
 @section('css')
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <style type="text/css">
-        .pac-card {
-            margin: 10px 10px 0 0;
-            border-radius: 2px 0 0 2px;
-            box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            outline: none;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-            background-color: #fff;
-            font-family: Roboto;
-        }
-
-        #pac-container {
-            padding-bottom: 12px;
-            margin-right: 12px;
-            z-index: 1050 !important;
-        }
-
-        .pac-container {
-            z-index: 1050 !important;
-            display: block;
-        }
-
-        .pac-controls {
-            display: inline-block;
-            padding: 5px 11px;
-        }
-
-        .pac-controls label {
-            font-family: Roboto;
-            font-size: 13px;
-            font-weight: 300;
-        }
-
-        #pac-input {
-            background-color: #fff;
-            font-family: Roboto;
-            font-size: 15px;
-            font-weight: 300;
-            margin-left: 0px;
-            margin-top: -25px;
-            padding: 0 11px 0 13px;
-            text-overflow: ellipsis;
-            width: 400px;
-        }
-
-        #pac-input:focus {
-            border-color: #4d90fe;
-        }
-
-        #title {
-            color: #fff;
-            background-color: #4d90fe;
-            font-size: 25px;
-            font-weight: 500;
-            padding: 6px 12px;
-        }
-    </style>
 @stop
 
 @section('page_title', __('voyager::generic.'.($edit ? 'edit' : 'add')).' '.$dataType->display_name_singular)
@@ -124,15 +66,13 @@
                                 @if (isset($row->details->legend) && isset($row->details->legend->text))
                                     <legend class="text-{{ $row->details->legend->align ?? 'center' }}" style="background-color: {{ $row->details->legend->bgcolor ?? '#f0f0f0' }};padding: 5px;">{{ $row->details->legend->text }}</legend>
                                 @endif
+
                                 <div class="form-group @if($row->type == 'hidden') hidden @endif col-md-{{ $display_options->width ?? 12 }} {{ $errors->has($row->field) ? 'has-error' : '' }}" @if(isset($display_options->id)){{ "id=$display_options->id" }}@endif>
                                     {{ $row->slugify }}
                                     <label class="control-label" for="name">{{ $row->display_name }}</label>
                                     @include('voyager::multilingual.input-hidden-bread-edit-add')
-
                                     @if (isset($row->details->view))
-
                                         @include($row->details->view, ['row' => $row, 'dataType' => $dataType, 'dataTypeContent' => $dataTypeContent, 'content' => $dataTypeContent->{$row->field}, 'action' => ($edit ? 'edit' : 'add')])
-
                                     @elseif ($row->type == 'relationship')
                                         @include('voyager::formfields.relationship', ['options' => $row->details])
                                     @elseif ($row->type == 'coordinates')
@@ -164,7 +104,10 @@
                         </div><!-- panel-body -->
 
                         <div class="panel-footer">
-                            <button type="submit" class="btn btn-primary save">{{ __('voyager::generic.save') }}</button>
+                            @section('submit-buttons')
+                                <button type="submit" class="btn btn-primary save">{{ __('voyager::generic.save') }}</button>
+                            @stop
+                            @yield('submit-buttons')
                         </div>
                     </form>
 
@@ -181,6 +124,7 @@
             </div>
         </div>
     </div>
+
     <div class="modal fade modal-danger" id="confirm_delete_modal">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -207,74 +151,6 @@
 
 @section('javascript')
     <script type="text/javascript" src="{{asset('js/map/app.js')}}"></script>
-
-    <script>
-        var params = {};
-        var $file;
-
-        function deleteHandler(tag, isMulti) {
-          return function() {
-            $file = $(this).siblings(tag);
-
-            params = {
-                slug:   '{{ $dataType->slug }}',
-                filename:  $file.data('file-name'),
-                id:     $file.data('id'),
-                field:  $file.parent().data('field-name'),
-                multi: isMulti,
-                _token: '{{ csrf_token() }}'
-            }
-
-            $('.confirm_delete_name').text(params.filename);
-            $('#confirm_delete_modal').modal('show');
-          };
-        }
-
-        $('document').ready(function () {
-            $('.toggleswitch').bootstrapToggle();
-
-            //Init datepicker for date fields if data-datepicker attribute defined
-            //or if browser does not handle date inputs
-            $('.form-group input[type=date]').each(function (idx, elt) {
-                if (elt.type != 'date' || elt.hasAttribute('data-datepicker')) {
-                    elt.type = 'text';
-                    $(elt).datetimepicker($(elt).data('datepicker'));
-                }
-            });
-
-            @if ($isModelTranslatable)
-                $('.side-body').multilingual({"editing": true});
-            @endif
-
-            $('.side-body input[data-slug-origin]').each(function(i, el) {
-                $(el).slugify();
-            });
-
-            $('.form-group').on('click', '.remove-multi-image', deleteHandler('img', true));
-            $('.form-group').on('click', '.remove-single-image', deleteHandler('img', false));
-            $('.form-group').on('click', '.remove-multi-file', deleteHandler('a', true));
-            $('.form-group').on('click', '.remove-single-file', deleteHandler('a', false));
-
-            $('#confirm_delete').on('click', function(){
-                $.post('{{ route('voyager.media.remove') }}', params, function (response) {
-                    if ( response
-                        && response.data
-                        && response.data.status
-                        && response.data.status == 200 ) {
-
-                        toastr.success(response.data.message);
-                        $file.parent().fadeOut(300, function() { $(this).remove(); })
-                    } else {
-                        toastr.error("Error removing file.");
-                    }
-                });
-
-                $('#confirm_delete_modal').modal('hide');
-            });
-            $('[data-toggle="tooltip"]').tooltip();
-        });
-    </script>
-
     <script type="text/javascript">
         function getLocation() {
             if (navigator.geolocation) {
@@ -381,5 +257,70 @@
 
         }
     </script>
+    <script>
+        var params = {};
+        var $file;
 
+        function deleteHandler(tag, isMulti) {
+          return function() {
+            $file = $(this).siblings(tag);
+
+            params = {
+                slug:   '{{ $dataType->slug }}',
+                filename:  $file.data('file-name'),
+                id:     $file.data('id'),
+                field:  $file.parent().data('field-name'),
+                multi: isMulti,
+                _token: '{{ csrf_token() }}'
+            }
+
+            $('.confirm_delete_name').text(params.filename);
+            $('#confirm_delete_modal').modal('show');
+          };
+        }
+
+        $('document').ready(function () {
+            $('.toggleswitch').bootstrapToggle();
+
+            //Init datepicker for date fields if data-datepicker attribute defined
+            //or if browser does not handle date inputs
+            $('.form-group input[type=date]').each(function (idx, elt) {
+                if (elt.type != 'date' || elt.hasAttribute('data-datepicker')) {
+                    elt.type = 'text';
+                    $(elt).datetimepicker($(elt).data('datepicker'));
+                }
+            });
+
+            @if ($isModelTranslatable)
+                $('.side-body').multilingual({"editing": true});
+            @endif
+
+            $('.side-body input[data-slug-origin]').each(function(i, el) {
+                $(el).slugify();
+            });
+
+            $('.form-group').on('click', '.remove-multi-image', deleteHandler('img', true));
+            $('.form-group').on('click', '.remove-single-image', deleteHandler('img', false));
+            $('.form-group').on('click', '.remove-multi-file', deleteHandler('a', true));
+            $('.form-group').on('click', '.remove-single-file', deleteHandler('a', false));
+
+            $('#confirm_delete').on('click', function(){
+                $.post('{{ route('voyager.media.remove') }}', params, function (response) {
+                    if ( response
+                        && response.data
+                        && response.data.status
+                        && response.data.status == 200 ) {
+
+                        toastr.success(response.data.message);
+                        $file.parent().fadeOut(300, function() { $(this).remove(); })
+                    } else {
+                        toastr.error("Error removing file.");
+                    }
+                });
+
+                $('#confirm_delete_modal').modal('hide');
+            });
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
 @stop
