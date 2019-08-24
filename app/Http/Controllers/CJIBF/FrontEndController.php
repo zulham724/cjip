@@ -143,6 +143,7 @@ class FrontEndController extends Controller
             $sendObj->row = $layout_row;
             $sendObj->event = $event;
             $sendObj->mejas = $mejas;
+            $sendObj->perusahaan = $updateInvestor->profil->nama_perusahaan;
             $sendObj->qr = QrCode::format('png')
                 ->errorCorrection('H')
                 ->size(200)

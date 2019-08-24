@@ -13,7 +13,6 @@
     @php $title_logo = Voyager::setting('site.logo', ''); @endphp
     <link rel="icon" href="{{asset('storage/'.$title_logo)}}" type="image/png">
     <link rel="stylesheet" href="{{asset('css/front-end/nav.css')}}">
-    <link rel="stylesheet" href="{{asset('css/front-end/popup.css')}}">
     @yield('css')
 <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-143558094-1"></script>
@@ -27,39 +26,6 @@
 
 </head>
 <body>
-
-<div class="button">
-    <button><span>Click Me</span></button>
-</div>
-
-<div class="pop-up">
-    <div class="content">
-        <div class="container">
-            <div class="dots">
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-            </div>
-
-            <span class="close">close</span>
-
-            <div class="title">
-                <h1>subscribe</h1>
-            </div>
-
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/256492/cXsiNryL.png" alt="Car">
-
-            <div class="subscribe">
-                <h1>Subscribe to get the latest <span>news &amp; updates</span>.</h1>
-
-                <form>
-                    <input type="email" placeholder="Your email address">
-                    <input type="submit" value="Subscribe">
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 
 <!--Main menu-->
 <div class="menu">
@@ -150,6 +116,8 @@
 
 
 
+@yield('header')
+
 @yield('search')
 
 <section class="section">
@@ -197,48 +165,6 @@
 </section>
 
 
-
-
-<!--Footer menu-->
-{{--<div class="container footer-menu">
-    <div class="row">
-        <div class="col-12">
-            <a href="../index.html">
-                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
-                    <path data-name="Sigma symbol" class="svg-element"
-                          d="M237.418,8583.56a12.688,12.688,0,0,0,.419-3.37c-0.036-5.24-2.691-9.68-7.024-13.2h-3.878a20.819,20.819,0,0,1,4.478,13.01c0,4.56-2.456,10.2-6.413,11.4a16.779,16.779,0,0,1-2.236.51c-10.005,1.55-14.109-17.54-9.489-23.31,2.569-3.21,6.206-4.08,11.525-4.08h17.935A24.22,24.22,0,0,1,237.418,8583.56Zm-12.145-24.45c-8.571.02-12.338,0.98-16.061,4.84-6.267,6.49-6.462,20.69,4.754,27.72a24.092,24.092,0,1,1,27.3-32.57h-16v0.01Z"
-                          transform="translate(-195 -8544)"/>
-                </svg>
-            </a>
-            <nav class="footer-menu__nav">
-                <ul>
-                    <li><a href="../07_about.html" class="link link--gray">About</a></li>
-                    <li><a href="../08_faq.html" class="link link--gray">FAQ</a></li>
-                    <li><a href="../09_privacy.html" class="link link--gray">Privacy</a></li>
-                    <li><a href="12_blog.html" class="link link--gray">Blog</a></li>
-                </ul>
-            </nav>
-            <p class="footer-menu__social">
-                <a class="link link--gray" href="">
-                    <i class="mdi mdi-twitter" aria-hidden="true"></i>
-                </a>
-                <a class="link link--gray" href="">
-                    <i class="mdi mdi-facebook" aria-hidden="true"></i>
-                </a>
-                <a class="link link--gray" href="">
-                    <i class="mdi mdi-linkedin" aria-hidden="true"></i>
-                </a>
-                <a class="link link--gray" href="">
-                    <i class="mdi mdi-instagram" aria-hidden="true"></i>
-                </a>
-            </p>
-        </div>
-    </div>
-</div>--}}
-<!--Footer menu-->
-
-
-
 <!--Footer-->
 <div class="footer">
     <div class="container">
@@ -267,15 +193,26 @@
 <script src="{{asset('js/front-end/carousel.js')}}"></script>
 <script src="{{asset('js/front-end/style-switcher.js')}}"></script>
 <script src="{{asset('js/front-end/chart/highchart.js')}}"></script>
+
+<script src="{{asset('js/front-end/jquery.waypoints.js')}}"></script>
+<script src="{{asset('js/front-end/jquery-ui.min.js')}}"></script>
+<script src="{{asset('js/front-end/pricing.js')}}"></script>
+<script src="{{asset('js/front-end/slick.min.js')}}"></script>
+<script src="{{asset('js/front-end/dragscrollable.min.js')}}"></script>
+<script src="{{asset('js/front-end/device.js')}}"></script>
+<script src="{{asset('js/front-end/carousel.js')}}"></script>
+<script src="{{asset('js/front-end/style-switcher.js')}}"></script>
+
+{{--
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/6.0.6/highcharts.js" charset="utf-8"></script>
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
-<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>--}}
 {{--<script src="{{mix('js/app.js')}}"></script>--}}
 @php $img_broke = Voyager::setting('site.not_found', ''); @endphp
 <script>
     var gambar = '{{asset('storage/'.$img_broke)}}';
-    console.log(gambar);
+
     $('img').on("error", function() {
         $(this).attr('src', gambar);
     });

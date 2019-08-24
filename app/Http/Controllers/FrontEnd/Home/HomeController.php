@@ -25,7 +25,7 @@ class HomeController extends Controller
        $news = Berita::take(5)->get();
 
 
-       if (Auth::guard('investor')->check()){
+       /*if (Auth::guard('investor')->check()){
            $registered = ProfileInvestor::where('user_id',Auth::guard('investor')->user()->id)->first();
            $intersts = LoiInterest::where('user_id', Auth::guard('investor')->user()->id)->get();
            //dd($registered);
@@ -42,6 +42,26 @@ class HomeController extends Controller
        }
        else{
            return view('front-end.home', compact(
+               'mapsKey','feeds', 'populers', 'news'));
+       }*/
+
+       if (Auth::guard('investor')->check()){
+           $registered = ProfileInvestor::where('user_id',Auth::guard('investor')->user()->id)->first();
+           $intersts = LoiInterest::where('user_id', Auth::guard('investor')->user()->id)->get();
+           //dd($registered);
+           if (is_null($registered)){
+               return redirect()->route('form.profile', Auth::guard('investor')->user()->id );
+           }
+           elseif (isset($intersts)){
+               return view('front-end.new-home', compact('mapsKey','feeds', 'intersts', 'populers', 'news'));
+           }
+           else{
+               return view('front-end.new-home', compact('mapsKey','feeds',  'populers', 'news'));
+
+           }
+       }
+       else{
+           return view('front-end.new-home', compact(
                'mapsKey','feeds', 'populers', 'news'));
        }
 

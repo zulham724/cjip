@@ -73,6 +73,7 @@
                     @endif
 
                     </tbody>
+                    {{$pesertas->links()}}
                 </table>
             </div>
         </div>

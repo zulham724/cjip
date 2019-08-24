@@ -59,7 +59,8 @@ class LayoutController extends Controller
         $jeniss = CjibfJenismeja::all();
         $kabkotas = User::where('role_id', 3)->get();
         $cjibf = CjibfEvent::first();
-        $pesertas = CjibfInvestor::with('profil', 'loi')->get();
+        $pesertas = CjibfInvestor::with('profil', 'loi')->paginate(20);
+        //dd($pesertas);
         $events = CjibfEvent::all();
 
 

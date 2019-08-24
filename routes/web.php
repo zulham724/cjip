@@ -62,6 +62,10 @@ Route::group(['prefix' => 'admin'], function () {
             return view('front-end.live-count.live-count');
         })->name('live.count');
 
+        Route::get('/why', function (){
+            return view('front-end.master.master-new');
+        });
+
 
         Route::post('/feed/{id}/like', 'FrontEnd\Home\HomeController@likes')->name('likes.count');
 
