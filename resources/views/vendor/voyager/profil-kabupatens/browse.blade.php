@@ -183,6 +183,11 @@
                                                         @include('voyager::multilingual.input-hidden-bread-browse')
                                                         <div>{{ mb_strlen( $data->{$row->field} ) > 200 ? mb_substr($data->{$row->field}, 0, 200) . ' ...' : $data->{$row->field} }}</div>
                                                     @endif
+                                                        @if($row->field == 'kab_kota_id')
+                                                            <p>{{$data->kabkota->name}}</p>
+                                                        @else
+                                                            @include('voyager::multilingual.input-hidden-bread-browse')
+                                                        @endif
                                                 @elseif($row->type == 'text_area')
                                                     @include('voyager::multilingual.input-hidden-bread-browse')
                                                     <div>{{ mb_strlen( $data->{$row->field} ) > 200 ? mb_substr($data->{$row->field}, 0, 200) . ' ...' : $data->{$row->field} }}</div>

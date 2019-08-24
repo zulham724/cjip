@@ -67,75 +67,136 @@
                                 $dataTypeRows = $dataType->{($edit ? 'editRows' : 'addRows' )};
                             @endphp
 
-                            @foreach($dataTypeRows as $row)
-                                <!-- GET THE DISPLAY OPTIONS -->
-                                @php
-                                    $display_options = $row->details->display ?? NULL;
-                                    if ($dataTypeContent->{$row->field.'_'.($edit ? 'edit' : 'add')}) {
-                                        $dataTypeContent->{$row->field} = $dataTypeContent->{$row->field.'_'.($edit ? 'edit' : 'add')};
-                                    }
-                                @endphp
-                                @if (isset($row->details->legend) && isset($row->details->legend->text))
-                                    <legend class="text-{{ $row->details->legend->align ?? 'center' }}" style="background-color: {{ $row->details->legend->bgcolor ?? '#f0f0f0' }};padding: 5px;">{{ $row->details->legend->text }}</legend>
+                                @if(Auth::user()->hasRole('kab'))
+                                    @foreach($dataTypeRows as $row)
+                                    <!-- GET THE DISPLAY OPTIONS -->
+                                        @php
+                                            $display_options = $row->details->display ?? NULL;
+                                            if ($dataTypeContent->{$row->field.'_'.($edit ? 'edit' : 'add')}) {
+                                                $dataTypeContent->{$row->field} = $dataTypeContent->{$row->field.'_'.($edit ? 'edit' : 'add')};
+                                            }
+                                        @endphp
+                                        @if (isset($row->details->legend) && isset($row->details->legend->text))
+                                            <legend class="text-{{ $row->details->legend->align ?? 'center' }}" style="background-color: {{ $row->details->legend->bgcolor ?? '#f0f0f0' }};padding: 5px;">{{ $row->details->legend->text }}</legend>
+                                        @endif
+
+                                        <div class="form-group @if($row->type == 'hidden') hidden @endif col-md-{{ $display_options->width ?? 12 }} {{ $errors->has($row->field) ? 'has-error' : '' }}" @if(isset($display_options->id)){{ "id=$display_options->id" }}@endif>
+                                            {{ $row->slugify }}
+                                            <label class="control-label" for="name">{{ $row->display_name }}</label>
+
+                                            @include('voyager::multilingual.input-hidden-bread-edit-add')
+                                            @if (isset($row->details->view))
+                                                @include($row->details->view, ['row' => $row, 'dataType' => $dataType, 'dataTypeContent' => $dataTypeContent, 'content' => $dataTypeContent->{$row->field}, 'action' => ($edit ? 'edit' : 'add')])
+                                            @elseif ($row->type == 'relationship')
+                                                @include('voyager::formfields.relationship', ['options' => $row->details])
+                                            @elseif($row->display_name == "Infrasturktur Pendukung")
+                                                <div id="input-player-list">
+                                                    <div class="form-group">
+                                                        <input placeholder="Infrastruktur Pendukung" name="infrastruktur[]" id="infrastruktur" class="form-control col-md-12"
+                                                               required>
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <div class="ui-tooltip">
+                                                            <button type='button' class="btn btn-danger btn-circle float-right"
+                                                                    data-toggle="tooltip" data-placement="bottom" title="Hapus Tujuan"
+                                                                    id='removePlayer'>
+                                                                <i class="fa fa-minus"></i>
+                                                            </button>
+                                                            <button type='button' class="btn btn-info btn-circle float-left" id='addPlayer'
+                                                                    data-toggle="tooltip" data-placement="bottom" title="Tambah Tujuan">
+                                                                <i class="fa fa-plus"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @elseif ($row->field == 'kab_kota_id')
+                                                <input type="hidden" value="{{Auth::user()->id}}" name="kab_kota_id">
+                                            @else
+                                                {!! app('voyager')->formField($row, $dataType, $dataTypeContent) !!}
+                                            @endif
+
+
+                                            @foreach (app('voyager')->afterFormFields($row, $dataType, $dataTypeContent) as $after)
+                                                {!! $after->handle($row, $dataType, $dataTypeContent) !!}
+                                            @endforeach
+                                            @if ($errors->has($row->field))
+                                                @foreach ($errors->get($row->field) as $error)
+                                                    <span class="help-block">{{ $error }}</span>
+                                                @endforeach
+                                            @endif
+                                        </div>
+                                    @endforeach
+                                    @else
+                                    @foreach($dataTypeRows as $row)
+                                    <!-- GET THE DISPLAY OPTIONS -->
+                                        @php
+                                            $display_options = $row->details->display ?? NULL;
+                                            if ($dataTypeContent->{$row->field.'_'.($edit ? 'edit' : 'add')}) {
+                                                $dataTypeContent->{$row->field} = $dataTypeContent->{$row->field.'_'.($edit ? 'edit' : 'add')};
+                                            }
+                                        @endphp
+                                        @if (isset($row->details->legend) && isset($row->details->legend->text))
+                                            <legend class="text-{{ $row->details->legend->align ?? 'center' }}" style="background-color: {{ $row->details->legend->bgcolor ?? '#f0f0f0' }};padding: 5px;">{{ $row->details->legend->text }}</legend>
+                                        @endif
+
+                                        <div class="form-group @if($row->type == 'hidden') hidden @endif col-md-{{ $display_options->width ?? 12 }} {{ $errors->has($row->field) ? 'has-error' : '' }}" @if(isset($display_options->id)){{ "id=$display_options->id" }}@endif>
+                                            {{ $row->slugify }}
+                                            <label class="control-label" for="name">{{ $row->display_name }}</label>
+
+                                            @include('voyager::multilingual.input-hidden-bread-edit-add')
+                                            @if (isset($row->details->view))
+                                                @include($row->details->view, ['row' => $row, 'dataType' => $dataType, 'dataTypeContent' => $dataTypeContent, 'content' => $dataTypeContent->{$row->field}, 'action' => ($edit ? 'edit' : 'add')])
+                                            @elseif ($row->type == 'relationship')
+                                                @include('voyager::formfields.relationship', ['options' => $row->details])
+                                            @elseif($row->display_name == "Infrasturktur Pendukung")
+                                                <div id="input-player-list">
+                                                    <div class="form-group">
+                                                        <input placeholder="Infrastruktur Pendukung" name="infrastruktur[]" id="infrastruktur" class="form-control col-md-12"
+                                                               required>
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <div class="ui-tooltip">
+                                                            <button type='button' class="btn btn-danger btn-circle float-right"
+                                                                    data-toggle="tooltip" data-placement="bottom" title="Hapus Tujuan"
+                                                                    id='removePlayer'>
+                                                                <i class="fa fa-minus"></i>
+                                                            </button>
+                                                            <button type='button' class="btn btn-info btn-circle float-left" id='addPlayer'
+                                                                    data-toggle="tooltip" data-placement="bottom" title="Tambah Tujuan">
+                                                                <i class="fa fa-plus"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @elseif ($row->field == 'kab_kota_id')
+                                                <select class="form-control select2" name="kab_kota_id">
+
+                                                    @foreach($users as $user)
+                                                        @if(is_null($dataTypeContent->kab_kota_id))
+                                                            <option value="{{$user->id}}">{{$user->name}}</option>
+                                                        @else
+                                                            <option value="{{$dataTypeContent->kab_kota_id}}" selected>{{$dataTypeContent->kabkota->name}}</option>
+                                                        @endif
+                                                    @endforeach
+                                                </select>
+                                            @else
+                                                {!! app('voyager')->formField($row, $dataType, $dataTypeContent) !!}
+                                            @endif
+
+
+                                            @foreach (app('voyager')->afterFormFields($row, $dataType, $dataTypeContent) as $after)
+                                                {!! $after->handle($row, $dataType, $dataTypeContent) !!}
+                                            @endforeach
+                                            @if ($errors->has($row->field))
+                                                @foreach ($errors->get($row->field) as $error)
+                                                    <span class="help-block">{{ $error }}</span>
+                                                @endforeach
+                                            @endif
+                                        </div>
+                                    @endforeach
                                 @endif
 
-                                <div class="form-group @if($row->type == 'hidden') hidden @endif col-md-{{ $display_options->width ?? 12 }} {{ $errors->has($row->field) ? 'has-error' : '' }}" @if(isset($display_options->id)){{ "id=$display_options->id" }}@endif>
-                                    {{ $row->slugify }}
-                                    <label class="control-label" for="name">{{ $row->display_name }}</label>
 
-                                    @include('voyager::multilingual.input-hidden-bread-edit-add')
-                                    @if (isset($row->details->view))
-                                        @include($row->details->view, ['row' => $row, 'dataType' => $dataType, 'dataTypeContent' => $dataTypeContent, 'content' => $dataTypeContent->{$row->field}, 'action' => ($edit ? 'edit' : 'add')])
-                                    @elseif ($row->type == 'relationship')
-                                        @include('voyager::formfields.relationship', ['options' => $row->details])
-                                    @elseif($row->display_name == "Infrasturktur Pendukung")
-                                        <div id="input-player-list">
-                                            <div class="form-group">
-                                                <input placeholder="Infrastruktur Pendukung" name="infrastruktur[]" id="infrastruktur" class="form-control col-md-12"
-                                                       required>
-                                            </div>
-                                            <div class="col-lg-12">
-                                                <div class="ui-tooltip">
-                                                    <button type='button' class="btn btn-danger btn-circle float-right"
-                                                            data-toggle="tooltip" data-placement="bottom" title="Hapus Tujuan"
-                                                            id='removePlayer'>
-                                                        <i class="fa fa-minus"></i>
-                                                    </button>
-                                                    <button type='button' class="btn btn-info btn-circle float-left" id='addPlayer'
-                                                            data-toggle="tooltip" data-placement="bottom" title="Tambah Tujuan">
-                                                        <i class="fa fa-plus"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @elseif($row->field == "kab_kota_id")
-                                        @if(Auth::user()->role->name == 'admin' || Auth::user()->role->name == 'Promosi')
-                                        <select class="form-control select2" name="kab_kota_id">
-                                            <optgroup label="Kabupaten Kota">
-                                                <option value=""></option>
-                                                @foreach($users as $user)
-                                                    <option value="{{$user->id}}">{{$user->name}}</option>
-                                                @endforeach
-                                            </optgroup>
-                                        </select>
-                                        @else
-                                            <input type="hidden" value="{{Auth::user()->id}}" name="kab_kota_id">
-                                        @endif
-                                    @else
-                                        {!! app('voyager')->formField($row, $dataType, $dataTypeContent) !!}
-                                    @endif
-
-
-                                    @foreach (app('voyager')->afterFormFields($row, $dataType, $dataTypeContent) as $after)
-                                        {!! $after->handle($row, $dataType, $dataTypeContent) !!}
-                                    @endforeach
-                                    @if ($errors->has($row->field))
-                                        @foreach ($errors->get($row->field) as $error)
-                                            <span class="help-block">{{ $error }}</span>
-                                        @endforeach
-                                    @endif
-                                </div>
-                            @endforeach
 
                         </div><!-- panel-body -->
 

@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Admin\ProfilKabupaten;
+namespace App\Http\Controllers\Admin\Kabkota\Proyeks;
 
+use App\Http\Controllers\Admin\VoyagerBaseController;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use TCG\Voyager\Http\Controllers\Traits\BreadRelationshipParser;
@@ -17,7 +18,7 @@ use TCG\Voyager\Events\BreadDataUpdated;
 use TCG\Voyager\Events\BreadImagesDeleted;
 use TCG\Voyager\Facades\Voyager;
 
-class ProfilKabupatenController extends BaseVoyagerBaseController
+class ProyekController extends VoyagerBaseController
 {
     use BreadRelationshipParser;
 
@@ -123,7 +124,10 @@ class ProfilKabupatenController extends BaseVoyagerBaseController
 
         // Check if a default search key is set
         $defaultSearchKey = $dataType->default_search_key ?? null;
-
+        //dd($dataTypeContent->where('kab_kota_id', Auth::user()->id));
+        if(Auth::user()->hasRole('kab')){
+            $dataTypeContent = $dataTypeContent->where('kab_kota_id', Auth::user()->id);
+        }
         $view = 'voyager::bread.browse';
 
         if (view()->exists("voyager::$slug.browse")) {
@@ -318,10 +322,10 @@ class ProfilKabupatenController extends BaseVoyagerBaseController
 
         $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
 
+        $users = User::where('role_id', 3)->get();
+        //dd($user);
         // Check permission
         $this->authorize('add', app($dataType->model_name));
-
-        $users = User::where('role_id', 3)->get();
 
         $dataTypeContent = (strlen($dataType->model_name) != 0)
             ? new $dataType->model_name()
@@ -356,7 +360,7 @@ class ProfilKabupatenController extends BaseVoyagerBaseController
     public function store(Request $request)
     {
         $slug = $this->getSlug($request);
-
+        //dd($request->all());
         $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
 
         // Check permission
@@ -705,7 +709,6 @@ class ProfilKabupatenController extends BaseVoyagerBaseController
                 }
             }
 
-
             $content = $this->getContentBasedOnType($request, $slug, $row, $row->details);
 
             if ($row->type == 'relationship' && $row->details->type != 'belongsToMany') {
@@ -752,14 +755,7 @@ class ProfilKabupatenController extends BaseVoyagerBaseController
             } else {
                 $data->{$row->field} = $content;
             }
-            //dump($row->field == 'infrasturktur');
-            if ($row->field == 'infrasturktur'){
-                $infrastruktur = $data->infrasturktur;
-                $infrastruktur['infrastruktur'] = $request->infrastruktur;
-                $data->infrasturktur = json_encode($infrastruktur);
-            }
         }
-        //die();
 
         if (isset($data->additional_attributes)) {
             foreach ($data->additional_attributes as $attr) {
@@ -769,12 +765,12 @@ class ProfilKabupatenController extends BaseVoyagerBaseController
             }
         }
 
-        //dd($data);
+        //dd($slug);
 
-
-            $data->save();
 
         //dd($data);
+        $data->save();
+
 
 
 

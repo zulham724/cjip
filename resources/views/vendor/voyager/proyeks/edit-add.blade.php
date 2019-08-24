@@ -54,11 +54,77 @@
                             @php
                                 $dataTypeRows = $dataType->{($edit ? 'editRows' : 'addRows' )};
                             @endphp
+                                {{--@if($row->field == 'kab_kota_id')
+                                    <input type="hidden" value="{{Auth::user()->id}}" name="kab_kota_id">
+                                @endif--}}
+                            @if(Auth::user()->hasRole('kab'))
+                                    @foreach($dataTypeRows as $row)
 
+                                    <!-- GET THE DISPLAY OPTIONS -->
+                                        @php
+                                            $display_options = $row->details->display ?? NULL;
+                                            if ($dataTypeContent->{$row->field.'_'.($edit ? 'edit' : 'add')}) {
+                                                $dataTypeContent->{$row->field} = $dataTypeContent->{$row->field.'_'.($edit ? 'edit' : 'add')};
+                                            }
+                                        @endphp
+                                        {{--{{dump($row->display_name)}}--}}
+                                        @if (isset($row->details->legend) && isset($row->details->legend->text))
+                                            <legend class="text-{{ $row->details->legend->align ?? 'center' }}" style="background-color: {{ $row->details->legend->bgcolor ?? '#f0f0f0' }};padding: 5px;">{{ $row->details->legend->text }}</legend>
+                                        @endif
+
+                                        <div class="form-group @if($row->type == 'hidden') hidden @endif col-md-{{ $display_options->width ?? 12 }} {{ $errors->has($row->field) ? 'has-error' : '' }}" @if(isset($display_options->id)){{ "id=$display_options->id" }}@endif>
+                                            {{ $row->slugify }}
+                                            @if($row->display_name == 'Kab Kota Id')
+                                                @elseif($row->display_name == 'Status')
+                                            @else
+                                                <label class="control-label" for="name">{{ $row->display_name }}</label>
+                                            @endif
+                                            @include('voyager::multilingual.input-hidden-bread-edit-add')
+                                            @if (isset($row->details->view))
+                                                @include($row->details->view, ['row' => $row, 'dataType' => $dataType, 'dataTypeContent' => $dataTypeContent, 'content' => $dataTypeContent->{$row->field}, 'action' => ($edit ? 'edit' : 'add')])
+                                            @elseif ($row->type == 'relationship')
+                                                @include('voyager::formfields.relationship', ['options' => $row->details])
+                                            @elseif ($row->type == 'coordinates')
+                                                <a href="javascript:void(0)" onclick="loadthemappicker()" class="btn btn-sm btn-success"><i class="fa fa-map"></i> Pilih Lokasi</a>
+                                                @forelse($dataTypeContent->getCoordinates() as $point)
+                                                    <input type="hidden" name="{{ $row->field }}[lat]" value="{{ $point['lat'] }}" id="lat"/>
+                                                    <input type="hidden" name="{{ $row->field }}[lng]" value="{{ $point['lng'] }}" id="lng"/>
+                                                @empty
+                                                    <input type="hidden" name="{{ $row->field }}[lat]" value="{{ config('voyager.googlemaps.center.lat') }}" id="lat"/>
+                                                    <input type="hidden" name="{{ $row->field }}[lng]" value="{{ config('voyager.googlemaps.center.lng') }}" id="lng"/>
+                                                @endforelse
+                                                <p id="koordinat"></p>
+                                                <div id="map_piker" style="height: 300px!important;"></div>
+
+                                            @elseif ($row->field == 'kab_kota_id')
+                                                <input type="hidden" value="{{Auth::user()->id}}" name="kab_kota_id">
+                                            @elseif ($row->field == 'status')
+                                                <input type="hidden" value="0" name="status">
+                                            @else
+                                                {!! app('voyager')->formField($row, $dataType, $dataTypeContent) !!}
+                                            @endif
+
+                                            @foreach (app('voyager')->afterFormFields($row, $dataType, $dataTypeContent) as $after)
+                                                {!! $after->handle($row, $dataType, $dataTypeContent) !!}
+                                            @endforeach
+                                            @if ($errors->has($row->field))
+                                                @foreach ($errors->get($row->field) as $error)
+                                                    <span class="help-block">{{ $error }}</span>
+                                                @endforeach
+                                            @endif
+                                        </div>
+                                    @endforeach
+                                {{--{{die()}}--}}
+                            @else
                             @foreach($dataTypeRows as $row)
+                                {{--{{dump($row->field)}}--}}
                                 <!-- GET THE DISPLAY OPTIONS -->
+                                        {{--{{dd(is_null($row->field == 'kab_kota_id'))}}--}}
+
                                 @php
+                                /*dd($dataTypeContent->kabkota->name);*/
                                     $display_options = $row->details->display ?? NULL;
+
                                     if ($dataTypeContent->{$row->field.'_'.($edit ? 'edit' : 'add')}) {
                                         $dataTypeContent->{$row->field} = $dataTypeContent->{$row->field.'_'.($edit ? 'edit' : 'add')};
                                     }
@@ -86,7 +152,22 @@
                                         @endforelse
                                         <p id="koordinat"></p>
                                         <div id="map_piker" style="height: 300px!important;"></div>
+                                    @elseif ($row->field == 'kab_kota_id')
+                                        <select class="form-control select2" name="kab_kota_id">
+
+                                        @foreach($users as $user)
+                                            @if(is_null($dataTypeContent->kab_kota_id))
+                                                    <option value="{{$user->id}}">{{$user->name}}</option>
+                                                @else
+                                                    <option value="{{$dataTypeContent->kab_kota_id}}" selected>{{$dataTypeContent->kabkota->name}}</option>
+                                            @endif
+                                        @endforeach
+                                        </select>
+
                                     @else
+                                        {{--@if(Auth::user()->hasRole('kab'))--}}
+
+                                        {{--@endif--}}
                                         {!! app('voyager')->formField($row, $dataType, $dataTypeContent) !!}
                                     @endif
 
@@ -100,7 +181,8 @@
                                     @endif
                                 </div>
                             @endforeach
-
+                               {{-- {{die()}}--}}
+                        @endif
                         </div><!-- panel-body -->
 
                         <div class="panel-footer">
