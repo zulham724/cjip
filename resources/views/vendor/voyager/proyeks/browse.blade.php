@@ -172,7 +172,7 @@
                                                         <span class="badge badge-lg" style="background-color: {{ $data->{$row->field} }}">{{ $data->{$row->field} }}</span>
                                                     @elseif($row->type == 'text')
                                                         @if($row->field == 'kab_kota_id')
-                                                            <p>{{$data->kabkota->name}}</p>
+                                                            <p>@isset($data->kabkota) {{$data->kabkota->name}} @endisset</p>
                                                         @else
                                                         @include('voyager::multilingual.input-hidden-bread-browse')
                                                         @endif
@@ -330,7 +330,7 @@
                                                     @elseif($row->type == 'text')
 
                                                         @if($row->field == 'kab_kota_id')
-                                                            <p>{{$data->kabkota->name}}</p>
+                                                            <p>@isset($data->kabkota) {{$data->kabkota->name}} @endisset</p>
                                                         @else
                                                             @include('voyager::multilingual.input-hidden-bread-browse')
                                                         @endif
