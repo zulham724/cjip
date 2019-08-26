@@ -28,4 +28,29 @@
         @endif
     @endforeach
 
+        @guest('investor')
+            <li><a class="site-btn site-btn--accent" href="{{ route('show.login')  }}">Login</a></li>
+        @else
+            <div class="row">
+                <li>
+                    <div class="menu__logo">
+                        <div class="believe">
+                            <a href="{{route('dashboard.investor', Auth::guard('investor')->user()->id)}}">
+                                <img alt="{{Auth::guard('investor')->user()->name}}" class="believe__avatar" src="{{Auth::guard('investor')->user()->image}}"/>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+
+                <div>
+                    <a class="link link--gray link--gray-active" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </div>
+
+            </div>
+        @endguest
 </ul>

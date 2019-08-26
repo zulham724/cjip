@@ -2,17 +2,24 @@
 
 namespace App\Http\Controllers\Frontend\Home;
 
+use App\Award;
 use App\Berita;
+use App\BiayaAir;
+use App\BiayaListrik;
 use App\Events\FeedAction;
+use App\Faq;
 use App\Feed;
+use App\InfrastrukturPendukung;
 use App\LoiInterest;
 use App\Pariwisata;
 use App\Perikanan;
 use App\Perkebunan;
 use App\Pertanian;
+use App\PertumbuhanEkonomi;
 use App\Peternakan;
 use App\ProfileInvestor;
 use App\Proyek;
+use App\Umr;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -25,6 +32,12 @@ class HomeController extends Controller
        $populers = Feed::orderByViews()->take(5)->get();
        $news = Berita::take(5)->get();
 
+       $ekonomis = PertumbuhanEkonomi::where('status', 1)->get();
+       $awards = Award::all();
+       $infrastrukturs = InfrastrukturPendukung::all();
+       $umks = Umr::paginate(4);
+       $listriks = BiayaListrik::all();
+       $airs = BiayaAir::all();
 
        /*if (Auth::guard('investor')->check()){
            $registered = ProfileInvestor::where('user_id',Auth::guard('investor')->user()->id)->first();
@@ -54,16 +67,16 @@ class HomeController extends Controller
                return redirect()->route('form.profile', Auth::guard('investor')->user()->id );
            }
            elseif (isset($intersts)){
-               return view('front-end.new-home', compact('mapsKey','feeds', 'intersts', 'populers', 'news'));
+               return view('front-end.new-home', compact('mapsKey','feeds', 'intersts', 'populers', 'news' , 'ekonomis', 'awards', 'infrastrukturs', 'umks', 'listriks', 'airs'));
            }
            else{
-               return view('front-end.new-home', compact('mapsKey','feeds',  'populers', 'news'));
+               return view('front-end.new-home', compact('mapsKey','feeds',  'populers', 'news' , 'ekonomis', 'awards', 'infrastrukturs', 'umks', 'listriks', 'airs'));
 
            }
        }
        else{
            return view('front-end.new-home', compact(
-               'mapsKey','feeds', 'populers', 'news'));
+               'mapsKey','feeds', 'populers', 'news', 'ekonomis', 'awards', 'infrastrukturs', 'umks', 'listriks', 'airs'));
        }
 
 
@@ -96,7 +109,7 @@ class HomeController extends Controller
     public function readyToOffer(){
         $proyeks = Proyek::whereHas('marketplace', function ($query) {
             $query->where('name', '=', 'Ready to Offer');
-        })->get();
+        })->paginate(5);
         //dd($proyeks);
 
         return view('front-end.marketplace.ready-to-offer', compact('proyeks'));
@@ -105,16 +118,24 @@ class HomeController extends Controller
     public function prospectiveProject(){
         $proyeks = Proyek::whereHas('marketplace', function ($query) {
             $query->where('name', '=', 'Prospective Project');
-        })->get();
-        dd($proyeks);
+        })->paginate(5);
+        //dd($proyeks);
        //$proyeks = Proyek::with('marketplace');
+        return view('front-end.marketplace.prospective', compact('proyeks'));
     }
     public function potentialProject(){
         $proyeks = Proyek::whereHas('marketplace', function ($query) {
             $query->where('name', '=', 'Potential Project');
-        })->get();
-        dd($proyeks);
+        })->paginate(5);
+        //dd($proyeks);
        //$proyeks = Proyek::with('marketplace');
+        return view('front-end.marketplace.potentials', compact('proyeks'));
+    }
+    public function faq(){
+        $faqs = Faq::all();
+        //dd($proyeks);
+       //$proyeks = Proyek::with('marketplace');
+        return view('front-end.faq', compact('faqs'));
     }
 
 }
