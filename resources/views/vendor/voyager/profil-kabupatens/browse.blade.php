@@ -173,6 +173,7 @@
                                                     @if($row->field == 'infrasturktur')
                                                         @php
                                                             $infras = json_decode($data->infrasturktur);
+
                                                         @endphp
                                                         @foreach($infras as $infra)
                                                             @foreach($infra as $in)
@@ -184,7 +185,7 @@
                                                         <div>{{ mb_strlen( $data->{$row->field} ) > 200 ? mb_substr($data->{$row->field}, 0, 200) . ' ...' : $data->{$row->field} }}</div>
                                                     @endif
                                                         @if($row->field == 'kab_kota_id')
-                                                            <p>{{$data->kabkota->name}}</p>
+                                                            <p>@isset($data->kabkota) {{$data->kabkota->name}} @endisset</p>
                                                         @else
                                                             @include('voyager::multilingual.input-hidden-bread-browse')
                                                         @endif

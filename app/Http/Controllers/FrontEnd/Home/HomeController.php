@@ -12,6 +12,7 @@ use App\Perkebunan;
 use App\Pertanian;
 use App\Peternakan;
 use App\ProfileInvestor;
+use App\Proyek;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -91,4 +92,29 @@ class HomeController extends Controller
 
        return view('front-end.sidebar', compact('intersts', 'populers', 'news'));
     }
+
+    public function readyToOffer(){
+        $proyeks = Proyek::whereHas('marketplace', function ($query) {
+            $query->where('name', '=', 'Ready to Offer');
+        })->get();
+        //dd($proyeks);
+
+        return view('front-end.marketplace.ready-to-offer', compact('proyeks'));
+       //$proyeks = Proyek::with('marketplace');
+    }
+    public function prospectiveProject(){
+        $proyeks = Proyek::whereHas('marketplace', function ($query) {
+            $query->where('name', '=', 'Prospective Project');
+        })->get();
+        dd($proyeks);
+       //$proyeks = Proyek::with('marketplace');
+    }
+    public function potentialProject(){
+        $proyeks = Proyek::whereHas('marketplace', function ($query) {
+            $query->where('name', '=', 'Potential Project');
+        })->get();
+        dd($proyeks);
+       //$proyeks = Proyek::with('marketplace');
+    }
+
 }

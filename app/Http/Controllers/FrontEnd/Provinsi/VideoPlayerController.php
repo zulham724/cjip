@@ -10,6 +10,7 @@ use App\Perikanan;
 use App\Perkebunan;
 use App\Pertanian;
 use App\Peternakan;
+use App\Proyek;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use function MongoDB\BSON\toJSON;
@@ -28,12 +29,13 @@ class VideoPlayerController extends Controller
             $kebun = Perkebunan::whereNotNull('komoditas_id')->orderByDesc('created_at')->take(3)->get();
             $ternak = Peternakan::whereNotNull('komoditas_id')->orderByDesc('created_at')->take(3)->get();
             $wisata = Pariwisata::where('status', 1)->orderByDesc('created_at')->take(3)->get();
-            //dd($ternak);
+            $ki = Proyek::where('id', 4)->get();
             foreach ($wisata as $w){
                 //dd(json_decode($w->fotos));
             }
             //dd($wisata);
 
+        //dd($ki->getCoordinates());
 
         //dd($menu);
 
@@ -43,8 +45,7 @@ class VideoPlayerController extends Controller
             'tani',
             'kebun',
             'ternak',
-            'wisata',
-            'menu'));
+            'wisata', 'ki'));
     }
 
     public function menu(){

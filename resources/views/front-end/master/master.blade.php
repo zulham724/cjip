@@ -169,7 +169,7 @@
     // locate you.
     var map, infoWindow;
     var pos = {!! json_encode($ki->getCoordinates(), JSON_HEX_TAG) !!};
-    var nama_lokasi = {!! json_encode($ki->nama_kawasan, JSON_HEX_TAG) !!};
+    var nama_lokasi = {!! json_encode($ki->location, JSON_HEX_TAG) !!};
     console.log(pos[0]);
     console.log(nama_lokasi);
     function initMap() {

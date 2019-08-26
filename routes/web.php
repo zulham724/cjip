@@ -55,6 +55,9 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::get('/x', 'FrontEnd\Provinsi\VideoPlayerController@home')->name('homey');
         Route::get('/', 'FrontEnd\Home\HomeController@home')->name('homey2');
+        Route::get('/ready-to-offer', 'FrontEnd\Home\HomeController@readyToOffer')->name('ready-to-offer');
+        Route::get('/prospective-project', 'FrontEnd\Home\HomeController@prospectiveProject')->name('prospective-project');
+        Route::get('/potential-project', 'FrontEnd\Home\HomeController@potentialProject')->name('potential-project');
         Route::get('/sidebar', 'FrontEnd\Home\HomeController@sidebar')->name('sidebar');
         Route::get('/menu', 'FrontEnd\Provinsi\VideoPlayerController@menu')->name('menu');
         Route::get('/search', 'FrontEnd\Home\SearchController@search')->name('search');

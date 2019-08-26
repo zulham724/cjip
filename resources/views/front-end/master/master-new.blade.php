@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,800" rel="stylesheet">
     <link href="https://cdn.materialdesignicons.com/2.0.46/css/materialdesignicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/front-end/jquery-ui.min.css')}}">
-    <title>Sigma</title>
+    <title>CJIP</title>
     @php $title_logo = Voyager::setting('site.logo', ''); @endphp
     <link rel="icon" href="{{asset('storage/'.$title_logo)}}" type="image/png">
     {{--<link rel="stylesheet" href="{{asset('css/front-end/nav.css')}}">--}}
@@ -17,19 +17,12 @@
 <body>
 
 <!--Switcher-->
-{{--<div class="style-switcher">
+<div class="style-switcher">
     <span class="style-switcher__control"></span>
     <div class="style-switcher__list">
-        <a class="style-switcher__link style-switcher__link--red active" href="assets/css/red.css"></a>
-        <a class="style-switcher__link style-switcher__link--blue" href="assets/css/blue.css"></a>
-        <a class="style-switcher__link style-switcher__link--violet" href="assets/css/violet.css"></a>
-        <a class="style-switcher__link style-switcher__link--green" href="assets/css/green.css"></a> <br/>
-        <a class="style-switcher__link style-switcher__link--red-gradient" href="assets/css/red-gradient.css"></a>
-        <a class="style-switcher__link style-switcher__link--blue-gradient" href="assets/css/blue-gradient.css"></a>
-        <a class="style-switcher__link style-switcher__link--violet-gradient" href="assets/css/violet-gradient.css"></a>
-        <a class="style-switcher__link style-switcher__link--green-gradient" href="assets/css/green-gradient.css"></a>
+
     </div>
-</div>--}}
+</div>
 <!--Switcher-->
 
 <!--Main menu-->

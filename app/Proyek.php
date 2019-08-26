@@ -25,4 +25,8 @@ class Proyek extends Model
         parent::save();
     }
 
+    public function marketplace(){
+        return $this->belongsTo(JenisMarketplace::class, 'market_id');
+    }
+
 }
