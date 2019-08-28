@@ -109,7 +109,7 @@ class HomeController extends Controller
     public function readyToOffer(){
         $proyeks = Proyek::whereHas('marketplace', function ($query) {
             $query->where('name', '=', 'Ready to Offer');
-        })->paginate(5);
+        })->where('status', 1)->paginate(5);
         //dd($proyeks);
 
         return view('front-end.marketplace.ready-to-offer', compact('proyeks'));
@@ -118,7 +118,7 @@ class HomeController extends Controller
     public function prospectiveProject(){
         $proyeks = Proyek::whereHas('marketplace', function ($query) {
             $query->where('name', '=', 'Prospective Project');
-        })->paginate(5);
+        })->where('status', 1)->paginate(5);
         //dd($proyeks);
        //$proyeks = Proyek::with('marketplace');
         return view('front-end.marketplace.prospective', compact('proyeks'));

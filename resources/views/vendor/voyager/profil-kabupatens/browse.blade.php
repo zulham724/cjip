@@ -73,32 +73,32 @@
                         <div class="table-responsive">
                             <table id="dataTable" class="table table-hover">
                                 <thead>
-                                    <tr>
-                                        @can('delete',app($dataType->model_name))
-                                            <th>
-                                                <input type="checkbox" class="select_all">
-                                            </th>
-                                        @endcan
-                                        @foreach($dataType->browseRows as $row)
+                                <tr>
+                                    @can('delete',app($dataType->model_name))
+                                        <th>
+                                            <input type="checkbox" class="select_all">
+                                        </th>
+                                    @endcan
+                                    @foreach($dataType->browseRows as $row)
                                         <th>
                                             @if ($isServerSide)
                                                 <a href="{{ $row->sortByUrl($orderBy, $sortOrder) }}">
-                                            @endif
-                                            {{ $row->display_name }}
-                                            @if ($isServerSide)
-                                                @if ($row->isCurrentSortField($orderBy))
-                                                    @if ($sortOrder == 'asc')
-                                                        <i class="voyager-angle-up pull-right"></i>
-                                                    @else
-                                                        <i class="voyager-angle-down pull-right"></i>
                                                     @endif
-                                                @endif
+                                                    {{ $row->display_name }}
+                                                    @if ($isServerSide)
+                                                        @if ($row->isCurrentSortField($orderBy))
+                                                            @if ($sortOrder == 'asc')
+                                                                <i class="voyager-angle-up pull-right"></i>
+                                                            @else
+                                                                <i class="voyager-angle-down pull-right"></i>
+                                                            @endif
+                                                        @endif
                                                 </a>
                                             @endif
                                         </th>
-                                        @endforeach
-                                        <th class="actions text-right">{{ __('voyager::generic.actions') }}</th>
-                                    </tr>
+                                    @endforeach
+                                    <th class="actions text-right">{{ __('voyager::generic.actions') }}</th>
+                                </tr>
                                 </thead>
                                 <tbody>
                                 @if(Auth::user()->hasRole('kab'))
@@ -175,13 +175,13 @@
                                                             @php
                                                                 $infras = json_decode($data->infrasturktur);
                                                             @endphp
-                                                        @isset($infras)
-                                                            @foreach($infras as $infra)
-                                                                @foreach($infra as $in)
-                                                                    <li>{{$in}}</li>
+                                                            @isset($infras)
+                                                                @foreach($infras as $infra)
+                                                                    @foreach($infra as $in)
+                                                                        <li>{{$in}}</li>
+                                                                    @endforeach
                                                                 @endforeach
-                                                            @endforeach
-                                                        @endisset
+                                                            @endisset
                                                         @else
                                                             @include('voyager::multilingual.input-hidden-bread-browse')
                                                             <div>{{ mb_strlen( $data->{$row->field} ) > 200 ? mb_substr($data->{$row->field}, 0, 200) . ' ...' : $data->{$row->field} }}</div>
@@ -339,24 +339,6 @@
                                                         @else
                                                             {{ $data->{$row->field} }}
                                                         @endif
-<<<<<<< HEAD
-                                                    @else
-                                                    {{ $data->{$row->field} }}
-                                                    @endif
-                                                @elseif($row->type == 'color')
-                                                    <span class="badge badge-lg" style="background-color: {{ $data->{$row->field} }}">{{ $data->{$row->field} }}</span>
-                                                @elseif($row->type == 'text')
-                                                    @if($row->field == 'infrasturktur')
-                                                        @php
-                                                            $infras = json_decode($data->infrasturktur);
-
-                                                        @endphp
-                                                        @foreach($infras as $infra)
-                                                            @foreach($infra as $in)
-                                                                <li>{{$in}}</li>
-                                                            @endforeach
-                                                        @endforeach
-=======
                                                     @elseif($row->type == 'color')
                                                         <span class="badge badge-lg" style="background-color: {{ $data->{$row->field} }}">{{ $data->{$row->field} }}</span>
                                                     @elseif($row->type == 'text')
@@ -371,7 +353,6 @@
                                                                     @endforeach
                                                                 @endforeach
                                                             @endisset
->>>>>>> 961178c8ded663c45c6ad162ab691faf0e93cba1
                                                         @else
                                                             @include('voyager::multilingual.input-hidden-bread-browse')
                                                             <div>{{ mb_strlen( $data->{$row->field} ) > 200 ? mb_substr($data->{$row->field}, 0, 200) . ' ...' : $data->{$row->field} }}</div>
@@ -516,9 +497,9 @@
 @stop
 
 @section('css')
-@if(!$dataType->server_side && config('dashboard.data_tables.responsive'))
-    <link rel="stylesheet" href="{{ voyager_asset('lib/css/responsive.dataTables.min.css') }}">
-@endif
+    @if(!$dataType->server_side && config('dashboard.data_tables.responsive'))
+        <link rel="stylesheet" href="{{ voyager_asset('lib/css/responsive.dataTables.min.css') }}">
+    @endif
 @stop
 
 @section('javascript')
@@ -528,8 +509,8 @@
     @endif
     <script>
         $(document).ready(function () {
-            @if (!$dataType->server_side)
-                var table = $('#dataTable').DataTable({!! json_encode(
+                @if (!$dataType->server_side)
+            var table = $('#dataTable').DataTable({!! json_encode(
                     array_merge([
                         "order" => $orderColumn,
                         "language" => __('voyager::datatable'),
@@ -538,17 +519,17 @@
                     config('voyager.dashboard.data_tables', []))
                 , true) !!});
             @else
-                $('#search-input select').select2({
-                    minimumResultsForSearch: Infinity
-                });
+            $('#search-input select').select2({
+                minimumResultsForSearch: Infinity
+            });
             @endif
 
             @if ($isModelTranslatable)
-                $('.side-body').multilingual();
-                //Reinitialise the multilingual features when they change tab
-                $('#dataTable').on('draw.dt', function(){
-                    $('.side-body').data('multilingual').init();
-                })
+            $('.side-body').multilingual();
+            //Reinitialise the multilingual features when they change tab
+            $('#dataTable').on('draw.dt', function(){
+                $('.side-body').data('multilingual').init();
+            })
             @endif
             $('.select_all').on('click', function(e) {
                 $('input[name="row_id"]').prop('checked', $(this).prop('checked'));
@@ -563,26 +544,26 @@
         });
 
         @if($usesSoftDeletes)
-            @php
-                $params = [
-                    's' => $search->value,
-                    'filter' => $search->filter,
-                    'key' => $search->key,
-                    'order_by' => $orderBy,
-                    'sort_order' => $sortOrder,
-                ];
-            @endphp
-            $(function() {
-                $('#show_soft_deletes').change(function() {
-                    if ($(this).prop('checked')) {
-                        $('#dataTable').before('<a id="redir" href="{{ (route('voyager.'.$dataType->slug.'.index', array_merge($params, ['showSoftDeleted' => 1]), true)) }}"></a>');
-                    }else{
-                        $('#dataTable').before('<a id="redir" href="{{ (route('voyager.'.$dataType->slug.'.index', array_merge($params, ['showSoftDeleted' => 0]), true)) }}"></a>');
-                    }
+        @php
+            $params = [
+                's' => $search->value,
+                'filter' => $search->filter,
+                'key' => $search->key,
+                'order_by' => $orderBy,
+                'sort_order' => $sortOrder,
+            ];
+        @endphp
+        $(function() {
+            $('#show_soft_deletes').change(function() {
+                if ($(this).prop('checked')) {
+                    $('#dataTable').before('<a id="redir" href="{{ (route('voyager.'.$dataType->slug.'.index', array_merge($params, ['showSoftDeleted' => 1]), true)) }}"></a>');
+                }else{
+                    $('#dataTable').before('<a id="redir" href="{{ (route('voyager.'.$dataType->slug.'.index', array_merge($params, ['showSoftDeleted' => 0]), true)) }}"></a>');
+                }
 
-                    $('#redir')[0].click();
-                })
+                $('#redir')[0].click();
             })
+        })
         @endif
         $('input[name="row_id"]').on('change', function () {
             var ids = [];

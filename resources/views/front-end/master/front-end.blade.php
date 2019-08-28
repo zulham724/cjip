@@ -13,7 +13,7 @@
     @php $title_logo = Voyager::setting('site.logo', ''); @endphp
     <link rel="icon" href="{{asset('storage/'.$title_logo)}}" type="image/png">
     <link rel="stylesheet" href="{{asset('css/front-end/nav.css')}}">
-    @yield('css')
+@yield('css')
 <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-143558094-1"></script>
     <script>
@@ -31,67 +31,27 @@
 <div class="menu">
     <div class="container menu__wrapper">
         <div class="row">
-            <div class="col-md-10">
-                <div class="menu__logo menu__item">
-                    <a href="/">
-                        @php $site_logo = Voyager::setting('site.logo', ''); @endphp
-                        <img class="menu__logo-img" style="max-width: 50px;height: auto"
-                             src="{{asset('storage/'.$site_logo)}}" alt="">
-                        <p class="menu__logo-title">{{setting('site.description')}}</p>
-                    </a>
-                </div>
-                <div class="menu__item d-t-none">
-                    <nav class="menu__center-nav">
-                        {{menu('frontend', 'front-end.layouts.menu-desktop')}}
-                    </nav>
-                </div>
+            <div class="menu__logo menu__item">
+                <a href="/">
+                    @php $site_logo = Voyager::setting('site.logo', ''); @endphp
+                    <img class="menu__logo-img" style="max-width: 50px;height: auto"
+                         src="{{asset('storage/'.$site_logo)}}" alt="">
+                    <p class="menu__logo-title">{{setting('site.description')}}</p>
+                </a>
             </div>
-            <div class="col-md-2">
-                <div class="menu__item">
-
-                    <nav class="menu__right-nav d-t-none">
-                        <ul>
-                            @guest('investor')
-                                <li><a class="site-btn site-btn--accent" href="{{ route('show.login')  }}">Login</a></li>
-                            @else
-                                <div class="row">
-                                    <li>
-                                        <div class="menu__logo">
-                                            <div class="believe">
-                                                <a href="{{route('dashboard.investor', Auth::guard('investor')->user()->id)}}">
-                                                    <img alt="{{Auth::guard('investor')->user()->name}}" class="believe__avatar" src="{{Auth::guard('investor')->user()->image}}"/>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <div>
-                                        <a class="link link--gray link--gray-active" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            {{ __('Logout') }}</a>
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            @csrf
-                                        </form>
-                                    </div>
-
-                                </div>
-                            @endguest
-                        </ul>
-                    </nav>
-
-                    <div class="d-none d-t-block">
-                        <button type="button" class="menu__mobile-button">
-                            <span><i class="mdi mdi-menu" aria-hidden="true"></i></span>
-                        </button>
-                    </div>
-                </div>
+            <div class="menu__item d-t-none">
+                <nav class="menu__center-nav">
+                    {{menu('frontend', 'front-end.layouts.menu-desktop')}}
+                </nav>
             </div>
-
-
         </div>
 
+
+
     </div>
+
 </div>
+
 <!--Main menu-->
 
 <!--Mobile menu-->
@@ -108,6 +68,31 @@
         <nav class="mobile-menu__wrapper">
             <ul class="mobile-menu__ul">
                 {{menu('frontend', 'front-end.layouts.menu')}}
+                @guest('investor')
+                    <li><a class="site-btn site-btn--accent" href="{{ route('show.login')  }}">Login</a></li>
+                @else
+                    <div class="row">
+                        <li>
+                            <div class="menu__logo">
+                                <div class="believe">
+                                    <a href="{{route('dashboard.investor', Auth::guard('investor')->user()->id)}}">
+                                        <img alt="{{Auth::guard('investor')->user()->name}}" class="believe__avatar" src="{{Auth::guard('investor')->user()->image}}"/>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+
+                        <div>
+                            <a class="link link--gray link--gray-active" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}</a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+
+                    </div>
+                @endguest
             </ul>
         </nav>
     </div>
@@ -125,40 +110,40 @@
     <div class="container">
         <div class="row post">
 
-                @yield('content')
-            {{--<div id="app">
-                <beautiful-chat :participants="participants"
-                                :titleImageUrl="titleImageUrl"
-                                :onMessageWasSent="onMessageWasSent"
-                                :messageList="messageList"
-                                :newMessagesCount="newMessagesCount"
-                                :isOpen="isChatOpen"
-                                :close="closeChat"
-                                :open="openChat"
-                                :showEmoji="true"
-                                :showFile="true"
-                                :showTypingIndicator="showTypingIndicator"
-                                :colors="colors"
-                                :alwaysScrollToBottom="alwaysScrollToBottom"
-                                :messageStyling="messageStyling"
-                                @onType="handleOnType">
-                </beautiful-chat>
-            </div>--}}
-                <!--Start of Tawk.to Script-->
-                    <script type="text/javascript">
-                        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-                        (function(){
-                            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-                            s1.async=true;
-                            s1.src='https://embed.tawk.to/5cea3c972135900bac1288af/default';
-                            s1.charset='UTF-8';
-                            s1.setAttribute('crossorigin','*');
-                            s0.parentNode.insertBefore(s1,s0);
-                        })();
-                    </script>
-                    <!--End of Tawk.to Script-->
+        @yield('content')
+        {{--<div id="app">
+            <beautiful-chat :participants="participants"
+                            :titleImageUrl="titleImageUrl"
+                            :onMessageWasSent="onMessageWasSent"
+                            :messageList="messageList"
+                            :newMessagesCount="newMessagesCount"
+                            :isOpen="isChatOpen"
+                            :close="closeChat"
+                            :open="openChat"
+                            :showEmoji="true"
+                            :showFile="true"
+                            :showTypingIndicator="showTypingIndicator"
+                            :colors="colors"
+                            :alwaysScrollToBottom="alwaysScrollToBottom"
+                            :messageStyling="messageStyling"
+                            @onType="handleOnType">
+            </beautiful-chat>
+        </div>--}}
+        <!--Start of Tawk.to Script-->
+            <script type="text/javascript">
+                var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+                (function(){
+                    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+                    s1.async=true;
+                    s1.src='https://embed.tawk.to/5cea3c972135900bac1288af/default';
+                    s1.charset='UTF-8';
+                    s1.setAttribute('crossorigin','*');
+                    s0.parentNode.insertBefore(s1,s0);
+                })();
+            </script>
+            <!--End of Tawk.to Script-->
             <!--Right Info-->
-                @yield('right')
+            @yield('right')
         </div>
         <hr>
     </div>

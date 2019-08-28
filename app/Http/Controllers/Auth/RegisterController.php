@@ -6,6 +6,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use App\UserInvestor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -87,7 +88,10 @@ class RegisterController extends Controller
             'password' => Hash::make($request['password']),
         ]);
         //dd($writer);
+        if (Auth::guard('investor')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
 
-        return redirect()->intended('login');
+            return redirect()->intended('/');
+        }
+        return back()->withInput($request->only('email', 'remember'));
     }
 }
