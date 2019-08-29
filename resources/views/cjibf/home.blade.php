@@ -100,9 +100,12 @@
             <span>Reset Event</span>
         </a>
         </div>--}}
+            @if(Auth::user()->hasRole('kab'))
 
+            @else
             <a href="{{route('reset')}}" class="btn btn-danger" id="bulk_delete_btn"><i class="voyager-trash"></i> <span>Reset Event</span></a>
             <a href="{{route('live.count')}}" class="btn btn-success" id="bulk_delete_btn"><i class="voyager-dollar"></i> <span>Live Count</span></a>
+            @endif
 
 
     </div>

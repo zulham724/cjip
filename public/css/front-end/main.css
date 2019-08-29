@@ -2977,7 +2977,7 @@ h6 {
 }
 
 .menu .menu__item {
-    min-width: 250px
+    min-width: 350px
 }
 
 .menu .menu__item:last-child {
@@ -3070,7 +3070,7 @@ h6 {
 }
 
 .menu.menu--active {
-    height: 95px;
+    height: 135px;
     padding-top: 24px;
     background-color: #fff
 }
@@ -3097,6 +3097,9 @@ h6 {
     .menu .menu__item {
         width: 50%
     }
+    .menu .menu__logo-title {
+        font-size: 14px;
+    }
 }
 
 @media screen and (max-width: 520px) {
@@ -3107,6 +3110,9 @@ h6 {
     .menu .menu__logo {
         padding-left: 15px
     }
+    .menu .menu__logo-title {
+        font-size: 12px;
+    }
 }
 
 @media screen and (max-width: 480px) {
@@ -3114,6 +3120,19 @@ h6 {
         height: 64px;
         padding-top: 16px
     }
+
+    .menu.menu--active .menu__logo-img {
+        width: 32px;
+        height: 32px
+    }
+
+    .menu.menu--active .menu__mobile-button {
+        top: 6px
+    }
+    .menu .menu__logo-title {
+        font-size: 12px;
+    }
+}
 
     .menu.menu--active .menu__logo-img {
         width: 32px;
@@ -4099,7 +4118,7 @@ h6 {
 
 .topbar.topbar--fixed {
     position: fixed;
-    top: 95px;
+    top: 135px;
     width: 100%;
     background-color: #fafcff;
     z-index: 99;
@@ -4396,12 +4415,12 @@ h6 {
 }
 
 .believe .believe__avatar {
-    width: 120px;
-    height: 120px;
+    width: 50px;
+    height: 50px;
     -o-object-fit: cover;
     object-fit: cover;
     border-radius: 50%;
-    border: 8px solid #fff
+    border: 2px solid #fff
 }
 
 .believe .believe__name {

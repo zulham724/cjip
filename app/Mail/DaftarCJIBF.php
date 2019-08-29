@@ -8,6 +8,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Facades\Storage;
 
 class DaftarCJIBF extends Mailable
 {
@@ -33,11 +34,15 @@ class DaftarCJIBF extends Mailable
     public function build()
     {
         //dd(base64_encode($this->send));
-        //$attach = PDF::loadView('attach', ['send' => $this->send])->setPaper('letter','portrait');
+       /* $filename = $this->send->perusahaan;
+        $attach = PDF::loadView('attach', ['send' => $this->send])->setPaper('letter','portrait')->save(storage_path('app/CJIBF/'.'CJIBF_'.$filename.'.pdf'));*/
+        //dd($attach);
+        //$file = Storage::put('CJIBF/daftarCJIBF'.'.pdf', $attach->output());
         return $this->from('cjibf.jateng@gmail.com')
             ->subject('Thank You For Joining Us')
             ->view('maileclipse::templates.attachment')
             ->text('maileclipse::templates.attachment_plain_text')
+            /*->attach(storage_path('app/CJIBF/'.'CJIBF_'.$filename.'.pdf'))*/
             /*->attachData($attach->output(), 'CJIBF.pdf', [
                 'mime' => 'application/pdf',
             ])*/

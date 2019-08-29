@@ -16,9 +16,12 @@
                                 <div class="row">
 
                                     <div class="col-12" style="align-content: center;align-items: center;text-align: center;float: top">
-                                        <p>Don't have any account yet?</p> <a href="{{route('show.register')}}"><span style="color: #0e3a78; font-weight: 700">
-                                                <button class="site-btn site-btn--accent">Register</button>
-                                            </span></a>
+                                        <p>Don't have any account yet?</p>
+                                        <a href="{{route('show.register')}}">
+                                            <span style="color: #fc2c3f; font-weight: 700">
+                                                Register
+                                            </span>
+                                        </a>
                                     </div>
 
                                 </div>

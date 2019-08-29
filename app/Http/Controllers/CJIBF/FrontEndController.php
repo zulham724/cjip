@@ -104,18 +104,20 @@ class FrontEndController extends Controller
                 $sendObj->qr = QrCode::format('png')
                     ->errorCorrection('H')
                     ->size(200)
-                    ->merge('http://cjip.jatengprov.go.id/storage/additional/cjip-2.png', .3, true)
+                    ->merge(storage_path('app/public/additional/cjip-2.png'), .3, true)
                     ->generate($sendObj->event->nama_kegiatan.','.$sendObj->nama_investor.','.$sendObj->perusahaan.','.$sendObj->meja);
                 //dd($sendObj);
 
                 /*$pdf = PDF::loadView('attach', ['send'=>$sendObj])->save($sendObj->perusahaan .'-'.'CJIBF2019-registered-detail.pdf');
                 $attach = Storage::put('public/register/'.$sendObj->perusahaan .'-'.'CJIBF2019-registered-detail.pdf' ,$pdf->output());*/
                 //dd($attach);
+                $filename = $sendObj->perusahaan;
+                $pdf = PDF::loadView('attach', ['send' => $sendObj])->setPaper('letter','portrait')->save(storage_path('app/CJIBF/'.'CJIBF_'.$filename.'.pdf'));
                 Mail::to(Auth::guard('investor')->user()->email)->send(new DaftarCJIBF($sendObj));
                 //return PDF::loadView('attach', ['send' => $sendObj])->setPaper($customPaper, $paper_orientation)->stream();
                 //dd($attach);
-
-                return view('front-end.investor.content.cjibf-registered', compact('pengumuman'));
+                return $pdf->stream('CJIBF_'.$filename.'.pdf');
+                //return view('front-end.investor.content.cjibf-registered', compact('pengumuman'));
             }
             else{
                 $pengumuman = Pengumuman::all();
@@ -149,11 +151,17 @@ class FrontEndController extends Controller
                 ->size(200)
                 ->merge('http://cjip.jatengprov.go.id/storage/additional/cjip-2.png', .3, true)
                 ->generate($sendObj->event->nama_kegiatan.','.$sendObj->nama_investor.','.$sendObj->perusahaan.','.$sendObj->meja);
-
+            $filename = $sendObj->perusahaan;
+            $pdf = PDF::loadView('attach', ['send' => $sendObj])->setPaper('letter','portrait')->save(storage_path('app/CJIBF/'.'CJIBF_'.$filename.'.pdf'));
             Mail::to(Auth::guard('investor')->user()->email)->send(new DaftarCJIBF($sendObj));
 
-            return view('front-end.investor.content.cjibf-registered', compact('pengumuman'));
+            //return view('front-end.investor.content.cjibf-registered', compact('pengumuman'));
+            return $pdf->stream('CJIBF_'.$filename.'.pdf');
         }
+
+    }
+
+    public function pdf(){
 
     }
 

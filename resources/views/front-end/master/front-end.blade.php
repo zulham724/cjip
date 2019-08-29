@@ -44,12 +44,15 @@
                     {{menu('frontend', 'front-end.layouts.menu-desktop')}}
                 </nav>
             </div>
+            <div class="menu__item">
+                <div class="d-none d-t-block">
+                    <button type="button" class="menu__mobile-button">
+                        <span><i class="mdi mdi-menu" aria-hidden="true"></i></span>
+                    </button>
+                </div>
+            </div>
         </div>
-
-
-
     </div>
-
 </div>
 
 <!--Main menu-->
@@ -59,7 +62,7 @@
     <div class="container">
         <div class="mobile-menu__logo">
             @php $site_logo = Voyager::setting('site.logo', ''); @endphp
-            <img class="menu__logo-img" style="max-width: 100px;height: auto" src="{{asset('storage/'.$site_logo)}}"
+            <img class="menu__logo-img" style="max-width: 50px;height: auto" src="{{asset('storage/'.$site_logo)}}"
                  alt="">
         </div>
         <button type="button" class="mobile-menu__close">
@@ -68,31 +71,6 @@
         <nav class="mobile-menu__wrapper">
             <ul class="mobile-menu__ul">
                 {{menu('frontend', 'front-end.layouts.menu')}}
-                @guest('investor')
-                    <li><a class="site-btn site-btn--accent" href="{{ route('show.login')  }}">Login</a></li>
-                @else
-                    <div class="row">
-                        <li>
-                            <div class="menu__logo">
-                                <div class="believe">
-                                    <a href="{{route('dashboard.investor', Auth::guard('investor')->user()->id)}}">
-                                        <img alt="{{Auth::guard('investor')->user()->name}}" class="believe__avatar" src="{{Auth::guard('investor')->user()->image}}"/>
-                                    </a>
-                                </div>
-                            </div>
-                        </li>
-
-                        <div>
-                            <a class="link link--gray link--gray-active" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}</a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                        </div>
-
-                    </div>
-                @endguest
             </ul>
         </nav>
     </div>

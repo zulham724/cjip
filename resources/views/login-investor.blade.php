@@ -18,7 +18,7 @@
                                 <div class="row">
 
                                     <div class="col-12" style="align-content: center;align-items: center;text-align: center;float: top">
-                                        <p>Already have an account?</p> <a href="{{route('show.login')}}"><span style="color: #0e3a78; font-weight: 700">Login</span></a>
+                                        <p>Already have an account?</p> <a href="{{route('show.login')}}"><span style="color: #fc2c3f; font-weight: 700">Login</span></a>
                                     </div>
 
                                 </div>

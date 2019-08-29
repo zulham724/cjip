@@ -1,4 +1,4 @@
-<ul>
+<ul style="margin: 0 auto;">
 
     @foreach($items as $item)
 
@@ -31,7 +31,7 @@
         @guest('investor')
             <li><a class="site-btn site-btn--accent" href="{{ route('show.login')  }}">Login</a></li>
         @else
-            <div class="row">
+
                 <li>
                     <div class="menu__logo">
                         <div class="believe">
@@ -40,17 +40,19 @@
                             </a>
                         </div>
                     </div>
+
+                    <div>
+                        <a class="link link--gray link--gray-active" href="{{route('dashboard.investor', Auth::guard('investor')->user()->id)}}" >
+                            <span style="color: #0e3a78; font-weight: 500;  font-family: Bahnschrift">PROFILE</span></a>
+                        |
+                        <a class="link link--gray link--gray-active" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </div>
                 </li>
 
-                <div>
-                    <a class="link link--gray link--gray-active" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                        {{ __('Logout') }}</a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
-                </div>
-
-            </div>
         @endguest
 </ul>

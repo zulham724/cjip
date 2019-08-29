@@ -161,12 +161,12 @@
                                                     <div class="col-lg-12">
                                                         <div class="ui-tooltip">
                                                             <button type='button' class="btn btn-danger btn-circle float-right"
-                                                                    data-toggle="tooltip" data-placement="bottom" title="Hapus Tujuan"
+                                                                    data-toggle="tooltip" data-placement="bottom" title="Hapus Infrasturktur"
                                                                     id='removePlayer'>
                                                                 <i class="fa fa-minus"></i>
                                                             </button>
                                                             <button type='button' class="btn btn-info btn-circle float-left" id='addPlayer'
-                                                                    data-toggle="tooltip" data-placement="bottom" title="Tambah Tujuan">
+                                                                    data-toggle="tooltip" data-placement="bottom" title="Tambah Infrasturktur">
                                                                 <i class="fa fa-plus"></i>
                                                             </button>
                                                         </div>

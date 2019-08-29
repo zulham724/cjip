@@ -5,9 +5,13 @@
                 <a href="{{route('loi.manual')}}">
                     <button class="btn btn-info block-6">Isi Manual</button>
                 </a>
+                @if(app('VoyagerAuth')->user()->hasRole('kab'))
+
+                @else
                 <a href="{{route('cetak.daftar-hadir')}}">
                     <button class="btn btn-info block-6">Cetak Daftar Hadir</button>
                 </a>
+                @endif
             </div>
             <div class="card-body p-0 pb-3 text-center">
                 <table class="table mb-0">

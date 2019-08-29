@@ -259,12 +259,7 @@ class ProfilKabupatenController extends BaseVoyagerBaseController
             $view = "voyager::$slug.edit-add";
         }
 
-        $tes = json_decode($dataTypeContent->infrasturktur, true);
-        //dd($tes['infrastruktur'][0]);
-        //dd(isset($dataTypeContent->infrasturktur));
-        foreach ($tes as $te){
-            //dd(count($te));
-        }
+
         //dd(json_decode($dataTypeContent->infrasturktur));
 
         return Voyager::view($view, compact('dataType','users', 'dataTypeContent', 'isModelTranslatable'));
