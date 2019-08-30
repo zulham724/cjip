@@ -23,6 +23,7 @@ use App\Umr;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -35,7 +36,14 @@ class HomeController extends Controller
        $ekonomis = PertumbuhanEkonomi::where('status', 1)->get();
        $awards = Award::all();
        $infrastrukturs = InfrastrukturPendukung::all();
-       $umks = Umr::paginate(4);
+       $umks = Umr::all()->groupBy(['kab_kota_id', 'tahun']);
+       dd($umks->toJson());
+       foreach ($umks as $key1 => $umk){
+           dd($key1);
+           foreach ($umk as $key => $u){
+              //dd($u);
+          }
+       }
        $listriks = BiayaListrik::all();
        $airs = BiayaAir::all();
 

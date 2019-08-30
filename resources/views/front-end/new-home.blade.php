@@ -13,6 +13,7 @@
     @php $title_logo = Voyager::setting('site.logo', ''); @endphp
     <link rel="icon" href="{{asset('storage/'.$title_logo)}}" type="image/png">
     <link rel="stylesheet" href="{{asset('css/front-end/nav.css')}}">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 @yield('css')
 <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-143558094-1"></script>
@@ -94,31 +95,31 @@
     <div class="topbar-wrapper">
         <nav class="topbar">
             <div class="container">
-                <div class="row">
+                <div class="row" id="menu">
                     <div class="col-2 topbar__item">
-                        <a class="link link--gray topbar__link active" href="#freetrial">Economic Growth</a>
+                        <a class="link link--gray topbar__link active" href="#economic-growth">Economic Growth</a>
                     </div>
                     <div class="col-2 topbar__item">
-                        <a class="link link--gray topbar__link" href="#nosetup">Investment Performance</a>
+                        <a class="link link--gray topbar__link" href="#investment-performance">Investment Performance</a>
                     </div>
                     <div class="col-2 topbar__item">
-                        <a class="link link--gray topbar__link" href="#safety">Award</a>
+                        <a class="link link--gray topbar__link" href="#award">Award</a>
                     </div>
                     <div class="col-2 topbar__item">
-                        <a class="link link--gray topbar__link" href="#optimized">Supporting Infrastructure</a>
+                        <a class="link link--gray topbar__link" href="#supporting-infrastruktures">Supporting Infrastructure</a>
                     </div>
                     <div class="col-2 topbar__item">
-                        <a class="link link--gray topbar__link" href="#access">Minimum Wages</a>
+                        <a class="link link--gray topbar__link" href="#wages">Minimum Wages</a>
                     </div>
                     <div class="col-2 topbar__item">
-                        <a class="link link--gray topbar__link" href="#support">Investment Cost</a>
+                        <a class="link link--gray topbar__link" href="#investment-core">Investment Cost</a>
                     </div>
                 </div>
             </div>
         </nav>
     </div>
     <div class="container jsfeatures">
-        <div id="freetrial" class="row about-app about-app--reverse">
+        <div id="economic-growth" class="row about-app about-app--reverse">
             <div class="col-6 about-app__description">
                 <div class="about-app__description-content">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="120" height="120"
@@ -139,8 +140,9 @@
                     </svg>
                     <h4 class="about-app__description-title">Economic Growth</h4>
 
-                        <p>Tahun : {{$ekonomis[0]->tahun}}</p><br>
-                        <p>Nilai Pertumbuhan : {{$ekonomis[0]->pertumbuhan}}</p><br>
+                        {{--<p>Tahun : {{$ekonomis[0]->tahun}}</p><br>
+                    <p>Nilai Pertumbuhan : {{$ekonomis[0]->pertumbuhan}}</p><br>--}}
+                    <div id="economic" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
                         <hr>
                 </div>
             </div>
@@ -150,7 +152,7 @@
                 </div>
             </div>
         </div>
-        <div id="nosetup" class="row about-app">
+        <div id="investment-performance" class="row about-app">
             <div class="col-6 about-app__description">
                 <div class="about-app__description-content about-app__description-content--left">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="120" height="120"
@@ -181,7 +183,7 @@
         </div>
 
         @foreach($awards as $award)
-        <div id="safety" class="row about-app about-app--reverse">
+        <div id="award" class="row about-app about-app--reverse">
             <div class="col-6 about-app__description">
                 <div class="about-app__description-content">
                     <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
@@ -216,7 +218,7 @@
         </div>
         @endforeach
 
-        <div id="optimized" class="row about-app">
+        <div id="supporting-infrastruktures" class="row about-app">
             <div class="col-6 about-app__description">
                 <div class="about-app__description-content about-app__description-content--left">
                     <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
@@ -253,7 +255,7 @@
                 </div>
             </div>
         </div>
-        <div id="access" class="row about-app about-app--reverse">
+        <div id="wages" class="row about-app about-app--reverse">
             <div class="col-6 about-app__description">
                 <div class="about-app__description-content">
                     <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
@@ -269,6 +271,27 @@
                         </g>
                     </svg>
                     <h4 class="about-app__description-title">Minimum Wages</h4>
+                    <table id="wagestable" class="stripe" style="width:100%">
+                        <thead>
+                        <tr>
+                            <th>Kab/Kota</th>
+                            <th>Tahun</th>
+                            <th>Nilai UMR</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($umks as $umk)
+                        <tr>
+                            <td>{{$key->kabkota->name}}</td>
+                            <td>System Architect</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+                            <td>2011/04/25</td>
+                            <td>$320,800</td>
+                        </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
                     <table>
                         <thead>
                         <tr>
@@ -298,7 +321,7 @@
                 </div>
             </div>
         </div>
-        <div id="support" class="row about-app">
+        <div id="investment-core" class="row about-app">
             <div class="col-6 about-app__description">
                 <div class="about-app__description-content about-app__description-content--left">
                     <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
@@ -346,4 +369,124 @@
 <script src="{{asset('js/front-end/menu.js')}}"></script>
 <script src="{{asset('js/front-end/topbar.js')}}"></script>
 <script src="{{asset('js/front-end/mobile-menu.js')}}"></script>
+<script src="{{asset('js/front-end/style-switcher.js')}}"></script>
+<script>
+    // Add active class to the current button (highlight it)
+    var header = document.getElementById("menu");
+    var btns = header.getElementsByClassName("link link--gray topbar__link");
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function() {
+            var current = document.getElementsByClassName("active");
+            current[0].className = current[0].className.replace(" active", "");
+            this.className += " active";
+        });
+    }
+</script>
+<script>
+    'use strict';
+
+    //Fixed topbar
+    let mTop = $('.topbar').offset().top;
+    let eTop = $('#endMenu').offset().top;
+    $(window).on('scroll', function () {
+        let top = $(document).scrollTop();
+
+        if (top >= (mTop - 100) && top <= (eTop - 350)) {
+            $('.topbar').addClass('topbar--fixed').removeAttr('style');
+            $('.jsfeatures').addClass('jsfeatures--active');
+        } else if (top >= (eTop - 350) && top <= (eTop - 150)) {
+            $('.topbar').css({'transform': 'translateY(-150px)'});
+        } else {
+            $('.topbar').removeClass('topbar--fixed').removeAttr('style');
+            $('.jsfeatures').removeClass('jsfeatures--active');
+        }
+    });
+
+    //topbar
+    $(window).on('scroll', function () {
+        let $sections = $('.about-app');
+        $sections.each(function (i, el) {
+            let top = $(el).offset().top - 283;
+            let bottom = top + $(el).height() + 105;
+            let scroll = $(window).scrollTop();
+            let id = $(el).attr('id');
+            if (scroll > top && scroll < bottom) {
+                $('a.active').removeClass('active');
+                $('a[href=\'#' + id + '\']').addClass('active');
+            }
+        })
+    });
+
+    //Anchors
+    $(function () {
+        $('a[href^=\'#\']').on('click', function () {
+            let target = $(this).attr('href');
+            $('html, body').animate({scrollTop: $(target).offset().top}, 800);
+            return false;
+        });
+    });
+</script>
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#wagestable').DataTable({
+            "pageLength": 5
+        });
+    } );
+</script>
+<script>
+    var label = [];
+    var data = [];
+
+    var economic_lbl = {!! $ekonomis !!};
+    var i;
+
+    for(i=0; i<economic_lbl.length; i++){
+        label.push(economic_lbl[i].tahun);
+        data.push(Math.abs(economic_lbl[i].pertumbuhan.replace(',', '.')));
+    }
+    console.log(label);
+    console.log(data);
+
+
+    Highcharts.chart('economic', {
+        chart: {
+            type: 'line',
+            backgroundColor: null
+        },
+        title: {
+            text: 'Monthly Average Temperature'
+        },
+        subtitle: {
+            text: 'DPMPTSP Provinsi Jawa Tengah'
+        },
+        xAxis: {
+            categories: label
+        },
+        yAxis: {
+            title: {
+                text: 'Growth'
+            }
+        },
+        credits: {
+            enabled: false
+        },
+        plotOptions: {
+            line: {
+                dataLabels: {
+                    enabled: true
+                },
+                enableMouseTracking: false
+            }
+        },
+        series: [{
+            name: 'Central Java Economic Growth',
+            data: data
+        }]
+    });
+</script>
 
