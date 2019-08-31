@@ -75,6 +75,17 @@
                                         @include($row->details->view, ['row' => $row, 'dataType' => $dataType, 'dataTypeContent' => $dataTypeContent, 'content' => $dataTypeContent->{$row->field}, 'action' => ($edit ? 'edit' : 'add')])
                                     @elseif ($row->type == 'relationship')
                                         @include('voyager::formfields.relationship', ['options' => $row->details])
+                                    @elseif ($row->type == 'coordinates')
+                                        <a href="javascript:void(0)" onclick="loadthemappicker()" class="btn btn-sm btn-success"><i class="fa fa-map"></i> Pilih Lokasi</a>
+                                        @forelse($dataTypeContent->getCoordinates() as $point)
+                                            <input type="hidden" name="{{ $row->field }}[lat]" value="{{ $point['lat'] }}" id="lat"/>
+                                            <input type="hidden" name="{{ $row->field }}[lng]" value="{{ $point['lng'] }}" id="lng"/>
+                                        @empty
+                                            <input type="hidden" name="{{ $row->field }}[lat]" value="{{ config('voyager.googlemaps.center.lat') }}" id="lat"/>
+                                            <input type="hidden" name="{{ $row->field }}[lng]" value="{{ config('voyager.googlemaps.center.lng') }}" id="lng"/>
+                                        @endforelse
+                                        <p id="koordinat"></p>
+                                        <div id="map_piker" style="height: 300px!important;"></div>
                                     @else
                                         {!! app('voyager')->formField($row, $dataType, $dataTypeContent) !!}
                                     @endif
@@ -139,26 +150,133 @@
 @stop
 
 @section('javascript')
+    <script type="text/javascript" src="{{asset('js/map/app.js')}}"></script>
+    <script type="text/javascript">
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(setPosition);
+            } else {
+                console.log('none');
+            }
+        }
+
+        function setPosition(position) {
+            window.my_latitude = position.coords.latitude;
+            window.my_longitude = position.coords.longitude;
+        }
+
+        getLocation();
+        function ubahkoor() {
+            var lat 	= $('#koordinat_lokasi_lat').val();
+            var long 	= $('#koordinat_lokasi_long').val();
+            var koor 	= lat+','+long;
+
+            $('#koordinat_lokasi').val(koor);
+        }
+        function loadthemappicker(lt, lg) {
+            if (lt==null) {
+                lt = -6.983306;
+            };
+            if (lg==null) {
+                lg = 110.407650;
+            };
+
+            if ($('#pac-input').length<=0) {
+                $('<input id="pac-input" class="controls" type="text" placeholder="Search Box">').insertAfter('#koordinat');
+            }
+            loadScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyBGsawbqVs083lGEe8cilVz0FqO0rHt5ZE&amp;sensor=false&libraries=places",function(){
+                function updateMarkerPosition(latLng) {
+                    var lat = [latLng.lat()];
+                    var lng = [latLng.lng()];
+                    $("#lat").val(lat);
+                    $("#lng").val(lng);
+                    $("#koordinat").html(lat+','+lng);
+                }
+
+                var map = new google.maps.Map(document.getElementById('map_piker'), {
+                    zoom: 12,
+                    center: new google.maps.LatLng(lt, lg),
+                    // mapTypeId: google.maps.MapTypeId.ROADMAP
+                    mapTypeId: 'satellite'
+                });
+
+                // Create the search box and link it to the UI element.
+                var input = document.getElementById('pac-input');
+                var searchBox = new google.maps.places.Autocomplete(input);
+                //map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+                // Bias the SearchBox results towards current map's viewport.
+                /*map.addListener('bounds_changed', function() {
+                  searchBox.setBounds(map.getBounds());
+                });*/
+                searchBox.bindTo('bounds', map);
+
+
+                var latLng = new google.maps.LatLng(lt, lg);
+                var marker = new google.maps.Marker({
+                    position : latLng,
+                    title : 'Pilih Lokasi',
+                    map : map,
+                    draggable : true
+                });
+
+                searchBox.addListener('place_changed', function() {
+                    var place = window.placenya = searchBox.getPlace();
+                    var place_nama = place.name;
+                    var place_lat = place.geometry.location.lat();
+                    var place_lng = place.geometry.location.lng();
+                    // if (!place.geometry) {
+                    //   // User entered the name of a Place that was not suggested and
+                    //   // pressed the Enter key, or the Place Details request failed.
+                    //   window.alert("No details available for input: '" + place.name + "'");
+                    //   return;
+                    // }
+
+                    // If the place has a geometry, then present it on a map.
+                    if (place.geometry.viewport) {
+                        map.fitBounds(place.geometry.viewport);
+                    } else {
+                        map.setCenter(place.geometry.location);
+                        map.setZoom(20);  // Why 17? Because it looks good.
+                    }
+
+                    console.log(place_lat+','+place_lng);
+                    var default_location = new google.maps.LatLng(Number(place_lat),Number(place_lng));
+                    var latLng = default_location;
+                    updateMarkerPosition(latLng);
+                    marker.setPosition(place.geometry.location);
+                    //map.fitBounds(bounds);
+                });
+
+                updateMarkerPosition(latLng);
+                google.maps.event.addListener(marker, 'drag', function() {
+                    updateMarkerPosition(marker.getPosition());
+                });
+            });
+            $('#modallokasi').modal('show')
+
+        }
+    </script>
     <script>
         var params = {};
         var $file;
 
         function deleteHandler(tag, isMulti) {
-          return function() {
-            $file = $(this).siblings(tag);
+            return function() {
+                $file = $(this).siblings(tag);
 
-            params = {
-                slug:   '{{ $dataType->slug }}',
-                filename:  $file.data('file-name'),
-                id:     $file.data('id'),
-                field:  $file.parent().data('field-name'),
-                multi: isMulti,
-                _token: '{{ csrf_token() }}'
-            }
+                params = {
+                    slug:   '{{ $dataType->slug }}',
+                    filename:  $file.data('file-name'),
+                    id:     $file.data('id'),
+                    field:  $file.parent().data('field-name'),
+                    multi: isMulti,
+                    _token: '{{ csrf_token() }}'
+                }
 
-            $('.confirm_delete_name').text(params.filename);
-            $('#confirm_delete_modal').modal('show');
-          };
+                $('.confirm_delete_name').text(params.filename);
+                $('#confirm_delete_modal').modal('show');
+            };
         }
 
         $('document').ready(function () {
@@ -174,7 +292,7 @@
             });
 
             @if ($isModelTranslatable)
-                $('.side-body').multilingual({"editing": true});
+            $('.side-body').multilingual({"editing": true});
             @endif
 
             $('.side-body input[data-slug-origin]').each(function(i, el) {
