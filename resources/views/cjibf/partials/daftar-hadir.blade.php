@@ -41,7 +41,7 @@
                 <td></td>
             @endif
         </tr>
-
+        @endif
     @endforeach
     </tbody>
 </table>

@@ -11,6 +11,9 @@
                 <a href="{{route('cetak.daftar-hadir')}}">
                     <button class="btn btn-info block-6">Cetak Daftar Hadir</button>
                 </a>
+                <a href="{{route('cetakpermeja.daftar-hadir')}}">
+                    <button class="btn btn-info block-6">Cetak Daftar Hadir per Meja</button>
+                </a>
                 @endif
             </div>
             <div class="card-body p-0 pb-3 text-center">

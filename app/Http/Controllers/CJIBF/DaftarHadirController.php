@@ -22,9 +22,10 @@ class DaftarHadirController extends Controller
         $order = 'asc';
         $pesertas = CjibfInvestor::all()->groupBy('meja_id');
 
-        dd($pesertas);
-        $pdf = PDF::loadview('cjibf.partials.daftar-hadir',['pesertas'=>$pesertas]);
+        //dd($pesertas);
+        $pdf = PDF::loadview('cjibf.partials.daftar-hadir-meja',['pesertas'=>$pesertas]);
         return $pdf->download('daftar-hadir.pdf');
+       // return view('cjibf.partials.daftar-hadir-meja',['pesertas'=>$pesertas]);
     }
 
 }
