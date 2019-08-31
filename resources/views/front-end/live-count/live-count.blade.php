@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{asset('investor/extras.1.1.0.min.css')}}">
     <link rel="stylesheet" href="{{asset('js/front-end/live/dataTables.material.min.css')}}" >
     <link rel="stylesheet" href="{{asset('js/front-end/live/material.min.css')}}" ><link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('js/front-end/live/buttons.dataTables.min.css')}}" >
 
 </head>
 <body class="h-100">
@@ -37,146 +38,7 @@
                     </div>
                 </div>
                 <!-- End Page Header -->
-                <!-- Small Stats Blocks -->
-                <div class="row">
-                    <div class="col-lg col-md-6 col-sm-6 mb-4">
-                        <div class="stats-small stats-small--1 card card-small">
-                            <div class="card-body p-0 d-flex">
-                                <div class="d-flex flex-column m-auto">
-                                    <div class="stats-small__data text-center">
-                                        <span class="stats-small__label text-uppercase">Rupiah</span>
-                                        <h6 class="stats-small__value count my-3">Rp. {{number_format($rp)}}</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg col-md-6 col-sm-6 mb-4">
-                        <div class="stats-small stats-small--1 card card-small">
-                            <div class="card-body p-0 d-flex">
-                                <div class="d-flex flex-column m-auto">
-                                    <div class="stats-small__data text-center">
-                                        <span class="stats-small__label text-uppercase">Dollar US</span>
-                                        <h6 class="stats-small__value count my-3">US$ {{number_format($usd)}}</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Small Stats Blocks -->
-                <div class="row">
-                    <!-- Users Stats -->
-                    <div class="col-lg-8 col-md-12 col-sm-12">
-                        <div class="card card-small">
-                            <div class="card-header border-bottom">
-                                <h6 class="m-0">Letter of Intent</h6>
-                            </div>
-                            <div class="card-body pt-0">
-
-                                    <table id="example" class="mdl-data-table" style="width:100%">
-                                        <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Company</th>
-                                            <th>Sector</th>
-                                            <th>Lokasi</th>
-                                            <th>USD</th>
-                                            <th>RP</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        @isset($lois)
-                                            @foreach($lois as $loi)
-                                                <tr>
-                                                    <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $loi->nama_perusahaan }}</td>
-                                                    <td>{{ $loi->sektor->sektor_interest }}</td>
-                                                    <td>{{ $loi->kota->kabkota->nama }}</td>
-                                                    <td>{{ $loi->nilai_usd }}</td>
-                                                    <td>{{ $loi->nilai_rp }}</td>
-                                                </tr>
-                                            @endforeach
-                                        @endisset
-                                        </tbody>
-                                        <tfoot>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Company</th>
-                                            <th>Sector</th>
-                                            <th>Lokasi</th>
-                                            <th>USD</th>
-                                            <th>RP</th>
-                                        </tr>
-                                        </tfoot>
-                                    </table>
-
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Users Stats -->
-                    <!-- Users By Device Stats -->
-                    <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                        <div class="card card-small h-100">
-                            <div class="card-header border-bottom">
-                                <h6 class="m-0">Top 5 Sectors</h6>
-                            </div>
-                                <div id="container" style="width: 100%"></div>
-
-                                <table id="datatable" hidden>
-                                    <thead>
-                                    <tr>
-                                        <th>Sectors</th>
-                                        <th>Rp</th>
-                                        <th>USD</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-
-                                    <tr>
-                                        <th>Manufacture</th>
-                                        <td>{{$manufacture_rp}}</td>
-                                        <td>{{$manufacture_usd}}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Tourism</th>
-                                        <td>{{$tourism_rp}}</td>
-                                        <td>{{$tourism_usd}}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Infrastructure</th>
-                                        <td>{{$infrastruktur_rp}}</td>
-                                        <td>{{$infrastruktur_usd}}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Agriculture</th>
-                                        <td>{{$agriculture_rp}}</td>
-                                        <td>{{$agriculture_usd}}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Property</th>
-                                        <td>{{$property_rp}}</td>
-                                        <td>{{$property_usd}}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Mining & Energy</th>
-                                        <td>{{$mining_rp}}</td>
-                                        <td>{{$mining_usd}}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Others</th>
-                                        <td>{{$others_rp}}</td>
-                                        <td>{{$others_usd}}</td>
-                                    </tr>
-
-                                    </tbody>
-                                </table>
-
-
-                        </div>
-                    </div>
-
-                </div>
+               <div id="auto"></div>
             </div>
             <footer class="main-footer d-flex p-2 px-3 bg-white border-top">
 
@@ -190,6 +52,11 @@
 <script src="{{asset('js/front-end/live/jquery-3.3.1.js')}}"></script>
 <script src="{{asset('js/front-end/live/dataTables.material.min.js')}}"></script>
 <script src="{{asset('js/front-end/live/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('js/front-end/live/dataTables.buttons.min.js')}}"></script>
+<script src="{{asset('js/front-end/live/jszip.min.js')}}"></script>
+<script src="{{asset('js/front-end/live/pdfmake.min.js')}}"></script>
+<script src="{{asset('js/front-end/live/vfs_fonts.js')}}"></script>
+<script src="{{asset('js/front-end/live/buttons.html5.min.js')}}"></script>
 <script>
     $(document).ready(function() {
         $('#example').DataTable( {
@@ -198,6 +65,13 @@
                     targets: [ 0, 1, 2 ],
                     className: 'mdl-data-table__cell--non-numeric'
                 }
+            ],
+            dom: 'Bfrtip',
+            buttons: [
+                'copyHtml5',
+                'excelHtml5',
+                'csvHtml5',
+                'pdfHtml5'
             ]
         } );
     } );
@@ -241,6 +115,20 @@
             }
         }
     });
+</script>
+<script>
+    $(document).ready( function(){
+        $('#auto').load('/reload');
+        refresh();
+    });
+
+    function refresh()
+    {
+        setTimeout( function() {
+            $('#auto').load('/reload').fadeIn('slow');
+            refresh();
+        }, 200);
+    }
 </script>
 </body>
 </html>

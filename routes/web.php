@@ -64,6 +64,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/menu', 'FrontEnd\Provinsi\VideoPlayerController@menu')->name('menu');
         Route::get('/search', 'FrontEnd\Home\SearchController@search')->name('search');
         Route::get('/live-count', 'CJIBF\LiveController@live')->name('live.count');
+        Route::get('/reload', 'CJIBF\LiveController@reload')->name('live.reload');
 
         Route::get('/why', function (){
             return view('front-end.master.master-new');
