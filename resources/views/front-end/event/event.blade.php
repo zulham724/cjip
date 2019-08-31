@@ -471,49 +471,8 @@
     <div class="dark-bg p-60px-t p-30px-tb">
         <div class="container">
             <div class="row">
-                <div class="col-md-5 col-xs-6 sm-m-30px-b">
-                    <h4 class="font-18 font-alt color-white font-w-600 m-0px m-15px-b">About Us</h4>
-                    <p class="w-90">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation</p>
-                    <ul class="social-icons social-icons-small m-40px-t sm-m-20px-t">
-                        <li><a class="facebook" href="#"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a class="twitter" href="#"><i class="fab fa-twitter"></i></a></li>
-                        <li><a class="google" href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                        <li><a class="linkedin" href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                    </ul>
-                </div> <!-- col -->
-
-                <div class="col-md-4 col-xs-6 sm-m-30px-b">
-                    <h4 class="font-18 font-alt color-white font-w-600 m-0px m-15px-b">Helpful Links</h4>
-                    <div class="d-flex">
-                        <ul class="list-style-2 w-50 m-0px p-0px">
-                            <li><a class="color-medium-gray" href="#">Gym Training</a></li>
-                            <li><a class="color-medium-gray" href="#">Crossfit</a></li>
-                            <li><a class="color-medium-gray" href="#">Cardio</a></li>
-                            <li><a class="color-medium-gray" href="#">Contact</a></li>
-                            <li><a class="color-medium-gray" href="#">Blog</a></li>
-                        </ul>
-                        <ul class="list-style-2 w-50 m-0px p-0px">
-                            <li><a class="color-medium-gray" href="#">About</a></li>
-                            <li><a class="color-medium-gray" href="#">Trainings</a></li>
-                            <li><a class="color-medium-gray" href="#">Coaches</a></li>
-                            <li><a class="color-medium-gray" href="#">Club cards</a></li>
-                        </ul>
-                    </div>
-                </div> <!-- col -->
-
-                <div class="col-md-3 col-sm-12">
-                    <h4 class="font-18 font-alt color-white font-w-600 m-0px m-15px-b">Get in touch</h4>
-                    <p>12345 Little Lonsdale St, Melbourne<br/>Phone: (123) 123-456 <br/>E-Mail: office@example.com </p>
-                    <h4 class="font-18 font-alt color-white font-w-600 m-0px m-15px-b sm-m-30px-t">Our office</h4>
-                    <p>Monday - Friday: 8:00 - 16:00<br/>Saturday: 8:00 - 15:00</p>
-                </div> <!-- col -->
-
-            </div>
-            <div class="row">
                 <div class="col-12 text-center">
-                    <p class="m-0px m-30px-t p-30px-t border-t border-w-1 border-extra-dark-gray color-medium-gray letter-spacing-1 font-12">All © Copyright by Amigo. All Rights Reserved.</p>
+                    <p class="m-0px m-30px-t p-30px-t border-t border-w-1 border-extra-dark-gray color-medium-gray letter-spacing-1 font-12">Central Java Investment Platform</p>
                 </div><!-- col -->
             </div> <!-- row -->
         </div> <!-- container -->
