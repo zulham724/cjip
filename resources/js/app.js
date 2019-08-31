@@ -16,14 +16,14 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('Loiupdate', require('./components/LoiComponent.vue'));
+Vue.component('Loiupdate', require('./components/LoiComponent.vue', 'required'));
 
 
 const app = new Vue({
     el: '#app',
     created(){
         Echo.channel('loi-channel')
-            .listen('TestEvent', (e) => {
+            .listen('LiveLoiUpdate', (e) => {
                 console.log(e);
             });
     }

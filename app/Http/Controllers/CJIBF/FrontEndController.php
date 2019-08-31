@@ -27,14 +27,16 @@ class FrontEndController extends Controller
 {
     public function front(){
         $user = Auth::guard('investor')->user()->id;
-        $events = CjibfEvent::first();
+        $events = CjibfEvent::where('is_open', 1)->first();
         $profile = ProfileInvestor::where('user_id', $user)->first();
         $cities = KabKota::all();
         $sektors = CjibfSektor::all();
         $pengumuman = Pengumuman::all();
 
-        $buka = Carbon::parse($events->tgl_buka)->format('d/m/Y');
-        $now = Carbon::now()->format('d/m/Y');
+        if (isset($events)){
+            $buka = Carbon::parse($events->tgl_buka)->format('d/m/Y');
+            $now = Carbon::now()->format('d/m/Y');
+        }
 
         //dd(Carbon::parse($events->tgl_buka)->lte(Carbon::now()));
 

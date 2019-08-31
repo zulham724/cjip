@@ -63,9 +63,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/sidebar', 'FrontEnd\Home\HomeController@sidebar')->name('sidebar');
         Route::get('/menu', 'FrontEnd\Provinsi\VideoPlayerController@menu')->name('menu');
         Route::get('/search', 'FrontEnd\Home\SearchController@search')->name('search');
-        Route::get('/live-count', function (){
-            return view('front-end.live-count.live-count');
-        })->name('live.count');
+        Route::get('/live-count', 'CJIBF\LiveController@live')->name('live.count');
 
         Route::get('/why', function (){
             return view('front-end.master.master-new');
@@ -173,8 +171,8 @@ Route::middleware('auth:investor')->group(function () {
     Route::patch('investment/{id}','FrontEnd\Investor\ProfilController@updateInvestment')->name('update.investment');
 
 
-    Route::get('cjibf', 'CJIBF\FrontEndController@front')->name('frontend.cjibf');
-    Route::post('cjibf', 'CJIBF\FrontEndController@join')->name('join.cjibf');
+    Route::get('register-cjibf', 'CJIBF\FrontEndController@front')->name('frontend.cjibf');
+    Route::post('register-cjibf', 'CJIBF\FrontEndController@join')->name('join.cjibf');
 
 
     Route::get('company_profile/','FrontEnd\Investor\ProfilController@daftar')->name('daftar');

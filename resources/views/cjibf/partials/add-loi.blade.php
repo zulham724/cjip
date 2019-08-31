@@ -94,13 +94,22 @@
                             <div class="col-12">
                                 <form action="{{route('loi-cjibf.post', [$profile->id , $peserta->id])}}" method="post">
                                     @csrf
+
                                     <div class="form-row">
                                         <div class="form-group col-md-12">
-                                            <label for="sektor">Sector</label>
+                                            {{--<label for="sektor">Sector</label>
                                             <input type="text" class="form-control" id="sektor" name="sektor"
                                                    placeholder="Business Field (Industry, Tourism, etc)"
-                                                   value="{{$profile->sektors->sektor_interest}}" required>
+                                                   value="{{$profile->sektors->sektor_interest}}" required>--}}
+                                            <label for="sektor">Sector</label>
+                                            <select id="sektor" name="sektor" class="form-control" required>
+                                                <option value="{{$peserta->sektor_interest}}" selected>{{$peserta->sektor_interest}}</option>
+                                                @foreach($sektors as $sektor)
+                                                    <option value="{{$sektor->name}}">{{$sektor->name}}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
+
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-12">

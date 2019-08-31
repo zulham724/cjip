@@ -3,9 +3,10 @@
     <table class="table table-striped">
         <thead>
         <tr>
-            <th>Rank</th>
-            <th>Name</th>
-            <th>Score</th>
+            <th>No</th>
+            <th>Company</th>
+            <th>USD</th>
+            <th>RP</th>
         </tr>
         </thead>
         <tbody>
@@ -40,6 +41,7 @@
             listenForChanges() {
                 Echo.channel('livecount')
                     .listen('LiveLoiUpdate', (e) => {
+                        console.log(e)
                         var loi = this.users.find((loi) => loi.id === e.id);
                         // check if loi exists on leaderboard
                         if(loi){

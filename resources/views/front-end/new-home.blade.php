@@ -282,7 +282,7 @@
                         <tbody>
                         @foreach($umks as $umk)
                         <tr>
-                            <td>{{$key->kabkota->name}}</td>
+                            <td></td>
                             <td>System Architect</td>
                             <td>Edinburgh</td>
                             <td>61</td>
@@ -304,15 +304,17 @@
                         </tr>
                         </thead>
                         <tbody>
+                        @isset($umks)
                         @foreach($umks as $wage)
                         <tr>
-                            <td>{{$wage->tahun}}</td>
-                            <td>{{$wage->nilai_umr}}</td>
+                            <td></td>
+                            <td></td>
                         </tr>
                         @endforeach
+                        @endisset
                         </tbody>
                     </table>
-                    {{$umks->links('pagination.page')}}
+
                 </div>
             </div>
             <div class="col-6 about-app__img about-app__img--left">

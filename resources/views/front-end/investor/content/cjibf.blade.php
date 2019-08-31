@@ -740,7 +740,7 @@
                                             <div class="laptop404">
                                                 <div class="text">
                                                     @php $site_logo = Voyager::setting('site.logo', ''); @endphp
-                                                    <img class="menu__logo-img" style="max-width: 200px;height: auto"
+                                                    <img class="menu__logo-img" style="max-width: 100px;height: auto"
                                                          src="{{asset('storage/'.$site_logo)}}" alt="">
                                                 </div>
                                             </div>
@@ -753,6 +753,7 @@
                 </ul>
             @endif
             @isset($events)
+
                     @if(empty($events))
                         <div class="card-header border-bottom">
                             <h6 class="m-0">Sorry, this event is not yet started</h6>
@@ -780,7 +781,7 @@
                                                     <div class="laptop404">
                                                         <div class="text">
                                                             @php $site_logo = Voyager::setting('site.logo', ''); @endphp
-                                                            <img class="menu__logo-img" style="max-width: 200px;height: auto"
+                                                            <img class="menu__logo-img" style="max-width: 100px;height: auto"
                                                                  src="{{asset('storage/'.$site_logo)}}" alt="">
                                                         </div>
                                                     </div>
@@ -849,7 +850,7 @@
                             </div>
                         </div>
 
-                    @elseif((\Carbon\Carbon::parse($events->tgl_buka))->lte(\Carbon\Carbon::now()))
+                    @elseif((\Carbon\Carbon::parse($events->tgl_buka))->gt(\Carbon\Carbon::now()))
                         <div class="card-header border-bottom">
                             <h6 class="m-0">Please Wait</h6>
                         </div>
@@ -857,7 +858,7 @@
 
                         </div>
 
-                    @elseif((\Carbon\Carbon::parse($events->tgl_selesai))->gt(\Carbon\Carbon::now()))
+                    @elseif((\Carbon\Carbon::parse($events->tgl_selesai))->gte(\Carbon\Carbon::now()))
 
                         <div class="card-header border-bottom">
                             <h6 class="m-0">Event's End</h6>

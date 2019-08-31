@@ -157,8 +157,7 @@ class LayoutController extends Controller
         $peserta = CjibfInvestor::findOrFail($id);
         $peserta->loi_id = $loi->id;
         $peserta->update();
-
-        broadcast(new LiveLoiUpdate($loi));
+        
 
         return redirect()->route('event.home');
     }

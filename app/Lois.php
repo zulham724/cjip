@@ -19,4 +19,12 @@ class Lois extends Model
 
         parent::save();
     }
+
+    public function sektor(){
+        return $this->belongsTo(CjibfInvestor::class, 'id', 'loi_id');
+    }
+
+    public function kota(){
+        return $this->belongsTo(KabkotaUserModel::class, 'kab_kota_id', 'kab_kota_id');
+    }
 }

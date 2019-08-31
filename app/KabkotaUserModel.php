@@ -13,4 +13,7 @@ class KabkotaUserModel extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    public function kabkota(){
+        return $this->belongsTo(KabKota::class, 'kab_kota_id', 'id');
+    }
 }

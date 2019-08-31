@@ -115,6 +115,7 @@ class LoiController extends Controller
         //dd($post);
         $post->save();
 
+
         return redirect()->route("voyager.lois.index")->with([
             'message'    => __('voyager::generic.successfully_added_new'),
             'alert-type' => 'success',

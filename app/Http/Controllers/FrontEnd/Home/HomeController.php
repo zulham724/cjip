@@ -37,9 +37,9 @@ class HomeController extends Controller
        $awards = Award::all();
        $infrastrukturs = InfrastrukturPendukung::all();
        $umks = Umr::all()->groupBy(['kab_kota_id', 'tahun']);
-       dd($umks->toJson());
+       //dd($umks->toJson());
        foreach ($umks as $key1 => $umk){
-           dd($key1);
+           //dd($key1);
            foreach ($umk as $key => $u){
               //dd($u);
           }

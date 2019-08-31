@@ -41,9 +41,9 @@
                                         </a>
                                     @else
                                         @if(is_null($pesertakab->loi->nilai_usd))
-                                            Rp. {{$pesertakab->loi->nilai_rp}}
+                                            Rp. {{number_format($pesertakab->loi->nilai_rp)}}
                                         @else
-                                            USD {{$pesertakab->loi->nilai_usd}}
+                                            USD {{number_format($pesertakab->loi->nilai_usd)}}
                                         @endif
 
                                     @endif
@@ -65,9 +65,9 @@
                                         </a>
                                     @else
                                         @if($peserta->loi->nilai_usd == 0)
-                                            Rp. {{$peserta->loi->nilai_rp}}
+                                            Rp. {{number_format($peserta->loi->nilai_rp)}}
                                         @else
-                                            USD {{$peserta->loi->nilai_usd}}
+                                            USD {{number_format($peserta->loi->nilai_usd)}}
                                         @endif
 
                                     @endif
