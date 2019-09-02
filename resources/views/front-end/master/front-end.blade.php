@@ -142,7 +142,10 @@
 <!--Footer-->
 
 {{--<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>--}}
-<script src="{{asset('js/front-end/vendor/jquery-2.2.4.min.js')}}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <!--Selects-->
 <script src="{{asset('js/front-end/vendor/jquery-editable-select.min.js')}}"></script>
 <script src="{{asset('js/front-end/vendor/slick.min.js')}}"></script>

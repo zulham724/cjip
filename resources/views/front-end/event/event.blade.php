@@ -319,6 +319,7 @@
                                 <div class="col-12 col-md-6">
                                     <div class="form-group">
                                         <input name="email" id="email" placeholder="Email" class="input-medium" type="email">
+                                        <span class="form-validation" id="error_email"></span>
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-12">
@@ -331,7 +332,7 @@
                                         <input name="password_confirmation" id="repassword" placeholder="Repeat Password" class="input-medium" type="password">
                                     </div>
                                 </div>
-                                <button class="m-btn border-radius-30px box-shadow-large" type="submit" value="Send">Register</button>
+                                <button class="m-btn border-radius-30px box-shadow-large" type="submit" >Register</button>
                                 <span id="suce_message" class="text-success" style="display: none">Message Sent Successfully</span>
                                 <span id="err_message" class="text-danger" style="display: none">Message Sending Failed</span>
                             </div>
@@ -470,7 +471,48 @@
 <script src="{{asset('cjibf/js/custom.js')}}"></script>
 <script src="{{asset('cjibf/js/mail_send.js')}}"></script>
 <!-- End -->
+<script>
+    $(document).ready(function(){
 
+        $('#email').blur(function(){
+            var error_email = '';
+            var email = $('#email').val();
+            var _token = $('input[name="_token"]').val();
+            var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            //console.log(email)
+            if(!filter.test(email))
+            {
+                $('#error_email').html('<label class="text-danger">Invalid Email</label>');
+                $('#email').addClass('has-error');
+                $('#register').attr('disabled', 'disabled');
+            }
+            else
+            {
+                $.ajax({
+                    url:"{{ route('checkemail') }}",
+                    method:"POST",
+                    data:{email:email, _token:_token},
+                    success:function(result)
+                    {
+                        if(result == 'unique')
+                        {
+                            $('#error_email').html('<label class="text-success">Email Available</label>');
+                            $('#email').removeClass('has-error');
+                            $('#register').attr('disabled', false);
+                        }
+                        else
+                        {
+                            $('#error_email').html('<label class="text-danger">This Email Already Exist</label>');
+                            $('#email').addClass('has-error');
+                            $('#register').attr('disabled', 'disabled');
+                        }
+                    }
+                })
+            }
+        });
+
+    });
+</script>
 </body>
 <!-- ========== End of Body ========== -->
 </html>

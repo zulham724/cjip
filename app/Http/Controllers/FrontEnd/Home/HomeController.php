@@ -22,6 +22,7 @@ use App\ProfileInvestor;
 use App\Proyek;
 use App\Umr;
 use App\User;
+use App\UserInvestor;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -133,4 +134,21 @@ class HomeController extends Controller
         return view('front-end.faq', compact('faqs', 'jns_faq'));
     }
 
+    public function checkEmail(Request $request){
+        if($request->get('email'))
+        {
+            $email = $request->get('email');
+            $data = DB::table("user_investors")
+                ->where('email', $email)
+                ->count();
+            if($data > 0)
+            {
+                echo 'not_unique';
+            }
+            else
+            {
+                echo 'unique';
+            }
+        }
+    }
 }

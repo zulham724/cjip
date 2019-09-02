@@ -55,6 +55,7 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::get('/x', 'FrontEnd\Provinsi\VideoPlayerController@home')->name('homey');
         Route::get('/', 'FrontEnd\Home\HomeController@home')->name('homey2');
+        Route::post('/checkemail', 'FrontEnd\Home\HomeController@checkEmail')->name('checkemail');
         Route::get('/event', 'FrontEnd\Home\EventController@event')->name('event');
         Route::get('/ready-to-offer', 'FrontEnd\Home\HomeController@readyToOffer')->name('ready-to-offer');
         Route::get('/prospective-project', 'FrontEnd\Home\HomeController@prospectiveProject')->name('prospective-project');
@@ -65,6 +66,8 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/search', 'FrontEnd\Home\SearchController@search')->name('search');
         Route::get('/live-count', 'CJIBF\LiveController@live')->name('live.count');
         Route::get('/reload', 'CJIBF\LiveController@reload')->name('live.reload');
+        Route::get('/reloadtotal', 'CJIBF\LiveController@reloadtotal')->name('total.reload');
+        Route::get('/reloadchart', 'CJIBF\LiveController@reloadchart')->name('chart.reload');
 
         Route::get('/why', function (){
             return view('front-end.master.master-new');

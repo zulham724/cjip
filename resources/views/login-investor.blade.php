@@ -37,7 +37,7 @@
                                     <input class="form__input js-field__email" id="email" type="email"
                                            name="email" required autofocus
                                            placeholder="example@mail.com">
-                                    <span class="form-validation"></span>
+                                    <span class="form-validation" id="error_email"></span>
 
                                     <label class="form__label" style="padding-top: 10px">Password</label>
                                     <input class=" form__input js-field__password"  type="password"
@@ -49,7 +49,7 @@
 
                                     <span class="form-validation"></span>
 
-                                    <button class="site-btn site-btn--accent" type="submit">Register</button>
+                                    <button class="site-btn site-btn--accent" id="register" type="submit">Register</button>
 
                                 </div>
 
@@ -79,4 +79,49 @@
         </section>
     </div>
 
+@endsection
+
+@section('js')
+    <script>
+        $(document).ready(function(){
+
+            $('#email').blur(function(){
+                var error_email = '';
+                var email = $('#email').val();
+                var _token = $('input[name="_token"]').val();
+                var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+                //console.log(email)
+                if(!filter.test(email))
+                {
+                    $('#error_email').html('<label class="text-danger">Invalid Email</label>');
+                    $('#email').addClass('has-error');
+                    $('#register').attr('disabled', 'disabled');
+                }
+                else
+                {
+                    $.ajax({
+                        url:"{{ route('checkemail') }}",
+                        method:"POST",
+                        data:{email:email, _token:_token},
+                        success:function(result)
+                        {
+                            if(result == 'unique')
+                            {
+                                $('#error_email').html('<label class="text-success">Email Available</label>');
+                                $('#email').removeClass('has-error');
+                                $('#register').attr('disabled', false);
+                            }
+                            else
+                            {
+                                $('#error_email').html('<label class="text-danger">This Email Already Exist</label>');
+                                $('#email').addClass('has-error');
+                                $('#register').attr('disabled', 'disabled');
+                            }
+                        }
+                    })
+                }
+            });
+
+        });
+    </script>
 @endsection
