@@ -243,8 +243,8 @@
                 </div> <!-- col -->
             </div>
             @isset($talkshows)
-                @foreach($talkshows as $talkshow)
                     <div class="row">
+                        @foreach($talkshows as $talkshow)
                         <div class="col">
                             <div class="our-team-04">
                                 <div class="box-shadow hover-shadow p-10px white-bg text-center">
@@ -259,8 +259,8 @@
                             </div> <!-- Our Team -->
                         </div> <!-- Col -->
 
+                        @endforeach
                     </div> <!-- row -->
-                @endforeach
             @endisset
 
 
@@ -308,11 +308,12 @@
                 <div class="col-12 col-md-6 col-lg-6">
                     <div class="p-20px box-shadow-large white-bg">
                         <h5 class="color-extra-dark-gray font-20 font-w-500 m-0px m-35px-b sm-m-15px-b text-uppercase">Register CJIBF</h5>
-                        <form id="contact-form" method="POST">
+                        <form id="contact-form" method="POST" action="{{ route('investor.register') }}">
+                            @csrf
                             <div class="row">
                                 <div class="col-12 col-md-6">
                                     <div class="form-group">
-                                        <input name="Name" id="name" placeholder="Name" class="input-medium" type="text">
+                                        <input name="name" id="name" placeholder="Name" class="input-medium" type="text">
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6">
@@ -327,20 +328,21 @@
                                 </div>
                                 <div class="col-12 col-md-12">
                                     <div class="form-group">
-                                        <input name="repassword" id="repassword" placeholder="Repeat Password" class="input-medium" type="password">
+                                        <input name="password_confirmation" id="repassword" placeholder="Repeat Password" class="input-medium" type="password">
                                     </div>
                                 </div>
-                                <div class="col-12">
-                                    <button class="m-btn border-radius-30px box-shadow-large" onclick="send_mail()" type="button" value="Send">Register</button>
-                                    <span id="suce_message" class="text-success" style="display: none">Message Sent Successfully</span>
-                                    <span id="err_message" class="text-danger" style="display: none">Message Sending Failed</span>
-                                    <a href="{{ url('/login/google') }}">
-                                        or Register Using
-                                        <img src="{{asset('images/google.png')}}" style="max-width: 10%" alt="google sign in">
-                                    </a>
-                                </div>
+                                <button class="m-btn border-radius-30px box-shadow-large" type="submit" value="Send">Register</button>
+                                <span id="suce_message" class="text-success" style="display: none">Message Sent Successfully</span>
+                                <span id="err_message" class="text-danger" style="display: none">Message Sending Failed</span>
                             </div>
                         </form>
+                        <div class="col-12">
+
+                            <a href="{{ url('/login/google') }}">
+                                or Register Using
+                                <img src="{{asset('images/google.png')}}" style="max-width: 10%" alt="google sign in">
+                            </a>
+                        </div>
                     </div>
                 </div> <!-- col -->
 

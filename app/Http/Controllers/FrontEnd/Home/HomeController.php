@@ -21,6 +21,7 @@ use App\Peternakan;
 use App\ProfileInvestor;
 use App\Proyek;
 use App\Umr;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -38,12 +39,15 @@ class HomeController extends Controller
        $awards = Award::all();
        $infrastrukturs = InfrastrukturPendukung::all();
        $umks = Umr::all()->groupBy(['kab_kota_id', 'tahun']);
+       $user = User::all();
+       //dd($user);
        //dd($umks->toJson());
        foreach ($umks as $key1 => $umk){
            //dd($key1);
-           foreach ($umk as $key => $u){
-              //dd($u);
-          }
+           //dd(count($umk));
+           $kota = User::where('id', $key1)->first();
+           //dd($kota->kota->kabkota->nama);
+            //dd($umk);
        }
        $listriks = BiayaListrik::all();
        $airs = BiayaAir::all();
@@ -57,16 +61,16 @@ class HomeController extends Controller
                return redirect()->route('form.profile', Auth::guard('investor')->user()->id );
            }
            elseif (isset($intersts)){
-               return view('front-end.new-home', compact('mapsKey','feeds', 'intersts', 'populers', 'news' , 'ekonomis', 'awards', 'infrastrukturs', 'umks', 'listriks', 'airs'));
+               return view('front-end.new-home', compact('mapsKey','feeds', 'intersts', 'populers', 'news' , 'ekonomis', 'awards', 'infrastrukturs', 'umks', 'listriks', 'airs', 'user'));
            }
            else{
-               return view('front-end.new-home', compact('mapsKey','feeds',  'populers', 'news' , 'ekonomis', 'awards', 'infrastrukturs', 'umks', 'listriks', 'airs'));
+               return view('front-end.new-home', compact('mapsKey','feeds',  'populers', 'news' , 'ekonomis', 'awards', 'infrastrukturs', 'umks', 'listriks', 'airs', 'user'));
 
            }
        }
        else{
            return view('front-end.new-home', compact(
-               'mapsKey','feeds', 'populers', 'news', 'ekonomis', 'awards', 'infrastrukturs', 'umks', 'listriks', 'airs'));
+               'mapsKey','feeds', 'populers', 'news', 'ekonomis', 'awards', 'infrastrukturs', 'umks', 'listriks', 'airs', 'user'));
        }
 
 

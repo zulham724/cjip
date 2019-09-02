@@ -271,7 +271,7 @@
                         </g>
                     </svg>
                     <h4 class="about-app__description-title">Minimum Wages</h4>
-                    <table id="wagestable" class="stripe" style="width:100%">
+                    <table id="wagestable" class="" style="width:100%">
                         <thead>
                         <tr>
                             <th>Kab/Kota</th>
@@ -280,38 +280,17 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($umks as $umk)
+                        @foreach($umks as $key => $umk)
                         <tr>
-                            <td></td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td>61</td>
-                            <td>2011/04/25</td>
-                            <td>$320,800</td>
+
+                            <td>{{$user->where('id', $key)->first()->kota->kabkota->nama}}</td>
+
+
+                            <td>@foreach($umk as $key2 => $um){{$key2}} <br>@endforeach</td>
+                            <td>@foreach($umk as $key2 => $um){{$um[0]->nilai_umr}} <br>@endforeach</td>
+
                         </tr>
                         @endforeach
-                        </tbody>
-                    </table>
-                    <table>
-                        <thead>
-                        <tr>
-                            <th>
-                                Tahun
-                            </th>
-                            <th>
-                                Nilai UMR
-                            </th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @isset($umks)
-                        @foreach($umks as $wage)
-                        <tr>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        @endforeach
-                        @endisset
                         </tbody>
                     </table>
 
