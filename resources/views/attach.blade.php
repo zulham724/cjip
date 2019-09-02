@@ -175,28 +175,32 @@
 </div>
 
 <div id="content">
-    <table>
-        <tr>
-            <th>Company Name</th>
-            <td>Hello World Co.,LTD.</td>
-        </tr>
-        <tr>
-            <th>Established</th>
-            <td>August 21, 2018</td>
-        </tr>
-        <tr>
-            <th>Address</th>
-            <td>Where am I, 000-0000, Japan</td>
-        </tr>
-        <tr>
-            <th>Capital</th>
-            <td>100 yen</td>
-        </tr>
-        <tr>
-            <th>Business</th>
-            <td>Website creation and modification. WordPress construction. EC site production. But above all, the most important job is to enjoy life.</td>
-        </tr>
-    </table>
+    <div class="row">
+        <div class="col-6"><table>
+                <tr>
+                    <th>Company Name</th>
+                    <td>{{$send->perusahaan}}</td>
+                </tr>
+                <tr>
+                    <th>Name</th>
+                    <td>{{$send->nama_investor}}</td>
+                </tr>
+                <tr>
+                    <th>Selected City</th>
+                    <td>{{$send->minat_kabkota}}</td>
+                </tr>
+                <tr>
+                    <th>Selected Sector</th>
+                    <td>{{$send->minat_sektor}}</td>
+                </tr>
+                <tr>
+                    <th>Table Code</th>
+                    <td>{{$send->meja}}</td>
+                </tr>
+            </table></div>
+        <div class="col-6"><img src="data:image/png;base64, {!! base64_encode($send->qr) !!}" alt=""></div>
+    </div>
+
     <div class="page_break"></div>
     <table id="seatsBlock" style="margin-left:auto; margin-right:auto;">
         <tr style="padding-top:20px;padding-bottom:20px;padding-right:20px;">

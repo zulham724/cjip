@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\CJIBF;
 
 use App\CjibfChair;
+use App\CjibfCp;
 use App\CjibfEvent;
 use App\CjibfInvestor;
 use App\CjibfSektor;
@@ -32,7 +33,12 @@ class FrontEndController extends Controller
         $cities = KabKota::all();
         $sektors = CjibfSektor::all();
         $pengumuman = Pengumuman::all();
+        $registered = CjibfInvestor::where('profile_id', $profile->id)->first();
 
+        $cps = CjibfCp::where('event_id', $events->id)->get();
+
+        //dd($profile);
+        //dd($registered);
         if (isset($events)){
             $buka = Carbon::parse($events->tgl_buka)->format('d/m/Y');
             $now = Carbon::now()->format('d/m/Y');
@@ -42,7 +48,7 @@ class FrontEndController extends Controller
 
         //dd(Carbon::parse($events->tgl_buka)->format('d/m/Y'));
         //dd(Carbon::now()->format('d/m/Y'));
-        return view('front-end.investor.content.cjibf', compact('events', 'profile', 'cities', 'sektors', 'pengumuman'));
+        return view('front-end.investor.content.cjibf', compact('events', 'profile', 'cities', 'sektors', 'pengumuman', 'registered', 'cps'));
     }
 
     public function join(Request $request){
@@ -106,7 +112,7 @@ class FrontEndController extends Controller
                 $sendObj->qr = QrCode::format('png')
                     ->errorCorrection('H')
                     ->size(200)
-                    ->merge(storage_path('app/public/additional/cjip-2.png'), .3, true)
+                    ->merge('http://cjip.jatengprov.go.id/storage/additional/cjip-2.png', .3, true)
                     ->generate($sendObj->event->nama_kegiatan.','.$sendObj->nama_investor.','.$sendObj->perusahaan.','.$sendObj->meja);
                 //dd($sendObj);
 

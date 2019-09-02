@@ -38,6 +38,12 @@
     <link href="{{asset('cjibf/css/style.css')}}" rel="stylesheet">
     <link href="{{asset('cjibf/css/color/default.css')}}" rel="stylesheet" id="color_theme">
     <link href="{{asset('cjibf/css/main.css')}}" rel="stylesheet">
+
+    <style>
+        .col-half-offset{
+            margin-left:4.166666667%
+        }
+    </style>
     <!-- End -->
 
 </head>
@@ -75,28 +81,25 @@
                 <!-- Menu Start -->
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#home">Home</a>
+                        <a class="nav-link" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#about">About Us</a>
+                        <a class="nav-link" href="#home">About Event</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#service">Services</a>
+                        <a class="nav-link" href="#sector">Sectors</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#trainers">Trainers</a>
+                        <a class="nav-link" href="#talkshow">Talkshow</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#gallery">Gallery</a>
+                        <a class="nav-link" href="#agenda">Agenda</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#price">Price</a>
+                        <a class="nav-link" href="#venue">Venue</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#blog">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
+                        <a class="nav-link" href="#cp">Contact</a>
                     </li>
                 </ul>
                 <!-- / -->
@@ -112,38 +115,34 @@
 
     <!-- Home -->
     <section id="home">
+        @isset($setting)
+            @php
+            $images = json_decode($setting->carousels, true);
+            //dd($images);
+            @endphp
         <div class="owl-carousel" data-nav-arrow="true" data-items="1" data-md-items="1" data-sm-items="1" data-xs-items="1" data-xx-items="1" data-loop="true" data-space="0">
-            <div class="slider bg-cover bg-no-repeat bg-center-center" style="background-image: url({{asset('cjibf/img/1600x1000.jpg')}});">
+            @foreach((array)$images as $image)
+            <div class="slider bg-cover bg-no-repeat bg-center-center" style="background-image: url('{{Voyager::image($image)}}');">
                 <div class="container">
                     <div class="row align-items-center full-screen p-100px-tb">
                         <div class="col-xl-12 col-lg-12 col-md-12 m-50px-t">
-                            <img src="http://cjip.jatengprov.go.id/storage/additional/cjip-2.png" style="display: block;margin-left: auto;margin-right: auto;max-width: 200px" alt="">
-                            <h1 class="font-alt font-80 md-font-40 sm-font-30 font-w-700 color-white m-0px m-45px-b md-m-35px-b sm-m-20px-b" align="center">CJIBF<span class="color-theme">&</span>CJIBE 2019</h1>
-                            <p class="color-white font-18 sm-font-15" align="center">The annual leading forum for investors and investment policy makers in Central Java.  This Forum involves Central Government, Governor of Central Java, and Regent/Mayor from 35 Regencies/ Municipalities throughout Central Java and attended by hundreds of domestic and foreign investors</p>
+
+                            <img src="{{Voyager::image($setting->logo)}}" style="display: block;margin-left: auto;margin-right: auto;max-width: 200px; -webkit-filter: drop-shadow(5px 5px 5px #222); filter: drop-shadow(5px 5px 5px #222);" alt="" >
+
                             <div class="p-30px-t sm-p-5px-t" align="center">
-                                <a href="#" class="m-btn m-10px-r">Join Us</a>
+                                <a href="#venue" class="m-btn m-10px-r">Join Us</a>
                             </div>
                         </div>
                     </div> <!-- row -->
                 </div> <!-- container -->
-            </div> <!-- Slider -->
-
-            {{--<div class="slider bg-cover bg-no-repeat bg-center-center full-screen" style="background-image: url({{asset('cjibf/img/1600x1000.jpg')}});">
-                <div class="container">
-                    <div class="row align-items-center full-screen p-100px-tb">
-                        <div class="col-xl-6 col-lg-7 col-md-8 m-50px-t">
-                            <span class="font-18 sm-font-15 color-white m-20px-b md-m-15px-b display-inline-block">We help you achieve personal health goals</span>
-                            <h1 class="font-alt font-80 md-font-40 sm-font-30 font-w-700 color-white m-0px m-45px-b md-m-35px-b sm-m-20px-b">Welcome to <span class="color-theme">Amigo</span> gym</h1>
-                            <p class="color-white font-18 sm-font-15">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-                            <div class="p-30px-t sm-p-5px-t">
-                                <a href="#" class="m-btn m-10px-r">Revelutionery gym</a>
-                            </div>
-                        </div>
-                    </div> <!-- row -->
-                </div> <!-- container -->
-            </div>--}} <!-- Slider -->
-
+            </div>
+            <!-- Slider -->
+            @endforeach
         </div>
+            <h1 class="font-alt font-80 md-font-40 sm-font-30 font-w-700 color-white m-0px m-45px-b md-m-35px-b sm-m-20px-b" align="center"><span class="color-theme">{{$setting->initial_name}}</span></h1>
+            <h1 class="font-alt font-30 md-font-15 sm-font-10 font-w-700 color-white m-0px m-45px-b md-m-35px-b sm-m-20px-b" align="center"><span class="color-dark-gray">{{$setting->nama_kegiatan}}</span></h1>
+            <p class="color-dark-gray font-18 sm-font-15" align="center">{{$setting->keterangan}}</p>
+        @endisset
     </section>
     <!-- Home End -->
 
@@ -194,68 +193,47 @@
     <!-- About Us End-->
 
     <!-- Service Start -->
-    {{--<section id="service" class="section" style="background-image: url({{asset('cjibf/img/1600x1000.jpg')}});">
-        <div class="container">
-
+    <section id="sector" class="section" style="background-image: url({{asset('cjibf/img/300ppi/bg.png')}});">
+        <div class="container-fluid p-0px">
             <div class="row justify-content-center m-60px-b sm-m-30px-b">
                 <div class="col-12 col-md-10 col-lg-8 text-center">
-                    <h3 class="color-extra-dark-gray font-w-700 font-alt m-0px m-15px-b">Investment <span class="color-theme">Sectors</span></h3>
+                    <p>Showcasing Opportunities in</p>
                     <span class="w-50px black-bg h-2px display-block m-auto-all m-15px-t m-25px-b"></span>
+                    <h3 class="color-extra-dark-gray font-w-700 font-alt m-0px m-15px-b"><span class="color-theme">Manufacturing and Tourism Sectors</span></h3>
                 </div> <!-- col -->
+            </div>
+            <div class="row no-gutters">
+                @isset($sectors)
+                @foreach($sectors as $sector)
+                        <div class="col-md-6 bg-no-repeat bg-center-right bg-cover">
+                            <div class="portfolio-content lightbox-gallery">
+                                <ul class="portfolio-cols portfolio-cols-12">
+                                    <li class="portfolio-item illustration">
+                                        <div class="portfolio-col portfolio-hover-02">
+                                            <img src="{{Voyager::image($sector->image)}}" title="" alt="">
+                                            <div class="overlay theme-bg border-all border-w-10 border-double border-white"></div>
+
+                                            <div class="hover text-center p-10px">
+                                                <p class="font-alt color-white m-0px font-w-300 letter-spacing-2 font-alt font-18 text-uppercase">{{$sector->sector}}</p>
+                                                <div class="btn-bar">
+                                                    <a href="{{Voyager::image($sector->image)}}" class="lg-link"><i class="fas fa-expand"></i></a>
+                                                </div>
+                                            </div> <!-- hover -->
+                                        </div> <!-- .portfolio-co -->
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                @endforeach
+
+                @endisset
             </div> <!-- row -->
-
-
-                <div class="row leadership" >
-                    <div class="col-4 col-t-6">
-                        <div class="leadership__item">
-                            <img alt="" class="leadership__avatar" src="{{asset('images/frontend/img_leadership_1.png')}}">
-                            <p class="leadership__name">Michael Logan</p>
-                            <p class="leadership__work">Founder</p>
-                        </div>
-                    </div>
-                    <div class="col-4 col-t-6">
-                        <div class="leadership__item">
-                            <img alt="" class="leadership__avatar" src="{{asset('images/frontend/img_leadership_2.png')}}">
-                            <p class="leadership__name">John Brown</p>
-                            <p class="leadership__work">CEO / Founder</p>
-                        </div>
-                    </div>
-                    <div class="col-4 col-t-6">
-                        <div class="leadership__item">
-                            <img alt="" class="leadership__avatar" src="{{asset('images/frontend/img_leadership_3.png')}}">
-                            <p class="leadership__name">Mike Smith</p>
-                            <p class="leadership__work">CEO / Founder</p>
-                        </div>
-                    </div>
-                    <div class="col-4 col-t-6">
-                        <div class="leadership__item">
-                            <img alt="" class="leadership__avatar" src="{{asset('images/frontend/img_leadership_4.png')}}">
-                            <p class="leadership__name">George Right</p>
-                            <p class="leadership__work">VP, Worldwide Sales</p>
-                        </div>
-                    </div>
-                    <div class="col-4 col-t-6">
-                        <div class="leadership__item">
-                            <img alt="" class="leadership__avatar" src="{{asset('images/frontend/img_leadership_5.png')}}">
-                            <p class="leadership__name">Li Chang</p>
-                            <p class="leadership__work">Managing Director</p>
-                        </div>
-                    </div>
-                    <div class="col-4 col-t-6">
-                        <div class="leadership__item">
-                            <img alt="" class="leadership__avatar" src="{{asset('images/frontend/img_leadership_6.png')}}">
-                            <p class="leadership__name">Jill Valentine</p>
-                            <p class="leadership__work">Art Director</p>
-                        </div>
-                    </div>
-                </div>
-            <!-- row -->
         </div> <!-- container -->
-    </section>--}}
+    </section>
     <!-- services End -->
 
     <!-- Our Team -->
-    <section id="trainers" class="section light-gray-bg" style="background-image: url({{asset('cjibf/img/1600x1000.jpg')}});">
+    <section id="talkshow" class="section light-gray-bg" style="background-image: url({{asset('cjibf/img/300ppi/bg.png')}});">
         <div class="container">
             <div class="row justify-content-center m-60px-b sm-m-30px-b">
                 <div class="col-12 col-md-10 col-lg-8 text-center">
@@ -264,75 +242,28 @@
 
                 </div> <!-- col -->
             </div>
+            @isset($talkshows)
+                @foreach($talkshows as $talkshow)
+                    <div class="row">
+                        <div class="col">
+                            <div class="our-team-04">
+                                <div class="box-shadow hover-shadow p-10px white-bg text-center">
+                                    <div class="p-20px-t p-10px-b">
+                                        <div class="color-extra-dark-gray font-16 font-w-700 font-alt m-5px-b">{{$talkshow->nama}}</div>
+                                        <span class="font-14 font-w-700">{{$talkshow->jabatan}}</span>
+                                        <p class="color-medium-gray font-18 sm-font-15" align="center">{{$talkshow->tama}}</p>
+                                    </div>
+                                    <div class="team-img bg-cover bg-no-repeat bg-center-center" style="background-image: url('{{Voyager::image($talkshow->foto)}}');">
+                                    </div>
+                                </div>
+                            </div> <!-- Our Team -->
+                        </div> <!-- Col -->
 
-            <div class="row">
-                <div class="col-12 col-sm-6 col-md-6 col-lg-3 md-m-15px-tb">
-                    <div class="our-team-04">
-                        <div class="box-shadow hover-shadow p-10px white-bg text-center">
-                            <div class="p-20px-t p-10px-b">
-                                <div class="color-extra-dark-gray font-16 font-w-700 font-alt m-5px-b">Thomas Lembong</div>
-                                <span class="font-14 font-w-700">Kepala BKPM RI</span>
-                                <p class="color-medium-gray font-18 sm-font-15" align="center">“Perkembangan Iklim Investasi di Indonesia”</p>
-                            </div>
-                            <div class="team-img bg-cover bg-no-repeat bg-center-center" style="background-image: url({{asset('cjibf/img/1600x1000.jpg')}});">
-                            </div>
-                        </div>
-                    </div> <!-- Our Team -->
-                </div> <!-- Col -->
+                    </div> <!-- row -->
+                @endforeach
+            @endisset
 
-                <div class="col-12 col-sm-6 col-md-6 col-lg-3 md-m-15px-tb">
-                    <div class="our-team-04">
-                        <div class="box-shadow hover-shadow p-10px white-bg text-center">
-                            <div class="p-20px-t p-10px-b">
-                                <div class="color-extra-dark-gray font-16 font-w-700 font-alt m-5px-b">Thomas Lembong</div>
-                                <span class="font-14 font-w-700">Kepala BKPM RI</span>
-                                <p class="color-medium-gray font-18 sm-font-15" align="center">“Perkembangan Iklim Investasi di Indonesia”</p>
-                            </div>
-                            <div class="team-img bg-cover bg-no-repeat bg-center-center" style="background-image: url({{asset('cjibf/img/1600x1000.jpg')}});">
-                            </div>
-                        </div>
-                    </div> <!-- Our Team -->
-                </div> <!-- Col -->
 
-                <div class="col-12 col-sm-6 col-md-6 col-lg-3 md-m-15px-tb">
-                    <div class="our-team-04">
-                        <div class="box-shadow hover-shadow p-10px white-bg text-center">
-                            <div class="p-20px-t p-10px-b">
-                                <div class="color-extra-dark-gray font-16 font-w-700 font-alt m-5px-b">Thomas Lembong</div>
-                                <span class="font-14 font-w-700">Kepala BKPM RI</span>
-                                <p class="color-medium-gray font-18 sm-font-15" align="center">“Perkembangan Iklim Investasi di Indonesia”</p>
-                            </div>
-                            <div class="team-img bg-cover bg-no-repeat bg-center-center" style="background-image: url({{asset('cjibf/img/1600x1000.jpg')}});">
-                            </div>
-                        </div>
-                    </div> <!-- Our Team -->
-                </div> <!-- Col -->
-
-                <div class="col-12 col-sm-6 col-md-6 col-lg-3 md-m-15px-tb">
-                    <div class="our-team-04">
-                        <div class="box-shadow hover-shadow p-10px white-bg text-center">
-                            <div class="p-20px-t p-10px-b">
-                                <div class="color-extra-dark-gray font-16 font-w-700 font-alt m-5px-b">Thomas Lembong</div>
-                                <span class="font-14 font-w-700">Kepala BKPM RI</span>
-                                <p class="color-medium-gray font-18 sm-font-15" align="center">“Perkembangan Iklim Investasi di Indonesia”</p>
-                            </div>
-                            <div class="team-img bg-cover bg-no-repeat bg-center-center" style="background-image: url({{asset('cjibf/img/1600x1000.jpg')}});">
-                            </div>
-                        </div>
-                    </div> <!-- Our Team -->
-                </div> <!-- Col -->
-
-                    <div class="row leadership" style="padding-left: 34.5%" align="center">
-
-                            <div class="leadership__item">
-                                <img alt="" class="leadership__avatar3" src="{{asset('images/frontend/img_leadership_1.png')}}">
-                                <p class="leadership__name3">Michael Logan</p>
-                                <p class="leadership__work3">Founder</p>
-                            </div>
-
-                    </div>
-
-            </div> <!-- row -->
 
         </div> <!-- container -->
     </section>
@@ -340,7 +271,7 @@
 
 
     <!-- Our Blog -->
-    <section id="blog" class="section light-gray-bg" style="background-image: url({{asset('cjibf/img/1600x1000.jpg')}});">
+    <section id="agenda" class="section light-gray-bg" style="background-image: url({{asset('cjibf/img/300ppi/bg.png')}});">
         <div class="container">
 
             <div class="row justify-content-center m-60px-b sm-m-30px-b">
@@ -352,7 +283,7 @@
 
             <div class="row" align="center">
                 <div class="col-12 col-md-12">
-                    <img src="{{asset('cjibf/img/1600x1000.jpg')}}" style="max-height: 600px; width: auto" title="Amigo" alt="Amigo">
+                    <img src="{{Voyager::image($setting->agenda)}}" style="max-height: 600px; width: auto" title="Amigo" alt="Amigo">
 <!-- Blog Iteam -->
                 </div> <!-- col -->
 
@@ -363,7 +294,7 @@
     <!-- / -->
 
     <!-- Contact -->
-    <section id="contact" class="section" style="background-image: url({{asset('cjibf/img/1600x1000.jpg')}});">
+    <section id="venue" class="section" style="background-image: url({{asset('cjibf/img/300ppi/bg.png')}});">
         <div class="container">
 
             <div class="row justify-content-center m-60px-b sm-m-30px-b">
@@ -391,12 +322,12 @@
                                 </div>
                                 <div class="col-12 col-md-12">
                                     <div class="form-group">
-                                        <input name="password" id="subject" placeholder="Password" class="input-medium" type="password">
+                                        <input name="password" id="password" placeholder="Password" class="input-medium" type="password">
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-12">
                                     <div class="form-group">
-                                        <input name="repassword" id="subject" placeholder="Repeat Password" class="input-medium" type="password">
+                                        <input name="repassword" id="repassword" placeholder="Repeat Password" class="input-medium" type="password">
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -416,7 +347,7 @@
                 <div class="col-12 col-lg-6 md-m-30px-t">
                     <div class="container-fluid h-100 p-15px white-bg box-shadow-large">
                         <div class="embed-responsive embed-responsive-16by9 h-100">
-                            <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3151.840107317064!2d144.955925!3d-37.817214!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb6899234e561db11!2sEnvato!5e0!3m2!1sen!2sin!4v1520156366883" allowfullscreen=""></iframe>
+                            <iframe class="embed-responsive-item" src="https://maps.google.com/maps?width=700&amp;height=440&amp;hl=en&amp;q=hotel%20bidakara+(Title)&amp;ie=UTF8&amp;t=p&amp;z=10&amp;iwloc=B&amp;output=embed" allowfullscreen=""></iframe>
                         </div>
                     </div>
                 </div>
@@ -429,7 +360,7 @@
         </div> <!-- container -->
     </section>
     <!-- / -->
-    <section style="background-image: url({{asset('cjibf/img/1600x1000.jpg')}});">
+    <section id="cp" style="background-image: url({{asset('cjibf/img/300ppi/bg.png')}});">
         <div class="container-fluid p-0px">
             <div class="row justify-content-center m-60px-b sm-m-30px-b">
                 <div class="col-12 col-md-10 col-lg-8 text-center">
@@ -439,22 +370,56 @@
                 </div> <!-- col -->
             </div>
             <div class="row no-gutters">
-                <div class="col-md-6 bg-no-repeat bg-center-right bg-cover" style="background-image: url({{asset('cjibf/img/1600x1000.jpg')}});">
+                <div class="col-md-6 bg-no-repeat bg-center-right bg-cover" style="background-image: url({{asset('cjibf/img/300ppi/cp.png')}});">
 
                 </div>
                 <div class="col-md-6">
                     <div class="p-20-t p-20-b p-20px-lr sm-p-20px sm-m-20px light-bitter-sweet-bg text-center">
+
                         <h3 class="color-extra-dark-gray font-w-700 font-alt m-0px m-15px-b">DPMTPSP Provinsi Jawa Tengah</h3>
-                        <div class="col-12 m-5px-tb">
-                            <i class="icon-map-pin color-black font-25"></i>
-                            <h4 class="color-extra-dark-gray font-w-500 font-13 text-uppercase font-alt m-0px">Location</h4>
-                            <p >301 The Greenhouse,<br> London, E2 8DY.</p>
+                        <div class="row">
+                            <div class="col-2">
+                                <i class="icon-map-pin color-black font-25"></i>
+                            </div>
+                            <div class="col-10">
+                                <p>Jl. Mgr. Sugiyopranoto No. 1 Semarang, Kode Pos 50131</p>
+                            </div>
                         </div>
-                        <div class="col-12 m-5px-tb">
-                            <i class="icon-map-pin color-black font-25"></i>
-                            <h4 class="color-extra-dark-gray font-w-500 font-13 text-uppercase font-alt m-0px">Location</h4>
-                            <p>301 The Greenhouse,<br> London, E2 8DY.</p>
+                        <div class="row">
+                            <div class="col-2">
+                                <i class="far fa-envelope color-black font-25"></i>
+                            </div>
+                            <div class="col-10">
+                                <p>cjibf.jateng@gmail.com</p>
+                            </div>
                         </div>
+
+                        @isset($cps)
+                        <div class="row">
+                            <div class="col-2">
+                                <i class="icon-phone color-black font-25"></i>
+                            </div>
+                            <div class="col-10">
+
+                                    @foreach($cps as $cp)
+                                        <p>{{$cp->name}}<span>&emsp;</span>{{$cp->phone}}</p>
+                                    @endforeach
+
+                            </div>
+                        </div>
+                        @endisset
+
+                        <div class="row">
+                            <div class="col-2">
+                                <i class="icon-globe color-black font-25"></i>
+                            </div>
+                            <div class="col-10">
+                                <a href="https://cjip.jatengprov.go.id">
+                                    <p>Central Java Investment Business Platform</p>
+                                </a>
+                            </div>
+                        </div>
+
 
                     </div>
                 </div> <!-- col -->

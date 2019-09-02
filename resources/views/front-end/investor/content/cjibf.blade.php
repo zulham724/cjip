@@ -795,61 +795,65 @@
 
                     @elseif((\Carbon\Carbon::parse($events->tgl_buka)->eq(\Carbon\Carbon::now())) || (\Carbon\Carbon::parse($events->tgl_buka))->lte(\Carbon\Carbon::now()))
 
-                        <div class="card-header border-bottom">
-                            <h6 class="m-0">Your Company Profile</h6>
-                            <hr>
-                            <div class="row">
-                                <div class="col">
-                                    <form action="" method="post">
-                                        @csrf
-                                        <div class="form-row">
-                                            <div class="form-group col-md-4">
-                                                <label for="feFirstName">Name</label>
-                                                <input type="text" class="form-control" id="feFirstName" name="name" placeholder="Full Name" value="{{$profile->investor_name}}" disabled>
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                                <label for="position">Position</label>
-                                                <input type="text" class="form-control" id="position" name="jabatan" placeholder="Position" value="{{$profile->jabatan}}" disabled>
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                                <label for="phone">Phone</label>
-                                                <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone" value="{{$profile->phone}}"  disabled>
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <label for="companyname">Company Name</label>
-                                                <input type="text" class="form-control" id="companyname" name="company_name" placeholder="Email" value="{{$profile->nama_perusahaan}}" disabled>
-                                            </div>
-                                            <div class="form-group col-md-2">
-                                                <label for="badan_hukum">Corporation</label>
-                                                <input type="text" class="form-control" id="badan_hukum"  name="badan_hukum" value="{{$profile->badan_hukum}}" disabled>
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                                <label for="bidang_usaha">Business Field</label>
-                                                <input type="text" class="form-control" id="bidang_usaha" name="bidang_usaha" value="{{$profile->bidang_usaha}}" disabled>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="feInputAddress">Address</label>
-                                            <input type="text" class="form-control" id="feInputAddress" name="address" placeholder="1234 Main St" value="{{$profile->alamat}}" disabled>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <label for="email">Email</label>
-                                                <input type="email" class="form-control" name="email" id="email" value="{{$profile->userInv->email}}" disabled>
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <label for="country">Country</label>
-                                                <input type="text" class="form-control" id="country" name="country" value="{{$profile->country}}" disabled>
-                                            </div>
-                                        </div>
+                        @isset($registered)
 
-                                    </form>
+
+                            @else
+                            <div class="card-header border-bottom">
+                                <h6 class="m-0">Your Company Profile</h6>
+                                <hr>
+                                <div class="row">
+                                    <div class="col">
+                                        <form action="" method="post">
+                                            @csrf
+                                            <div class="form-row">
+                                                <div class="form-group col-md-4">
+                                                    <label for="feFirstName">Name</label>
+                                                    <input type="text" class="form-control" id="feFirstName" name="name" placeholder="Full Name" value="{{$profile->investor_name}}" disabled>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label for="position">Position</label>
+                                                    <input type="text" class="form-control" id="position" name="jabatan" placeholder="Position" value="{{$profile->jabatan}}" disabled>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label for="phone">Phone</label>
+                                                    <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone" value="{{$profile->phone}}"  disabled>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="companyname">Company Name</label>
+                                                    <input type="text" class="form-control" id="companyname" name="company_name" placeholder="Email" value="{{$profile->nama_perusahaan}}" disabled>
+                                                </div>
+                                                <div class="form-group col-md-2">
+                                                    <label for="badan_hukum">Corporation</label>
+                                                    <input type="text" class="form-control" id="badan_hukum"  name="badan_hukum" value="{{$profile->badan_hukum}}" disabled>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label for="bidang_usaha">Business Field</label>
+                                                    <input type="text" class="form-control" id="bidang_usaha" name="bidang_usaha" value="{{$profile->bidang_usaha}}" disabled>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="feInputAddress">Address</label>
+                                                <input type="text" class="form-control" id="feInputAddress" name="address" placeholder="1234 Main St" value="{{$profile->alamat}}" disabled>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="email">Email</label>
+                                                    <input type="email" class="form-control" name="email" id="email" value="{{$profile->userInv->email}}" disabled>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="country">Country</label>
+                                                    <input type="text" class="form-control" id="country" name="country" value="{{$profile->country}}" disabled>
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
+                        @endisset
                     @elseif((\Carbon\Carbon::parse($events->tgl_buka))->gt(\Carbon\Carbon::now()))
                         <div class="card-header border-bottom">
                             <h6 class="m-0">Please Wait</h6>
@@ -909,47 +913,83 @@
 
         @if(((\Carbon\Carbon::parse($events->tgl_buka))->eq(\Carbon\Carbon::now())) || (\Carbon\Carbon::parse($events->tgl_buka))->lte(\Carbon\Carbon::now()))
 
-            <div class="card card-small mb-4">
-                <div class="card-header border-bottom">
-                    <h6 class="m-0">Join Us On CJIBF</h6>
-                    <hr>
-                    <div class="row">
-                        <div class="col">
-                            <form action="{{route('join.cjibf')}}" method="post">
-                                @csrf
+            @isset($registered)
+                <div class="card card-small mb-4">
+                    <div class="card-header border-bottom">
+                        <h6 class="m-0">You are already registered on {{$events->nama_kegiatan}}</h6>
+                        <p>We have sent you an email or keep your downloaded detail</p>
+                        @isset($cps)
+                        <p>Further Informations : </p>
+                            @foreach($cps as $cp)
+                                <h6 class="m-0px">{{$cp->name}} , {{$cp->phone}}</h6><br>
+                            @endforeach
+                        @endisset
+                        <hr>
+                        <div class="row">
+                            <div class="col">
+                                <table id="example" class="table mb-0" style="width:100%; text-align: center">
+                                    <thead class="bg-light">
+                                    <tr style="text-align: center !important;">
+                                        <th>Company Name</th>
+                                        <th>Selected City</th>
+                                        <th>Selected Sector</th>
+                                        <th>Table</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
 
-                                <div class="form-group col-md-12">
-                                    <label for="kab_kota">Select City Which Interest You</label>
-                                    <select id="kab_kota" name="kab_kota" class="form-control" required>
-                                        <option selected>Select city</option>
-                                        @foreach($cities as $city)
-                                            <option value="{{$city->user->kab_kota_id}}">{{$city->nama}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="form-group col-md-12">
-                                    <label for="why">Sector</label>
-                                    <select id="why" name="why" class="form-control" required>
-                                        <option selected>Select Sector You Interesred in</option>
-                                        @foreach($sektors as $sektor)
-                                            <option value="{{$sektor->name}}">{{$sektor->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                {{--<div class="form-row">
+                                    <tr>
+                                        <td>{{ $registered->profil->nama_perusahaan}}</td>
+                                        <td>{{ $registered->userId->admin->name }}</td>
+                                        <td>{{ $registered->sektor_interest }}</td>
+                                        <td>{{ $registered->meja_id }}</td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                    </div>
+                </div>
+            @else
+                <div class="card card-small mb-4">
+                    <div class="card-header border-bottom">
+                        <h6 class="m-0">Join Us On CJIBF</h6>
+                        <hr>
+                        <div class="row">
+                            <div class="col">
+                                <form action="{{route('join.cjibf')}}" method="post">
+                                    @csrf
+
+                                    <div class="form-group col-md-12">
+                                        <label for="kab_kota">Select City Which Interest You</label>
+                                        <select id="kab_kota" name="kab_kota" class="form-control" required>
+                                            <option selected>Select city</option>
+                                            @foreach($cities as $city)
+                                                <option value="{{$city->user->kab_kota_id}}">{{$city->nama}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                     <div class="form-group col-md-12">
                                         <label for="why">Sector</label>
-                                        <input type="text" class="form-control" id="why" name="why" placeholder="In which sector you interested" required>
-
+                                        <select id="why" name="why" class="form-control" required>
+                                            <option selected>Select Sector You Interesred in</option>
+                                            @foreach($sektors as $sektor)
+                                                <option value="{{$sektor->name}}">{{$sektor->name}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
-                                </div>--}}
-                                <input type="text" class="form-control" name="profil" value="{{$profile->id}}" hidden>
-                                <button type="submit" class="btn btn-accent">Register</button>
-                            </form>
+                                    <input type="text" class="form-control" name="profil" value="{{$profile->id}}" hidden>
+                                    <button type="submit" class="btn btn-accent">Register</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @endisset
         @endif
             @endisset
 

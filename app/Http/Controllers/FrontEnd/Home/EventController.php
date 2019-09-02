@@ -14,10 +14,10 @@ class EventController extends Controller
     public function event(){
         $setting = CjibfEvent::first();
         $sectors = DisplaySector::all();
-        $talkshow = TalkshowSpeaker::all();
+        $talkshows = TalkshowSpeaker::all();
         $cps = CjibfCp::all();
 
 
-        return view('front-end.event.event', compact('setting', 'sectors', 'talkshow', 'cps'));
+        return view('front-end.event.event', compact('setting', 'sectors', 'talkshows', 'cps'));
     }
 }

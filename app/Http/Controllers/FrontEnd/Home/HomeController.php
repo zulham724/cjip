@@ -10,6 +10,7 @@ use App\Events\FeedAction;
 use App\Faq;
 use App\Feed;
 use App\InfrastrukturPendukung;
+use App\JenisFaq;
 use App\LoiInterest;
 use App\Pariwisata;
 use App\Perikanan;
@@ -47,25 +48,6 @@ class HomeController extends Controller
        $listriks = BiayaListrik::all();
        $airs = BiayaAir::all();
 
-       /*if (Auth::guard('investor')->check()){
-           $registered = ProfileInvestor::where('user_id',Auth::guard('investor')->user()->id)->first();
-           $intersts = LoiInterest::where('user_id', Auth::guard('investor')->user()->id)->get();
-           //dd($registered);
-           if (is_null($registered)){
-               return redirect()->route('form.profile', Auth::guard('investor')->user()->id );
-           }
-           elseif (isset($intersts)){
-               return view('front-end.home', compact('mapsKey','feeds', 'intersts', 'populers', 'news'));
-           }
-           else{
-               return view('front-end.home', compact('mapsKey','feeds',  'populers', 'news'));
-
-           }
-       }
-       else{
-           return view('front-end.home', compact(
-               'mapsKey','feeds', 'populers', 'news'));
-       }*/
 
        if (Auth::guard('investor')->check()){
            $registered = ProfileInvestor::where('user_id',Auth::guard('investor')->user()->id)->first();
@@ -141,9 +123,10 @@ class HomeController extends Controller
     }
     public function faq(){
         $faqs = Faq::all();
+        $jns_faq = JenisFaq::all();
         //dd($proyeks);
        //$proyeks = Proyek::with('marketplace');
-        return view('front-end.faq', compact('faqs'));
+        return view('front-end.faq', compact('faqs', 'jns_faq'));
     }
 
 }

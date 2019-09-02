@@ -3953,7 +3953,7 @@ h6 {
     background-position-y: bottom;
     background-repeat: repeat-x;
     height: 282px;
-    background-image: url(../img/img_bg_clouds.png)
+    background-image: url(../../images/frontend/img_bg_clouds.png)
 }
 
 .background.background--mobile {
@@ -3969,7 +3969,7 @@ h6 {
     background-repeat-y: no-repeat;
     background-repeat: repeat-x;
     background-size: contain;
-    background-image: url(../img/img_bg_wave.png)
+    background-image: url(../../images/frontend/img_bg_wave.png)
 }
 
 @media screen and (min-width: 1920px) {

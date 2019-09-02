@@ -107,7 +107,8 @@
              style="background-image: url({{asset('storage/'.$site_logo)}})">
             <div class="row">
                 <div class="col-12">
-                    <h2 class="header-home__title header-home__title--features">Why Central Java?<br/>Here is why.</h2>
+                    <h2 class="header-home__title header-home__title--features">FAQ<br/>Frequently Asked Questions</h2>
+                    <p class="header-home__description header-home__description--big header-home__description--faq"></p>
                 </div>
             </div>
         </div>
@@ -128,7 +129,7 @@
                                 <span class="faq__card-icon"><i class="mdi mdi-chevron-down"></i></span>
                             </h4>
                             <div class="faq__card-description">
-                                <p>{{$faq->answer}}
+                                <p>{!! $faq->answer !!}
                                 </p>
                             </div>
                         </div>
@@ -137,13 +138,23 @@
                 </div>
                     @endforeach
             </div>
-
+            <div class="col-3 d-t-none">
+                <nav class="sidebar" id="menu">
+                    <ul class="sidebar__list">
+                        @foreach($jns_faq as $faqid)
+                        <li class="sidebar__item @if($loop->first) active @endif"><a href="#{{str_replace(' ', '', $faqid->name)}}">{{$faqid->name}}</a></li>
+                        @endforeach
+                    </ul>
+                </nav>
+            </div>
         </div>
     </div>
 
 </section>
 
-
+<div id="endMenu" class="section section--last">
+    <img alt="" class="section__img" src="{{asset('images/frontend/img_backgroud_footer.png')}}">
+</div>
 
 <!--Footer-->
 <div class="footer">
@@ -165,4 +176,14 @@
 <script src="{{asset('js/front-end/faq.js')}}"></script>
 <script src="{{asset('js/front-end/sidebar.js')}}"></script>
 <script src="{{asset('js/front-end/mobile-menu.js')}}"></script>
-
+<script>
+    var header = document.getElementById("menu");
+    var btns = header.getElementsByClassName("sidebar__item");
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function() {
+            var current = document.getElementsByClassName("active");
+            current[0].className = current[0].className.replace(" active", "");
+            this.className += " active";
+        });
+    }
+</script>

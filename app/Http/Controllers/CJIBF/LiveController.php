@@ -28,7 +28,7 @@ class LiveController extends Controller
             $usd = "0";
         }
 
-        return view('front-end.live-count.live-count', compact('lois', 'rp', 'usd', 'sektors', 'graphics'
+        return view('front-end.live-count.live-count', compact('lois', 'rp', 'usd', 'graphics'
             ));
     }
 
@@ -48,7 +48,7 @@ class LiveController extends Controller
             $rp = "0";
             $usd = "0";
         }
-        return view('front-end.live-count.reload', compact('lois', 'rp', 'usd', 'sektors', 'graphics'
+        return view('front-end.live-count.reload', compact('lois', 'rp', 'usd', 'graphics'
         ));
     }
 }
