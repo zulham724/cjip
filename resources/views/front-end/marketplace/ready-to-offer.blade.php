@@ -28,13 +28,18 @@
 
 @section('header')
     <header class="header-home header-home--color">
-        <div class="background background--wave">
+        <div class="background"
+             style="background-position-y: bottom;
+                 background-repeat-y: no-repeat;
+                 background-repeat: repeat-x;
+                 background-size: contain;
+                 background-image: url({{Voyager::image(setting('site.bg_rto'))}})">
             @php $site_logo = Voyager::setting('site.logo', ''); @endphp
             <div class="container background background--right background--features background--header"
                  style="background-image: url({{asset('storage/'.$site_logo)}})">
                 <div class="row">
                     <div class="col-12">
-                        <h2 class="header-home__title header-home__title--features">Here is Some Ready to Offer Projects<br/></h2>
+                        <h2 class="header-home__title header-home__title--features">{{Voyager::setting('site.title_rto')}}<br/>{{Voyager::setting('site.ket_rto')}}</h2>
                     </div>
                 </div>
             </div>

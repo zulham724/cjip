@@ -1,14 +1,39 @@
 @extends('front-end.master.newest-master')
-
+@section('search')
+    <div class="container">
+        <div class="row search">
+            <div class="col-12 col-m-12">
+                <div class="card form">
+                    <p class="card__title">Search</p>
+                    <form class="form_form" action="{{route('search')}}">
+                        <div class="form__form-group form__form-group--without-label">
+                            <input class="form__input js-field__search" type="text" name="search" id="search"
+                                   placeholder="I am looking for...">
+                            <button type="submit" class="form__input-icon"
+                                    style="background-color: transparent; background-repeat: no-repeat; border: none; overflow: hidden; outline: none;z-index: 100">
+                                <i class="mdi mdi-magnify"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
 @section('header')
     <header class="header-home header-home--color">
-        <div class="background background--wave">
+        <div class="background"
+             style="background-position-y: bottom;
+                 background-repeat-y: no-repeat;
+                 background-repeat: repeat-x;
+                 background-size: contain;
+                 background-image: url({{Voyager::image(setting('site.bg_why'))}})">
             @php $site_logo = Voyager::setting('site.logo', ''); @endphp
             <div class="container background background--right background--features background--header"
                  style="background-image: url({{asset('storage/'.$site_logo)}})">
                 <div class="row">
                     <div class="col-12">
-                        <h2 class="header-home__title header-home__title--features">Why Central Java?<br/>Here is why.</h2>
+                        <h2 class="header-home__title header-home__title--features">{{Voyager::setting('site.title_why')}}<br/>{{Voyager::setting('site.ket_why')}}</h2>
                     </div>
                 </div>
             </div>

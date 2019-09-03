@@ -1,5 +1,5 @@
-@extends('front-end.master.front-end')
-@section('sass')
+@extends('front-end.master.newest-master')
+@section('css')
     <link rel="stylesheet" href="{{asset('css/front-end/youtube.css')}}">
 @endsection
 @section('search')

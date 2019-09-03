@@ -1,4 +1,5 @@
-@extends('front-end.master.front-end')
+@extends('front-end.master.newest-master')
+
 
 @section('search')
     <div class="container">
@@ -20,6 +21,22 @@
             </div>
         </div>
     </div>
+@endsection
+@section('header')
+    <header class="header-home header-home--color">
+
+        <div class="background background--clouds">
+            @php $site_logo = Voyager::setting('site.logo', ''); @endphp
+            <div class="container background background--right background--features background--header"
+                 style="background-image: url({{asset('storage/'.$site_logo)}})">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="header-home__title header-home__title--features">{{Voyager::setting('site.title_potential')}}<br/>{{Voyager::setting('site.ket_potential')}}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
 @endsection
 @section('content')
     <div class="col-12 col-m-12">
