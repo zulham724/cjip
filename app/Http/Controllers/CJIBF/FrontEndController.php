@@ -35,20 +35,22 @@ class FrontEndController extends Controller
         $pengumuman = Pengumuman::all();
         $registered = CjibfInvestor::where('profile_id', $profile->id)->first();
 
-        $cps = CjibfCp::where('event_id', $events->id)->get();
+
 
         //dd($profile);
         //dd($registered);
         if (isset($events)){
+            $cps = CjibfCp::where('event_id', $events->id)->get();
             $buka = Carbon::parse($events->tgl_buka)->format('d/m/Y');
             $now = Carbon::now()->format('d/m/Y');
+            return view('front-end.investor.content.cjibf', compact('events', 'profile', 'cities', 'sektors', 'pengumuman', 'registered', 'cps'));
         }
 
         //dd(Carbon::parse($events->tgl_buka)->lte(Carbon::now()));
 
         //dd(Carbon::parse($events->tgl_buka)->format('d/m/Y'));
         //dd(Carbon::now()->format('d/m/Y'));
-        return view('front-end.investor.content.cjibf', compact('events', 'profile', 'cities', 'sektors', 'pengumuman', 'registered', 'cps'));
+        return view('front-end.investor.content.cjibf', compact('events', 'profile', 'cities', 'sektors', 'pengumuman', 'registered'));
     }
 
     public function join(Request $request){
@@ -82,7 +84,7 @@ class FrontEndController extends Controller
         //dd($sisakursi);
 
         if ($sisakursi->sisa <= 0){
-           /* $cadangans = CjibfTable::with('jenis')->where('jenis_meja', 8)->where('sisa', '>', 0)->first();*/
+            /* $cadangans = CjibfTable::with('jenis')->where('jenis_meja', 8)->where('sisa', '>', 0)->first();*/
             $cadangans = CjibfTable::whereHas('jenis', function ($query){
                 $query->where('nama', 'Cadangan')->where('sisa', '>', 0);
             })->first();
