@@ -107,6 +107,8 @@ class HomeController extends Controller
         })->where('status', 1)->paginate(5);
         //dd($proyeks);
 
+
+
         return view('front-end.marketplace.ready-to-offer', compact('proyeks'));
        //$proyeks = Proyek::with('marketplace');
     }

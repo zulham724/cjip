@@ -75,9 +75,6 @@
         </nav>
     </div>
 </div>
-<!--Mobile menu-->
-
-
 
 @yield('header')
 

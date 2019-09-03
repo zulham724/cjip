@@ -1,9 +1,21 @@
-@extends('front-end.master.front-end')
-@section('sass')
-    <link rel="stylesheet" href="{{asset('css/front-end/youtube.css')}}">
+@extends('front-end.master.newest-master')
+
+
+@section('header')
+    <header class="header-home header-home--color">
+        <div class="background background--wave">
+            @php $site_logo = Voyager::setting('site.logo', ''); @endphp
+            <div class="container background background--right background--features background--header"
+                 style="background-image: url({{asset('storage/'.$site_logo)}})">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="header-home__title header-home__title--features">Here is Some Prospective Projecs<br/></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
 @endsection
-
-
 @section('content')
     <div class="col-12 col-m-12">
         {{--SECTION PROJECT--}}
@@ -27,7 +39,19 @@
                         </div>
                         <div class="col-6 about-app__img about-app__img--left">
                             <div class="about-app__img-wrap">
-                                <img alt="" src="@isset($proyek->foto) {{Voyager::image($proyek->foto)}} @else {{'storage/'.Voyager::setting('site.not_found')}}@endisset">
+
+                                @isset($proyek->fotos)
+                                @php
+                                    $images = json_decode($proyek->fotos)
+                                @endphp
+
+
+                                        <img src="{{Voyager::image($images[0])}}" alt="">
+
+                                    @else
+                                    <img alt="" src="{{'storage/'.Voyager::setting('site.not_found')}}">
+                                @endisset
+
                             </div>
                         </div>
                     </div>
@@ -422,6 +446,7 @@
         });
     </script>--}}
     <script src=https://cdnjs.cloudflare.com/ajax/libs/echarts/4.0.2/echarts-en.min.js charset=utf-8></script>
+    <script src="{{asset('js/front-end/carousel.js')}}"></script>
     {{--{!! ($chart->script()) !!}--}}
 @endsection
 
