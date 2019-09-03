@@ -1,4 +1,4 @@
-@extends('front-end.master.front-end')
+@extends('front-end.master.newest-master')
 
 @section('content')
     <div class="col-12 col-m-12" style="padding-top: 15%">

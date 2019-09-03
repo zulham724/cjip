@@ -110,7 +110,6 @@
 
 <script src="{{asset('js/front-end/menu.js')}}"></script>
 <script src="{{asset('js/front-end/mobile-menu.js')}}"></script>
-<script src="{{mix('js/app.js')}}"></script>
 @yield('js')
 </body>
 </html>
