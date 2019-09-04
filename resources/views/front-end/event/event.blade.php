@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Amigo - Multi-purpose Template">
-    <meta name="keywords" content="Amigo - Multi-purpose Template">
-    <meta name="author" content="Mandy">
+    <meta name="description" content="{{setting('site.title')}}">
+    <meta name="keywords" content="Investasi, CJIBF, Invest, Jawa Tengah">
+    <meta name="author" content="wdnsds">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <!--
     ========================================================================
@@ -18,7 +18,7 @@
     Copyright (c) 2018 - Amigo
     ========================================================================
     -->
-    <title>Amigo - Multi-purpose Template</title>
+    <title>{{setting('site.title')}}</title>
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
@@ -44,6 +44,14 @@
             margin-left:4.166666667%
         }
     </style>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-143558094-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-143558094-1');
+    </script>
     <!-- End -->
 
 </head>
@@ -117,28 +125,28 @@
     <section id="home">
         @isset($setting)
             @php
-            $images = json_decode($setting->carousels, true);
-            //dd($images);
+                $images = json_decode($setting->carousels, true);
+                //dd($images);
             @endphp
-        <div class="owl-carousel" data-nav-arrow="true" data-items="1" data-md-items="1" data-sm-items="1" data-xs-items="1" data-xx-items="1" data-loop="true" data-space="0">
-            @foreach((array)$images as $image)
-            <div class="slider bg-cover bg-no-repeat bg-center-center" style="background-image: url('{{Voyager::image($image)}}');">
-                <div class="container">
-                    <div class="row align-items-center full-screen p-100px-tb">
-                        <div class="col-xl-12 col-lg-12 col-md-12 m-50px-t">
+            <div class="owl-carousel" data-nav-arrow="true" data-items="1" data-md-items="1" data-sm-items="1" data-xs-items="1" data-xx-items="1" data-loop="true" data-space="0">
+                @foreach((array)$images as $image)
+                    <div class="slider bg-cover bg-no-repeat bg-center-center" style="background-image: url('{{Voyager::image($image)}}');">
+                        <div class="container">
+                            <div class="row align-items-center full-screen p-100px-tb">
+                                <div class="col-xl-12 col-lg-12 col-md-12 m-50px-t">
 
-                            <img src="{{Voyager::image($setting->logo)}}" style="display: block;margin-left: auto;margin-right: auto;max-width: 200px; -webkit-filter: drop-shadow(5px 5px 5px #222); filter: drop-shadow(5px 5px 5px #222);" alt="" >
+                                    <img src="{{Voyager::image($setting->logo)}}" style="display: block;margin-left: auto;margin-right: auto;max-width: 200px; -webkit-filter: drop-shadow(5px 5px 5px #222); filter: drop-shadow(5px 5px 5px #222);" alt="" >
 
-                            <div class="p-30px-t sm-p-5px-t" align="center">
-                                <a href="#venue" class="m-btn m-10px-r">Join Us</a>
-                            </div>
-                        </div>
-                    </div> <!-- row -->
-                </div> <!-- container -->
+                                    <div class="p-30px-t sm-p-5px-t" align="center">
+                                        <a href="#venue" class="m-btn m-10px-r">Join Us</a>
+                                    </div>
+                                </div>
+                            </div> <!-- row -->
+                        </div> <!-- container -->
+                    </div>
+                    <!-- Slider -->
+                @endforeach
             </div>
-            <!-- Slider -->
-            @endforeach
-        </div>
             <h1 class="font-alt font-80 md-font-40 sm-font-30 font-w-700 color-white m-0px m-45px-b md-m-35px-b sm-m-20px-b" align="center"><span class="color-theme">{{$setting->initial_name}}</span></h1>
             <h1 class="font-alt font-30 md-font-15 sm-font-10 font-w-700 color-white m-0px m-45px-b md-m-35px-b sm-m-20px-b" align="center"><span class="color-dark-gray">{{$setting->nama_kegiatan}}</span></h1>
             <p class="color-dark-gray font-18 sm-font-15" align="center">{{$setting->keterangan}}</p>
@@ -146,51 +154,51 @@
     </section>
     <!-- Home End -->
 
-    {{--<section id="about" class="bg-no-repeat bg-center-left" style="background-image: url({{asset('cjibf/img/1600x1000.jpg')}});">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 col-md-6">
-                    <div class="white-opacity-bg p-100px-tb md-p-50px-tb sm-p-40px-tb">
-                        <h3 class="font-alt color-extra-dark-gray m-0px m-10px-b font-w-700">Be stronger </h3>
-                        <h6 class="font-alt font-w-600 font-16 color-theme m-0px m-20px-b">change your body with stargym</h6>
+{{--<section id="about" class="bg-no-repeat bg-center-left" style="background-image: url({{asset('cjibf/img/1600x1000.jpg')}});">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <div class="white-opacity-bg p-100px-tb md-p-50px-tb sm-p-40px-tb">
+                    <h3 class="font-alt color-extra-dark-gray m-0px m-10px-b font-w-700">Be stronger </h3>
+                    <h6 class="font-alt font-w-600 font-16 color-theme m-0px m-20px-b">change your body with stargym</h6>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p class="m-35epx-b">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                        cillum dolore eu fugiat nulla pariatur.</p>
+                    <a href="#" class="m-btn">BECOME A MEMBER</a>
+                </div>
+            </div>
+        </div> <!-- row -->
+    </div> <!-- container -->
+</section>
+
+<!-- About Us -->
+<section  class="section light-gray-bg section-overlay">
+    <div class="section-overlay-in section-overlay-l section-overlay-w-50 bg-cover bg-no-repeat bg-center-center"  style="background-image: url({{asset('cjibf/img/1600x1000.jpg')}});">
+    </div>
+    <div class="container">
+        <div class="row justify-content-end">
+            <div class="col-12 col-md-7">
+                <div class="box-shadow-large white-bg">
+                    <div class="p-30px">
+                        <h5 class="color-extra-dark-gray font-w-700 font-alt m-0px m-25px-b">About <span class="color-theme">Fitness</span></h5>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <p class="m-30px-b">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                             tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <p class="m-35epx-b">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                            cillum dolore eu fugiat nulla pariatur.</p>
                         <a href="#" class="m-btn">BECOME A MEMBER</a>
                     </div>
                 </div>
-            </div> <!-- row -->
-        </div> <!-- container -->
-    </section>
+            </div> <!-- col -->
+        </div> <!-- row -->
 
-    <!-- About Us -->
-    <section  class="section light-gray-bg section-overlay">
-        <div class="section-overlay-in section-overlay-l section-overlay-w-50 bg-cover bg-no-repeat bg-center-center"  style="background-image: url({{asset('cjibf/img/1600x1000.jpg')}});">
-        </div>
-        <div class="container">
-            <div class="row justify-content-end">
-                <div class="col-12 col-md-7">
-                    <div class="box-shadow-large white-bg">
-                        <div class="p-30px">
-                            <h5 class="color-extra-dark-gray font-w-700 font-alt m-0px m-25px-b">About <span class="color-theme">Fitness</span></h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                            <p class="m-30px-b">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <a href="#" class="m-btn">BECOME A MEMBER</a>
-                        </div>
-                    </div>
-                </div> <!-- col -->
-            </div> <!-- row -->
-
-        </div> <!-- container -->
-    </section>--}}
-    <!-- About Us End-->
+    </div> <!-- container -->
+</section>--}}
+<!-- About Us End-->
 
     <!-- Service Start -->
     <section id="sector" class="section" style="background-image: url({{asset('cjibf/img/300ppi/bg.png')}});">
@@ -204,7 +212,7 @@
             </div>
             <div class="row no-gutters">
                 @isset($sectors)
-                @foreach($sectors as $sector)
+                    @foreach($sectors as $sector)
                         <div class="col-md-6 bg-no-repeat bg-center-right bg-cover">
                             <div class="portfolio-content lightbox-gallery">
                                 <ul class="portfolio-cols portfolio-cols-12">
@@ -224,7 +232,7 @@
                                 </ul>
                             </div>
                         </div>
-                @endforeach
+                    @endforeach
 
                 @endisset
             </div> <!-- row -->
@@ -243,24 +251,23 @@
                 </div> <!-- col -->
             </div>
             @isset($talkshows)
-                    <div class="row">
-                        @foreach($talkshows as $talkshow)
+                <div class="row">
+                    @foreach($talkshows as $talkshow)
                         <div class="col">
-                            <div class="our-team-04">
-                                <div class="box-shadow hover-shadow p-10px white-bg text-center">
-                                    <div class="p-20px-t p-10px-b">
-                                        <div class="color-extra-dark-gray font-16 font-w-700 font-alt m-5px-b">{{$talkshow->nama}}</div>
-                                        <span class="font-14 font-w-700">{{$talkshow->jabatan}}</span>
-                                        <p class="color-medium-gray font-18 sm-font-15" align="center">{{$talkshow->tama}}</p>
-                                    </div>
-                                    <div class="team-img bg-cover bg-no-repeat bg-center-center" style="background-image: url('{{Voyager::image($talkshow->foto)}}');">
-                                    </div>
+                            <div class="our-team border-all">
+                                <div class="team-img">
+                                    <img src="{{Voyager::image($talkshow->foto)}}" title="{{$talkshow->nama}}" alt="{{$talkshow->nama}}">
+                                </div>
+                                <div class="p-20px-tb text-center">
+                                    <div class="color-black font-18 font-w-400 letter-spacing-2 text-uppercase m-5px-b">{{$talkshow->nama}}</div>
+                                    <span class="font-14 font-w-300 letter-spacing-2">{{$talkshow->jabatan}}</span><br>
+                                    <span class="font-14 font-w-300 letter-spacing-2">{{$talkshow->tema}}</span>
                                 </div>
                             </div> <!-- Our Team -->
                         </div> <!-- Col -->
 
-                        @endforeach
-                    </div> <!-- row -->
+                    @endforeach
+                </div> <!-- row -->
             @endisset
 
 
@@ -278,13 +285,13 @@
                 <div class="col-12 col-md-10 col-lg-8 text-center">
                     <h3 class="color-extra-dark-gray font-w-700 font-alt m-0px m-15px-b"><span class="color-theme">Agenda</span></h3>
                     <span class="w-50px black-bg h-2px display-block m-auto-all m-15px-t m-25px-b"></span>
-                    </div> <!-- col -->
+                </div> <!-- col -->
             </div>
 
             <div class="row" align="center">
                 <div class="col-12 col-md-12">
                     <img src="{{Voyager::image($setting->agenda)}}" style="max-height: 600px; width: auto" title="Amigo" alt="Amigo">
-<!-- Blog Iteam -->
+                    <!-- Blog Iteam -->
                 </div> <!-- col -->
 
 
@@ -398,18 +405,24 @@
                         </div>
 
                         @isset($cps)
-                        <div class="row">
-                            <div class="col-2">
-                                <i class="icon-phone color-black font-25"></i>
-                            </div>
-                            <div class="col-10">
+                            <div class="row">
+                                <div class="col-2">
+                                    <i class="icon-phone color-black font-25"></i>
+                                </div>
+                                <div class="col-10">
 
                                     @foreach($cps as $cp)
-                                        <p>{{$cp->name}}<span>&emsp;</span>{{$cp->phone}}</p>
+                                        <p>{{$cp->name}}<span>&emsp;</span>{{$cp->phone}}
+                                            <span>
+                                                <a href="https://api.whatsapp.com/send?phone={{str_replace(array('+', '-', ' '), '', $cp->phone)}}&text=I'd like to join {{$setting->nama_kegiatan}}, but ">
+                                                    <button class="m-btn border-radius-30px box-shadow-large">Chat me</button>
+                                                </a>
+                                            </span>
+                                        </p>
                                     @endforeach
 
+                                </div>
                             </div>
-                        </div>
                         @endisset
 
                         <div class="row">

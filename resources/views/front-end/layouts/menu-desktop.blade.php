@@ -35,8 +35,17 @@
                 <li>
                     <div class="menu__logo">
                         <div class="believe">
+
                             <a href="{{route('dashboard.investor', Auth::guard('investor')->user()->id)}}">
-                                <img alt="{{Auth::guard('investor')->user()->name}}" class="believe__avatar" src="{{Auth::guard('investor')->user()->image}}"/>
+                                <img alt="{{Auth::guard('investor')->user()->name}}" class="believe__avatar" src="
+                        @if(empty(Auth::guard('investor')->user()->image))
+
+                                {{Voyager::image(setting('site.avatar'))}}
+
+                        @else
+                                {{Auth::guard('investor')->user()->image}}
+                                "/>
+                                @endif
                             </a>
                         </div>
                     </div>

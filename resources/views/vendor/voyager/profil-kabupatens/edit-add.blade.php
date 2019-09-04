@@ -92,7 +92,7 @@
                                         @elseif($row->display_name == "Infrasturktur Pendukung")
                                             <div id="input-player-list">
                                                 <div class="form-group">
-                                                    <input placeholder="Infrastruktur Pendukung" name="infrastruktur[]" id="infrastruktur" class="form-control col-md-12"
+                                                    <input placeholder="Infrastruktur Pendukung" name="infrasturktur[]" id="infrasturktur" class="form-control col-md-12"
                                                     >
                                                 </div>
                                                 <div class="col-lg-12">
@@ -155,7 +155,7 @@
                                             @if(is_null($infrasturkturs['infrastruktur'][0]))
                                                 <div id="input-player-list">
                                                     <div class="form-group">
-                                                        <input placeholder="Infrastruktur Pendukung" name="infrastruktur[]" id="infrastruktur" class="form-control col-md-12"
+                                                        <input placeholder="Infrastruktur Pendukung" name="infrasturktur[]" id="infrasturktur" class="form-control col-md-12"
                                                         >
                                                     </div>
                                                     <div class="col-lg-12">
@@ -286,7 +286,7 @@
         document.getElementById('addPlayer').onclick = function createInputField() {
             var input = document.createElement('input');
             var lineBreak = document.createElement('br');
-            var testId = "infrastruktur";
+            var testId = "infrasturktur";
             var i = 0;
             var x = document.getElementsByTagName('INPUT').length - 2;
             for (i = 0; i < x; i++) {
@@ -294,7 +294,7 @@
             }
             input.setAttribute('id', testId + i);
             input.className = 'form-control';
-            input.name = 'infrastruktur[]';
+            input.name = 'infrasturktur[]';
             input.placeholder = 'Infrastruktur Pendukung Lain';
             var aplayer1 = document.getElementById('input-player-list');
             aplayer1.appendChild(input);

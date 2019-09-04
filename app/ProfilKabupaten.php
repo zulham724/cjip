@@ -14,7 +14,7 @@ class ProfilKabupaten extends Model
    protected $table = 'profil_kabupatens';
 
     use Translatable;
-    protected $translatable = ['profil', 'infrastruktur', 'jarak_ke_smg', 'rtrw', 'pert_ekonomi',
-        'komp_usia', 'bc_ratio', 'luas_lahan', 'project_name'
+    protected $translatable = ['profil', 'jarak_ke_smg', 'rtrw', 'pert_ekonomi',
+        'komp_usia'
     ];
 }
