@@ -171,7 +171,7 @@ return [
         Fomvasss\Youtube\YoutubeServiceProvider::class,
         ConsoleTVs\Charts\ChartsServiceProvider::class,
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
-
+        \Matchish\ScoutElasticSearch\ElasticSearchServiceProvider::class,
         /*
          * Application Service Providers...
          */

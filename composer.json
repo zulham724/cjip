@@ -20,12 +20,13 @@
         "laravel/scout": "^7.1",
         "laravel/socialite": "^4.1",
         "laravel/tinker": "^1.0",
+        "matchish/laravel-scout-elasticsearch": "^2.0",
         "niklasravnsborg/laravel-pdf": "^3.1",
         "pusher/pusher-php-server": "^3.4",
         "qoraiche/laravel-mail-editor": "^1.2",
+        "simplesoftwareio/simple-qrcode": "~2",
         "tcg/voyager": "^1.2",
-        "teamtnt/laravel-scout-tntsearch-driver": "^7.0",
-        "simplesoftwareio/simple-qrcode": "~2"
+        "teamtnt/laravel-scout-tntsearch-driver": "^7.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",
