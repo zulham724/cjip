@@ -26,7 +26,9 @@
         "qoraiche/laravel-mail-editor": "^1.2",
         "simplesoftwareio/simple-qrcode": "~2",
         "tcg/voyager": "^1.2",
-        "teamtnt/laravel-scout-tntsearch-driver": "^7.0"
+        "teamtnt/laravel-scout-tntsearch-driver": "^7.0",
+      "ext-curl": "*",
+        "ext-json": "*"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",

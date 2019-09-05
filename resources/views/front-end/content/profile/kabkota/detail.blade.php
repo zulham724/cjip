@@ -401,14 +401,15 @@
         var tahun = [];
         var umr = [];
         var umrs = {!! $umrs !!};
-        console.log(umrs);
+        /*console.log(umrs);*/
         var i;
 
         for(i=0; i<umrs.length; i++){
             tahun.push(umrs[i].tahun);
             umr.push(Math.abs(umrs[i].nilai_umr));
         }
-        console.log(umr)
+        /*console.log(tahun)
+        console.log(umrs)*/
         var sumber = umrs[0].sumber_data;
         //console.log(umr);
         Highcharts.chart('umr', {

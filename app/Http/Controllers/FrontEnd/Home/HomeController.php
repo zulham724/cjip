@@ -11,6 +11,7 @@ use App\Faq;
 use App\Feed;
 use App\InfrastrukturPendukung;
 use App\JenisFaq;
+use App\JenisKatUserAir;
 use App\LoiInterest;
 use App\Pariwisata;
 use App\Perikanan;
@@ -51,7 +52,23 @@ class HomeController extends Controller
             //dd($umk);
        }
        $listriks = BiayaListrik::all();
-       $airs = BiayaAir::all();
+       $airs = JenisKatUserAir::all();
+       $alphabet = range('A', 'Z');
+
+       $ch = curl_init();
+       curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+       curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+       curl_setopt($ch, CURLOPT_URL, 'http://sijablay.dpmptsp.jatengprov.go.id/api/realisasi');
+       $result = curl_exec($ch);
+       curl_close($ch);
+       $obj = json_decode($result);
+       //dd(json_encode($obj));
+
+       foreach ($airs as $air){
+           foreach ($air->air as $a){
+               //dd($a);
+           }
+       }
 
 
        if (Auth::guard('investor')->check()){
@@ -62,16 +79,16 @@ class HomeController extends Controller
                return redirect()->route('form.profile', Auth::guard('investor')->user()->id );
            }
            elseif (isset($intersts)){
-               return view('front-end.new-home', compact('mapsKey','feeds', 'intersts', 'populers', 'news' , 'ekonomis', 'awards', 'infrastrukturs', 'umks', 'listriks', 'airs', 'user'));
+               return view('front-end.new-home', compact('mapsKey','alphabet','obj','feeds', 'intersts', 'populers', 'news' , 'ekonomis', 'awards', 'infrastrukturs', 'umks', 'listriks', 'airs', 'user'));
            }
            else{
-               return view('front-end.new-home', compact('mapsKey','feeds',  'populers', 'news' , 'ekonomis', 'awards', 'infrastrukturs', 'umks', 'listriks', 'airs', 'user'));
+               return view('front-end.new-home', compact('mapsKey','alphabet','feeds','obj',  'populers', 'news' , 'ekonomis', 'awards', 'infrastrukturs', 'umks', 'listriks', 'airs', 'user'));
 
            }
        }
        else{
            return view('front-end.new-home', compact(
-               'mapsKey','feeds', 'populers', 'news', 'ekonomis', 'awards', 'infrastrukturs', 'umks', 'listriks', 'airs', 'user'));
+               'mapsKey','feeds', 'populers', 'news', 'ekonomis', 'awards','alphabet','obj', 'infrastrukturs', 'umks', 'listriks', 'airs', 'user'));
        }
 
 

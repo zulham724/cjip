@@ -106,19 +106,19 @@
                                     @isset($proyek->irr)
                                         <tr class="site-table__row">
                                             <th class="site-table__th">NPV</th>
-                                            <td class="site-table__td"><p>{{$proyek->irr}}</p></td>
+                                            <td class="site-table__td"><p>{{$proyek->npv}}</p></td>
                                         </tr>
                                     @endisset
                                     @isset($proyek->eksisting)
                                         <tr class="site-table__row">
                                             <th class="site-table__th">IRR</th>
-                                            <td class="site-table__td"><p>{{$proyek->eksisting}}</p></td>
+                                            <td class="site-table__td"><p>{{$proyek->irr}}</p></td>
                                         </tr>
                                     @endisset
                                     @isset($proyek->bc_ratio)
                                         <tr class="site-table__row">
                                             <th class="site-table__th">BC Ration</th>
-                                            <td class="site-table__td"><p>{{$proyek->eksisting}}</p></td>
+                                            <td class="site-table__td"><p>{{$proyek->bc_ratio}}</p></td>
                                         </tr>
                                     @endisset
                                     @isset($proyek->playback_period)
