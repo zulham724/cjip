@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {!! SEO::generate() !!}
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{asset('css/front-end/main.css')}}" id="main_style">
     <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,800" rel="stylesheet">
@@ -36,7 +38,9 @@
                     @php $site_logo = Voyager::setting('site.logo', ''); @endphp
                     <img class="menu__logo-img" style="max-width: 50px;height: auto"
                          src="{{asset('storage/'.$site_logo)}}" alt="">
-                    <p class="menu__logo-title">{{setting('site.description')}}</p>
+                    <p class="menu__logo-title">
+                        {{setting('site.title')}}
+                    </p>
                 </a>
             </div>
             <div class="menu__item d-t-none">

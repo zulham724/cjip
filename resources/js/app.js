@@ -20,12 +20,5 @@ Vue.component('Loiupdate', require('./components/LoiComponent.vue', 'required'))
 
 
 const app = new Vue({
-    el: '#app',
-    created(){
-        Echo.channel('loi-channel')
-            .listen('LiveLoiUpdate', (e) => {
-                console.log(e);
-            });
-    }
-
+    el: '#app'
 });

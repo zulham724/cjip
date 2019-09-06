@@ -20,7 +20,4 @@ class ProfilKabupaten extends Model
         'komp_usia'
     ];
 
-    public function searchableAs(){
-        return 'elasticsearch.indices.settigs.profil';
-    }
 }

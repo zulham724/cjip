@@ -9,5 +9,9 @@
       <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="SQLITE" exact-version="0" />
       <introspection-schemas>*:</introspection-schemas>
     </data-source>
+    <data-source name="mixed.php0000023_b565401_f_ds" uuid="7d572119-f9a0-439a-ab7f-d7846d3fdb48">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="SQLITE" exact-version="0" />
+      <auth-required>false</auth-required>
+    </data-source>
   </component>
 </project>

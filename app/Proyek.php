@@ -12,15 +12,11 @@ class Proyek extends Model
 {
     use Spatial;
     use Translatable;
-    use Searchable;
     protected $translatable = ['latar_belakang', 'lingkup_pekerjaan', 'eksisting', 'status_kepemilikan', 'skema_investasi',
         'playback_period', 'bc_ratio', 'luas_lahan', 'project_name'
     ];
     protected $spatial = ['location'];
 
-    public function searchableAs(){
-        return 'elasticsearch.indices.settigs.proyeks';
-    }
     public function kabkota(){
         return $this->belongsTo(User::class, 'kab_kota_id');
     }

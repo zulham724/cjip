@@ -9,7 +9,7 @@
                  style="background-image: url({{asset('storage/'.$site_logo)}})">
                 <div class="row">
                     <div class="col-12">
-                        <h2 class="header-home__title header-home__title--features">{{Voyager::setting('site.title_potential')}}<br/>{{Voyager::setting('site.ket_potential')}}</h2>
+                        <h2 class="header-home__title header-home__title--features">{{Voyager::setting('site.title_profile')}}<br/>{{Voyager::setting('site.ket_profile')}}</h2>
                     </div>
                 </div>
             </div>
