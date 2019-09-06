@@ -30,6 +30,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use function Symfony\Component\Debug\Tests\testHeader;
 use TCG\Voyager\Facades\Voyager;
 
 class HomeController extends Controller
@@ -43,6 +44,10 @@ class HomeController extends Controller
        SEOTools::opengraph()->addProperty('type', 'website');
        SEOTools::twitter()->setSite('@DPMPTSPJateng');
        SEOTools::jsonLd()->addImage('https://cjip.jatengprov.go.id/storage/settings/August2019/esr0C8HmQss78AAnlaue.png');
+
+
+       $test = Proyek::with('translations')->get();
+
 
        $mapsKey = 'AIzaSyBGsawbqVs083lGEe8cilVz0FqO0rHt5ZE&amp';
        $feeds = Feed::orderByViews()->paginate(8);

@@ -12,9 +12,7 @@ class Proyek extends Model
 {
     use Spatial;
     use Translatable;
-    protected $translatable = ['latar_belakang', 'lingkup_pekerjaan', 'eksisting', 'status_kepemilikan', 'skema_investasi',
-        'playback_period', 'bc_ratio', 'luas_lahan', 'project_name'
-    ];
+    protected $translatable = ['latar_belakang'];
     protected $spatial = ['location'];
 
     public function kabkota(){
