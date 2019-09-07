@@ -757,9 +757,11 @@ class ProfilKabupatenController extends BaseVoyagerBaseController
             }
             //dump($row->field == 'infrasturktur');
             if ($row->field == 'infrasturktur'){
+
                 $infrastruktur = $data->infrasturktur;
                 $infrastruktur['infrastruktur'] = $request->infrastruktur;
                 $data->infrasturktur = json_encode($infrastruktur);
+                //dd($data->infrasturktur);
             }
         }
         //die();

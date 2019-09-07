@@ -3,7 +3,6 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Laravel\Scout\Searchable;
 use TCG\Voyager\Traits\Translatable;
 
 
@@ -15,9 +14,18 @@ class ProfilKabupaten extends Model
    protected $table = 'profil_kabupatens';
 
     use Translatable;
-    use Searchable;
-    protected $translatable = ['profil', 'jarak_ke_smg', 'rtrw', 'pert_ekonomi',
-        'komp_usia'
-    ];
 
+    protected $translatable = [
+        'profil',
+        'luas',
+        'jarak_ke_smg',
+        'rtrw',
+        'grdp',
+        'pert_ekonomi',
+        'inflasi',
+        'populasi',
+        'angk_kerja',
+        'umr',
+        'komp_usia',
+    ];
 }
