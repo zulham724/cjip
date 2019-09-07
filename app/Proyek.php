@@ -5,10 +5,27 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use TCG\Voyager\Traits\Spatial;
 use Illuminate\Support\Facades\Auth;
+use TCG\Voyager\Traits\Translatable;
 
 class Proyek extends Model
 {
     use Spatial;
+
+    use Translatable;
+
+    protected $translatable = [
+        'project_name', 'latar_belakang',
+        'lingkup_pekerjaan',
+        'eksisting',
+        'luas_lahan',
+        'status_kepemilikan',
+        'skema_investasi',
+        'npv',
+        'irr',
+        'bc_ratio',
+        'playback_period',
+        'cp_alamat',
+    ];
 
     protected $spatial = ['location'];
 

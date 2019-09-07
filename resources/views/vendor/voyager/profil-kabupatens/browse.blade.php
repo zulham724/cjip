@@ -176,8 +176,8 @@
                                                                 $infras = json_decode($data->infrasturktur);
                                                             @endphp
                                                             @isset($infras)
-                                                                @foreach($infras as $infra)
-                                                                    @foreach($infra as $in)
+                                                                @foreach((array)$infras as $infra)
+                                                                    @foreach((array)$infra as $in)
                                                                         <li>{{$in}}</li>
                                                                     @endforeach
                                                                 @endforeach
@@ -347,8 +347,8 @@
                                                                 $infras = json_decode($data->infrasturktur);
                                                             @endphp
                                                             @isset($infras)
-                                                                @foreach($infras as $infra)
-                                                                    @foreach($infra as $in)
+                                                                @foreach((array)$infras as $infra)
+                                                                    @foreach((array)$infra as $in)
                                                                         <li>{{$in}}</li>
                                                                     @endforeach
                                                                 @endforeach
