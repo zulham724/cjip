@@ -36,7 +36,7 @@
                     @php $site_logo = Voyager::setting('site.logo', ''); @endphp
                     <img class="menu__logo-img" style="max-width: 50px;height: auto"
                          src="{{asset('storage/'.$site_logo)}}" alt="">
-                    <p class="menu__logo-title">{{setting('site.description')}}</p>
+                    <p class="menu__logo-title">{{setting('site.title')}}</p>
                 </a>
             </div>
             <div class="menu__item d-t-none">

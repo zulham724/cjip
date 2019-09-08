@@ -24,75 +24,96 @@ use App\Proyek;
 use App\Umr;
 use App\User;
 use App\UserInvestor;
+use Artesaos\SEOTools\Facades\SEOTools;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use function Symfony\Component\Debug\Tests\testHeader;
+use TCG\Voyager\Facades\Voyager;
 
 class HomeController extends Controller
 {
-   public function home(){
-       $mapsKey = 'AIzaSyBGsawbqVs083lGEe8cilVz0FqO0rHt5ZE&amp';
-       $feeds = Feed::orderByViews()->paginate(8);
-       $populers = Feed::orderByViews()->take(5)->get();
-       $news = Berita::take(5)->get();
+    public function home(){
 
-       $ekonomis = PertumbuhanEkonomi::where('status', 1)->get();
-       $awards = Award::all();
-       $infrastrukturs = InfrastrukturPendukung::all();
-       $umks = Umr::all()->groupBy(['kab_kota_id', 'tahun']);
-       $user = User::all();
-       //dd($user);
-       //dd($umks->toJson());
-       foreach ($umks as $key1 => $umk){
-           //dd($key1);
-           //dd(count($umk));
-           $kota = User::where('id', $key1)->first();
-           //dd($kota->kota->kabkota->nama);
+        SEOTools::setTitle('Home');
+        SEOTools::setDescription(Voyager::setting('site.description'));
+        SEOTools::opengraph()->setUrl(url()->current());
+        SEOTools::setCanonical(url()->current());
+        SEOTools::opengraph()->addProperty('type', 'website');
+        SEOTools::twitter()->setSite('@DPMPTSPJateng');
+        SEOTools::jsonLd()->addImage('https://cjip.jatengprov.go.id/storage/settings/August2019/esr0C8HmQss78AAnlaue.png');
+
+
+        $test = Proyek::with('translations')->get();
+
+
+        $mapsKey = 'AIzaSyBGsawbqVs083lGEe8cilVz0FqO0rHt5ZE&amp';
+        $feeds = Feed::orderByViews()->paginate(8);
+        $populers = Feed::orderByViews()->take(5)->get();
+        $news = Berita::take(5)->get();
+
+        $ekonomis = PertumbuhanEkonomi::where('status', 1)->get();
+        $awards = Award::all();
+        $infrastrukturs = InfrastrukturPendukung::all();
+        $umks = Umr::all()->groupBy(['kab_kota_id', 'tahun']);
+        $user = User::all();
+        //dd($user);
+        //dd($umks->toJson());
+        foreach ($umks as $key1 => $umk){
+            //dd($key1);
+            //dd(count($umk));
+            $kota = User::where('id', $key1)->first();
+            //dd($kota->kota->kabkota->nama);
             //dd($umk);
-       }
-       $listriks = BiayaListrik::all();
-       $airs = JenisKatUserAir::all();
-       $alphabet = range('A', 'Z');
+        }
+        $listriks = BiayaListrik::all();
+        $airs = JenisKatUserAir::all();
+        $alphabet = range('A', 'Z');
 
-       $ch = curl_init();
-       curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-       curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-       curl_setopt($ch, CURLOPT_URL, 'http://sijablay.dpmptsp.jatengprov.go.id/api/realisasi');
-       $result = curl_exec($ch);
-       curl_close($ch);
-       $obj = json_decode($result);
-       //dd(json_encode($obj));
+        /*$jablay = new Client();
+        $response = $jablay->get('http://sijablay.dpmptsp.jatengprov.go.id/api/realisasi')->getBody();
+        $obj = json_decode($response);*/
 
-       foreach ($airs as $air){
-           foreach ($air->air as $a){
-               //dd($a);
-           }
-       }
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_URL, 'http://sijablay.dpmptsp.jatengprov.go.id/api/realisasi');
+        $result = curl_exec($ch);
+        curl_close($ch);
+        $obj = json_decode($result);
+        //dd($obj);
 
-
-       if (Auth::guard('investor')->check()){
-           $registered = ProfileInvestor::where('user_id',Auth::guard('investor')->user()->id)->first();
-           $intersts = LoiInterest::where('user_id', Auth::guard('investor')->user()->id)->get();
-           //dd($registered);
-           if (is_null($registered)){
-               return redirect()->route('form.profile', Auth::guard('investor')->user()->id );
-           }
-           elseif (isset($intersts)){
-               return view('front-end.new-home', compact('mapsKey','alphabet','obj','feeds', 'intersts', 'populers', 'news' , 'ekonomis', 'awards', 'infrastrukturs', 'umks', 'listriks', 'airs', 'user'));
-           }
-           else{
-               return view('front-end.new-home', compact('mapsKey','alphabet','feeds','obj',  'populers', 'news' , 'ekonomis', 'awards', 'infrastrukturs', 'umks', 'listriks', 'airs', 'user'));
-
-           }
-       }
-       else{
-           return view('front-end.new-home', compact(
-               'mapsKey','feeds', 'populers', 'news', 'ekonomis', 'awards','alphabet','obj', 'infrastrukturs', 'umks', 'listriks', 'airs', 'user'));
-       }
+        foreach ($airs as $air){
+            foreach ($air->air as $a){
+                //dd($a);
+            }
+        }
 
 
-   }
+        if (Auth::guard('investor')->check()){
+            $registered = ProfileInvestor::where('user_id',Auth::guard('investor')->user()->id)->first();
+            $intersts = LoiInterest::where('user_id', Auth::guard('investor')->user()->id)->get();
+            //dd($registered);
+            if (is_null($registered)){
+                return redirect()->route('form.profile', Auth::guard('investor')->user()->id );
+            }
+            elseif (isset($intersts)){
+                return view('front-end.new-home', compact('mapsKey', 'alphabet','obj','feeds', 'intersts', 'populers', 'news' , 'ekonomis', 'awards', 'infrastrukturs', 'umks', 'listriks', 'airs', 'user'));
+            }
+            else{
+                return view('front-end.new-home', compact('mapsKey', 'alphabet','feeds','obj',  'populers', 'news' , 'ekonomis', 'awards', 'infrastrukturs', 'umks', 'listriks', 'airs', 'user'));
+
+            }
+        }
+        else{
+            return view('front-end.new-home', compact(
+                'mapsKey', 'feeds', 'populers', 'news', 'ekonomis', 'awards','alphabet','obj', 'infrastrukturs', 'umks', 'listriks', 'airs', 'user'));
+        }
+
+
+    }
 
 
     public function likes(Request $request, $id)
@@ -111,14 +132,22 @@ class HomeController extends Controller
     }
 
     public function sidebar(){
-       $intersts = LoiInterest::all();
-       $populers = Feed::orderByViews()->take(5)->get();
-       $news = Berita::take(5)->get();
+        $intersts = LoiInterest::all();
+        $populers = Feed::orderByViews()->take(5)->get();
+        $news = Berita::take(5)->get();
 
-       return view('front-end.sidebar', compact('intersts', 'populers', 'news'));
+        return view('front-end.sidebar', compact('intersts', 'populers', 'news'));
     }
 
     public function readyToOffer(){
+        SEOTools::setTitle('Ready to Offered');
+        SEOTools::setDescription('Here is some ready to offered investment project - '.Voyager::setting('site.description'));
+        SEOTools::opengraph()->setUrl(url()->current());
+        SEOTools::setCanonical(url()->current());
+        SEOTools::opengraph()->addProperty('type', 'articles');
+        SEOTools::twitter()->setSite('@DPMPTSPJateng');
+        SEOTools::jsonLd()->addImage('https://cjip.jatengprov.go.id/storage/settings/August2019/esr0C8HmQss78AAnlaue.png');
+
         $proyeks = Proyek::whereHas('marketplace', function ($query) {
             $query->where('name', '=', 'Ready to Offer');
         })->where('status', 1)->paginate(5);
@@ -127,29 +156,56 @@ class HomeController extends Controller
 
 
         return view('front-end.marketplace.ready-to-offer', compact('proyeks'));
-       //$proyeks = Proyek::with('marketplace');
+        //$proyeks = Proyek::with('marketplace');
     }
     public function prospectiveProject(){
+        SEOTools::setTitle('Prospective Projects');
+        SEOTools::setDescription('Here is some prospective investment project - '.Voyager::setting('site.description'));
+        SEOTools::opengraph()->setUrl(url()->current());
+        SEOTools::setCanonical(url()->current());
+        SEOTools::opengraph()->addProperty('type', 'articles');
+        SEOTools::twitter()->setSite('@DPMPTSPJateng');
+        SEOTools::jsonLd()->addImage('https://cjip.jatengprov.go.id/storage/settings/August2019/esr0C8HmQss78AAnlaue.png');
+
+
         $proyeks = Proyek::whereHas('marketplace', function ($query) {
+
             $query->where('name', '=', 'Prospective Project');
         })->where('status', 1)->paginate(5);
         //dd($proyeks);
-       //$proyeks = Proyek::with('marketplace');
+        //$proyeks = Proyek::with('marketplace');
         return view('front-end.marketplace.prospective', compact('proyeks'));
     }
     public function potentialProject(){
+        SEOTools::setTitle('Potential Projects');
+        SEOTools::setDescription('Here is some potential investment projects investment project - '.Voyager::setting('site.description'));
+        SEOTools::opengraph()->setUrl(url()->current());
+        SEOTools::setCanonical(url()->current());
+        SEOTools::opengraph()->addProperty('type', 'articles');
+        SEOTools::twitter()->setSite('@DPMPTSPJateng');
+        SEOTools::jsonLd()->addImage('https://cjip.jatengprov.go.id/storage/settings/August2019/esr0C8HmQss78AAnlaue.png');
+
+
         $proyeks = Proyek::whereHas('marketplace', function ($query) {
             $query->where('name', '=', 'Potential Project');
         })->paginate(5);
         //dd($proyeks);
-       //$proyeks = Proyek::with('marketplace');
+        //$proyeks = Proyek::with('marketplace');
         return view('front-end.marketplace.potentials', compact('proyeks'));
     }
     public function faq(){
+        SEOTools::setTitle('FAQ');
+        SEOTools::setDescription('Frequently Asked Question about investment in Central Java - Pertanyaan yang sering muncul ketika Anda ingin berinvestasi di Provinsi Jawa Tengah');
+        SEOTools::opengraph()->setUrl(url()->current());
+        SEOTools::setCanonical(url()->current());
+        SEOTools::opengraph()->addProperty('type', 'articles');
+        SEOTools::twitter()->setSite('@DPMPTSPJateng');
+        SEOTools::jsonLd()->addImage('https://cjip.jatengprov.go.id/storage/settings/August2019/esr0C8HmQss78AAnlaue.png');
+
         $faqs = Faq::all();
         $jns_faq = JenisFaq::all();
         //dd($proyeks);
-       //$proyeks = Proyek::with('marketplace');
+        //$proyeks = Proyek::with('marketplace');
         return view('front-end.faq', compact('faqs', 'jns_faq'));
     }
 

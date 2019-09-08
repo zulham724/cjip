@@ -24,6 +24,7 @@
     </header>
 @endsection
 @section('content')
+
     <section class="section">
         <div class="topbar-wrapper">
             <nav class="topbar">
@@ -174,85 +175,109 @@
                     </div>
                 </div>
             </div>
+
+
             <div id="investment-core" class="row about-app">
+                <div class="col-6 about-app__description">
 
-                    <div class="col-6 about-app__description" style="display: block !important;">
-                        <div class="about-app__description-content" style="max-width: 640px!important;">
+                    <div class="row faq">
+                        <div class="about-app__description-content about-app__description-content--left">
                             <img src="{{Voyager::image(setting('site.icon_cost'))}}" style="width: 100px; height: 100px; margin-top: 50px" alt="Investment Cost">
-                            <h4 class="about-app__description-title">Investment Cost - Electricity</h4>
-                            <table id="listrik" class="uk-table uk-table-hover uk-table-striped" style="width:100%">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>User Category</th>
-                                        <th>Code</th>
-                                        <th>Capacity</th>
-                                        <th>Tariff (IDR/kVA)</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($listriks as $listrik)
-                                    <tr>
-                                        <td>{{$loop->iteration}}</td>
-                                        <td>{{$listrik->kategori->user_category}}</td>
-                                        <td>{{$listrik->code}}</td>
-                                        <td>{{$listrik->capacity}}</td>
-                                        <td>{{$listrik->tarif}}</td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
+                            <h4 class="about-app__description-title">Investment Cost</h4>
+                        </div>
+                        <div id="top" class="col-12 col-t-12">
+                            <div class="faq__content">
+                                <div id="chapter1" class="faq__chapter chapter">
+                                    <div class="faq__card card">
+                                        <h4 class="faq__card-title">Electricity
+                                            <span class="faq__card-icon"><i class="mdi mdi-chevron-down"></i></span>
+                                        </h4>
+                                        <div class="faq__card-description">
+                                            <table id="listrik" class="uk-table uk-table-hover uk-table-striped" style="width:100%">
+                                                <thead>
+                                                <tr>
+                                                    <th>No</th>
+                                                    <th>User Category</th>
+                                                    <th>Code</th>
+                                                    <th>Capacity</th>
+                                                    <th>Tariff (IDR/kVA)</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                @foreach($listriks as $listrik)
+                                                    <tr>
+                                                        <td>{{$loop->iteration}}</td>
+                                                        <td>{{$listrik->kategori->user_category}}</td>
+                                                        <td>{{$listrik->code}}</td>
+                                                        <td>{{$listrik->capacity}}</td>
+                                                        <td>{{$listrik->tarif}}</td>
+                                                    </tr>
+                                                @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="faq__card card">
+                                        <h4 class="faq__card-title">Water
+                                            <span class="faq__card-icon"><i class="mdi mdi-chevron-down"></i></span></h4>
+                                        <div class="faq__card-description">
+                                            <table id="water" class="uk-table uk-table-hover uk-table-striped" style="width:100%; text-align: center">
+                                                <thead>
+                                                <tr>
+                                                    <th rowspan="3">No</th>
+                                                    <th rowspan="3">User Category</th>
+                                                    <th colspan="3">Consumption Block (IDR/m3)</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>I</th>
+                                                    <th>II</th>
+                                                    <th>III</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>0-10m3</th>
+                                                    <th>11-20m3</th>
+                                                    <th>> 20m3</th>
+                                                </tr>
+                                                </thead>
+                                                <tbpdy>
+                                                    @foreach($airs as $air)
+                                                        <tr>
+                                                            <td>{{$loop->iteration}}</td>
+                                                            <td>{{$air->user_category}}</td>
+                                                        </tr>
+                                                        @foreach($air->air as $detail)
+                                                            <tr>
+                                                                <td>
+
+                                                                </td>
+                                                                <td>{{$detail->category}}</td>
+                                                                <td>{{$detail->first}}</td>
+                                                                <td>{{$detail->second}}</td>
+                                                                <td>{{$detail->third}}</td>
+                                                            </tr>
+                                                        @endforeach
+                                                    @endforeach
+                                                </tbpdy>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-6 about-app__description">
-                        <div class="about-app__description-content" style="max-width: 640px!important;">
-                            <img src="{{Voyager::image(setting('site.icon_cost'))}}" style="width: 100px; height: 100px; margin-top: 50px" alt="Investment Cost">
-                            <h4 class="about-app__description-title">Investment Cost - Water</h4>
-                            <table id="water" class="uk-table uk-table-hover uk-table-striped" style="width:100%; text-align: center">
-                                <thead>
-                                <tr>
-                                    <th rowspan="3">No</th>
-                                    <th rowspan="3">User Category</th>
-                                    <th colspan="3">Consumption Block (IDR/m3)</th>
-                                </tr>
-                                <tr>
-                                    <th>I</th>
-                                    <th>II</th>
-                                    <th>III</th>
-                                </tr>
-                                <tr>
-                                    <th>0-10m3</th>
-                                    <th>11-20m3</th>
-                                    <th>> 20m3</th>
-                                </tr>
-                                </thead>
-                                <tbpdy>
-                                    @foreach($airs as $air)
-                                        <tr>
-                                            <td>{{$loop->iteration}}</td>
-                                            <td>{{$air->user_category}}</td>
-                                        </tr>
-                                        @foreach($air->air as $detail)
-                                            <tr>
-                                                <td>
-
-                                                </td>
-                                                <td>{{$detail->category}}</td>
-                                                <td>{{$detail->first}}</td>
-                                                <td>{{$detail->second}}</td>
-                                                <td>{{$detail->third}}</td>
-                                            </tr>
-                                        @endforeach
-                                    @endforeach
-                                </tbpdy>
-                            </table>
-                        </div>
+                </div>
+                <div class="col-6 about-app__img">
+                    <div class="about-app__img-wrap">
+                        <img alt="" src="{{Voyager::image(setting('site.image_cost'))}}">
                     </div>
-
+                </div>
             </div>
+
         </div>
     </section>
-    <div id="endMenu"></div>
+    <div id="endMenu">
+        <img alt="" class="section__img" src="{{asset('images/frontend/img_backgroud_footer.png')}}">
+    </div>
 @endsection
 @section('footer')
     <div class="footer">
@@ -323,7 +348,7 @@
             });
         });
     </script>
-
+    <script src="{{asset('js/front-end/faq.js')}}"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
@@ -371,7 +396,7 @@
                 backgroundColor: null
             },
             title: {
-                text: 'Monthly Average Temperature'
+                text: 'Central Java Economic Growth'
             },
             subtitle: {
                 text: 'DPMPTSP Provinsi Jawa Tengah'

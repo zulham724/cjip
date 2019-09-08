@@ -14,8 +14,7 @@ class Proyek extends Model
     use Translatable;
     use Searchable;
     protected $translatable = ['latar_belakang', 'lingkup_pekerjaan', 'eksisting', 'status_kepemilikan', 'skema_investasi',
-        'playback_period', 'bc_ratio', 'luas_lahan', 'project_name'
-    ];
+        'playback_period', 'bc_ratio', 'luas_lahan', 'project_name'];
     protected $spatial = ['location'];
 
     public function searchableAs(){

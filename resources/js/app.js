@@ -15,17 +15,9 @@ window.Vue = require('vue');
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-
-Vue.component('Loiupdate', require('./components/LoiComponent.vue', 'required'));
-
+/*
+Vue.component('Loiupdate', require('./components/LoiComponent.vue', 'required'));*/
 
 const app = new Vue({
-    el: '#app',
-    created(){
-        Echo.channel('loi-channel')
-            .listen('LiveLoiUpdate', (e) => {
-                console.log(e);
-            });
-    }
-
+    el: '#app'
 });
