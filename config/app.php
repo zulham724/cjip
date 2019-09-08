@@ -172,7 +172,6 @@ return [
         ConsoleTVs\Charts\ChartsServiceProvider::class,
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
         \Matchish\ScoutElasticSearch\ElasticSearchServiceProvider::class,
-        RenatoMarinho\LaravelPageSpeed\ServiceProvider::class,
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
         /*
          * Application Service Providers...

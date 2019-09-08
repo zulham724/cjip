@@ -147,7 +147,6 @@
       <path value="$PROJECT_DIR$/vendor/ongr/elasticsearch-dsl" />
       <path value="$PROJECT_DIR$/vendor/react/promise" />
       <path value="$PROJECT_DIR$/vendor/symfony/serializer" />
-      <path value="$PROJECT_DIR$/vendor/renatomarinho/laravel-page-speed" />
       <path value="$PROJECT_DIR$/vendor/artesaos/seotools" />
       <path value="$PROJECT_DIR$/vendor/phpoption/phpoption" />
     </include_path>
