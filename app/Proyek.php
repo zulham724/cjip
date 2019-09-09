@@ -17,9 +17,6 @@ class Proyek extends Model
         'playback_period', 'bc_ratio', 'luas_lahan', 'project_name'];
     protected $spatial = ['location'];
 
-    public function searchableAs(){
-        return 'elasticsearch.indices.settigs.proyeks';
-    }
     public function kabkota(){
         return $this->belongsTo(User::class, 'kab_kota_id');
     }

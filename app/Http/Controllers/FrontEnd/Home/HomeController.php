@@ -72,18 +72,20 @@ class HomeController extends Controller
         $airs = JenisKatUserAir::all();
         $alphabet = range('A', 'Z');
 
-        /*$jablay = new Client();
-        $response = $jablay->get('http://sijablay.dpmptsp.jatengprov.go.id/api/realisasi')->getBody();
-        $obj = json_decode($response);*/
+       $ch = curl_init();
+       curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+       curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+       curl_setopt($ch, CURLOPT_URL, 'http://sijablay.dpmptsp.jatengprov.go.id/api/realisasi');
+       $result = curl_exec($ch);
+       curl_close($ch);
+       $obj = json_decode($result);
+       //dd(json_encode($obj));
 
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_URL, 'http://sijablay.dpmptsp.jatengprov.go.id/api/realisasi');
-        $result = curl_exec($ch);
-        curl_close($ch);
-        $obj = json_decode($result);
-        //dd($obj);
+       foreach ($airs as $air){
+           foreach ($air->air as $a){
+               //dd($a);
+           }
+       }
 
         foreach ($airs as $air){
             foreach ($air->air as $a){
@@ -91,19 +93,25 @@ class HomeController extends Controller
             }
         }
 
+       if (Auth::guard('investor')->check()){
+           $registered = ProfileInvestor::where('user_id',Auth::guard('investor')->user()->id)->first();
+           $intersts = LoiInterest::where('user_id', Auth::guard('investor')->user()->id)->get();
+           //dd($registered);
+           if (is_null($registered)){
+               return redirect()->route('form.profile', Auth::guard('investor')->user()->id );
+           }
+           elseif (isset($intersts)){
+               return view('front-end.new-home', compact('mapsKey','alphabet','obj','feeds', 'intersts', 'populers', 'news' , 'ekonomis', 'awards', 'infrastrukturs', 'umks', 'listriks', 'airs', 'user'));
+           }
+           else{
+               return view('front-end.new-home', compact('mapsKey','alphabet','feeds','obj',  'populers', 'news' , 'ekonomis', 'awards', 'infrastrukturs', 'umks', 'listriks', 'airs', 'user'));
 
-        if (Auth::guard('investor')->check()){
-            $registered = ProfileInvestor::where('user_id',Auth::guard('investor')->user()->id)->first();
-            $intersts = LoiInterest::where('user_id', Auth::guard('investor')->user()->id)->get();
-            //dd($registered);
-            if (is_null($registered)){
-                return redirect()->route('form.profile', Auth::guard('investor')->user()->id );
-            }
-            elseif (isset($intersts)){
-                return view('front-end.new-home', compact('mapsKey', 'alphabet','obj','feeds', 'intersts', 'populers', 'news' , 'ekonomis', 'awards', 'infrastrukturs', 'umks', 'listriks', 'airs', 'user'));
-            }
-            else{
-                return view('front-end.new-home', compact('mapsKey', 'alphabet','feeds','obj',  'populers', 'news' , 'ekonomis', 'awards', 'infrastrukturs', 'umks', 'listriks', 'airs', 'user'));
+           }
+       }
+       else{
+           return view('front-end.new-home', compact(
+               'mapsKey','feeds', 'populers', 'news', 'ekonomis', 'awards','alphabet','obj', 'infrastrukturs', 'umks', 'listriks', 'airs', 'user'));
+       }
 
             }
         }
