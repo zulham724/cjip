@@ -24,4 +24,8 @@ class CjibfInvestor extends Model
     public function loi(){
         return $this->belongsTo(Lois::class, 'loi_id');
     }
+
+    public function user(){
+        return $this->belongsTo(User::class, 'kab_kota_id');
+    }
 }

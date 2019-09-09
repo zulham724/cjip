@@ -9,6 +9,7 @@ use App\CjibfInvestor;
 use App\CjibfSektor;
 use App\CjibfTable;
 use App\KabKota;
+use App\KabkotaUserModel;
 use App\LayoutCol;
 use App\LayoutRow;
 use App\Mail\DaftarCJIBF;
@@ -70,9 +71,12 @@ class FrontEndController extends Controller
         $event = CjibfEvent::first();
         $mejas = CjibfTable::all();
         $pengumuman = Pengumuman::all();
+        $user_kab_kota = KabkotaUserModel::where('kab_kota_id', $request->kab_kota)->first();
 
+        //dd($user_kab_kota->user_id);
+        //dd($request->all());
         $join = new CjibfInvestor;
-        $join->kab_kota_id = $request->kab_kota;
+        $join->kab_kota_id = $user_kab_kota->user_id;
         $join->profile_id = $request->profil;
         $join->sektor_interest = $request->why;
 
@@ -80,7 +84,7 @@ class FrontEndController extends Controller
         $join->save();
 
         //dd($join->kota->user->user_id);
-        $sisakursi = CjibfTable::where('kabkota_id', $join->kota->user->user_id)->first();
+        $sisakursi = CjibfTable::where('kabkota_id', $join->kab_kota_id)->first();
         //dd($sisakursi);
 
         if ($sisakursi->sisa <= 0){

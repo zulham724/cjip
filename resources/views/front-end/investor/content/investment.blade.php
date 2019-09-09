@@ -127,8 +127,8 @@
 
 
         </div>
-
-        @endsection
+    </div>
+@endsection
 
         @section('js')
             <script src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>

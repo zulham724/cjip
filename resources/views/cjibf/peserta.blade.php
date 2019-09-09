@@ -31,10 +31,11 @@
                     <tbody>
                     @if(app('VoyagerAuth')->user()->hasRole('kab'))
                         @foreach($pesertakabs as $pesertakab)
+
                             <tr>
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$pesertakab->profil->nama_perusahaan}}, {{$pesertakab->profil->badan_hukum}}</td>
-                                <td>{{$pesertakab->userId->admin->name}}</td>
+                                <td>{{$pesertakab->user->name}}</td>
                                 <td>{{$pesertakab->sektor_interest}}</td>
                                 <td>{{$pesertakab->meja_id}}</td>
                                 <td>
@@ -53,12 +54,13 @@
                                 </td>
                             </tr>
                         @endforeach
+
                     @else
                         @foreach($pesertas as $peserta)
                             <tr>
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$peserta->profil->nama_perusahaan}}, {{$peserta->profil->badan_hukum}}</td>
-                                <td>{{$peserta->userId->admin->name}}</td>
+                                <td>{{$peserta->user->name}}</td>
                                 <td>{{$peserta->sektor_interest}}</td>
                                 <td>{{$peserta->meja_id}}</td>
                                 <td>
