@@ -37,13 +37,13 @@ class HomeController extends Controller
 {
     public function home(){
 
-        SEOTools::setTitle('Home');
+        /*SEOTools::setTitle('Home');
         SEOTools::setDescription(Voyager::setting('site.description'));
         SEOTools::opengraph()->setUrl(url()->current());
         SEOTools::setCanonical(url()->current());
         SEOTools::opengraph()->addProperty('type', 'website');
         SEOTools::twitter()->setSite('@DPMPTSPJateng');
-        SEOTools::jsonLd()->addImage('https://cjip.jatengprov.go.id/storage/settings/August2019/esr0C8HmQss78AAnlaue.png');
+        SEOTools::jsonLd()->addImage('https://cjip.jatengprov.go.id/storage/settings/August2019/esr0C8HmQss78AAnlaue.png');*/
 
 
         $test = Proyek::with('translations')->get();
@@ -114,14 +114,11 @@ class HomeController extends Controller
        }
 
             }
-        }
-        else{
-            return view('front-end.new-home', compact(
-                'mapsKey', 'feeds', 'populers', 'news', 'ekonomis', 'awards','alphabet','obj', 'infrastrukturs', 'umks', 'listriks', 'airs', 'user'));
-        }
 
 
-    }
+
+
+
 
 
     public function likes(Request $request, $id)

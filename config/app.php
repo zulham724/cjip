@@ -171,8 +171,6 @@ return [
         Fomvasss\Youtube\YoutubeServiceProvider::class,
         ConsoleTVs\Charts\ChartsServiceProvider::class,
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
-        \Matchish\ScoutElasticSearch\ElasticSearchServiceProvider::class,
-        Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
         /*
          * Application Service Providers...
          */
