@@ -47,6 +47,7 @@ return [
     'last_modified'          => 'Terakhir diubah',
     'length'                 => 'Panjang',
     'login'                  => 'Masuk',
+    'logout'                  => 'Keluar',
     'media'                  => 'Media',
     'menu_builder'           => 'Menu Builder',
     'move'                   => 'Pindah',

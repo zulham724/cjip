@@ -144,6 +144,7 @@ class PertanianController extends Controller
         // Check if a default search key is set
         $defaultSearchKey = $dataType->default_search_key ?? null;
 
+
         $view = 'voyager::bread.browse';
 
         if (view()->exists("voyager::$slug.browse")) {

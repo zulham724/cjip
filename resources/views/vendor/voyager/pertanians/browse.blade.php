@@ -37,6 +37,7 @@
 @stop
 
 @section('content')
+
     <div class="page-content browse container-fluid">
         @include('voyager::alerts')
         <div class="row">
