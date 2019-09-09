@@ -150,7 +150,7 @@
 @stop
 
 @section('javascript')
-    <script type="text/javascript" src="{{asset('js/map/app.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/map/app.php')}}"></script>
     <script type="text/javascript">
         function getLocation() {
             if (navigator.geolocation) {

@@ -453,7 +453,7 @@
 <script src="{{asset('investor/js/app-blog-new-post.1.1.0.js')}}"></script>
 <script src="{{asset('investor/js/app-components-overview.1.1.0.js')}}"></script>
 <script src="{{asset('js/front-end/loading-js.js')}}"></script>
-<script type="text/javascript" src="{{ voyager_asset('js/app.js') }}"></script>
+<script type="text/javascript" src="{{ voyager_asset('js/app.php') }}"></script>
 
 @yield('js')
 </body>

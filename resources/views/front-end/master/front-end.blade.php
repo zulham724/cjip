@@ -171,7 +171,7 @@
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/export-data.js"></script>--}}
-{{--<script src="{{mix('js/app.js')}}"></script>--}}
+{{--<script src="{{mix('js/app.php')}}"></script>--}}
 @php $img_broke = Voyager::setting('site.not_found', ''); @endphp
 <script>
     var gambar = '{{asset('storage/'.$img_broke)}}';

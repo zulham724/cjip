@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "79e20675b54446dacd42264e5bf2c09c",
+    "content-hash": "1432f9613810c3343e68494a9fd47d27",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -2230,16 +2230,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.8.35",
+            "version": "v5.7.28",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "5a9e4d241a8b815e16c9d2151e908992c38db197"
+                "reference": "8e69728f1c80a024588adbd24c65c4fcf9aa9192"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/5a9e4d241a8b815e16c9d2151e908992c38db197",
-                "reference": "5a9e4d241a8b815e16c9d2151e908992c38db197",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/8e69728f1c80a024588adbd24c65c4fcf9aa9192",
+                "reference": "8e69728f1c80a024588adbd24c65c4fcf9aa9192",
                 "shasum": ""
             },
             "require": {
@@ -2374,7 +2374,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2019-09-03T16:44:30+00:00"
+            "time": "2019-02-26T15:41:34+00:00"
         },
         {
             "name": "laravel/scout",
@@ -2717,16 +2717,16 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "1.24.0",
+            "version": "1.25.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "bfc9ebb28f97e7a24c45bdc3f0ff482e47bb0266"
+                "reference": "70e65a5470a42cfec1a7da00d30edb6e617e8dcf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/bfc9ebb28f97e7a24c45bdc3f0ff482e47bb0266",
-                "reference": "bfc9ebb28f97e7a24c45bdc3f0ff482e47bb0266",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/70e65a5470a42cfec1a7da00d30edb6e617e8dcf",
+                "reference": "70e65a5470a42cfec1a7da00d30edb6e617e8dcf",
                 "shasum": ""
             },
             "require": {
@@ -2791,7 +2791,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2018-11-05T09:00:11+00:00"
+            "time": "2019-09-06T13:49:17+00:00"
         },
         {
             "name": "mpdf/mpdf",
@@ -5728,16 +5728,16 @@
         },
         {
             "name": "tcg/voyager",
-            "version": "v1.2.6",
+            "version": "v1.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/the-control-group/voyager.git",
-                "reference": "b0981fd7a5bb52e0f4f8d0627e8ff048b21651c9"
+                "reference": "015c517a1e52ee93a6f83a24a601f50cb0b92cf1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/the-control-group/voyager/zipball/b0981fd7a5bb52e0f4f8d0627e8ff048b21651c9",
-                "reference": "b0981fd7a5bb52e0f4f8d0627e8ff048b21651c9",
+                "url": "https://api.github.com/repos/the-control-group/voyager/zipball/015c517a1e52ee93a6f83a24a601f50cb0b92cf1",
+                "reference": "015c517a1e52ee93a6f83a24a601f50cb0b92cf1",
                 "shasum": ""
             },
             "require": {
@@ -5789,7 +5789,7 @@
                 "laravel",
                 "panel"
             ],
-            "time": "2019-06-06T11:16:17+00:00"
+            "time": "2019-09-06T15:03:29+00:00"
         },
         {
             "name": "teamtnt/laravel-scout-tntsearch-driver",
@@ -6250,8 +6250,8 @@
             "authors": [
                 {
                     "name": "Filipe Dobreira",
-                    "role": "Developer",
-                    "homepage": "https://github.com/filp"
+                    "homepage": "https://github.com/filp",
+                    "role": "Developer"
                 }
             ],
             "description": "php error handling for cool kids",
@@ -7872,7 +7872,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.1.3",
+        "php": "^7.2.6",
         "ext-curl": "*",
         "ext-json": "*"
     },
