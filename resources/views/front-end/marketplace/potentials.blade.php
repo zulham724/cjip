@@ -3,23 +3,14 @@
 
 @section('header')
     <header class="header-home header-home--color">
-
-        <div class="background"
-             style="background-position-y: bottom;
-                    background-repeat-y: no-repeat;
-                    background-repeat: repeat-x;
-                    background-size: contain;
-                    background-image: url({{Voyager::image(setting('site.bg_potential'))}})">
-            @php $site_logo = Voyager::setting('site.logo', ''); @endphp
             <div class="container background background--right background--features background--header"
-                 style="background-image: url({{asset('storage/'.$site_logo)}})">
+                 style="background-image: url({{Voyager::image(setting('site.bg_potential'))}})">
                 <div class="row">
                     <div class="col-12">
                         <h2 class="header-home__title header-home__title--features">{{Voyager::setting('site.title_potential')}}<br/>{{Voyager::setting('site.ket_potential')}}</h2>
                     </div>
                 </div>
             </div>
-        </div>
     </header>
 @endsection
 @section('content')

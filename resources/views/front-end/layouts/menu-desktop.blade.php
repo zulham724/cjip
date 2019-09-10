@@ -64,4 +64,24 @@
                 </li>
 
         @endguest
+
+    <li>
+        <div class="menu__dropdown d-t-none">
+            <div id="language_EN">
+                <a class="link link--gray menu__dropdown-btn">En
+                    <span><i class="mdi mdi-chevron-down"></i></span>
+                </a>
+            </div>
+            <div id="language_ID" hidden>
+                <a class="link link--gray menu__dropdown-btn">Id
+                    <span><i class="mdi mdi-chevron-down"></i></span>
+                </a>
+            </div>
+
+            <div class="menu__dropdown-content" id="select">
+                <a class="link link--gray link--gray-active" id="selectEN" href="#">En</a>
+                <a class="link link--gray" id="selectID" href="#">Id</a>
+            </div>
+        </div>
+    </li>
 </ul>

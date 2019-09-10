@@ -16,6 +16,7 @@
 });*/
 
 
+use Illuminate\Support\Facades\Redirect;
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
@@ -53,26 +54,43 @@ Route::group(['prefix' => 'admin'], function () {
 
 });
 
-        Route::get('/x', 'FrontEnd\Provinsi\VideoPlayerController@home')->name('homey');
+Route::get('/', function(){
+    return Redirect::route('homey2');
+});
+
+
         Route::get('/', 'FrontEnd\Home\HomeController@home')->name('homey2');
-        Route::post('/checkemail', 'FrontEnd\Home\HomeController@checkEmail')->name('checkemail');
-        Route::get('/event', 'FrontEnd\Home\EventController@event')->name('event');
+
         Route::get('/ready-to-offer', 'FrontEnd\Home\HomeController@readyToOffer')->name('ready-to-offer');
         Route::get('/prospective-project', 'FrontEnd\Home\HomeController@prospectiveProject')->name('prospective-project');
         Route::get('/potential-project', 'FrontEnd\Home\HomeController@potentialProject')->name('potential-project');
+
         Route::get('/how-can-we-help', 'FrontEnd\Home\HomeController@faq')->name('faq');
-        Route::get('/sidebar', 'FrontEnd\Home\HomeController@sidebar')->name('sidebar');
-        Route::get('/menu', 'FrontEnd\Provinsi\VideoPlayerController@menu')->name('menu');
-        Route::get('/search', 'FrontEnd\Home\SearchController@search')->name('search');
+
+        Route::get('/news', 'FrontEnd\News\NewsController@news')->name('news');
+        Route::get('/news/{id}', 'FrontEnd\News\NewsController@readBerita')->name('berita.detail');
+
+        Route::get('/profile_jateng', 'FrontEnd\Profile\ProfileController@profile')->name('profile_jateng');
+
+        Route::get('/profile_jateng/{id}', 'FrontEnd\Profile\ProfileController@profileDetail')->name('detail.profile_jateng');
+
+        Route::get('/event', 'FrontEnd\Home\EventController@event')->name('event');
+
+
+
         Route::get('/live-count', 'CJIBF\LiveController@live')->name('live.count');
         Route::get('/reload', 'CJIBF\LiveController@reload')->name('live.reload');
         Route::get('/reloadtotal', 'CJIBF\LiveController@reloadtotal')->name('total.reload');
         Route::get('/reloadchart', 'CJIBF\LiveController@reloadchart')->name('chart.reload');
 
-        Route::get('/why', function (){
-            return view('front-end.master.master-new');
-        });
 
+        Route::get('/x', 'FrontEnd\Provinsi\VideoPlayerController@home')->name('homey');
+
+        Route::post('/checkemail', 'FrontEnd\Home\HomeController@checkEmail')->name('checkemail');
+
+        Route::get('/sidebar', 'FrontEnd\Home\HomeController@sidebar')->name('sidebar');
+        Route::get('/menu', 'FrontEnd\Provinsi\VideoPlayerController@menu')->name('menu');
+        Route::get('/search', 'FrontEnd\Home\SearchController@search')->name('search');
 
         Route::post('/feed/{id}/like', 'FrontEnd\Home\HomeController@likes')->name('likes.count');
 
@@ -104,12 +122,6 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::get('/regulasi', 'FrontEnd\Regulasi\RegulasiController@regulasi')->name('regulasi');
 
-        Route::get('/news', 'FrontEnd\News\NewsController@news')->name('news');
-        Route::get('/news/{id}', 'FrontEnd\News\NewsController@readBerita')->name('berita.detail');
-
-        Route::get('/profile_jateng', 'FrontEnd\Profile\ProfileController@profile')->name('profile_jateng');
-
-        Route::get('/profile_jateng/{id}', 'FrontEnd\Profile\ProfileController@profileDetail')->name('detail.profile_jateng');
 
 
 Route::get('/admin/perikanans/{id}/edit', 'Admin\Kabkota\Potensi\PerikananController@edit')->name('edit.perikanan');

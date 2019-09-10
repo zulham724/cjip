@@ -3,22 +3,19 @@
 
 @section('header')
     <header class="header-home header-home--color">
-        <div class="background"
-             style="background-position-y: bottom;
-                 background-repeat-y: no-repeat;
-                 background-repeat: repeat-x;
-                 background-size: contain;
-                 background-image: url({{Voyager::image(setting('site.bg_prospective'))}})">
-            @php $site_logo = Voyager::setting('site.logo', ''); @endphp
             <div class="container background background--right background--features background--header"
-                 style="background-image: url({{asset('storage/'.$site_logo)}})">
+                 style="background-position-y: bottom;
+                         background-repeat-y: no-repeat;
+                         background-repeat: repeat-x;
+                         background-size: contain;
+                         background-image: url({{Voyager::image(setting('site.bg_prospective'))}})">
                 <div class="row">
                     <div class="col-12">
-                        <h2 class="header-home__title header-home__title--features">{{Voyager::setting('site.title_prospective')}}<br/>{{Voyager::setting('site.ket_prospective')}}</h2>
+                        <h2 class="header-home__title header-home__title--features" style="margin-bottom: 0px!important;  width: 800px;!important;color: whitesmoke" >{{Voyager::setting('site.title_prospective')}}<br/></h2>
+                        <p class="header-home__description" style="width: 500px !important; color: whitesmoke; font-weight: 100" align="justify">{{Voyager::setting('site.ket_prospective')}}</p>
                     </div>
                 </div>
             </div>
-        </div>
     </header>
 @endsection
 @section('content')
@@ -46,14 +43,14 @@
                             <div class="about-app__img-wrap">
 
                                 @isset($proyek->fotos)
-                                @php
-                                    $images = json_decode($proyek->fotos)
-                                @endphp
+                                    @php
+                                        $images = json_decode($proyek->fotos)
+                                    @endphp
 
 
-                                        <img src="{{Voyager::image($images[0])}}" alt="">
+                                    <img src="{{Voyager::image($images[0])}}" alt="">
 
-                                    @else
+                                @else
                                     <img alt="" src="{{'storage/'.Voyager::setting('site.not_found')}}">
                                 @endisset
 

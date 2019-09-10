@@ -157,10 +157,12 @@ class HomeController extends Controller
             $query->where('name', '=', 'Ready to Offer');
         })->where('status', 1)->paginate(5);
         //dd($proyeks);
+        //dd($proyeks->load('translations'));
+        if (($isModelTranslatable = is_bread_translatable($proyeks))) {
+            $proyeks->load('translations');
+        }
 
-
-
-        return view('front-end.marketplace.ready-to-offer', compact('proyeks'));
+        return view('front-end.marketplace.ready-to-offer', compact('proyeks', 'isModelTranslatable'));
         //$proyeks = Proyek::with('marketplace');
     }
     public function prospectiveProject(){

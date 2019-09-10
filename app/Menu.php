@@ -11,6 +11,10 @@ class Menu extends Model
     use Translatable;
     protected $table = 'menu_items';
 
+    protected $translatable = [
+        'title', 'url',
+    ];
+
     public function menu_parent(){
         return $this->belongsTo(MenuParent::class, 'menu_id');
     }
