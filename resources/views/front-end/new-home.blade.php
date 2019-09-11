@@ -673,6 +673,7 @@
         var data = [];
 
         var economic_lbl = {!! $ekonomis !!};
+
         var i;
 
         for(i=0; i<economic_lbl.length; i++){
@@ -719,7 +720,7 @@
     </script>
 
     <script>
-        var t = {!! json_encode($obj) !!}
+        var t ={!! json_encode($obj) !!};
         var data = [];
         var datalokasi = [];
         var datanegara = [];
