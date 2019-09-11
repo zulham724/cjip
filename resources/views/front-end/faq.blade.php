@@ -1,189 +1,167 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="stylesheet" href="{{asset('css/front-end/main.css')}}" id="main_style">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,800" rel="stylesheet">
-    <link href="https://cdn.materialdesignicons.com/2.0.46/css/materialdesignicons.min.css" rel="stylesheet">
-    {{-- <link rel="stylesheet" href="{{asset('css/slider.css')}}">--}}
-    <title>{{setting('site.title')}}</title>
-    @php $title_logo = Voyager::setting('site.logo', ''); @endphp
-    <link rel="icon" href="{{asset('storage/'.$title_logo)}}" type="image/png">
-    <link rel="stylesheet" href="{{asset('css/front-end/nav.css')}}">
-@yield('css')
-<!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-143558094-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+@extends('front-end.master.newest-master')
 
-        gtag('config', 'UA-143558094-1');
-    </script>
+@section('header')
+    <div id="headerEn">
+        <header class="header-home header-home--color">
+            <div class="background background--wave">
 
-</head>
-<body>
-
-<!--Main menu-->
-<div class="menu">
-    <div class="container menu__wrapper">
-        <div class="row">
-            <div class="menu__logo menu__item">
-                <a href="/">
-                    @php $site_logo = Voyager::setting('site.logo', ''); @endphp
-                    <img class="menu__logo-img" style="max-width: 50px;height: auto"
-                         src="{{asset('storage/'.$site_logo)}}" alt="">
-                    <p class="menu__logo-title">{{setting('site.title')}}</p>
-                </a>
+                <div class="container background background--right background--features background--header"
+                     >
+                    <div class="row">
+                        <div class="col-12">
+                            <h2 class="header-home__title header-home__title--features">{{Voyager::setting('title_faq')}}<br/></h2>
+                            <p class="header-home__description header-home__description--big header-home__description--faq">{{Voyager::setting('ket_faq')}}</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="menu__item d-t-none">
-                <nav class="menu__center-nav">
-                    {{menu('frontend', 'front-end.layouts.menu-desktop')}}
-                </nav>
+        </header>
+    </div>
+    <div id="headerId" style="display: none">
+        <header class="header-home header-home--color">
+            <div class="background background--wave">
+
+                <div class="container background background--right background--features background--header"
+                     >
+                    <div class="row">
+                        <div class="col-12">
+                            <h2 class="header-home__title header-home__title--features">{{Voyager::setting('id_title_faq')}}<br/></h2>
+                            <p class="header-home__description header-home__description--big header-home__description--faq">{{Voyager::setting('id_ket_faq')}}</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-
-
-
+        </header>
     </div>
 
-</div>
+@endsection
+@section('content')
+    <div id="contentEn">
+        <section class="section section--first">
+            <div class="container">
 
-<!--Main menu-->
+                <div class="row faq">
+                    <div id="top" class="col-9 col-t-12">
+                        @foreach($faqs as $faq)
+                            <div class="faq__content">
+                                <div id="{{str_replace(' ', '', $faq->jenis->translate('en')->name)}}" class="faq__chapter chapter">
+                                    <h3 class="faq__chapter-title">{{$faq->jenis->translate('en')->name}}</h3>
+                                    <div class="faq__card card">
+                                        <h4 class="faq__card-title">{{$faq->translate('en')->question}}
+                                            <span class="faq__card-icon"><i class="mdi mdi-chevron-down"></i></span>
+                                        </h4>
+                                        <div class="faq__card-description">
+                                            <p>{!! $faq->translate('en')->answer !!}
+                                            </p>
+                                        </div>
+                                    </div>
 
-<!--Mobile menu-->
-<div class="mobile-menu d-none d-t-block">
-    <div class="container">
-        <div class="mobile-menu__logo">
-            @php $site_logo = Voyager::setting('site.logo', ''); @endphp
-            <img class="menu__logo-img" style="max-width: 100px;height: auto" src="{{asset('storage/'.$site_logo)}}"
-                 alt="">
-        </div>
-        <button type="button" class="mobile-menu__close">
-            <span><i class="mdi mdi-close" aria-hidden="true"></i></span>
-        </button>
-        <nav class="mobile-menu__wrapper">
-            <ul class="mobile-menu__ul">
-                {{menu('frontend', 'front-end.layouts.menu')}}
-                @guest('investor')
-                    <li><a class="site-btn site-btn--accent" href="{{ route('show.login')  }}">Login</a></li>
-                @else
-                    <div class="row">
-                        <li>
-                            <div class="menu__logo">
-                                <div class="believe">
-                                    <a href="{{route('dashboard.investor', Auth::guard('investor')->user()->id)}}">
-                                        <img alt="{{Auth::guard('investor')->user()->name}}" class="believe__avatar" src="{{Auth::guard('investor')->user()->image}}"/>
-                                    </a>
                                 </div>
                             </div>
-                        </li>
-
-                        <div>
-                            <a class="link link--gray link--gray-active" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}</a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                        </div>
-
-                    </div>
-                @endguest
-            </ul>
-        </nav>
-    </div>
-</div>
-<!--Mobile menu-->
-
-
-<header class="header-home header-home--color">
-    <div class="background background--wave">
-
-        <div class="container background background--right background--features background--header"
-             style="background-image: url({{asset('storage/'.$site_logo)}})">
-            <div class="row">
-                <div class="col-12">
-                    <h2 class="header-home__title header-home__title--features">FAQ<br/>Frequently Asked Questions</h2>
-                    <p class="header-home__description header-home__description--big header-home__description--faq"></p>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
-
-<section class="section section--first">
-    <div class="container">
-
-        <div class="row faq">
-            <div id="top" class="col-9 col-t-12">
-                @foreach($faqs as $faq)
-                <div class="faq__content">
-                    <div id="{{str_replace(' ', '', $faq->jenis->name)}}" class="faq__chapter chapter">
-                        <h3 class="faq__chapter-title">{{$faq->jenis->name}}</h3>
-                        <div class="faq__card card">
-                            <h4 class="faq__card-title">{{$faq->question}}
-                                <span class="faq__card-icon"><i class="mdi mdi-chevron-down"></i></span>
-                            </h4>
-                            <div class="faq__card-description">
-                                <p>{!! $faq->answer !!}
-                                </p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                    @endforeach
-            </div>
-            <div class="col-3 d-t-none">
-                <nav class="sidebar" id="menu">
-                    <ul class="sidebar__list">
-                        @foreach($jns_faq as $faqid)
-                        <li class="sidebar__item @if($loop->first) active @endif"><a href="#{{str_replace(' ', '', $faqid->name)}}">{{$faqid->name}}</a></li>
                         @endforeach
-                    </ul>
-                </nav>
+                    </div>
+                    <div class="col-3 d-t-none">
+                        <nav class="sidebar" id="menu">
+                            <ul class="sidebar__list">
+                                @foreach($jns_faq as $faqid)
+                                    <li class="sidebar__item @if($loop->first) active @endif"><a href="#{{str_replace(' ', '', $faqid->translate('en')->name)}}">{{$faqid->translate('en')->name}}</a></li>
+                                @endforeach
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
             </div>
-        </div>
+
+        </section>
+    </div>
+    <div id="contentId" style="display: none">
+        <section class="section section--first">
+            <div class="container">
+
+                <div class="row faq">
+                    <div id="top" class="col-9 col-t-12">
+                        @foreach($faqs as $faq)
+                            <div class="faq__content">
+                                <div id="{{str_replace(' ', '', $faq->jenis->name)}}" class="faq__chapter chapter">
+                                    <h3 class="faq__chapter-title">{{$faq->jenis->name}}</h3>
+                                    <div class="faq__card card">
+                                        <h4 class="faq__card-title">{{$faq->question}}
+                                            <span class="faq__card-icon"><i class="mdi mdi-chevron-down"></i></span>
+                                        </h4>
+                                        <div class="faq__card-description">
+                                            <p>{!! $faq->answer !!}
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                    <div class="col-3 d-t-none">
+                        <nav class="sidebar" id="menu">
+                            <ul class="sidebar__list">
+                                @foreach($jns_faq as $faqid)
+                                    <li class="sidebar__item @if($loop->first) active @endif"><a href="#{{str_replace(' ', '', $faqid->name)}}">{{$faqid->name}}</a></li>
+                                @endforeach
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+        </section>
     </div>
 
-</section>
+    {{--{{$proyeks->links('pagination.page')}}--}}
+@endsection
 
-<div id="endMenu" class="section section--last">
-    <img alt="" class="section__img" src="{{asset('images/frontend/img_backgroud_footer.png')}}">
-</div>
 
-<!--Footer-->
-<div class="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <p>© 2018 SIAP JATENG – Potensi Investasi dan Peluang Penanaman Modal | Made by
-                    <a href="https://dpmptsp.jatengprov.go.id" class="link link--gray">DPMPTSP Provinsi Jawa Tengah</a></p>
-            </div>
-        </div>
-    </div>
-</div>
-<!--Footer-->
+@section('js')
+    {{--@if($videos->isNotEmpty())
+        <script>
+            var tag = document.createElement('script');
+            tag.src = "https://www.youtube.com/iframe_api";
+            var firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+            var player;
+            var idnya = document.getElementById('idnya');
 
-{{--<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>--}}
-<script src="{{asset('js/front-end/vendor/jquery-2.2.4.min.js')}}"></script>
-<script src="{{asset('js/front-end/vendor/jquery.waypoints.js')}}"></script>
-<script src="{{asset('js/front-end/menu.js')}}"></script>
-<script src="{{asset('js/front-end/faq.js')}}"></script>
-<script src="{{asset('js/front-end/sidebar.js')}}"></script>
-<script src="{{asset('js/front-end/mobile-menu.js')}}"></script>
-<script>
-    var header = document.getElementById("menu");
-    var btns = header.getElementsByClassName("sidebar__item");
-    for (var i = 0; i < btns.length; i++) {
-        btns[i].addEventListener("click", function() {
-            var current = document.getElementsByClassName("active");
-            current[0].className = current[0].className.replace(" active", "");
-            this.className += " active";
-        });
-    }
-</script>
+            //console.log({{$id}});
+
+            function onYouTubeIframeAPIReady() {
+                player = new YT.Player('player', {
+                    height: '315',
+                    width: '560',
+                    videoId: '{{$id}}',
+                    events: {
+                        'onReady': function() {
+                            $(".video-thumb").click(function() {
+                                var $this = $(this);
+                                if (!$this.hasClass("active")) {
+                                    player.loadVideoById($this.attr("data-video"));
+                                    $this.addClass("active").siblings().removeClass("active");
+                                }
+                            });
+                        }
+                    }
+                });
+            }
+        </script>
+    @endif--}}
+
+    <script src="{{asset('js/front-end/faq.js')}}"></script>
+    <script src="{{asset('js/front-end/sidebar.js')}}"></script>
+    <script>
+        var header = document.getElementById("menu");
+        var btns = header.getElementsByClassName("sidebar__item");
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].addEventListener("click", function() {
+                var current = document.getElementsByClassName("active");
+                current[0].className = current[0].className.replace(" active", "");
+                this.className += " active";
+            });
+        }
+    </script>
+{{--{!! ($chart->script()) !!}--}}
+@endsection
