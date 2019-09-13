@@ -259,13 +259,14 @@
                                 <div class="about-app__description-content">
                                     @isset($proyek->latar_belakang)
                                         <h6 class="about-app__description-title">Background</h6>
-                                        <p style="text-align: justify; text-justify: inter-word;">{{$proyek->translate('en')->latar_belakang}}</p>
+                                        <p style="text-align: justify; text-justify: inter-word;">{{ str_limit($proyek->translate('en')->latar_belakang, $limit = 500, $end = '...') }}</p>
                                     @endisset
-
-                                    @isset($proyek->lingkup_pekerjaan)
+                                        <a href="{{route('detail.rto', ['id'=>$proyek->id,'slug' => str_slug($proyek->project_name, '-')])}}" class="site-btn site-btn--accent header-home__btn">Project's Details</a>
+                                        <a href="05_features.html" class="site-btn site-btn--light header-home__btn">Project's Owner</a>
+                                   {{-- @isset($proyek->lingkup_pekerjaan)
                                         <h6 class="about-app__description-title">Scope of Work</h6>
                                         <p style="text-align: justify; text-justify: inter-word;">{{$proyek->translate('en')->lingkup_pekerjaan}}</p>
-                                    @endisset
+                                    @endisset--}}
                                 </div>
                             </div>
                             <div class="col-6 about-app__img about-app__img--left">
@@ -296,7 +297,7 @@
                 {{--END-SECTION PROJECT--}}
 
                 {{--SECTION PROJECT DETAAIL--}}
-                <section class="section">
+               {{-- <section class="section">
                     <div class="container">
                         <div class="row">
                             <div class="col-12">
@@ -363,11 +364,11 @@
                             </div>
                         </div>
                     </div>
-                </section>
+                </section>--}}
                 {{--END-SECTION PROJECT DETAIL--}}
 
                 {{--SECTION PROJECT CONTACT PERSON--}}
-                <section class="section section--half section--bottom-space">
+               {{-- <section class="section section--half section--bottom-space">
                     <div class="container">
                         <div class="row">
                             <div class="col-12">
@@ -417,32 +418,33 @@
                             </div>
                         </div>
                     </div>
-                </section>
+                </section>--}}
                 <hr>
                 {{--END-SECTION PROJECT CONTACT PERSON--}}
             @endforeach
 
         </div>
     </div>
-    <div id="contentId">
+    <div id="contentId" style="display: none">
         <div class="col-12 col-m-12">
             {{--SECTION PROJECT--}}
             @foreach($proyeks as $proyek)
                 <section class="section">
                     <div class="container">
                         <h3 class="section__title">{{ $proyek->project_name }}</h3>
-                        <div class="row about-app about-app--reverse">
+                        <div class="row about-app about-app--reverse" style="padding-top: 50px!important;">
                             <div class="col-6 about-app__description">
                                 <div class="about-app__description-content">
                                     @isset($proyek->latar_belakang)
                                         <h6 class="about-app__description-title">Latar Belakang</h6>
-                                        <p style="text-align: justify; text-justify: inter-word;">{{$proyek->latar_belakang}}</p>
+                                        <p style="text-align: justify; text-justify: inter-word;">{{ str_limit($proyek->latar_belakang, $limit = 500, $end = '...') }}</p>
                                     @endisset
-
-                                    @isset($proyek->lingkup_pekerjaan)
+                                        <a href="10_get-app.html" class="site-btn site-btn--accent header-home__btn">Detail Proyek</a>
+                                        <a href="05_features.html" class="site-btn site-btn--light header-home__btn">Pemilik Proyek</a>
+                                   {{-- @isset($proyek->lingkup_pekerjaan)
                                         <h6 class="about-app__description-title">Lingkup Pekerjaan</h6>
                                         <p style="text-align: justify; text-justify: inter-word;">{{$proyek->lingkup_pekerjaan}}</p>
-                                    @endisset
+                                    @endisset--}}
                                 </div>
                             </div>
 
@@ -474,7 +476,7 @@
                 {{--END-SECTION PROJECT--}}
 
                 {{--SECTION PROJECT DETAAIL--}}
-                <section class="section">
+                {{--<section class="section">
                     <div class="container">
                         <div class="row">
                             <div class="col-12">
@@ -541,11 +543,11 @@
                             </div>
                         </div>
                     </div>
-                </section>
+                </section>--}}
                 {{--END-SECTION PROJECT DETAIL--}}
 
                 {{--SECTION PROJECT CONTACT PERSON--}}
-                <section class="section section--half section--bottom-space">
+                {{--<section class="section section--half section--bottom-space">
                     <div class="container">
                         <div class="row">
                             <div class="col-12">
@@ -595,7 +597,7 @@
                             </div>
                         </div>
                     </div>
-                </section>
+                </section>--}}
                 <hr>
                 {{--END-SECTION PROJECT CONTACT PERSON--}}
             @endforeach
@@ -605,7 +607,6 @@
 
     {{--{{$proyeks->links('pagination.page')}}--}}
 @endsection
-
 
 @section('js')
 

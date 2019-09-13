@@ -234,11 +234,11 @@
                                         <h6 class="about-app__description-title">Background</h6>
                                         <p style="text-align: justify; text-justify: inter-word;">{{$proyek->translate('en')->latar_belakang}}</p>
                                     @endisset
-
+{{--
                                     @isset($proyek->lingkup_pekerjaan)
                                         <h6 class="about-app__description-title">Scope of Work</h6>
                                         <p style="text-align: justify; text-justify: inter-word;">{{$proyek->translate('en')->lingkup_pekerjaan}}</p>
-                                    @endisset
+                                    @endisset--}}
                                 </div>
                             </div>
                             <div class="col-6 about-app__img about-app__img--left">
@@ -269,7 +269,7 @@
                 {{--END-SECTION PROJECT--}}
 
                 {{--SECTION PROJECT DETAAIL--}}
-                <section class="section">
+                {{--<section class="section">
                     <div class="container">
                         <div class="row">
                             <div class="col-12">
@@ -336,11 +336,11 @@
                             </div>
                         </div>
                     </div>
-                </section>
+                </section>--}}
                 {{--END-SECTION PROJECT DETAIL--}}
 
                 {{--SECTION PROJECT CONTACT PERSON--}}
-                <section class="section section--half section--bottom-space">
+                {{--<section class="section section--half section--bottom-space">
                     <div class="container">
                         <div class="row">
                             <div class="col-12">
@@ -390,7 +390,7 @@
                             </div>
                         </div>
                     </div>
-                </section>
+                </section>--}}
                 <hr>
                 {{--END-SECTION PROJECT CONTACT PERSON--}}
             @endforeach
@@ -411,10 +411,10 @@
                                         <p style="text-align: justify; text-justify: inter-word;">{{$proyek->latar_belakang}}</p>
                                     @endisset
 
-                                    @isset($proyek->lingkup_pekerjaan)
+                                   {{-- @isset($proyek->lingkup_pekerjaan)
                                         <h6 class="about-app__description-title">Lingkup Pekerjaan</h6>
                                         <p style="text-align: justify; text-justify: inter-word;">{{$proyek->lingkup_pekerjaan}}</p>
-                                    @endisset
+                                    @endisset--}}
                                 </div>
                             </div>
                             <div class="col-6 about-app__img about-app__img--left">
@@ -445,7 +445,7 @@
                 {{--END-SECTION PROJECT--}}
 
                 {{--SECTION PROJECT DETAAIL--}}
-                <section class="section">
+                {{--<section class="section">
                     <div class="container">
                         <div class="row">
                             <div class="col-12">
@@ -512,11 +512,11 @@
                             </div>
                         </div>
                     </div>
-                </section>
+                </section>--}}
                 {{--END-SECTION PROJECT DETAIL--}}
 
                 {{--SECTION PROJECT CONTACT PERSON--}}
-                <section class="section section--half section--bottom-space">
+                {{--<section class="section section--half section--bottom-space">
                     <div class="container">
                         <div class="row">
                             <div class="col-12">
@@ -566,7 +566,7 @@
                             </div>
                         </div>
                     </div>
-                </section>
+                </section>--}}
                 <hr>
                 {{--END-SECTION PROJECT CONTACT PERSON--}}
             @endforeach

@@ -65,6 +65,11 @@ Route::get('/', function(){
         Route::get('/prospective-project', 'FrontEnd\Home\HomeController@prospectiveProject')->name('prospective-project');
         Route::get('/potential-project', 'FrontEnd\Home\HomeController@potentialProject')->name('potential-project');
 
+        Route::get('/ready-to-offer/{id}/{slug}', 'FrontEnd\Home\HomeController@detailRto')->name('detail.rto');
+        Route::get('/prospective-project/{id}/{slug}', 'FrontEnd\Home\HomeController@detailPros')->name('detail.pros');
+        Route::get('/potential-project/{id}/{slug}', 'FrontEnd\Home\HomeController@detailPot')->name('detail.pot');
+
+
         Route::get('/how-can-we-help', 'FrontEnd\Home\HomeController@faq')->name('faq');
 
         Route::get('/news', 'FrontEnd\News\NewsController@news')->name('news');

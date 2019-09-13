@@ -84,4 +84,13 @@
   'lato' => array(
     'normal' => $fontDir . '\29d5b677c886f2174ede1236ece8bf48',
   ),
+  'croissant one' => array(
+    'normal' => $fontDir . '\69b90d7e77e19e4f013699fc2d75f5b2',
+  ),
+  'raleway' => array(
+    'normal' => $fontDir . '\2ab197cf75098c7eed48e59f5cc9b2ff',
+  ),
+  'material icons' => array(
+    'normal' => $fontDir . '\a83785ccbfc5713b63b97bbf71e6fa23',
+  ),
 ) ?>

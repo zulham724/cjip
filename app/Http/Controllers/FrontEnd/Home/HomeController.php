@@ -20,6 +20,7 @@ use App\Pertanian;
 use App\PertumbuhanEkonomi;
 use App\Peternakan;
 use App\ProfileInvestor;
+use App\ProfilKabupaten;
 use App\Proyek;
 use App\Umr;
 use App\User;
@@ -149,7 +150,7 @@ class HomeController extends Controller
         SEOTools::setDescription('Here is some ready to offered investment project - '.Voyager::setting('site.description'));
         SEOTools::opengraph()->setUrl(url()->current());
         SEOTools::setCanonical(url()->current());
-        SEOTools::opengraph()->addProperty('type', 'articles');
+        SEOTools::opengraph()->addProperty('type', 'website');
         SEOTools::twitter()->setSite('@DPMPTSPJateng');
         SEOTools::jsonLd()->addImage('https://cjip.jatengprov.go.id/storage/settings/August2019/esr0C8HmQss78AAnlaue.png');
 
@@ -165,6 +166,23 @@ class HomeController extends Controller
         return view('front-end.marketplace.ready-to-offer', compact('proyeks', 'isModelTranslatable'));
         //$proyeks = Proyek::with('marketplace');
     }
+
+    public function detailRto($id, $slug){
+
+        $proyek = Proyek::findOrFail($id);
+
+        SEOTools::setTitle('Ready to Offered -'.$proyek->project_name.' - '.$proyek->translate('en')->project_name);
+        SEOTools::setDescription('Here is some ready to offered investment project - '.$proyek->latar_belakang.' - '.$proyek->translate('en')->latar_belakang);
+        SEOTools::opengraph()->setUrl(url()->current());
+        SEOTools::setCanonical(url()->current());
+        SEOTools::opengraph()->addProperty('type', 'articles');
+        SEOTools::twitter()->setSite('@DPMPTSPJateng');
+        SEOTools::jsonLd()->addImage('https://cjip.jatengprov.go.id/storage/settings/August2019/esr0C8HmQss78AAnlaue.png');
+
+        return view('front-end.marketplace.detail.rto', compact('proyek'));
+
+    }
+
     public function prospectiveProject(){
         SEOTools::setTitle('Prospective Projects');
         SEOTools::setDescription('Here is some prospective investment project - '.Voyager::setting('site.description'));
@@ -183,6 +201,21 @@ class HomeController extends Controller
         //$proyeks = Proyek::with('marketplace');
         return view('front-end.marketplace.prospective', compact('proyeks'));
     }
+
+    public function detailPros($id, $slug){
+        $proyeks = Proyek::findOrFail($id);
+
+        SEOTools::setTitle('Prospective Projects -'.$proyeks->project_name.' - '.$proyeks->translate('en')->project_name);
+        SEOTools::setDescription('Here is some prospective investment projects - '.$proyeks->latar_belakang.' - '.$proyeks->translate('en')->latar_belakang);
+        SEOTools::opengraph()->setUrl(url()->current());
+        SEOTools::setCanonical(url()->current());
+        SEOTools::opengraph()->addProperty('type', 'articles');
+        SEOTools::twitter()->setSite('@DPMPTSPJateng');
+        SEOTools::jsonLd()->addImage('https://cjip.jatengprov.go.id/storage/settings/August2019/esr0C8HmQss78AAnlaue.png');
+
+        return view('front-end.marketplace.detail.pros', compact('proyeks'));
+    }
+
     public function potentialProject(){
         SEOTools::setTitle('Potential Projects');
         SEOTools::setDescription('Here is some potential investment projects investment project - '.Voyager::setting('site.description'));
@@ -200,6 +233,35 @@ class HomeController extends Controller
         //$proyeks = Proyek::with('marketplace');
         return view('front-end.marketplace.potentials', compact('proyeks'));
     }
+
+    public function detailPot($id, $slug){
+        $proyeks = Proyek::findOrFail($id);
+
+        SEOTools::setTitle('Potential Projects -'.$proyeks->project_name.' - '.$proyeks->translate('en')->project_name);
+        SEOTools::setDescription('Here is some potential investment project - '.$proyeks->latar_belakang.' - '.$proyeks->translate('en')->latar_belakang);
+        SEOTools::opengraph()->setUrl(url()->current());
+        SEOTools::setCanonical(url()->current());
+        SEOTools::opengraph()->addProperty('type', 'articles');
+        SEOTools::twitter()->setSite('@DPMPTSPJateng');
+        SEOTools::jsonLd()->addImage('https://cjip.jatengprov.go.id/storage/settings/August2019/esr0C8HmQss78AAnlaue.png');
+
+        return view('front-end.marketplace.detail.pot', compact('proyeks'));
+    }
+
+    public function detailProfil($id){
+        $profil = ProfilKabupaten::findOrFail($id);
+
+        SEOTools::setTitle($profil->profil.' - '.$profil->translate('en')->profil);
+        SEOTools::setDescription('Here is some ready to offered investment project - '.$profil->profil.' - '.$profil->translate('en')->profil);
+        SEOTools::opengraph()->setUrl(url()->current());
+        SEOTools::setCanonical(url()->current());
+        SEOTools::opengraph()->addProperty('type', 'articles');
+        SEOTools::twitter()->setSite('@DPMPTSPJateng');
+        SEOTools::jsonLd()->addImage('https://cjip.jatengprov.go.id/storage/settings/August2019/esr0C8HmQss78AAnlaue.png');
+
+        return view('front-end.marketplace.detail.profil', compact('profil'));
+    }
+
     public function faq(){
         SEOTools::setTitle('FAQ');
         SEOTools::setDescription('Frequently Asked Question about investment in Central Java - Pertanyaan yang sering muncul ketika Anda ingin berinvestasi di Provinsi Jawa Tengah');
