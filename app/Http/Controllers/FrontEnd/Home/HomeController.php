@@ -170,7 +170,8 @@ class HomeController extends Controller
     public function detailRto($id, $slug){
 
         $proyek = Proyek::findOrFail($id);
-
+        $mapsKey = 'AIzaSyBGsawbqVs083lGEe8cilVz0FqO0rHt5ZE&amp';
+       /* $proyek*/
         SEOTools::setTitle('Ready to Offered -'.$proyek->project_name.' - '.$proyek->translate('en')->project_name);
         SEOTools::setDescription('Here is some ready to offered investment project - '.$proyek->latar_belakang.' - '.$proyek->translate('en')->latar_belakang);
         SEOTools::opengraph()->setUrl(url()->current());
@@ -179,7 +180,7 @@ class HomeController extends Controller
         SEOTools::twitter()->setSite('@DPMPTSPJateng');
         SEOTools::jsonLd()->addImage('https://cjip.jatengprov.go.id/storage/settings/August2019/esr0C8HmQss78AAnlaue.png');
 
-        return view('front-end.marketplace.detail.rto', compact('proyek'));
+        return view('front-end.marketplace.detail.rto', compact('proyek', 'mapsKey'));
 
     }
 
@@ -203,17 +204,18 @@ class HomeController extends Controller
     }
 
     public function detailPros($id, $slug){
-        $proyeks = Proyek::findOrFail($id);
+        $proyek = Proyek::findOrFail($id);
 
-        SEOTools::setTitle('Prospective Projects -'.$proyeks->project_name.' - '.$proyeks->translate('en')->project_name);
-        SEOTools::setDescription('Here is some prospective investment projects - '.$proyeks->latar_belakang.' - '.$proyeks->translate('en')->latar_belakang);
+        $mapsKey = 'AIzaSyBGsawbqVs083lGEe8cilVz0FqO0rHt5ZE&amp';
+        SEOTools::setTitle('Prospective Projects -'.$proyek->project_name.' - '.$proyek->translate('en')->project_name);
+        SEOTools::setDescription('Here is some prospective investment projects - '.$proyek->latar_belakang.' - '.$proyek->translate('en')->latar_belakang);
         SEOTools::opengraph()->setUrl(url()->current());
         SEOTools::setCanonical(url()->current());
         SEOTools::opengraph()->addProperty('type', 'articles');
         SEOTools::twitter()->setSite('@DPMPTSPJateng');
         SEOTools::jsonLd()->addImage('https://cjip.jatengprov.go.id/storage/settings/August2019/esr0C8HmQss78AAnlaue.png');
 
-        return view('front-end.marketplace.detail.pros', compact('proyeks'));
+        return view('front-end.marketplace.detail.pros', compact('proyek', 'mapsKey'));
     }
 
     public function potentialProject(){
@@ -235,17 +237,17 @@ class HomeController extends Controller
     }
 
     public function detailPot($id, $slug){
-        $proyeks = Proyek::findOrFail($id);
-
-        SEOTools::setTitle('Potential Projects -'.$proyeks->project_name.' - '.$proyeks->translate('en')->project_name);
-        SEOTools::setDescription('Here is some potential investment project - '.$proyeks->latar_belakang.' - '.$proyeks->translate('en')->latar_belakang);
+        $proyek = Proyek::findOrFail($id);
+        $mapsKey = 'AIzaSyBGsawbqVs083lGEe8cilVz0FqO0rHt5ZE&amp';
+        SEOTools::setTitle('Potential Projects -'.$proyek->project_name.' - '.$proyek->translate('en')->project_name);
+        SEOTools::setDescription('Here is some potential investment project - '.$proyek->latar_belakang.' - '.$proyek->translate('en')->latar_belakang);
         SEOTools::opengraph()->setUrl(url()->current());
         SEOTools::setCanonical(url()->current());
         SEOTools::opengraph()->addProperty('type', 'articles');
         SEOTools::twitter()->setSite('@DPMPTSPJateng');
         SEOTools::jsonLd()->addImage('https://cjip.jatengprov.go.id/storage/settings/August2019/esr0C8HmQss78AAnlaue.png');
 
-        return view('front-end.marketplace.detail.pot', compact('proyeks'));
+        return view('front-end.marketplace.detail.pot', compact('proyek', 'mapsKey'));
     }
 
     public function detailProfil($id){

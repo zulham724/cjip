@@ -172,6 +172,7 @@ return [
         ConsoleTVs\Charts\ChartsServiceProvider::class,
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
+        Cornford\Googlmapper\MapperServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -236,6 +237,7 @@ return [
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
         'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
+        'Mapper' => Cornford\Googlmapper\Facades\MapperFacade::class,
     ],
 
 ];

@@ -232,6 +232,7 @@
 
         @import url('https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,600,700,300,800');
     </style>
+    <script type="text/javascript"src="http://maps.google.com/maps/api/js?key={{$mapsKey}}"></script>
 @endsection
 
 @section('header')
@@ -294,11 +295,11 @@
                             </div>
                             <div class="col-12" style="padding-top: 80px;text-align: justify">
                                 <h4 class="about-app__description-title">Background</h4>
-                                <p>{{$proyek->latar_belakang}}</p>
+                                <p>{{$proyek->translate('en')->latar_belakang}}</p>
                             </div>
                             <div class="col-12" style="text-align: justify">
                                 <h4 class="about-app__description-title">Project Scope</h4>
-                                <p>{{$proyek->lingkup_pekerjaan}}</p>
+                                <p>{{$proyek->translate('en')->lingkup_pekerjaan}}</p>
                             </div>
 
                         </div>
@@ -306,83 +307,117 @@
                         <div class="row">
                             <div class="col-8" style="text-align: justify">
                                 <h4 class="about-app__description-title">Summary</h4>
-                                <table class="tablesaw tablesaw-swipe" data-tablesaw-mode="swipe">
-                                    <tbody class="site-table__body">
-                                    @isset($proyek->luas_lahan)
-                                        <tr class="site-table__row">
-                                            <th class="site-table__th">Luas Lahan</th>
-                                            <td class="site-table__td"><p>{{$proyek->luas_lahan}}</p></td>
-                                        </tr>
-                                    @endisset
-                                    @isset($proyek->eksisting)
-                                        <tr class="site-table__row">
-                                            <th class="site-table__th">Eksisting</th>
-                                            <td class="site-table__td"><p>{{$proyek->eksisting}}</p></td>
-                                        </tr>
-                                    @endisset
-                                    @isset($proyek->status_kepemilikan)
-                                        <tr class="site-table__row">
-                                            <th class="site-table__th">Status Kepemilikan</th>
-                                            <td class="site-table__td"><p>{{$proyek->status_kepemilikan}}</p></td>
-                                        </tr>
-                                    @endisset
+                                <div class="site-table">
+                                    <table class="tablesaw tablesaw-swipe" data-tablesaw-mode="swipe">
+                                        <tbody class="site-table__body">
+                                        @isset($proyek->luas_lahan)
+                                            <tr class="site-table__row">
+                                                <th class="site-table__th">Luas Lahan</th>
+                                                <td class="site-table__td"><p>{{$proyek->luas_lahan}}</p></td>
+                                            </tr>
+                                        @endisset
+                                        @isset($proyek->eksisting)
+                                            <tr class="site-table__row">
+                                                <th class="site-table__th">Eksisting</th>
+                                                <td class="site-table__td"><p>{{$proyek->eksisting}}</p></td>
+                                            </tr>
+                                        @endisset
+                                        @isset($proyek->status_kepemilikan)
+                                            <tr class="site-table__row">
+                                                <th class="site-table__th">Status Kepemilikan</th>
+                                                <td class="site-table__td"><p>{{$proyek->status_kepemilikan}}</p></td>
+                                            </tr>
+                                        @endisset
 
-                                    @isset($proyek->skema_investasi)
-                                        <tr class="site-table__row">
-                                            <th class="site-table__th">Skema Investasi</th>
-                                            <td class="site-table__td"><p>{{$proyek->skema_investasi}}</p></td>
-                                        </tr>
-                                    @endisset
-                                    </tbody>
-                                </table>
+                                        @isset($proyek->skema_investasi)
+                                            <tr class="site-table__row">
+                                                <th class="site-table__th">Skema Investasi</th>
+                                                <td class="site-table__td"><p>{{$proyek->translate('en')->skema_investasi}}</p></td>
+                                            </tr>
+                                        @endisset
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                             <div class="col-4" style="text-align: justify">
                                 <h4 class="about-app__description-title">Economic Aspect</h4>
-                                <table class="tablesaw tablesaw-swipe" data-tablesaw-mode="swipe">
-                                    <tbody class="site-table__body">
-                                    @isset($proyek->nilai_investasi)
-                                        <tr class="site-table__row">
-                                            <th class="site-table__th">Nilai Investasi</th>
-                                            <td class="site-table__td"><p>{{$proyek->nilai_investasi}}</p></td>
-                                        </tr>
-                                    @endisset
-                                    @isset($proyek->npv)
-                                        <tr class="site-table__row">
-                                            <th class="site-table__th">NPV</th>
-                                            <td class="site-table__td"><p>{{$proyek->npv}}</p></td>
-                                        </tr>
-                                    @endisset
-                                    @isset($proyek->irr)
-                                        <tr class="site-table__row">
-                                            <th class="site-table__th">IRR</th>
-                                            <td class="site-table__td"><p>{{$proyek->irr}}</p></td>
-                                        </tr>
-                                    @endisset
-                                    @isset($proyek->bc_ratio)
-                                        <tr class="site-table__row">
-                                            <th class="site-table__th">BC Ration</th>
-                                            <td class="site-table__td"><p>{{$proyek->bc_ratio}}</p></td>
-                                        </tr>
-                                    @endisset
-                                    @isset($proyek->playback_period)
-                                        <tr class="site-table__row">
-                                            <th class="site-table__th">Payback Period</th>
-                                            <td class="site-table__td"><p>{{$proyek->playback_period}}</p></td>
-                                        </tr>
-                                    @endisset
-                                    </tbody>
-                                </table>
+                                <div class="site-table">
+                                    <table class="tablesaw tablesaw-swipe" data-tablesaw-mode="swipe">
+                                        <tbody class="site-table__body">
+                                        @isset($proyek->nilai_investasi)
+                                            <tr class="site-table__row">
+                                                <th class="site-table__th">Nilai Investasi</th>
+                                                <td class="site-table__td"><p>{{$proyek->translate('en')->nilai_investasi}}</p></td>
+                                            </tr>
+                                        @endisset
+                                        @isset($proyek->npv)
+                                            <tr class="site-table__row">
+                                                <th class="site-table__th">NPV</th>
+                                                <td class="site-table__td"><p>{{$proyek->translate('en')->npv}}</p></td>
+                                            </tr>
+                                        @endisset
+                                        @isset($proyek->irr)
+                                            <tr class="site-table__row">
+                                                <th class="site-table__th">IRR</th>
+                                                <td class="site-table__td"><p>{{$proyek->translate('en')->irr}}</p></td>
+                                            </tr>
+                                        @endisset
+                                        @isset($proyek->bc_ratio)
+                                            <tr class="site-table__row">
+                                                <th class="site-table__th">BC Ration</th>
+                                                <td class="site-table__td"><p>{{$proyek->translate('en')->bc_ratio}}</p></td>
+                                            </tr>
+                                        @endisset
+                                        @isset($proyek->playback_period)
+                                            <tr class="site-table__row">
+                                                <th class="site-table__th">Payback Period</th>
+                                                <td class="site-table__td"><p>{{$proyek->translate('en')->playback_period}}</p></td>
+                                            </tr>
+                                        @endisset
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-8" style="text-align: justify">
-                                <h4 class="about-app__description-title">Project Scope</h4>
-                                <p>{{$proyek->lingkup_pekerjaan}}</p>
+                                <h4 class="about-app__description-title">Location</h4>
+                                <div id="map" style="height: 100%"></div>
+
                             </div>
                             <div class="col-4" style="text-align: justify">
-                                <h4 class="about-app__description-title">Project Scope</h4>
-                                <p>{{$proyek->lingkup_pekerjaan}}</p>
+                                <h4 class="about-app__description-title">Contact Person</h4>
+                                <div class="site-table">
+                                    <table class="tablesaw tablesaw-swipe" data-tablesaw-mode="swipe">
+                                        <tbody class="site-table__body">
+                                        @isset($proyek->cp_nama)
+                                            <tr class="site-table__row">
+                                                <th class="site-table__th">Name</th>
+                                                <td class="site-table__td"><p>{{$proyek->cp_nama}}</p></td>
+                                            </tr>
+                                        @endisset
+                                        @isset($proyek->cp_hp)
+                                            <tr class="site-table__row">
+                                                <th class="site-table__th">Phone</th>
+                                                <td class="site-table__td"><p>{{$proyek->cp_hp}}</p></td>
+                                            </tr>
+                                        @endisset
+                                        @isset($proyek->cp_email)
+                                            <tr class="site-table__row">
+                                                <th class="site-table__th">Email</th>
+                                                <td class="site-table__td"><p>{{$proyek->cp_email}}</p></td>
+                                            </tr>
+                                        @endisset
+                                        @isset($proyek->cp_alamat)
+                                            <tr class="site-table__row">
+                                                <th class="site-table__th">Address</th>
+                                                <td class="site-table__td"><p>{{$proyek->cp_alamat}}</p></td>
+                                            </tr>
+                                        @endisset
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
 
@@ -433,159 +468,162 @@
     <div id="contentId" style="display: none">
         <div class="col-12 col-m-12">
             {{--SECTION PROJECT--}}
-                <section class="section">
-                    <div class="container">
-                        <h3 class="section__title">{{ $proyek->project_name }}</h3>
-                        <div class="row about-app about-app--reverse" style="padding-top: 50px!important;">
-                            <div class="col-6 about-app__img about-app__img--left">
-                                @isset($proyek->fotos)
-                                    @php
-                                        $images = json_decode($proyek->fotos)
-                                    @endphp
-                                    <div class="carousel">
-                                        @foreach((array) $images as $image)
-                                            <div class="item">
-                                                <div class="about-app__img-wrap">
-                                                    <img src="{{Voyager::image($image)}}" alt="">
-                                                </div>
-                                            </div>
-                                        @endforeach
-                                    </div>
+            <section class="section">
+                <div class="container">
+                    <h3 class="section__title">{{ $proyek->project_name }}</h3>
+                    <div class="row about-app">
+                        <div class="col-12 about-app__img about-app__img--left">
 
-                                @else
-                                    <img alt="" src="{{'storage/'.Voyager::setting('site.not_found')}}">
-                                @endisset
-                            </div>
-                        </div>
-
-
-                    </div>
-                </section>
-                {{--END-SECTION PROJECT--}}
-
-                {{--SECTION PROJECT DETAAIL--}}
-                {{--<section class="section">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="site-table">
-                                    <table class="tablesaw tablesaw-swipe" data-tablesaw-mode="swipe">
-                                        <tbody class="site-table__body">
-                                        @isset($proyek->eksisting)
-                                            <tr class="site-table__row">
-                                                <th class="site-table__th">Eksisting</th>
-                                                <td class="site-table__td"><p>{{$proyek->eksisting}}</p></td>
-                                            </tr>
-                                        @endisset
-                                        @isset($proyek->luas_lahan)
-                                            <tr class="site-table__row">
-                                                <th class="site-table__th">Luas Lahan</th>
-                                                <td class="site-table__td"><p>{{$proyek->luas_lahan}}</p></td>
-                                            </tr>
-                                        @endisset
-                                        @isset($proyek->status_kepemilikan)
-                                            <tr class="site-table__row">
-                                                <th class="site-table__th">Status Kepemilikan</th>
-                                                <td class="site-table__td"><p>{{$proyek->status_kepemilikan}}</p></td>
-                                            </tr>
-                                        @endisset
-                                        @isset($proyek->nilai_investasi)
-                                            <tr class="site-table__row">
-                                                <th class="site-table__th">Nilai Investasi</th>
-                                                <td class="site-table__td"><p>{{$proyek->nilai_investasi}}</p></td>
-                                            </tr>
-                                        @endisset
-                                        @isset($proyek->skema_investasi)
-                                            <tr class="site-table__row">
-                                                <th class="site-table__th">Skema Investasi</th>
-                                                <td class="site-table__td"><p>{{$proyek->skema_investasi}}</p></td>
-                                            </tr>
-                                        @endisset
-                                        @isset($proyek->irr)
-                                            <tr class="site-table__row">
-                                                <th class="site-table__th">NPV</th>
-                                                <td class="site-table__td"><p>{{$proyek->npv}}</p></td>
-                                            </tr>
-                                        @endisset
-                                        @isset($proyek->eksisting)
-                                            <tr class="site-table__row">
-                                                <th class="site-table__th">IRR</th>
-                                                <td class="site-table__td"><p>{{$proyek->irr}}</p></td>
-                                            </tr>
-                                        @endisset
-                                        @isset($proyek->bc_ratio)
-                                            <tr class="site-table__row">
-                                                <th class="site-table__th">BC Ration</th>
-                                                <td class="site-table__td"><p>{{$proyek->bc_ratio}}</p></td>
-                                            </tr>
-                                        @endisset
-                                        @isset($proyek->playback_period)
-                                            <tr class="site-table__row">
-                                                <th class="site-table__th">Payback Period</th>
-                                                <td class="site-table__td"><p>{{$proyek->playback_period}}</p></td>
-                                            </tr>
-                                        @endisset
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>--}}
-                {{--END-SECTION PROJECT DETAIL--}}
-
-                {{--SECTION PROJECT CONTACT PERSON--}}
-                {{--<section class="section section--half section--bottom-space">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12">
-                                <h3 class="section__title">Contact Person</h3>
-                            </div>
-                        </div>
-                        <div class="row integrate integrate--calculator">
-                            <div class="col-12">
-                                <div class="integrate__card card">
-
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="site-table">
-                                                <table class="tablesaw tablesaw-swipe" data-tablesaw-mode="swipe">
-                                                    <tbody class="site-table__body">
-                                                    @isset($proyek->cp_nama)
-                                                        <tr class="site-table__row">
-                                                            <th class="site-table__th">Name</th>
-                                                            <td class="site-table__td"><p>{{$proyek->cp_nama}}</p></td>
-                                                        </tr>
-                                                    @endisset
-                                                    @isset($proyek->cp_hp)
-                                                        <tr class="site-table__row">
-                                                            <th class="site-table__th">Phone</th>
-                                                            <td class="site-table__td"><p>{{$proyek->cp_hp}}</p></td>
-                                                        </tr>
-                                                    @endisset
-                                                    @isset($proyek->cp_email)
-                                                        <tr class="site-table__row">
-                                                            <th class="site-table__th">Email</th>
-                                                            <td class="site-table__td"><p>{{$proyek->cp_email}}</p></td>
-                                                        </tr>
-                                                    @endisset
-                                                    @isset($proyek->cp_alamat)
-                                                        <tr class="site-table__row">
-                                                            <th class="site-table__th">Address</th>
-                                                            <td class="site-table__td"><p>{{$proyek->cp_alamat}}</p></td>
-                                                        </tr>
-                                                    @endisset
-                                                    </tbody>
-                                                </table>
+                            @isset($proyek->fotos)
+                                @php
+                                    $images = json_decode($proyek->fotos)
+                                @endphp
+                                <div class="carousel">
+                                    @foreach((array) $images as $image)
+                                        <div class="item">
+                                            <div class="about-app__img-wrap">
+                                                <img src="{{Voyager::image($image)}}" alt="">
                                             </div>
                                         </div>
-                                    </div>
-
+                                    @endforeach
                                 </div>
+
+                            @else
+                                <img alt="" src="{{'storage/'.Voyager::setting('site.not_found')}}">
+                            @endisset
+                        </div>
+                        <div class="col-12" style="padding-top: 80px;text-align: justify">
+                            <h4 class="about-app__description-title">Latar Belakang</h4>
+                            <p>{{$proyek->latar_belakang}}</p>
+                        </div>
+                        <div class="col-12" style="text-align: justify">
+                            <h4 class="about-app__description-title">Lingkup Pekerjaan</h4>
+                            <p>{{$proyek->lingkup_pekerjaan}}</p>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-8" style="text-align: justify">
+                            <h4 class="about-app__description-title">Ringkasan</h4>
+                            <div class="site-table">
+                                <table class="tablesaw tablesaw-swipe" data-tablesaw-mode="swipe">
+                                    <tbody class="site-table__body">
+                                    @isset($proyek->luas_lahan)
+                                        <tr class="site-table__row">
+                                            <th class="site-table__th">Luas Lahan</th>
+                                            <td class="site-table__td"><p>{{$proyek->luas_lahan}}</p></td>
+                                        </tr>
+                                    @endisset
+                                    @isset($proyek->eksisting)
+                                        <tr class="site-table__row">
+                                            <th class="site-table__th">Eksisting</th>
+                                            <td class="site-table__td"><p>{{$proyek->eksisting}}</p></td>
+                                        </tr>
+                                    @endisset
+                                    @isset($proyek->status_kepemilikan)
+                                        <tr class="site-table__row">
+                                            <th class="site-table__th">Status Kepemilikan</th>
+                                            <td class="site-table__td"><p>{{$proyek->status_kepemilikan}}</p></td>
+                                        </tr>
+                                    @endisset
+
+                                    @isset($proyek->skema_investasi)
+                                        <tr class="site-table__row">
+                                            <th class="site-table__th">Skema Investasi</th>
+                                            <td class="site-table__td"><p>{{$proyek->skema_investasi}}</p></td>
+                                        </tr>
+                                    @endisset
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-4" style="text-align: justify">
+                            <h4 class="about-app__description-title">Aspek Ekonomi</h4>
+                            <div class="site-table">
+                                <table class="tablesaw tablesaw-swipe" data-tablesaw-mode="swipe">
+                                    <tbody class="site-table__body">
+                                    @isset($proyek->nilai_investasi)
+                                        <tr class="site-table__row">
+                                            <th class="site-table__th">Nilai Investasi</th>
+                                            <td class="site-table__td"><p>{{$proyek->nilai_investasi}}</p></td>
+                                        </tr>
+                                    @endisset
+                                    @isset($proyek->npv)
+                                        <tr class="site-table__row">
+                                            <th class="site-table__th">NPV</th>
+                                            <td class="site-table__td"><p>{{$proyek->npv}}</p></td>
+                                        </tr>
+                                    @endisset
+                                    @isset($proyek->irr)
+                                        <tr class="site-table__row">
+                                            <th class="site-table__th">IRR</th>
+                                            <td class="site-table__td"><p>{{$proyek->irr}}</p></td>
+                                        </tr>
+                                    @endisset
+                                    @isset($proyek->bc_ratio)
+                                        <tr class="site-table__row">
+                                            <th class="site-table__th">BC Ration</th>
+                                            <td class="site-table__td"><p>{{$proyek->bc_ratio}}</p></td>
+                                        </tr>
+                                    @endisset
+                                    @isset($proyek->playback_period)
+                                        <tr class="site-table__row">
+                                            <th class="site-table__th">Payback Period</th>
+                                            <td class="site-table__td"><p>{{$proyek->playback_period}}</p></td>
+                                        </tr>
+                                    @endisset
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
-                </section>--}}
+
+                    <div class="row">
+                        <div class="col-8" style="text-align: justify">
+                            <h4 class="about-app__description-title">Lokasi</h4>
+                            <div id="map2" style="height: 100%"></div>
+
+                        </div>
+                        <div class="col-4" style="text-align: justify">
+                            <h4 class="about-app__description-title">Narahubung</h4>
+                            <div class="site-table">
+                                <table class="tablesaw tablesaw-swipe" data-tablesaw-mode="swipe">
+                                    <tbody class="site-table__body">
+                                    @isset($proyek->cp_nama)
+                                        <tr class="site-table__row">
+                                            <th class="site-table__th">Name</th>
+                                            <td class="site-table__td"><p>{{$proyek->cp_nama}}</p></td>
+                                        </tr>
+                                    @endisset
+                                    @isset($proyek->cp_hp)
+                                        <tr class="site-table__row">
+                                            <th class="site-table__th">Phone</th>
+                                            <td class="site-table__td"><p>{{$proyek->cp_hp}}</p></td>
+                                        </tr>
+                                    @endisset
+                                    @isset($proyek->cp_email)
+                                        <tr class="site-table__row">
+                                            <th class="site-table__th">Email</th>
+                                            <td class="site-table__td"><p>{{$proyek->cp_email}}</p></td>
+                                        </tr>
+                                    @endisset
+                                    @isset($proyek->cp_alamat)
+                                        <tr class="site-table__row">
+                                            <th class="site-table__th">Address</th>
+                                            <td class="site-table__td"><p>{{$proyek->cp_alamat}}</p></td>
+                                        </tr>
+                                    @endisset
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+                {{--END-SECTION PROJECT--}}
+
                 <hr>
                 {{--END-SECTION PROJECT CONTACT PERSON--}}
 
@@ -614,6 +652,52 @@
             variableWidth: false,
             autoplay: true,
             arrows: false
+        });
+    </script>
+    <script type="text/javascript">
+        var coordinate = {!! json_encode($proyek->getCoordinates(), JSON_HEX_TAG) !!};
+        var lt = Number(coordinate[0].lat);
+        var lg = Number(coordinate[0].lng);
+
+        var title = '{!! $proyek->project_name !!}';
+        var lat = coordinate[0].lat;
+        var long = coordinate[0].lng;
+        var myLatLng = {lat : lt, lng : lg};
+
+        var myOptions = {
+            zoom: 8,
+            center: new google.maps.LatLng(lat, long),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+
+        var map = new google.maps.Map(document.getElementById("map"), myOptions);
+        var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            title: 'Hello World!'
+        });
+    </script>
+    <script type="text/javascript">
+        var coordinate = {!! json_encode($proyek->getCoordinates(), JSON_HEX_TAG) !!};
+        var lt = Number(coordinate[0].lat);
+        var lg = Number(coordinate[0].lng);
+
+        var title = '{!! $proyek->project_name !!}';
+        var lat = coordinate[0].lat;
+        var long = coordinate[0].lng;
+        var myLatLng = {lat : lt, lng : lg};
+
+        var myOptions = {
+            zoom: 8,
+            center: new google.maps.LatLng(lat, long),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+
+        var map = new google.maps.Map(document.getElementById("map2"), myOptions);
+        var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            title: 'Hello World!'
         });
     </script>
     {{--{!! ($chart->script()) !!}--}}
