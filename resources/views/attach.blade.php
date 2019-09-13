@@ -170,6 +170,7 @@
 </head>
 <body>
 
+{{--FIX THIS--}}
 <div id="header">
     <img src="http://cjip.jatengprov.go.id/storage/additional/header_2.png" width="100%" height="auto"/>
 </div>
