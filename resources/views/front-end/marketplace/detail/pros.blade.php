@@ -242,8 +242,8 @@
                  style="background-image: url({{Voyager::image(setting('site.bg_rto'))}})">
                 <div class="row">
                     <div class="col-12">
-                        <h2 class="header-home__title header-home__title--features" style="margin-bottom: 0px!important;  width: 800px;!important; color: whitesmoke">{{Voyager::setting('site.title_rto')}}<br/></h2>
-                        <p class="header-home__description" style="width: 500px !important; color: whitesmoke; font-weight: 100" align="justify">{{Voyager::setting('site.ket_rto')}}</p>
+                        <h2 class="header-home__title header-home__title--features" style="margin-bottom: 0px!important;  width: 800px;!important;">{{Voyager::setting('site.title_rto')}}<br/></h2>
+                        <p class="header-home__description" style="width: 500px !important; font-weight: 100" align="justify">{{Voyager::setting('site.ket_rto')}}</p>
                     </div>
                 </div>
             </div>
@@ -255,8 +255,8 @@
                  style="background-image: url({{Voyager::image(setting('site.bg_rto'))}})">
                 <div class="row">
                     <div class="col-12">
-                        <h2 class="header-home__title header-home__title--features" style="margin-bottom: 0px!important;  width: 800px;!important; color: whitesmoke">{{Voyager::setting('site.id_title_rto')}}<br/></h2>
-                        <p class="header-home__description" style="width: 500px !important; color: whitesmoke; font-weight: 100" align="justify">{{Voyager::setting('site.id_ket_rto')}}</p>
+                        <h2 class="header-home__title header-home__title--features" style="margin-bottom: 0px!important;  width: 800px;!important;">{{Voyager::setting('site.id_title_rto')}}<br/></h2>
+                        <p class="header-home__description" style="width: 500px !important; font-weight: 100" align="justify">{{Voyager::setting('site.id_ket_rto')}}</p>
                     </div>
                 </div>
             </div>

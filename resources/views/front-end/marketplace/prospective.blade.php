@@ -224,8 +224,8 @@
                  style="background-image: url({{Voyager::image(setting('site.bg_rto'))}})">
                 <div class="row">
                     <div class="col-12">
-                        <h2 class="header-home__title header-home__title--features" style="margin-bottom: 0px!important;  width: 800px;!important; color: whitesmoke">{{Voyager::setting('site.title_rto')}}<br/></h2>
-                        <p class="header-home__description" style="width: 500px !important; color: whitesmoke; font-weight: 100" align="justify">{{Voyager::setting('site.ket_rto')}}</p>
+                        <h2 class="header-home__title header-home__title--features" style="margin-bottom: 0px!important;  width: 800px;!important;">{{Voyager::setting('site.title_rto')}}<br/></h2>
+                        <p class="header-home__description" style="width: 500px !important; font-weight: 100" align="justify">{{Voyager::setting('site.ket_rto')}}</p>
                     </div>
                 </div>
             </div>
@@ -237,8 +237,8 @@
                  style="background-image: url({{Voyager::image(setting('site.bg_rto'))}})">
                 <div class="row">
                     <div class="col-12">
-                        <h2 class="header-home__title header-home__title--features" style="margin-bottom: 0px!important;  width: 800px;!important; color: whitesmoke">{{Voyager::setting('site.id_title_rto')}}<br/></h2>
-                        <p class="header-home__description" style="width: 500px !important; color: whitesmoke; font-weight: 100" align="justify">{{Voyager::setting('site.id_ket_rto')}}</p>
+                        <h2 class="header-home__title header-home__title--features" style="margin-bottom: 0px!important;  width: 800px;!important;">{{Voyager::setting('site.id_title_rto')}}<br/></h2>
+                        <p class="header-home__description" style="width: 500px !important; font-weight: 100" align="justify">{{Voyager::setting('site.id_ket_rto')}}</p>
                     </div>
                 </div>
             </div>
@@ -262,7 +262,7 @@
                                         <p style="text-align: justify; text-justify: inter-word;">{{ str_limit($proyek->translate('en')->latar_belakang, $limit = 500, $end = '...') }}</p>
                                     @endisset
                                     <a href="{{route('detail.rto', ['id'=>$proyek->id,'slug' => str_slug($proyek->project_name, '-')])}}" class="site-btn site-btn--accent header-home__btn">Project's Details</a>
-                                    <a href="05_features.html" class="site-btn site-btn--light header-home__btn">Project's Owner</a>
+                                    <a href="{{route('detail.profile', ['id'=>$proyek->profil_id,'slug' => str_slug($proyek->project_name, '-')])}}" class="site-btn site-btn--light header-home__btn">Project's Owner</a>
                                     {{-- @isset($proyek->lingkup_pekerjaan)
                                          <h6 class="about-app__description-title">Scope of Work</h6>
                                          <p style="text-align: justify; text-justify: inter-word;">{{$proyek->translate('en')->lingkup_pekerjaan}}</p>

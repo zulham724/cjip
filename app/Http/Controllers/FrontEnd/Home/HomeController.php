@@ -147,7 +147,7 @@ class HomeController extends Controller
         $proyeks = Proyek::whereHas('marketplace', function ($query) {
             $query->where('name', '=', 'Ready to Offer');
         })->where('status', 1)->paginate(5);
-        dd($proyeks);
+        //dd($proyeks);
         //dd($proyeks->load('translations'));
         if (($isModelTranslatable = is_bread_translatable($proyeks))) {
             $proyeks->load('translations');
@@ -240,9 +240,9 @@ class HomeController extends Controller
         return view('front-end.marketplace.detail.pot', compact('proyek', 'mapsKey'));
     }
 
-    public function detailProfil($id){
+    public function detailProfile($id, $slug){
         $profil = ProfilKabupaten::findOrFail($id);
-
+        $mapsKey = 'AIzaSyBGsawbqVs083lGEe8cilVz0FqO0rHt5ZE&amp';
         SEOTools::setTitle($profil->profil.' - '.$profil->translate('en')->profil);
         SEOTools::setDescription('Here is some ready to offered investment project - '.$profil->profil.' - '.$profil->translate('en')->profil);
         SEOTools::opengraph()->setUrl(url()->current());
@@ -251,7 +251,7 @@ class HomeController extends Controller
         SEOTools::twitter()->setSite('@DPMPTSPJateng');
         SEOTools::jsonLd()->addImage('https://cjip.jatengprov.go.id/storage/settings/August2019/esr0C8HmQss78AAnlaue.png');
 
-        return view('front-end.marketplace.detail.profil', compact('profil'));
+        return view('front-end.marketplace.detail.profil', compact('profil', 'mapsKey'));
     }
 
     public function faq(){

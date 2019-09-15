@@ -31,6 +31,29 @@
         .english { display: inline; }
         .indo { display: none; }
     </style>
+    <style>
+        .pagination {
+            display: inline-block;
+        }
+
+        .pagination a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+        }
+
+        .pagination a.active {
+            background-color: #e85566;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .pagination a:hover:not(.active) {
+            background-color: #ddd;
+            border-radius: 5px;
+        }
+    </style>
 
 </head>
 <body>
@@ -184,4 +207,5 @@
 
 
 </script>
+
 @yield('js')

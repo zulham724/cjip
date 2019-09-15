@@ -10,6 +10,7 @@ use App\KepadatanPenduduk;
 use App\LuasPenggunaan;
 use App\LuasWilayah;
 use App\Perusahaan;
+use App\ProfilKabupaten;
 use App\ProfKepKabKota;
 use App\Umkm;
 use App\Umr;
@@ -189,4 +190,5 @@ class ProfileController extends Controller
 
 
     }
+
 }

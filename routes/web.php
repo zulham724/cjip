@@ -70,6 +70,9 @@ Route::get('/', function(){
         Route::get('/potential-project/{id}/{slug}', 'FrontEnd\Home\HomeController@detailPot')->name('detail.pot');
 
 
+        Route::get('/project-owner/{id}/{slug}', 'FrontEnd\Home\HomeController@detailProfile')->name('detail.profile');
+
+
         Route::get('/how-can-we-help', 'FrontEnd\Home\HomeController@faq')->name('faq');
 
         Route::get('/news', 'FrontEnd\News\NewsController@news')->name('news');
