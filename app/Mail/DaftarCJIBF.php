@@ -34,18 +34,18 @@ class DaftarCJIBF extends Mailable
     public function build()
     {
         //dd(base64_encode($this->send));
-       /* $filename = $this->send->perusahaan;
-        $attach = PDF::loadView('attach', ['send' => $this->send])->setPaper('letter','portrait')->save(storage_path('app/CJIBF/'.'CJIBF_'.$filename.'.pdf'));*/
+        $filename = $this->send->perusahaan;
+        $attach = PDF::loadView('attach', ['send' => $this->send])->setPaper('letter','portrait');
         //dd($attach);
         //$file = Storage::put('CJIBF/daftarCJIBF'.'.pdf', $attach->output());
         return $this->from('cjibf.jateng@gmail.com')
             ->subject('Thank You For Joining Us')
             ->view('maileclipse::templates.attachment')
             ->text('maileclipse::templates.attachment_plain_text')
-            /*->attach(storage_path('app/CJIBF/'.'CJIBF_'.$filename.'.pdf'))*/
-            /*->attachData($attach->output(), 'CJIBF.pdf', [
+            /*->attach(storage_path('app/public/CJIBF/'.'CJIBF_'.$filename.'.pdf'))*/
+            ->attachData($attach->output(), 'CJIBF.pdf', [
                 'mime' => 'application/pdf',
-            ])*/
+            ])
             ->with('data', $this->send);
         //dd($this->send);
 

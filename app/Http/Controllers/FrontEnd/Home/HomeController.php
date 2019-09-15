@@ -116,12 +116,6 @@ class HomeController extends Controller
 
             }
 
-
-
-
-
-
-
     public function likes(Request $request, $id)
     {
         $action = $request->get('action');
@@ -157,7 +151,7 @@ class HomeController extends Controller
         $proyeks = Proyek::whereHas('marketplace', function ($query) {
             $query->where('name', '=', 'Ready to Offer');
         })->where('status', 1)->paginate(5);
-        //dd($proyeks);
+        dd($proyeks);
         //dd($proyeks->load('translations'));
         if (($isModelTranslatable = is_bread_translatable($proyeks))) {
             $proyeks->load('translations');

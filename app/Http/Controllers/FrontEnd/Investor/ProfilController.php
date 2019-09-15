@@ -61,7 +61,7 @@ class ProfilController extends Controller
         //dd($profile);
         $profile->save();
 
-        return redirect()->route('homey2');
+        return redirect()->route('frontend.cjibf');
     }
 
     public function daftar(){

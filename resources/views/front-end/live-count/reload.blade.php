@@ -29,8 +29,8 @@
                                     <td>{{ $loi->nama_perusahaan }}</td>
                                     <td>{{ $loi->sektor->sektor_interest }}</td>
                                     <td>{{ $loi->kota->kabkota->nama }}</td>
-                                    <td>{{ $loi->nilai_usd }}</td>
-                                    <td>{{ $loi->nilai_rp }}</td>
+                                    <td>{{ number_format($loi->nilai_usd) }}</td>
+                                    <td>{{ number_format($loi->nilai_rp) }}</td>
                                 </tr>
                             @endforeach
                         @endisset

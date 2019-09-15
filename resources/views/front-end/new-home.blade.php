@@ -9,10 +9,10 @@
         <header class="header-home header-home--color">
             <div class="background"
                  style="background-position-y: bottom;
-                         background-repeat-y: no-repeat;
-                         background-repeat: repeat-x;
-                         background-size: contain;
-                         background-image: url({{Voyager::image(setting('site.bg_why'))}})">
+                     background-repeat-y: no-repeat;
+                     background-repeat: repeat-x;
+                     background-size: contain;
+                     background-image: url({{Voyager::image(setting('site.bg_why'))}})">
                 @php $site_logo = Voyager::setting('site.logo', ''); @endphp
                 <div class="container background background--right background--features background--header"
                      style="background-image: url({{asset('storage/'.$site_logo)}})">
@@ -29,10 +29,10 @@
         <header class="header-home header-home--color">
             <div class="background"
                  style="background-position-y: bottom;
-                         background-repeat-y: no-repeat;
-                         background-repeat: repeat-x;
-                         background-size: contain;
-                         background-image: url({{Voyager::image(setting('site.bg_why'))}})">
+                     background-repeat-y: no-repeat;
+                     background-repeat: repeat-x;
+                     background-size: contain;
+                     background-image: url({{Voyager::image(setting('site.bg_why'))}})">
                 @php $site_logo = Voyager::setting('site.logo', ''); @endphp
                 <div class="container background background--right background--features background--header"
                      style="background-image: url({{asset('storage/'.$site_logo)}})">
@@ -81,22 +81,7 @@
                     <div class="col-6 about-app__description">
                         <div class="about-app__description-content">
                             <img src="{{Voyager::image(setting('site.icon_economic'))}}" style="width: 100px; height: 100px; margin-top: 50px" alt="Economic Growth">
-                            {{--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="120" height="120"
-                                 viewBox="0 0 120 120">
-                                <rect class="svg-bg" width="120" height="120"/>
-                                <path class="svg-light-gray"
-                                      d="M12,20a2,2,0,0,1,2,2V34a2,2,0,0,1-4,0V22A2,2,0,0,1,12,20ZM6,26H18a2,2,0,0,1,0,4H6A2,2,0,0,1,6,26ZM8,72a2,2,0,0,1,2,2V86a2,2,0,0,1-4,0V74A2,2,0,0,1,8,72ZM2,78H14a2,2,0,0,1,0,4H2A2,2,0,0,1,2,78Zm98,14a2,2,0,0,1,2,2v12a2,2,0,0,1-4,0V94A2,2,0,0,1,100,92Zm-6,6h12a2,2,0,0,1,0,4H94A2,2,0,0,1,94,98ZM60,20A40,40,0,1,1,20,60,40,40,0,0,1,60,20Z"/>
-                                <g>
-                                    <rect class="svg-dark-gray" x="36" y="20" width="44" height="80" rx="4" ry="4"/>
-                                    <path class="svg-white"
-                                          d="M40,30H76a2,2,0,0,1,2,2V86a2,2,0,0,1-2,2H40a2,2,0,0,1-2-2V32A2,2,0,0,1,40,30ZM58.5,91.25a2.5,2.5,0,1,1-2.5,2.5A2.5,2.5,0,0,1,58.5,91.25Z"/>
-                                </g>
-                                <g id="label">
-                                    <circle id="circle-2" data-name="circle" class="svg-element" cx="58" cy="59" r="16"/>
-                                    <image id="Free" x="46" y="55" width="23" height="8"
-                                           xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAAICAMAAAAldJTcAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAM1BMVEUAAAD///////////////////////////////////////////////////////////8AAAC3K8SQAAAAD3RSTlMAVSJm3arMiLsR7ndEmTPX6l4jAAAAAWJLR0QAiAUdSAAAAAlwSFlzAAALEgAACxIB0t1+/AAAAFtJREFUCNdtjVEOgDAIQ7vBkMkm97+tYGaixn6Q5oX0oXim4hti/Gbx1piruG9R3bWDcmaHcocawMMaMO3+D9YvE0ne+eJHNrHnfm7oBOywAINQljd4erWmV8YJJGkDageXzLEAAAAASUVORK5CYII="/>
-                                </g>
-                            </svg>--}}
+
                             <h4 class="about-app__description-title">Economic Growth</h4>
 
                             {{--<p>Tahun : {{$ekonomis[0]->tahun}}</p><br>
@@ -154,20 +139,20 @@
                     </div>
                 @endforeach
 
-                <div id="supporting-infrastruktures" class="row about-app">
-                    <div class="col-6 about-app__description">
-                        <div class="about-app__description-content about-app__description-content--left">
-                            <img src="{{Voyager::image(setting('site.icon_infrastructure'))}}" style="width: 100px; height: 100px; margin-top: 50px" alt="Supporting Infrastructures">
-                            <h4 class="about-app__description-title">Supporting Infrastructure</h4>
-                            @foreach($infrastrukturs as $infrastruktur)
-                                <li>{{$infrastruktur->nama_infrastruktur}}</li>
-                            @endforeach
+                <div id="supporting-infrastruktures">
+                    <div class="row">
+                        <div class="col-12">
+                            <img src="{{Voyager::image(setting('site.icon_infrastructure'))}}" style="width: 100px; height: 100px; margin-top: 50px;display: block;margin-left: auto;margin-right: auto;" alt="Supporting Infrastructures">
+                            <h3 class="section__title">Supporting Infrastructures</h3>
                         </div>
                     </div>
-                    <div class="col-6 about-app__img">
-                        <div class="about-app__img-wrap">
-                            <img alt="" src="{{'storage/'.Voyager::setting('site.not_found')}}">
+                    <div class="row features">
+                        @foreach($infrastrukturs as $infrastruktur)
+                        <div class="col-2 col-m-4 col-l-6">
+                            <img src="{{Voyager::image($infrastruktur->gambar)}}" style="width: 100px; height: 100px; margin-top: 50px;display: block;margin-left: auto;margin-right: auto;" alt="Supporting Infrastructures">
+                            <h3 class="section__title">{{$infrastruktur->nama_infrastruktur}}</h3>
                         </div>
+                        @endforeach
                     </div>
                 </div>
                 <div id="wages" class="row about-app about-app--reverse">
@@ -340,26 +325,9 @@
                     <div class="col-6 about-app__description">
                         <div class="about-app__description-content">
                             <img src="{{Voyager::image(setting('site.icon_economic'))}}" style="width: 100px; height: 100px; margin-top: 50px" alt="Economic Growth">
-                            {{--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="120" height="120"
-                                 viewBox="0 0 120 120">
-                                <rect class="svg-bg" width="120" height="120"/>
-                                <path class="svg-light-gray"
-                                      d="M12,20a2,2,0,0,1,2,2V34a2,2,0,0,1-4,0V22A2,2,0,0,1,12,20ZM6,26H18a2,2,0,0,1,0,4H6A2,2,0,0,1,6,26ZM8,72a2,2,0,0,1,2,2V86a2,2,0,0,1-4,0V74A2,2,0,0,1,8,72ZM2,78H14a2,2,0,0,1,0,4H2A2,2,0,0,1,2,78Zm98,14a2,2,0,0,1,2,2v12a2,2,0,0,1-4,0V94A2,2,0,0,1,100,92Zm-6,6h12a2,2,0,0,1,0,4H94A2,2,0,0,1,94,98ZM60,20A40,40,0,1,1,20,60,40,40,0,0,1,60,20Z"/>
-                                <g>
-                                    <rect class="svg-dark-gray" x="36" y="20" width="44" height="80" rx="4" ry="4"/>
-                                    <path class="svg-white"
-                                          d="M40,30H76a2,2,0,0,1,2,2V86a2,2,0,0,1-2,2H40a2,2,0,0,1-2-2V32A2,2,0,0,1,40,30ZM58.5,91.25a2.5,2.5,0,1,1-2.5,2.5A2.5,2.5,0,0,1,58.5,91.25Z"/>
-                                </g>
-                                <g id="label">
-                                    <circle id="circle-2" data-name="circle" class="svg-element" cx="58" cy="59" r="16"/>
-                                    <image id="Free" x="46" y="55" width="23" height="8"
-                                           xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAAICAMAAAAldJTcAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAM1BMVEUAAAD///////////////////////////////////////////////////////////8AAAC3K8SQAAAAD3RSTlMAVSJm3arMiLsR7ndEmTPX6l4jAAAAAWJLR0QAiAUdSAAAAAlwSFlzAAALEgAACxIB0t1+/AAAAFtJREFUCNdtjVEOgDAIQ7vBkMkm97+tYGaixn6Q5oX0oXim4hti/Gbx1piruG9R3bWDcmaHcocawMMaMO3+D9YvE0ne+eJHNrHnfm7oBOywAINQljd4erWmV8YJJGkDageXzLEAAAAASUVORK5CYII="/>
-                                </g>
-                            </svg>--}}
+
                             <h4 class="about-app__description-title">Pertumbuhan Ekonomi</h4>
 
-                            {{--<p>Tahun : {{$ekonomis[0]->tahun}}</p><br>
-                        <p>Nilai Pertumbuhan : {{$ekonomis[0]->pertumbuhan}}</p><br>--}}
                             <div id="economic" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
                         </div>
                     </div>
@@ -412,20 +380,20 @@
                     </div>
                 @endforeach
 
-                <div id="supporting-infrastruktures" class="row about-app">
-                    <div class="col-6 about-app__description">
-                        <div class="about-app__description-content about-app__description-content--left">
-                            <img src="{{Voyager::image(setting('site.icon_infrastructure'))}}" style="width: 100px; height: 100px; margin-top: 50px" alt="Supporting Infrastructures">
-                            <h4 class="about-app__description-title">Infrastruktur Pendukung</h4>
-                            @foreach($infrastrukturs as $infrastruktur)
-                                <li>{{$infrastruktur->nama_infrastruktur}}</li>
-                            @endforeach
+                <div id="supporting-infrastruktures">
+                    <div class="row">
+                        <div class="col-12">
+                            <img src="{{Voyager::image(setting('site.icon_infrastructure'))}}" style="width: 100px; height: 100px; margin-top: 50px;display: block;margin-left: auto;margin-right: auto;" alt="Supporting Infrastructures">
+                            <h3 class="section__title">Supporting Infrastructures</h3>
                         </div>
                     </div>
-                    <div class="col-6 about-app__img">
-                        <div class="about-app__img-wrap">
-                            <img alt="" src="{{'storage/'.Voyager::setting('site.not_found')}}">
-                        </div>
+                    <div class="row features">
+                        @foreach($infrastrukturs as $infrastruktur)
+                            <div class="col">
+                                <img src="{{Voyager::image($infrastruktur->gambar)}}" style="width: 100px; height: 100px; margin-top: 50px;display: block;margin-left: auto;margin-right: auto;" alt="Supporting Infrastructures">
+                                <h3 class="section__title">{{$infrastruktur->nama_infrastruktur}}</h3>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
                 <div id="wages" class="row about-app about-app--reverse">
@@ -433,28 +401,46 @@
                         <div class="about-app__description-content">
                             <img src="{{Voyager::image(setting('site.icon_umk'))}}" style="width: 100px; height: 100px; margin-top: 50px" alt="UMK">
                             <h4 class="about-app__description-title">UMK</h4>
-                            <table id="wagestable" class="uk-table uk-table-hover uk-table-striped" style="width:100%">
-                                <thead>
-                                <tr>
-                                    <th>Kab/Kota</th>
-                                    <th>Tahun</th>
-                                    <th>Nilai UMR</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($umks as $key => $umk)
-                                    <tr>
 
-                                        <td>{{$user->where('id', $key)->first()->kota->kabkota->nama}}</td>
+                            <div class="row faq">
+                                <div id="top" class="col-12 col-t-12">
+                                    <div class="faq__content">
+                                <div id="chapter1" class="faq__chapter chapter">
+                                    <div class="faq__card card">
+                                        <h4 class="faq__card-title">Detail UMK
+                                            <span class="faq__card-icon"><i class="mdi mdi-chevron-down"></i></span>
+                                        </h4>
+                                        <div class="faq__card-description">
+                                            <table id="wagestable" class="uk-table uk-table-hover uk-table-striped" style="width:100%">
+                                                <thead>
+                                                <tr>
+                                                    <th>Kab/Kota</th>
+                                                    <th>Tahun</th>
+                                                    <th>Nilai UMK</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                @foreach($umks as $key => $umk)
+                                                    <tr>
+
+                                                        <td>{{$user->where('id', $key)->first()->kota->kabkota->nama}}</td>
 
 
-                                        <td>@foreach($umk as $key2 => $um){{$key2}} <br>@endforeach</td>
-                                        <td>@foreach($umk as $key2 => $um){{$um[0]->nilai_umr}} <br>@endforeach</td>
+                                                        <td>@foreach($umk as $key2 => $um){{$key2}} <br>@endforeach</td>
+                                                        <td>@foreach($umk as $key2 => $um){{$um[0]->nilai_umr}} <br>@endforeach</td>
 
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
+                                                    </tr>
+                                                @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                </div>
+                            </div>
+
+
 
                         </div>
                     </div>
@@ -872,7 +858,7 @@
         //console.log(chart.series[0])
         $("#sel").change(function () {
             var selected = this.value;
-            
+
             if (selected === 'Sector'){
                 chart.series[0].update({
                     name: 'Realisasi Investasi berdasarkan ' + this.value,

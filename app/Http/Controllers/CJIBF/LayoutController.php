@@ -65,7 +65,7 @@ class LayoutController extends Controller
 
         //dd($user->kota);
         if (app('VoyagerAuth')->user()->hasRole('kab')){
-            $pesertakabs = CjibfInvestor::where('kab_kota_id', $user->kota->kab_kota_id)->get();
+            $pesertakabs = CjibfInvestor::where('kab_kota_id', $user->id)->get();
             return view('cjibf.home', compact(
                 'alphabet',
                 'rows',
@@ -157,7 +157,7 @@ class LayoutController extends Controller
         $peserta = CjibfInvestor::findOrFail($id);
         $peserta->loi_id = $loi->id;
         $peserta->update();
-        
+
 
         return redirect()->route('event.home');
     }

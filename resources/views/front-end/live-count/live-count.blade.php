@@ -46,7 +46,7 @@
                     <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                         <div class="card card-small h-100">
                             <div class="card-header border-bottom">
-                                <h6 class="m-0">Top 5 Sectors</h6>
+                                <h6 class="m-0">Sectors</h6>
                             </div>
 
                             <div id="autochart">
