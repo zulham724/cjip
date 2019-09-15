@@ -59,6 +59,13 @@ class HomeController extends Controller
         $awards = Award::all();
         $infrastrukturs = InfrastrukturPendukung::all();
         $umks = Umr::all()->groupBy(['kab_kota_id', 'tahun']);
+        $min = Umr::min('nilai_umr');
+        $max = Umr::max('nilai_umr');
+        $min_umk = Umr::where('nilai_umr', $min)->first();
+        $max_umk = Umr::where('nilai_umr', $max)->first();
+        //dd($min_umk->kab->kota->kabkota->nama);
+
+
         $user = User::all();
         //dd($user);
         //dd($umks->toJson());
@@ -82,17 +89,6 @@ class HomeController extends Controller
        $obj = json_decode($result);
        //dd(json_encode($obj));
 
-       foreach ($airs as $air){
-           foreach ($air->air as $a){
-               //dd($a);
-           }
-       }
-
-        foreach ($airs as $air){
-            foreach ($air->air as $a){
-                //dd($a);
-            }
-        }
 
        if (Auth::guard('investor')->check()){
            $registered = ProfileInvestor::where('user_id',Auth::guard('investor')->user()->id)->first();
@@ -102,16 +98,16 @@ class HomeController extends Controller
                return redirect()->route('form.profile', Auth::guard('investor')->user()->id );
            }
            elseif (isset($intersts)){
-               return view('front-end.new-home', compact('mapsKey','alphabet','obj','feeds', 'intersts', 'populers', 'news' , 'ekonomis', 'awards', 'infrastrukturs', 'umks', 'listriks', 'airs', 'user'));
+               return view('front-end.new-home', compact('mapsKey', 'min_umk','max_umk','alphabet','obj','feeds', 'intersts', 'populers', 'news' , 'ekonomis', 'awards', 'infrastrukturs', 'umks', 'listriks', 'airs', 'user'));
            }
            else{
-               return view('front-end.new-home', compact('mapsKey','alphabet','feeds','obj',  'populers', 'news' , 'ekonomis', 'awards', 'infrastrukturs', 'umks', 'listriks', 'airs', 'user'));
+               return view('front-end.new-home', compact('mapsKey', 'min_umk','max_umk','alphabet','feeds','obj',  'populers', 'news' , 'ekonomis', 'awards', 'infrastrukturs', 'umks', 'listriks', 'airs', 'user'));
 
            }
        }
        else{
            return view('front-end.new-home', compact(
-               'mapsKey','feeds', 'populers', 'news', 'ekonomis', 'awards','alphabet','obj', 'infrastrukturs', 'umks', 'listriks', 'airs', 'user'));
+               'mapsKey', 'min_umk','max_umk','feeds', 'populers', 'news', 'ekonomis', 'awards','alphabet','obj', 'infrastrukturs', 'umks', 'listriks', 'airs', 'user'));
        }
 
             }

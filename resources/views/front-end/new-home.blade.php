@@ -155,138 +155,160 @@
                         @endforeach
                     </div>
                 </div>
-                <div id="wages" class="row about-app about-app--reverse">
-                    <div class="col-6 about-app__description">
+                <div id="wages">
+                    <div class="row">
+                        <div class="col-12">
+                            <img src="{{Voyager::image(setting('site.icon_umk'))}}" style="width: 100px; height: 100px; margin-top: 50px;display: block;margin-left: auto;margin-right: auto;" alt="Supporting Infrastructures">
+                            <h3 class="section__title">Wages</h3>
+                            <hr>
+                            <h4 class="about-app__description-title">Lowest minimum wage : Rp. {{number_format($min_umk->nilai_umr)}} ({{$min_umk->kab->kota->kabkota->nama}})</h4>
+                            <h4 class="about-app__description-title">Highest minimum wage : Rp. {{number_format($max_umk->nilai_umr)}} ({{$max_umk->kab->kota->kabkota->nama}})</h4>
+                        </div>
+                    </div>
+                    <div class="col-12 about-app__description">
                         <div class="about-app__description-content">
-                            <img src="{{Voyager::image(setting('site.icon_umk'))}}" style="width: 100px; height: 100px; margin-top: 50px" alt="UMK">
-                            <h4 class="about-app__description-title">Minimum Wages</h4>
-                            <table id="wagestable" class="uk-table uk-table-hover uk-table-striped" style="width:100%">
-                                <thead>
-                                <tr>
-                                    <th>Kab/Kota</th>
-                                    <th>Tahun</th>
-                                    <th>Nilai UMR</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($umks as $key => $umk)
-                                    <tr>
 
-                                        <td>{{$user->where('id', $key)->first()->kota->kabkota->nama}}</td>
-
-
-                                        <td>@foreach($umk as $key2 => $um){{$key2}} <br>@endforeach</td>
-                                        <td>@foreach($umk as $key2 => $um){{$um[0]->nilai_umr}} <br>@endforeach</td>
-
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
-
-                        </div>
-                    </div>
-                    <div class="col-6 about-app__img about-app__img--left">
-                        <div class="about-app__img-wrap">
-                            <img alt="" src="{{Voyager::image(setting('site.image_umk'))}}">
-                        </div>
-                    </div>
-                </div>
-
-
-                <div id="investment-core" class="row about-app">
-                    <div class="col-6 about-app__description">
-
-                        <div class="row faq">
-                            <div class="about-app__description-content about-app__description-content--left">
-                                <img src="{{Voyager::image(setting('site.icon_cost'))}}" style="width: 100px; height: 100px; margin-top: 50px" alt="Investment Cost">
-                                <h4 class="about-app__description-title">Investment Cost</h4>
-                            </div>
-                            <div id="top" class="col-12 col-t-12">
-                                <div class="faq__content">
-                                    <div id="chapter1" class="faq__chapter chapter">
-                                        <div class="faq__card card">
-                                            <h4 class="faq__card-title">Electricity
-                                                <span class="faq__card-icon"><i class="mdi mdi-chevron-down"></i></span>
-                                            </h4>
-                                            <div class="faq__card-description">
-                                                <table id="listrik" class="uk-table uk-table-hover uk-table-striped" style="width:100%">
-                                                    <thead>
-                                                    <tr>
-                                                        <th>No</th>
-                                                        <th>User Category</th>
-                                                        <th>Code</th>
-                                                        <th>Capacity</th>
-                                                        <th>Tariff (IDR/kVA)</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    @foreach($listriks as $listrik)
+                            <div class="row faq">
+                                <div id="top" class="col-12 col-t-12">
+                                    <div class="faq__content">
+                                        <div id="chapter1" class="faq__chapter chapter">
+                                            <div class="faq__card card">
+                                                <h4 class="faq__card-title">Detail UMK
+                                                    <span class="faq__card-icon"><i class="mdi mdi-chevron-down"></i></span>
+                                                </h4>
+                                                <div class="faq__card-description">
+                                                    <table id="wagestable" class="uk-table uk-table-hover uk-table-striped" style="width:100%">
+                                                        <thead>
                                                         <tr>
-                                                            <td>{{$loop->iteration}}</td>
-                                                            <td>{{$listrik->kategori->user_category}}</td>
-                                                            <td>{{$listrik->code}}</td>
-                                                            <td>{{$listrik->capacity}}</td>
-                                                            <td>{{$listrik->tarif}}</td>
+                                                            <th>Kab/Kota</th>
+                                                            <th>Tahun</th>
+                                                            <th>Nilai UMK</th>
                                                         </tr>
-                                                    @endforeach
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                        <div class="faq__card card">
-                                            <h4 class="faq__card-title">Water
-                                                <span class="faq__card-icon"><i class="mdi mdi-chevron-down"></i></span></h4>
-                                            <div class="faq__card-description">
-                                                <table id="water" class="uk-table uk-table-hover uk-table-striped" style="width:100%; text-align: center">
-                                                    <thead>
-                                                    <tr>
-                                                        <th rowspan="3">No</th>
-                                                        <th rowspan="3">User Category</th>
-                                                        <th colspan="3">Consumption Block (IDR/m3)</th>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>I</th>
-                                                        <th>II</th>
-                                                        <th>III</th>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>0-10m3</th>
-                                                        <th>11-20m3</th>
-                                                        <th>> 20m3</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbpdy>
-                                                        @foreach($airs as $air)
+                                                        </thead>
+                                                        <tbody>
+                                                        @foreach($umks as $key => $umk)
                                                             <tr>
-                                                                <td>{{$loop->iteration}}</td>
-                                                                <td>{{$air->user_category}}</td>
-                                                            </tr>
-                                                            @foreach($air->air as $detail)
-                                                                <tr>
-                                                                    <td>
 
-                                                                    </td>
-                                                                    <td>{{$detail->category}}</td>
-                                                                    <td>{{$detail->first}}</td>
-                                                                    <td>{{$detail->second}}</td>
-                                                                    <td>{{$detail->third}}</td>
-                                                                </tr>
-                                                            @endforeach
+                                                                <td>{{$user->where('id', $key)->first()->kota->kabkota->nama}}</td>
+                                                                <td>@foreach($umk as $key2 => $um){{$key2}} <br>@endforeach</td>
+                                                                <td>@foreach($umk as $key2 => $um){{number_format($um[0]->nilai_umr)}} <br>@endforeach</td>
+
+                                                            </tr>
                                                         @endforeach
-                                                    </tbpdy>
-                                                </table>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
-                    <div class="col-6 about-app__img">
+                    {{--<div class="col-6 about-app__img about-app__img--left">
                         <div class="about-app__img-wrap">
-                            <img alt="" src="{{Voyager::image(setting('site.image_cost'))}}">
+                            <img alt="" src="{{Voyager::image(setting('site.image_umk'))}}">
+                        </div>
+                    </div>--}}
+                </div>
+
+
+                <div id="investment-core">
+                    <div class="row">
+                        <div class="col-12">
+                            <img src="{{Voyager::image(setting('site.icon_cost'))}}" style="width: 100px; height: 100px; margin-top: 50px;display: block;margin-left: auto;margin-right: auto;" alt="Supporting Infrastructures">
+                            <h3 class="section__title">Investment Cost</h3>
+                            <hr>
                         </div>
                     </div>
+
+                            <div class="col-12 about-app__description">
+                                <div class="about-app__description-content">
+                                <div class="row faq">
+                                    <div id="top" class="col-12 col-t-12">
+                                        <div class="faq__content">
+                                            <div id="chapter1" class="faq__chapter chapter">
+                                                <div class="faq__card card">
+                                                    <h4 class="faq__card-title">Electricity
+                                                        <span class="faq__card-icon"><i class="mdi mdi-chevron-down"></i></span>
+                                                    </h4>
+                                                    <div class="faq__card-description">
+                                                        <table id="listrik" class="uk-table uk-table-hover uk-table-striped" style="width:100%">
+                                                            <thead>
+                                                            <tr>
+                                                                <th>No</th>
+                                                                <th>User Category</th>
+                                                                <th>Code</th>
+                                                                <th>Capacity</th>
+                                                                <th>Tariff (IDR/kVA)</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            @foreach($listriks as $listrik)
+                                                                <tr>
+                                                                    <td>{{$loop->iteration}}</td>
+                                                                    <td>{{$listrik->kategori->user_category}}</td>
+                                                                    <td>{{$listrik->code}}</td>
+                                                                    <td>{{$listrik->capacity}}</td>
+                                                                    <td>{{$listrik->tarif}}</td>
+                                                                </tr>
+                                                            @endforeach
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                                <div class="faq__card card">
+                                                    <h4 class="faq__card-title">Water
+                                                        <span class="faq__card-icon"><i class="mdi mdi-chevron-down"></i></span></h4>
+                                                    <div class="faq__card-description">
+                                                        <table id="water" class="uk-table uk-table-hover uk-table-striped" style="width:100%; text-align: center">
+                                                            <thead>
+                                                            <tr>
+                                                                <th rowspan="3">No</th>
+                                                                <th rowspan="3">User Category</th>
+                                                                <th colspan="3">Consumption Block (IDR/m3)</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>I</th>
+                                                                <th>II</th>
+                                                                <th>III</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>0-10m3</th>
+                                                                <th>11-20m3</th>
+                                                                <th>> 20m3</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbpdy>
+                                                                @foreach($airs as $air)
+                                                                    <tr>
+                                                                        <td>{{$loop->iteration}}</td>
+                                                                        <td>{{$air->user_category}}</td>
+                                                                    </tr>
+                                                                    @foreach($air->air as $detail)
+                                                                        <tr>
+                                                                            <td>
+
+                                                                            </td>
+                                                                            <td>{{$detail->category}}</td>
+                                                                            <td>{{$detail->first}}</td>
+                                                                            <td>{{$detail->second}}</td>
+                                                                            <td>{{$detail->third}}</td>
+                                                                        </tr>
+                                                                    @endforeach
+                                                                @endforeach
+                                                            </tbpdy>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+
                 </div>
 
             </div>
@@ -554,18 +576,6 @@
 
     <div id="endMenu">
         <img alt="" class="section__img" src="{{asset('images/frontend/img_backgroud_footer.png')}}">
-    </div>
-@endsection
-@section('footer')
-    <div class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <p>© 2018 SIAP JATENG – Potensi Investasi dan Peluang Penanaman Modal | Made by
-                        <a href="https://dpmptsp.jatengprov.go.id" class="link link--gray">DPMPTSP Provinsi Jawa Tengah</a></p>
-                </div>
-            </div>
-        </div>
     </div>
 @endsection
 @section('js')

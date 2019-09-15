@@ -29,15 +29,15 @@ class Umr extends Model implements ViewableContract
         return $this->views_count()->count();
     }
 
-    public function kabkota(){
+    public function kab(){
         return $this->belongsTo(User::class, 'kab_kota_id');
     }
 
-    public function save(array $options = [])
+    /*public function save(array $options = [])
     {
 
         $this->kab_kota_id = Auth::user()->id;
 
         parent::save();
-    }
+    }*/
 }

@@ -104,6 +104,51 @@
 
 
 @yield('footer')
+<div class="container footer-menu">
+    <div class="row">
+        <div class="col-12">
+            <a href="/">
+                <img style="max-width: 50px;height: auto" src="{{asset('storage/'.$site_logo)}}" alt="">
+            </a>
+            <nav class="footer-menu__nav">
+                <ul>
+                    <li><a href="/how-can-we-help" class="link link--gray">FAQ</a></li>
+                    <li><a href="{{route('ready-to-offer')}}" class="link link--gray">Ready to Offer</a></li>
+                    <li><a href="{{route('prospective-project')}}" class="link link--gray">Prospective</a></li>
+                    <li><a href="{{route('potential-project')}}" class="link link--gray">Potential</a></li>
+                    <li><a href="{{route('frontend.cjibf')}}" class="link link--gray">CJIBF</a></li>
+                </ul>
+            </nav>
+            <p class="footer-menu__social">
+                <a class="link link--gray" href="https://twitter.com/DPMPTSPJateng">
+                    <i class="mdi mdi-twitter" aria-hidden="true"></i>
+                </a>
+                <a class="link link--gray" href="https://www.facebook.com/dinas.pmptsp.96">
+                    <i class="mdi mdi-facebook" aria-hidden="true"></i>
+                </a>
+                <a class="link link--gray" href="https://www.instagram.com/ptspjateng/">
+                    <i class="mdi mdi-instagram" aria-hidden="true"></i>
+                </a>
+            </p>
+        </div>
+    </div>
+</div>
+<!--Footer menu-->
+
+<hr>
+
+<!--Footer-->
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <p>© 2019 CJIP | Central Java Investment Platform | Made by
+                    <a href="https://dpmptsp.jatengprov.go.id" class="link link--gray">DPMPTSP Provinsi Jawa Tengah</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Footer-->
 <!--Footer-->
 
 <!--Footer-->
