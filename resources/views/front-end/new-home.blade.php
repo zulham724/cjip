@@ -418,6 +418,7 @@
                         @endforeach
                     </div>
                 </div>
+
                 <div id="wages" class="row about-app about-app--reverse">
                     <div class="col-6 about-app__description">
                         <div class="about-app__description-content">
