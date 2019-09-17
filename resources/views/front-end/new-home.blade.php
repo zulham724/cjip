@@ -5,7 +5,35 @@
 @endsection
 @section('header')
 
-    <div id="headerEn">
+    <header id="headerEn" class="header-home">
+        <div class="container background background--right background--header background--mobile"
+             style="background-image: url({{Voyager::image(setting('site.bg_why'))}});">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="header-home__title">{{Voyager::setting('site.title_why')}}</h2>
+                    <p class="header-home__description">{{Voyager::setting('site.ket_why')}}</p>
+                    <div class="header-home__btns header-home__btns-mobile">
+                        <a href="/event" class="site-btn site-btn--accent header-home__btn">Join CJIBF</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <header id="headerId" class="header-home" style="display:none">
+        <div class="container background background--right background--header background--mobile"
+             style="background-image: url({{Voyager::image(setting('site.bg_why'))}});">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="header-home__title">{{Voyager::setting('site.id_title_why')}}</h2>
+                    <p class="header-home__description">{{Voyager::setting('site.id_ket_why')}}</p>
+                    <div class="header-home__btns header-home__btns-mobile">
+                        <a href="/event" class="site-btn site-btn--accent header-home__btn">Daftar CJIBF</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    {{--<div id="headerEn">
         <header class="header-home header-home--color">
             <div class="background"
                  style="background-position-y: bottom;
@@ -24,8 +52,8 @@
                 </div>
             </div>
         </header>
-    </div>
-    <div id="headerId" style="display:none">
+    </div>--}}
+    {{--<div id="headerId" >
         <header class="header-home header-home--color">
             <div class="background"
                  style="background-position-y: bottom;
@@ -44,11 +72,461 @@
                 </div>
             </div>
         </header>
-    </div>
+    </div>--}}
 @endsection
 @section('content')
 
     <div id="contentEn">
+        <div class="row about-app">
+            <div class="col-6 about-app__description">
+                <div class="about-app__description-content about-app__description-content--left">
+                    <img src="{{Voyager::image(setting('site.icon_economic'))}}" style="width: 48px; height: 48px;" alt="Economic Growth">
+                    <h4 class="about-app__description-title">Economic Growth</h4>
+                    <p>{{Voyager::setting('site.desc_economic')}}</p>
+                </div>
+            </div>
+            <div class="col-6 about-about-app__description">
+                <div class="about-app__description-content">
+                    <div id="economic"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row about-app about-app--reverse">
+            <div class="col-6 about-app__description">
+                <div class="about-app__description-content">
+                    <img src="{{Voyager::image(setting('site.icon_investment'))}}" style="width: 48px; height: 48px;" alt="Investment Performances">
+                    <h4 class="about-app__description-title">Investment Performance</h4>
+                    <p>{{Voyager::setting('site.desc_investment')}}</p>
+                    {{-- <a href="10_get-app.html" class="site-btn site-btn--accent about-app__btn">Start Using for Free</a>--}}
+                </div>
+            </div>
+            <div class="col-6 about-app__img about-app__img--left">
+                <div class="about-app__img-wrap" style="max-width: 490px">
+                    <img alt="" src="{{Voyager::image(setting('site.image_investment'))}}">
+                </div>
+            </div>
+        </div>
+        <div class="row about-app" style="margin-top: 15px">
+            <div class="col-6 about-app__description">
+                <div class="about-app__description-content about-app__description-content--left">
+                    <img src="{{Voyager::image(setting('site.icon_award'))}}" style="width: 48px; height: 48px;" alt="Award">
+                    <h4 class="about-app__description-title">Award</h4>
+                    <p>{{Voyager::setting('site.desc_award')}}</p>
+                </div>
+            </div>
+            <div class="col-6 about-app__img about-app__img--left">
+                <div class="about-app__img-wrap">
+                    @foreach($awards as $award)
+                        <img alt="" style="max-width: 520px" src="@isset($award->foto) {{Voyager::image($award->foto)}} @else {{'storage/'.Voyager::setting('site.not_found')}}@endisset">
+                    @endforeach
+                </div>
+            </div>
+        </div>
+        <div class="row features">
+            <div class="col-12">
+                <img src="{{Voyager::image(setting('site.icon_infrastructure'))}}" style="width: 100px; height: 100px; margin-top: 50px;display: block;margin-left: auto;margin-right: auto;" alt="Supporting Infrastructures">
+                <h3 class="section__title">Supporting Infrastructures</h3>
+            </div>
+            @foreach($infrastrukturs as $infrastruktur)
+                <div class="col-2 col-m-4 col-l-6">
+                    <div class="features__card card">
+                        <!--We use svg-tag for using color-switcher of preview. And svg help you easy change color for your
+                          web-site. But you can replace svg tag to img like this:
+                          <img alt="" class="features__img" src="assets/img/img_feature_1.png" alt="">-->
+                        <img src="{{Voyager::image($infrastruktur->gambar)}}" style="width: 100px; height: 100px;;display: block;margin-left: auto;margin-right: auto;" alt="Supporting Infrastructures">
+                        <p class="features__title">{{$infrastruktur->nama_infrastruktur}}</p>
+                        <p class="features__description">{{$infrastruktur->detail}}</p>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+        <div id="wages">
+            <section class="section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+
+                            <img src="{{Voyager::image(setting('site.icon_umk'))}}" style="width: 100px; height: 100px; margin-top: 50px;display: block;margin-left: auto;margin-right: auto;" alt="Supporting Infrastructures">
+                            <h3 align="center">Wages</h3>
+                            <p>{{Voyager::setting('site.desc_wages')}}</p>
+                            @isset($min_umk)
+                                <h4 class="about-app__description-title">Lowest minimum wage : Rp. {{number_format($min_umk->nilai_umr)}} ({{$min_umk->kab->kota->kabkota->nama}})</h4>
+                            @endisset
+                            @isset($max_umk)
+                                <h4 class="about-app__description-title">Highest minimum wage : Rp. {{number_format($max_umk->nilai_umr)}} ({{$max_umk->kab->kota->kabkota->nama}})</h4>
+                            @endisset
+
+                        </div>
+                        <div class="col-12">
+                            <div class="row faq">
+                                <div id="top" class="col-12">
+                                    <div class="faq__content">
+                                        <div id="chapter1" class="faq__chapter chapter">
+                                            <div class="faq__card card">
+                                                <h4 class="faq__card-title">Detail of the Minimum Wage
+                                                    <span class="faq__card-icon"><i class="mdi mdi-chevron-down"></i></span>
+                                                </h4>
+                                                <div class="faq__card-description">
+                                                    <table id="wagestable" class="uk-table uk-table-hover uk-table-striped" style="width:100%">
+                                                        <thead>
+                                                        <tr>
+                                                            <th>Kab/Kota</th>
+                                                            <th>Tahun</th>
+                                                            <th>Nilai UMK</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        @isset($umks)
+                                                            @foreach($umks as $key => $umk)
+                                                                <tr>
+
+                                                                    <td>{{$user->where('id', $key)->first()->kota->kabkota->nama}}</td>
+                                                                    <td>@foreach($umk as $key2 => $um){{$key2}} <br>@endforeach</td>
+                                                                    <td>@foreach($umk as $key2 => $um){{number_format($um[0]->nilai_umr)}} <br>@endforeach</td>
+
+                                                                </tr>
+                                                            @endforeach
+                                                        @endisset
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+        <div id="investment-core">
+            <section class="section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <img src="{{Voyager::image(setting('site.icon_cost'))}}" style="width: 100px; height: 100px; margin-top: 50px;display: block;margin-left: auto;margin-right: auto;" alt="Supporting Infrastructures">
+                            <h3 align="center">Investment Cost</h3>
+                            <p>{{Voyager::setting('site.desc_cost')}}</p>
+                        </div>
+                        <div class="col-12">
+                            <div class="row faq">
+                                <div id="top" class="col-12">
+                                    <div class="faq__content">
+                                        <div id="chapter1" class="faq__chapter chapter">
+                                            <div class="faq__card card">
+                                                <h4 class="faq__card-title">Electricity
+                                                    <span class="faq__card-icon"><i class="mdi mdi-chevron-down"></i></span>
+                                                </h4>
+                                                <div class="faq__card-description">
+                                                    <table id="listrik" class="uk-table uk-table-hover uk-table-striped" style="width:100%">
+                                                        <thead>
+                                                        <tr>
+                                                            <th>No</th>
+                                                            <th>User Category</th>
+                                                            <th>Code</th>
+                                                            <th>Capacity</th>
+                                                            <th>Tariff (IDR/kVA)</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        @foreach($listriks as $listrik)
+                                                            <tr>
+                                                                <td>{{$loop->iteration}}</td>
+                                                                <td>{{$listrik->kategori->user_category}}</td>
+                                                                <td>{{$listrik->code}}</td>
+                                                                <td>{{$listrik->capacity}}</td>
+                                                                <td>{{$listrik->tarif}}</td>
+                                                            </tr>
+                                                        @endforeach
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div class="faq__card card">
+                                                <h4 class="faq__card-title">Water
+                                                    <span class="faq__card-icon"><i class="mdi mdi-chevron-down"></i></span></h4>
+                                                <div class="faq__card-description">
+                                                    <table id="water" class="uk-table uk-table-hover uk-table-striped" style="width:100%; text-align: center">
+                                                        <thead>
+                                                        <tr>
+                                                            <th rowspan="3">No</th>
+                                                            <th rowspan="3">User Category</th>
+                                                            <th colspan="3">Consumption Block (IDR/m3)</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>I</th>
+                                                            <th>II</th>
+                                                            <th>III</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>0-10m3</th>
+                                                            <th>11-20m3</th>
+                                                            <th>> 20m3</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbpdy>
+                                                            @foreach($airs as $air)
+                                                                <tr>
+                                                                    <td>{{$loop->iteration}}</td>
+                                                                    <td>{{$air->user_category}}</td>
+                                                                </tr>
+                                                                @foreach($air->air as $detail)
+                                                                    <tr>
+                                                                        <td>
+
+                                                                        </td>
+                                                                        <td>{{$detail->category}}</td>
+                                                                        <td>{{$detail->first}}</td>
+                                                                        <td>{{$detail->second}}</td>
+                                                                        <td>{{$detail->third}}</td>
+                                                                    </tr>
+                                                                @endforeach
+                                                            @endforeach
+                                                        </tbpdy>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div id="contentId" style="display:none;">
+        <div class="row about-app">
+            <div class="col-6 about-app__description">
+                <div class="about-app__description-content about-app__description-content--left">
+                    <img src="{{Voyager::image(setting('site.icon_economic'))}}" style="width: 48px; height: 48px;" alt="Economic Growth">
+                    <h4 class="about-app__description-title">Pertumbuhan Ekonomi</h4>
+                    <p>{{Voyager::setting('site.id_desc_economic')}}</p>
+                </div>
+            </div>
+            <div class="col-6 about-about-app__description">
+                <div class="about-app__description-content">
+                    <div id="economic"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row about-app about-app--reverse">
+            <div class="col-6 about-app__description">
+                <div class="about-app__description-content">
+                    <img src="{{Voyager::image(setting('site.icon_investment'))}}" style="width: 48px; height: 48px;" alt="Investment Performances">
+                    <h4 class="about-app__description-title">Performa Investasi</h4>
+                    <p>{{Voyager::setting('site.id_desc_investment')}}</p>
+                    {{-- <a href="10_get-app.html" class="site-btn site-btn--accent about-app__btn">Start Using for Free</a>--}}
+                </div>
+            </div>
+            <div class="col-6 about-app__img about-app__img--left">
+                <div class="about-app__img-wrap" style="max-width: 490px">
+                    <img alt="" src="{{Voyager::image(setting('site.image_investment'))}}">
+                </div>
+            </div>
+        </div>
+        <div class="row about-app" style="margin-top: 15px">
+            <div class="col-6 about-app__description">
+                <div class="about-app__description-content about-app__description-content--left">
+                    <img src="{{Voyager::image(setting('site.icon_award'))}}" style="width: 48px; height: 48px;" alt="Award">
+                    <h4 class="about-app__description-title">Penghargaan</h4>
+                    <p>{{Voyager::setting('site.id_desc_award')}}</p>
+                </div>
+            </div>
+            <div class="col-6 about-app__img">
+                <div class="about-app__img-wrap">
+                    @foreach($awards as $award)
+                        <img alt="" src="@isset($award->foto) {{Voyager::image($award->foto)}} @else {{'storage/'.Voyager::setting('site.not_found')}}@endisset">
+                    @endforeach
+                </div>
+            </div>
+        </div>
+        <div class="row features">
+            <div class="col-12">
+                <img src="{{Voyager::image(setting('site.icon_infrastructure'))}}" style="width: 100px; height: 100px; margin-top: 50px;display: block;margin-left: auto;margin-right: auto;" alt="Supporting Infrastructures">
+                <h3 class="section__title">Infrastruktur Pendukung</h3>
+            </div>
+            @foreach($infrastrukturs as $infrastruktur)
+                <div class="col-2 col-m-4 col-l-6">
+                    <div class="features__card card">
+                        <!--We use svg-tag for using color-switcher of preview. And svg help you easy change color for your
+                          web-site. But you can replace svg tag to img like this:
+                          <img alt="" class="features__img" src="assets/img/img_feature_1.png" alt="">-->
+                        <img src="{{Voyager::image($infrastruktur->gambar)}}" style="width: 100px; height: 100px;;display: block;margin-left: auto;margin-right: auto;" alt="Supporting Infrastructures">
+                        <p class="features__title">{{$infrastruktur->nama_infrastruktur}}</p>
+                        <p class="features__description">{{$infrastruktur->detail}}</p>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+        <div id="wages">
+            <section class="section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+
+                            <img src="{{Voyager::image(setting('site.icon_umk'))}}" style="width: 100px; height: 100px; margin-top: 50px;display: block;margin-left: auto;margin-right: auto;" alt="Supporting Infrastructures">
+                            <h3 align="center">Wages</h3>
+                            <p>{{Voyager::setting('site.id_desc_wages')}}</p>
+                            @isset($min_umk)
+                                <h4 class="about-app__description-title">UMK Terendah : Rp. {{number_format($min_umk->nilai_umr)}} ({{$min_umk->kab->kota->kabkota->nama}})</h4>
+                            @endisset
+                            @isset($max_umk)
+                                <h4 class="about-app__description-title">UMK Tertinggi : Rp. {{number_format($max_umk->nilai_umr)}} ({{$max_umk->kab->kota->kabkota->nama}})</h4>
+                            @endisset
+
+                        </div>
+                        <div class="col-12">
+                            <div class="row faq">
+                                <div id="top" class="col-12">
+                                    <div class="faq__content">
+                                        <div id="chapter1" class="faq__chapter chapter">
+                                            <div class="faq__card card">
+                                                <h4 class="faq__card-title">Detail UMK
+                                                    <span class="faq__card-icon"><i class="mdi mdi-chevron-down"></i></span>
+                                                </h4>
+                                                <div class="faq__card-description">
+                                                    <table id="wagestable" class="uk-table uk-table-hover uk-table-striped" style="width:100%">
+                                                        <thead>
+                                                        <tr>
+                                                            <th>Kab/Kota</th>
+                                                            <th>Tahun</th>
+                                                            <th>Nilai UMK</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        @isset($umks)
+                                                            @foreach($umks as $key => $umk)
+                                                                <tr>
+
+                                                                    <td>{{$user->where('id', $key)->first()->kota->kabkota->nama}}</td>
+                                                                    <td>@foreach($umk as $key2 => $um){{$key2}} <br>@endforeach</td>
+                                                                    <td>@foreach($umk as $key2 => $um){{number_format($um[0]->nilai_umr)}} <br>@endforeach</td>
+
+                                                                </tr>
+                                                            @endforeach
+                                                        @endisset
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+        <div id="investment-core">
+            <section class="section">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-12">
+                            <img src="{{Voyager::image(setting('site.icon_cost'))}}" style="width: 100px; height: 100px; margin-top: 50px;display: block;margin-left: auto;margin-right: auto;" alt="Supporting Infrastructures">
+                            <h3 align="center">Biaya Investasi</h3>
+                            <p>{{Voyager::setting('site.id_desc_cost')}}</p>
+                        </div>
+                        <div class="col-12">
+                            <div class="row faq">
+                                <div id="top" class="col-12">
+                                    <div class="faq__content">
+                                        <div id="chapter1" class="faq__chapter chapter">
+                                            <div class="faq__card card">
+                                                <h4 class="faq__card-title">Listrik
+                                                    <span class="faq__card-icon"><i class="mdi mdi-chevron-down"></i></span>
+                                                </h4>
+                                                <div class="faq__card-description">
+                                                    <table id="listrik" class="uk-table uk-table-hover uk-table-striped" style="width:100%">
+                                                        <thead>
+                                                        <tr>
+                                                            <th>No</th>
+                                                            <th>Kategori Pengguna</th>
+                                                            <th>Kode</th>
+                                                            <th>Kapasitas</th>
+                                                            <th>Tariff (IDR/kVA)</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        @foreach($listriks as $listrik)
+                                                            <tr>
+                                                                <td>{{$loop->iteration}}</td>
+                                                                <td>{{$listrik->kategori->user_category}}</td>
+                                                                <td>{{$listrik->code}}</td>
+                                                                <td>{{$listrik->capacity}}</td>
+                                                                <td>{{$listrik->tarif}}</td>
+                                                            </tr>
+                                                        @endforeach
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div class="faq__card card">
+                                                <h4 class="faq__card-title">Water
+                                                    <span class="faq__card-icon"><i class="mdi mdi-chevron-down"></i></span></h4>
+                                                <div class="faq__card-description">
+                                                    <table id="water" class="uk-table uk-table-hover uk-table-striped" style="width:100%; text-align: center">
+                                                        <thead>
+                                                        <tr>
+                                                            <th rowspan="3">No</th>
+                                                            <th rowspan="3">Kategori Pengguna</th>
+                                                            <th colspan="3">Consumption Block (IDR/m3)</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>I</th>
+                                                            <th>II</th>
+                                                            <th>III</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>0-10m3</th>
+                                                            <th>11-20m3</th>
+                                                            <th>> 20m3</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbpdy>
+                                                            @foreach($airs as $air)
+                                                                <tr>
+                                                                    <td>{{$loop->iteration}}</td>
+                                                                    <td>{{$air->user_category}}</td>
+                                                                </tr>
+                                                                @foreach($air->air as $detail)
+                                                                    <tr>
+                                                                        <td>
+
+                                                                        </td>
+                                                                        <td>{{$detail->category}}</td>
+                                                                        <td>{{$detail->first}}</td>
+                                                                        <td>{{$detail->second}}</td>
+                                                                        <td>{{$detail->third}}</td>
+                                                                    </tr>
+                                                                @endforeach
+                                                            @endforeach
+                                                        </tbpdy>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    {{--<div id="contentEn">
         <section class="section">
             <div class="topbar-wrapper">
                 <nav class="topbar">
@@ -84,8 +562,8 @@
 
                             <h4 class="about-app__description-title">Economic Growth</h4>
 
-                            {{--<p>Tahun : {{$ekonomis[0]->tahun}}</p><br>
-                        <p>Nilai Pertumbuhan : {{$ekonomis[0]->pertumbuhan}}</p><br>--}}
+                            <p>Tahun : {{$ekonomis[0]->tahun}}</p><br>
+                        <p>Nilai Pertumbuhan : {{$ekonomis[0]->pertumbuhan}}</p><br>
                             <div id="economic" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
                         </div>
                     </div>
@@ -161,8 +639,12 @@
                             <img src="{{Voyager::image(setting('site.icon_umk'))}}" style="width: 100px; height: 100px; margin-top: 50px;display: block;margin-left: auto;margin-right: auto;" alt="Supporting Infrastructures">
                             <h3 class="section__title">Wages</h3>
                             <hr>
+                            @isset($min_umk)
                             <h4 class="about-app__description-title">Lowest minimum wage : Rp. {{number_format($min_umk->nilai_umr)}} ({{$min_umk->kab->kota->kabkota->nama}})</h4>
+                            @endisset
+                            @isset($max_umk)
                             <h4 class="about-app__description-title">Highest minimum wage : Rp. {{number_format($max_umk->nilai_umr)}} ({{$max_umk->kab->kota->kabkota->nama}})</h4>
+                            @endisset
                         </div>
                     </div>
                     <div class="col-12 about-app__description">
@@ -186,6 +668,7 @@
                                                         </tr>
                                                         </thead>
                                                         <tbody>
+                                                        @isset($umks)
                                                         @foreach($umks as $key => $umk)
                                                             <tr>
 
@@ -195,6 +678,7 @@
 
                                                             </tr>
                                                         @endforeach
+                                                        @endisset
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -206,11 +690,11 @@
 
                         </div>
                     </div>
-                    {{--<div class="col-6 about-app__img about-app__img--left">
+                    <div class="col-6 about-app__img about-app__img--left">
                         <div class="about-app__img-wrap">
                             <img alt="" src="{{Voyager::image(setting('site.image_umk'))}}">
                         </div>
-                    </div>--}}
+                    </div>
                 </div>
 
 
@@ -419,51 +903,60 @@
                     </div>
                 </div>
 
-                <div id="wages" class="row about-app about-app--reverse">
-                    <div class="col-6 about-app__description">
+                <div id="wages">
+                    <div class="row">
+                        <div class="col-12">
+                            <img src="{{Voyager::image(setting('site.icon_umk'))}}" style="width: 100px; height: 100px; margin-top: 50px;display: block;margin-left: auto;margin-right: auto;" alt="Supporting Infrastructures">
+                            <h3 class="section__title">Wages</h3>
+                            <hr>
+                            @isset($min_umk)
+                                <h4 class="about-app__description-title">Lowest minimum wage : Rp. {{number_format($min_umk->nilai_umr)}} ({{$min_umk->kab->kota->kabkota->nama}})</h4>
+                            @endisset
+                            @isset($max_umk)
+                                <h4 class="about-app__description-title">Highest minimum wage : Rp. {{number_format($max_umk->nilai_umr)}} ({{$max_umk->kab->kota->kabkota->nama}})</h4>
+                            @endisset
+                        </div>
+                    </div>
+                    <div class="col-12 about-app__description">
                         <div class="about-app__description-content">
-                            <img src="{{Voyager::image(setting('site.icon_umk'))}}" style="width: 100px; height: 100px; margin-top: 50px" alt="UMK">
-                            <h4 class="about-app__description-title">UMK</h4>
 
                             <div class="row faq">
                                 <div id="top" class="col-12 col-t-12">
                                     <div class="faq__content">
-                                <div id="chapter1" class="faq__chapter chapter">
-                                    <div class="faq__card card">
-                                        <h4 class="faq__card-title">Detail UMK
-                                            <span class="faq__card-icon"><i class="mdi mdi-chevron-down"></i></span>
-                                        </h4>
-                                        <div class="faq__card-description">
-                                            <table id="wagestable" class="uk-table uk-table-hover uk-table-striped" style="width:100%">
-                                                <thead>
-                                                <tr>
-                                                    <th>Kab/Kota</th>
-                                                    <th>Tahun</th>
-                                                    <th>Nilai UMK</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                @foreach($umks as $key => $umk)
-                                                    <tr>
+                                        <div id="chapter1" class="faq__chapter chapter">
+                                            <div class="faq__card card">
+                                                <h4 class="faq__card-title">Detail UMK
+                                                    <span class="faq__card-icon"><i class="mdi mdi-chevron-down"></i></span>
+                                                </h4>
+                                                <div class="faq__card-description">
+                                                    <table id="wagestable" class="uk-table uk-table-hover uk-table-striped" style="width:100%">
+                                                        <thead>
+                                                        <tr>
+                                                            <th>Kab/Kota</th>
+                                                            <th>Tahun</th>
+                                                            <th>Nilai UMK</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        @isset($umks)
+                                                            @foreach($umks as $key => $umk)
+                                                                <tr>
 
-                                                        <td>{{$user->where('id', $key)->first()->kota->kabkota->nama}}</td>
+                                                                    <td>{{$user->where('id', $key)->first()->kota->kabkota->nama}}</td>
+                                                                    <td>@foreach($umk as $key2 => $um){{$key2}} <br>@endforeach</td>
+                                                                    <td>@foreach($umk as $key2 => $um){{number_format($um[0]->nilai_umr)}} <br>@endforeach</td>
 
-
-                                                        <td>@foreach($umk as $key2 => $um){{$key2}} <br>@endforeach</td>
-                                                        <td>@foreach($umk as $key2 => $um){{$um[0]->nilai_umr}} <br>@endforeach</td>
-
-                                                    </tr>
-                                                @endforeach
-                                                </tbody>
-                                            </table>
+                                                                </tr>
+                                                            @endforeach
+                                                        @endisset
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                                </div>
-                            </div>
-
-
 
                         </div>
                     </div>
@@ -573,7 +1066,7 @@
 
             </div>
         </section>
-    </div>
+    </div>--}}
 
     <div id="endMenu">
         <img alt="" class="section__img" src="{{asset('images/frontend/img_backgroud_footer.png')}}">
@@ -645,7 +1138,8 @@
     <script>
         $(document).ready(function() {
             $('#wagestable').DataTable({
-                "pageLength": 5
+                "pageLength": 5,
+                responsive: true
             });
         } );
     </script>

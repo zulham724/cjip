@@ -280,13 +280,41 @@
                 //dd($images);
             @endphp
             <div class="owl-carousel" data-nav-arrow="true" data-items="1" data-md-items="1" data-sm-items="1" data-xs-items="1" data-xx-items="1" data-loop="true" data-space="0">
-                @foreach((array)$images as $image)
-                    <div class="slider bg-cover bg-no-repeat bg-center-center" style="background-image: url('{{Voyager::image($image)}}');">
+
+                    <div class="slider bg-cover bg-no-repeat bg-center-center" style="background-image: url('http://cjip.jatengprov.go.id/storage/additional/Bokeh%20Front.jpg');">
                         <div class="container">
                             <div class="row align-items-center full-screen p-100px-tb">
                                 <div class="col-xl-12 col-lg-12 col-md-12 m-50px-t">
 
-                                    <img src="{{Voyager::image($setting->logo)}}" style="display: block;margin-left: auto;margin-right: auto;max-width: 200px; -webkit-filter: drop-shadow(5px 5px 5px #222); filter: drop-shadow(5px 5px 5px #222);" alt="" >
+                                    <img src="http://cjip.jatengprov.go.id/storage/additional/logo%20cjibf.png" style="display: block;margin-left: auto;margin-right: auto;max-width: 200px; -webkit-filter: drop-shadow(5px 5px 5px #222); filter: drop-shadow(5px 5px 5px #222);" alt="" >
+
+                                    <div class="p-30px-t sm-p-5px-t" align="center">
+                                        <a href="#venue" class="m-btn m-10px-r">Join Us</a>
+                                    </div>
+                                </div>
+                            </div> <!-- row -->
+                        </div> <!-- container -->
+                    </div>
+                    <div class="slider bg-cover bg-no-repeat bg-center-center" style="background-image: url('http://cjip.jatengprov.go.id/storage/additional/Bokeh%20Front2.jpg');">
+                        <div class="container">
+                            <div class="row align-items-center full-screen p-100px-tb">
+                                <div class="col-xl-12 col-lg-12 col-md-12 m-50px-t">
+
+                                    <img src="http://cjip.jatengprov.go.id/storage/additional/logo%20cjibf.png" style="display: block;margin-left: auto;margin-right: auto;max-width: 200px; -webkit-filter: drop-shadow(5px 5px 5px #222); filter: drop-shadow(5px 5px 5px #222);" alt="" >
+
+                                    <div class="p-30px-t sm-p-5px-t" align="center">
+                                        <a href="#venue" class="m-btn m-10px-r">Join Us</a>
+                                    </div>
+                                </div>
+                            </div> <!-- row -->
+                        </div> <!-- container -->
+                    </div>
+                    <div class="slider bg-cover bg-no-repeat bg-center-center" style="background-image: url('http://cjip.jatengprov.go.id/storage/additional/Bokeh%20Front3.jpg');">
+                        <div class="container">
+                            <div class="row align-items-center full-screen p-100px-tb">
+                                <div class="col-xl-12 col-lg-12 col-md-12 m-50px-t">
+
+                                    <img src="http://cjip.jatengprov.go.id/storage/additional/logo%20cjibf.png" style="display: block;margin-left: auto;margin-right: auto;max-width: 200px; -webkit-filter: drop-shadow(5px 5px 5px #222); filter: drop-shadow(5px 5px 5px #222);" alt="" >
 
                                     <div class="p-30px-t sm-p-5px-t" align="center">
                                         <a href="#venue" class="m-btn m-10px-r">Join Us</a>
@@ -296,7 +324,7 @@
                         </div> <!-- container -->
                     </div>
                     <!-- Slider -->
-                @endforeach
+
             </div>
             <h1 class="font-alt font-80 md-font-40 sm-font-30 font-w-700 color-white m-0px m-45px-b md-m-35px-b sm-m-20px-b" align="center"><span class="color-theme">{{$setting->initial_name}}</span></h1>
             <h1 class="font-alt font-30 md-font-15 sm-font-10 font-w-700 color-white m-0px m-45px-b md-m-35px-b sm-m-20px-b" align="center"><span class="color-dark-gray">{{$setting->nama_kegiatan}}</span></h1>

@@ -134,7 +134,7 @@ class ProfilKabupatenController extends BaseVoyagerBaseController
             }
         }
         $view = 'voyager::bread.browse';
-
+        //dd($dataTypeContent);
         if (view()->exists("voyager::$slug.browse")) {
             $view = "voyager::$slug.browse";
         }
@@ -262,7 +262,7 @@ class ProfilKabupatenController extends BaseVoyagerBaseController
 
         // Check if BREAD is Translatable
         $isModelTranslatable = is_bread_translatable($dataTypeContent);
-
+        //dd($dataTypeContent);
         $view = 'voyager::bread.edit-add';
 
         if (view()->exists("voyager::$slug.edit-add")) {
@@ -707,6 +707,8 @@ class ProfilKabupatenController extends BaseVoyagerBaseController
             ? $data->prepareTranslations($request)
             : [];
 
+        //dd($translations);
+
         foreach ($rows as $row) {
             // if the field for this row is absent from the request, continue
             // checkboxes will be absent when unchecked, thus they are the exception
@@ -783,7 +785,7 @@ class ProfilKabupatenController extends BaseVoyagerBaseController
                 }
             }
         }
-
+        //dd($request->all());
         //dd($data);
 
 

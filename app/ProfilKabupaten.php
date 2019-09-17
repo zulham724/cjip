@@ -17,6 +17,7 @@ class ProfilKabupaten extends Model
 
     protected $translatable = [
         'profil',
+        'infrasturktur',
         'desc_profil',
         'luas',
         'jarak_ke_smg',

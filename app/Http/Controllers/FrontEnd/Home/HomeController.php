@@ -220,7 +220,7 @@ class HomeController extends Controller
 
         $proyeks = Proyek::whereHas('marketplace', function ($query) {
             $query->where('name', '=', 'Potential Project');
-        })->paginate(5);
+        })->where('status', 1)->paginate(5);
         //dd($proyeks);
         //$proyeks = Proyek::with('marketplace');
         return view('front-end.marketplace.potentials', compact('proyeks'));

@@ -279,11 +279,10 @@
                                 <div class="carousel">
                                     <div class="item">
                                         <div class="about-app__img-wrap">
-                                            <img src="{{Voyager::image($image)}}" alt="">
+                                            <img src="{{Voyager::image($profil->foto)}}" alt="">
                                         </div>
                                     </div>
                                 </div>
-
                             @else
                                 <img alt="" src="{{'storage/'.Voyager::setting('site.not_found')}}">
                             @endisset
@@ -448,7 +447,7 @@
                                 <div class="carousel">
                                         <div class="item">
                                             <div class="about-app__img-wrap">
-                                                <img src="{{Voyager::image($image)}}" alt="">
+                                                <img src="{{Voyager::image($profil->foto)}}" alt="">
                                             </div>
                                         </div>
                                 </div>

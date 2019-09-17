@@ -89,25 +89,60 @@
                                     @elseif ($row->type == 'relationship')
                                         @include('voyager::formfields.relationship', ['options' => $row->details])
                                     @elseif($row->display_name == "Infrasturktur Pendukung")
-                                        <div id="input-player-list">
-                                            <div class="form-group">
-                                                <input placeholder="Infrastruktur Pendukung" name="infrasturktur[]" id="infrasturktur" class="form-control col-md-12"
-                                                >
-                                            </div>
-                                            <div class="col-lg-12">
-                                                <div class="ui-tooltip">
-                                                    <button type='button' class="btn btn-danger btn-circle float-right"
-                                                            data-toggle="tooltip" data-placement="bottom" title="Hapus Tujuan"
-                                                            id='removePlayer'>
-                                                        <i class="fa fa-minus"></i>
-                                                    </button>
-                                                    <button type='button' class="btn btn-info btn-circle float-left" id='addPlayer'
-                                                            data-toggle="tooltip" data-placement="bottom" title="Tambah Tujuan">
-                                                        <i class="fa fa-plus"></i>
-                                                    </button>
+                                        @php
+                                            $infrasturkturs = json_decode($dataTypeContent->infrasturktur, true);
+                                        //dd($infrasturkturs);
+                                        @endphp
+                                        @if(is_null($infrasturkturs['infrastruktur'][0]))
+                                            <div id="input-player-list">
+                                                <div class="form-group">
+                                                    <input placeholder="Infrastruktur Pendukung" name="infrastruktur[]" id="infrasturktur" class="form-control col-md-12"
+                                                    >
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="ui-tooltip">
+                                                        <button type='button' class="btn btn-danger btn-circle float-right"
+                                                                data-toggle="tooltip" data-placement="bottom" title="Hapus Infrasturktur"
+                                                                id='removePlayer'>
+                                                            <i class="fa fa-minus"></i>
+                                                        </button>
+                                                        <button type='button' class="btn btn-info btn-circle float-left" id='addPlayer'
+                                                                data-toggle="tooltip" data-placement="bottom" title="Tambah Infrasturktur">
+                                                            <i class="fa fa-plus"></i>
+                                                        </button>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        @else
+                                            <div id="input-player-list">
+
+
+                                                @foreach($infrasturkturs as $infrastruktur)
+                                                    @for($i=0;$i<count($infrastruktur);$i++)
+                                                        <div class="form-group">
+                                                            <input placeholder="Infrastruktur Pendukung" name="infrastruktur[]" id="infrastruktur" value="{{$infrastruktur[$i]}}" class="form-control col-md-12"
+                                                            >
+                                                        </div>
+                                                    @endfor
+
+                                                @endforeach
+
+
+                                                <div class="col-lg-12">
+                                                    <div class="ui-tooltip">
+                                                        <button type='button' class="btn btn-danger btn-circle float-right"
+                                                                data-toggle="tooltip" data-placement="bottom" title="Hapus Infrastruktur"
+                                                                id='removePlayer'>
+                                                            <i class="fa fa-minus"></i>
+                                                        </button>
+                                                        <button type='button' class="btn btn-info btn-circle float-left" id='addPlayer'
+                                                                data-toggle="tooltip" data-placement="bottom" title="Tambah Infrastruktur">
+                                                            <i class="fa fa-plus"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
                                     @elseif ($row->field == 'kab_kota_id')
                                         <input type="hidden" value="{{Auth::user()->id}}" name="kab_kota_id">
                                     @else
@@ -148,11 +183,12 @@
                                             @elseif($row->display_name == "Infrasturktur Pendukung")
                                                 @php
                                                     $infrasturkturs = json_decode($dataTypeContent->infrasturktur, true);
+                                                //dd($infrasturkturs);
                                                 @endphp
                                                 @if(is_null($infrasturkturs['infrastruktur'][0]))
                                                     <div id="input-player-list">
                                                         <div class="form-group">
-                                                            <input placeholder="Infrastruktur Pendukung" name="infrasturktur[]" id="infrasturktur" class="form-control col-md-12"
+                                                            <input placeholder="Infrastruktur Pendukung" name="infrastruktur[]" id="infrasturktur" class="form-control col-md-12"
                                                             >
                                                         </div>
                                                         <div class="col-lg-12">
@@ -171,25 +207,28 @@
                                                     </div>
                                                 @else
                                                     <div id="input-player-list">
-                                                        <div class="form-group">
+
 
                                                             @foreach($infrasturkturs as $infrastruktur)
                                                                 @for($i=0;$i<count($infrastruktur);$i++)
+                                                                <div class="form-group">
                                                                     <input placeholder="Infrastruktur Pendukung" name="infrastruktur[]" id="infrastruktur" value="{{$infrastruktur[$i]}}" class="form-control col-md-12"
                                                                     >
+                                                                </div>
                                                                 @endfor
+
                                                             @endforeach
 
-                                                        </div>
+
                                                         <div class="col-lg-12">
                                                             <div class="ui-tooltip">
                                                                 <button type='button' class="btn btn-danger btn-circle float-right"
-                                                                        data-toggle="tooltip" data-placement="bottom" title="Hapus Tujuan"
+                                                                        data-toggle="tooltip" data-placement="bottom" title="Hapus Infrastruktur"
                                                                         id='removePlayer'>
                                                                     <i class="fa fa-minus"></i>
                                                                 </button>
                                                                 <button type='button' class="btn btn-info btn-circle float-left" id='addPlayer'
-                                                                        data-toggle="tooltip" data-placement="bottom" title="Tambah Tujuan">
+                                                                        data-toggle="tooltip" data-placement="bottom" title="Tambah Infrastruktur">
                                                                     <i class="fa fa-plus"></i>
                                                                 </button>
                                                             </div>
@@ -286,7 +325,7 @@
             }
             input.setAttribute('id', testId + i);
             input.className = 'form-control';
-            input.name = 'infrasturktur[]';
+            input.name = 'infrastruktur[]';
             input.placeholder = 'Infrastruktur Pendukung Lain';
             var aplayer1 = document.getElementById('input-player-list');
             aplayer1.appendChild(input);
@@ -372,3 +411,4 @@
         });
     </script>
 @stop
+

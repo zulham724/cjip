@@ -36,6 +36,7 @@ class FrontEndController extends Controller
         $pengumuman = Pengumuman::all();
         $registered = CjibfInvestor::where('profile_id', $profile->id)->first();
 
+//        /dd($cities);
 
 
         //dd($profile);
@@ -107,7 +108,7 @@ class FrontEndController extends Controller
                 //dd($daftar);
                 $sendObj = new \stdClass();
                 $sendObj->nama_investor = $user_name;
-                $sendObj->minat_kabkota = $updateInvestor->kota->user->name;
+                $sendObj->minat_kabkota = $updateInvestor->userId->kabkota->nama;
                 $sendObj->minat_sektor = $updateInvestor->sektor_interest;
                 $sendObj->meja = $updateInvestor->meja_id;
                 $sendObj->col = $layout_col;
@@ -126,6 +127,7 @@ class FrontEndController extends Controller
                 $attach = Storage::put('public/register/'.$sendObj->perusahaan .'-'.'CJIBF2019-registered-detail.pdf' ,$pdf->output());*/
                 //dd($attach);
                 $filename = $sendObj->perusahaan;
+                dd($sendObj);
                 $pdf = PDF::loadView('attach', ['send' => $sendObj])->setPaper('letter','portrait')->save(public_path('CJIBF2019/'.'CJIBF_'.$filename.'.pdf'));
 
                 Mail::to(Auth::guard('investor')->user()->email)->send(new DaftarCJIBF($sendObj));
@@ -153,7 +155,7 @@ class FrontEndController extends Controller
 
             $sendObj = new \stdClass();
             $sendObj->nama_investor = $user_name;
-            $sendObj->minat_kabkota = $updateInvestor->kota->user->name;
+            $sendObj->minat_kabkota = $updateInvestor->userId->kabkota->nama;
             $sendObj->minat_sektor = $updateInvestor->sektor_interest;
             $sendObj->meja = $updateInvestor->meja_id;
             $sendObj->col = $layout_col;
@@ -167,6 +169,7 @@ class FrontEndController extends Controller
                 ->merge('http://cjip.jatengprov.go.id/storage/additional/cjip-2.png', .3, true)
                 ->generate($sendObj->event->nama_kegiatan.','.$sendObj->nama_investor.','.$sendObj->perusahaan.','.$sendObj->meja);
             $filename = $sendObj->perusahaan;
+            dd($sendObj);
             $pdf = PDF::loadView('attach', ['send' => $sendObj])->setPaper('letter','portrait')->save(public_path('CJIBF2019/'.'CJIBF_'.$filename.'.pdf'));
 
             Mail::to(Auth::guard('investor')->user()->email)->send(new DaftarCJIBF($sendObj));

@@ -940,7 +940,7 @@
 
                                     <tr>
                                         <td>{{ $registered->profil->nama_perusahaan}}</td>
-                                        <td>{{ $registered->userId->admin->name }}</td>
+                                        <td>{{ $registered->userId->kabkota->nama }}</td>
                                         <td>{{ $registered->sektor_interest }}</td>
                                         <td>{{ $registered->meja_id }}</td>
                                     </tr>
