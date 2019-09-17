@@ -37,7 +37,7 @@ class FrontEndController extends Controller
         $registered = CjibfInvestor::where('profile_id', $profile->id)->first();
 
 //        /dd($cities);
-
+        //dd($registered->userId->kabkota->nama);
 
         //dd($profile);
         //dd($registered);
@@ -94,7 +94,7 @@ class FrontEndController extends Controller
                 $query->where('nama', 'Cadangan')->where('sisa', '>', 0);
             })->first();
 
-            //dd($cadangans);
+
             if (isset($cadangans)){
                 $cadangans->sisa = ($cadangans->sisa)-1;
                 $cadangans->update();
@@ -108,7 +108,7 @@ class FrontEndController extends Controller
                 //dd($daftar);
                 $sendObj = new \stdClass();
                 $sendObj->nama_investor = $user_name;
-                $sendObj->minat_kabkota = $updateInvestor->userId->kabkota->nama;
+                $sendObj->minat_kabkota = $request->kab_kota;
                 $sendObj->minat_sektor = $updateInvestor->sektor_interest;
                 $sendObj->meja = $updateInvestor->meja_id;
                 $sendObj->col = $layout_col;
@@ -127,14 +127,14 @@ class FrontEndController extends Controller
                 $attach = Storage::put('public/register/'.$sendObj->perusahaan .'-'.'CJIBF2019-registered-detail.pdf' ,$pdf->output());*/
                 //dd($attach);
                 $filename = $sendObj->perusahaan;
-                dd($sendObj);
-                $pdf = PDF::loadView('attach', ['send' => $sendObj])->setPaper('letter','portrait')->save(public_path('CJIBF2019/'.'CJIBF_'.$filename.'.pdf'));
+                //dd($sendObj);
+                //$pdf = PDF::loadView('attach', ['send' => $sendObj])->setPaper('letter','portrait')->save(public_path('CJIBF2019/'.'CJIBF_'.$filename.'.pdf'));
 
                 Mail::to(Auth::guard('investor')->user()->email)->send(new DaftarCJIBF($sendObj));
                 //return PDF::loadView('attach', ['send' => $sendObj])->setPaper($customPaper, $paper_orientation)->stream();
                 //dd($attach);
-                return $pdf->stream('CJIBF_'.$filename.'.pdf');
-                //return view('front-end.investor.content.cjibf-registered', compact('pengumuman'));
+                //return $pdf->stream('CJIBF_'.$filename.'.pdf');
+                return view('front-end.investor.content.cjibf-registered', compact('pengumuman'));
             }
             else{
                 $pengumuman = Pengumuman::all();
@@ -152,10 +152,10 @@ class FrontEndController extends Controller
 
             $updateInvestor->update();
             //dd($updateInvestor);
-
+            //dd($updateInvestor->userId->);
             $sendObj = new \stdClass();
             $sendObj->nama_investor = $user_name;
-            $sendObj->minat_kabkota = $updateInvestor->userId->kabkota->nama;
+            $sendObj->minat_kabkota = $request->kab_kota;
             $sendObj->minat_sektor = $updateInvestor->sektor_interest;
             $sendObj->meja = $updateInvestor->meja_id;
             $sendObj->col = $layout_col;
@@ -169,13 +169,13 @@ class FrontEndController extends Controller
                 ->merge('http://cjip.jatengprov.go.id/storage/additional/cjip-2.png', .3, true)
                 ->generate($sendObj->event->nama_kegiatan.','.$sendObj->nama_investor.','.$sendObj->perusahaan.','.$sendObj->meja);
             $filename = $sendObj->perusahaan;
-            dd($sendObj);
-            $pdf = PDF::loadView('attach', ['send' => $sendObj])->setPaper('letter','portrait')->save(public_path('CJIBF2019/'.'CJIBF_'.$filename.'.pdf'));
+            //dd($sendObj);
+            //$pdf = PDF::loadView('attach', ['send' => $sendObj])->setPaper('letter','portrait')->save(public_path('CJIBF2019/'.'CJIBF_'.$filename.'.pdf'));
 
             Mail::to(Auth::guard('investor')->user()->email)->send(new DaftarCJIBF($sendObj));
 
-            //return view('front-end.investor.content.cjibf-registered', compact('pengumuman'));
-            return $pdf->stream('CJIBF_'.$filename.'.pdf');
+            return view('front-end.investor.content.cjibf-registered', compact('pengumuman'));
+            //return $pdf->stream('CJIBF_'.$filename.'.pdf');
         }
 
     }

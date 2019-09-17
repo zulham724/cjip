@@ -10,7 +10,7 @@ class CjibfInvestor extends Model
     protected $table = 'cjibf_investor';
 
     public function userId(){
-        return $this->belongsTo(KabkotaUserModel::class, 'kab_kota_id', 'kab_kota_id');
+        return $this->belongsTo(KabkotaUserModel::class, 'kab_kota_id', 'user_id');
     }
 
     public function kota(){

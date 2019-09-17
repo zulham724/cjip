@@ -43,7 +43,7 @@ class DaftarCJIBF extends Mailable
             ->view('maileclipse::templates.attachment')
             ->text('maileclipse::templates.attachment_plain_text')
             /*->attach(storage_path('app/public/CJIBF/'.'CJIBF_'.$filename.'.pdf'))*/
-            ->attachData($attach->output(), 'CJIBF.pdf', [
+            ->attachData($attach->output(), $filename.'CJIBF.pdf', [
                 'mime' => 'application/pdf',
             ])
             ->with('data', $this->send);

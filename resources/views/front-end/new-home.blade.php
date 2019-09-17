@@ -135,7 +135,7 @@
                           <img alt="" class="features__img" src="assets/img/img_feature_1.png" alt="">-->
                         <img src="{{Voyager::image($infrastruktur->gambar)}}" style="width: 100px; height: 100px;;display: block;margin-left: auto;margin-right: auto;" alt="Supporting Infrastructures">
                         <p class="features__title">{{$infrastruktur->nama_infrastruktur}}</p>
-                        <p class="features__description">{{$infrastruktur->detail}}</p>
+                        <p class="features__description">{!! $infrastruktur->detail !!}</p>
                     </div>
                 </div>
             @endforeach
@@ -311,7 +311,7 @@
             </div>
             <div class="col-6 about-about-app__description">
                 <div class="about-app__description-content">
-                    <div id="economic"></div>
+                    <div id="economic_id"></div>
                 </div>
             </div>
         </div>
@@ -359,7 +359,7 @@
                           <img alt="" class="features__img" src="assets/img/img_feature_1.png" alt="">-->
                         <img src="{{Voyager::image($infrastruktur->gambar)}}" style="width: 100px; height: 100px;;display: block;margin-left: auto;margin-right: auto;" alt="Supporting Infrastructures">
                         <p class="features__title">{{$infrastruktur->nama_infrastruktur}}</p>
-                        <p class="features__description">{{$infrastruktur->detail}}</p>
+                        <p class="features__description">{!! $infrastruktur->detail !!}</p>
                     </div>
                 </div>
             @endforeach
@@ -1205,6 +1205,56 @@
             },
             series: [{
                 name: 'Central Java Economic Growth',
+                data: data
+            }]
+        });
+    </script>
+    <script>
+        var label = [];
+        var data = [];
+
+        var economic_lbl = {!! $ekonomis !!};
+
+        var i;
+
+        for(i=0; i<economic_lbl.length; i++){
+            label.push(economic_lbl[i].tahun);
+            data.push(Math.abs(economic_lbl[i].pertumbuhan.replace(',', '.')));
+        }
+
+
+        Highcharts.chart('economic_id', {
+            chart: {
+                type: 'line',
+                backgroundColor: null
+            },
+            title: {
+                text: 'Pertumbuhan Ekonomi Jawa Tengah'
+            },
+            subtitle: {
+                text: 'DPMPTSP Provinsi Jawa Tengah'
+            },
+            xAxis: {
+                categories: label
+            },
+            yAxis: {
+                title: {
+                    text: 'Laju Pertumbuhan'
+                }
+            },
+            credits: {
+                enabled: false
+            },
+            plotOptions: {
+                line: {
+                    dataLabels: {
+                        enabled: true
+                    },
+                    enableMouseTracking: false
+                }
+            },
+            series: [{
+                name: 'Pertumbuhan Ekonomi Jawa Tengah',
                 data: data
             }]
         });
