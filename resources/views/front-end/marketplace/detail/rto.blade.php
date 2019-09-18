@@ -236,32 +236,28 @@
 @endsection
 
 @section('header')
-    <div id="headerEn">
-        <header class="header-home header-home--color">
-            <div class="container background background--right background--features background--header"
-                 style="background-image: url({{Voyager::image(setting('site.bg_rto'))}})">
-                <div class="row">
-                    <div class="col-12">
-                        <h2 class="header-home__title header-home__title--features" style="margin-bottom: 0px!important;  width: 800px;!important;">{{Voyager::setting('site.title_rto')}}<br/></h2>
-                        <p class="header-home__description" style="width: 500px !important; font-weight: 100" align="justify">{{Voyager::setting('site.ket_rto')}}</p>
-                    </div>
+    <header id="headerEn" class="header-home">
+        <div class="container background background--right background--header background--mobile"
+             style="background-image: url({{Voyager::image(setting('site.bg_rto'))}});">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="header-home__title">{{Voyager::setting('site.title_rto')}}</h2>
+                    <p class="header-home__description">{{Voyager::setting('site.ket_rto')}}</p>
                 </div>
             </div>
-        </header>
-    </div>
-    <div id="headerId" style="display: none">
-        <header class="header-home header-home--color">
-            <div class="container background background--right background--features background--header"
-                 style="background-image: url({{Voyager::image(setting('site.bg_rto'))}})">
-                <div class="row">
-                    <div class="col-12">
-                        <h2 class="header-home__title header-home__title--features" style="margin-bottom: 0px!important;  width: 800px;!important;">{{Voyager::setting('site.id_title_rto')}}<br/></h2>
-                        <p class="header-home__description" style="width: 500px !important; font-weight: 100" align="justify">{{Voyager::setting('site.id_ket_rto')}}</p>
-                    </div>
+        </div>
+    </header>
+    <header id="headerId" style="display: none;" class="header-home">
+        <div class="container background background--right background--header background--mobile"
+             style="background-image: url({{Voyager::image(setting('site.bg_rto'))}});">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="header-home__title">{{Voyager::setting('site.id_title_rto')}}</h2>
+                    <p class="header-home__description">{{Voyager::setting('site.id_ket_rto')}}</p>
                 </div>
             </div>
-        </header>
-    </div>
+        </div>
+    </header>
 
 @endsection
 @section('content')

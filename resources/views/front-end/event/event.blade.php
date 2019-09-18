@@ -8,16 +8,7 @@
     <meta name="keywords" content="Investasi, CJIBF, Invest, Jawa Tengah">
     <meta name="author" content="wdnsds">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <!--
-    ========================================================================
-    EXCLUSIVE ON themeforest.net
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    Template Name   : Amigo
-    Author          : mital_04
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    Copyright (c) 2018 - Amigo
-    ========================================================================
-    -->
+
     <title>{{setting('site.title')}}</title>
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
@@ -333,51 +324,6 @@
     </section>
     <!-- Home End -->
 
-{{--<section id="about" class="bg-no-repeat bg-center-left" style="background-image: url({{asset('cjibf/img/1600x1000.jpg')}});">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 col-md-6">
-                <div class="white-opacity-bg p-100px-tb md-p-50px-tb sm-p-40px-tb">
-                    <h3 class="font-alt color-extra-dark-gray m-0px m-10px-b font-w-700">Be stronger </h3>
-                    <h6 class="font-alt font-w-600 font-16 color-theme m-0px m-20px-b">change your body with stargym</h6>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua.</p>
-                    <p class="m-35epx-b">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                        cillum dolore eu fugiat nulla pariatur.</p>
-                    <a href="#" class="m-btn">BECOME A MEMBER</a>
-                </div>
-            </div>
-        </div> <!-- row -->
-    </div> <!-- container -->
-</section>
-
-<!-- About Us -->
-<section  class="section light-gray-bg section-overlay">
-    <div class="section-overlay-in section-overlay-l section-overlay-w-50 bg-cover bg-no-repeat bg-center-center"  style="background-image: url({{asset('cjibf/img/1600x1000.jpg')}});">
-    </div>
-    <div class="container">
-        <div class="row justify-content-end">
-            <div class="col-12 col-md-7">
-                <div class="box-shadow-large white-bg">
-                    <div class="p-30px">
-                        <h5 class="color-extra-dark-gray font-w-700 font-alt m-0px m-25px-b">About <span class="color-theme">Fitness</span></h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        <p class="m-30px-b">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <a href="#" class="m-btn">BECOME A MEMBER</a>
-                    </div>
-                </div>
-            </div> <!-- col -->
-        </div> <!-- row -->
-
-    </div> <!-- container -->
-</section>--}}
-<!-- About Us End-->
 
     <!-- Service Start -->
     <section id="sector" class="section" style="background-image: url({{asset('cjibf/img/300ppi/bg.png')}});">
@@ -432,16 +378,27 @@
             @isset($talkshows)
                 <div class="row">
                     @foreach($talkshows as $talkshow)
-                        <div class="col">
-                            <div class="our-team border-all">
-                                <div class="team-img">
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-2 md-m-15px-tb">
+                            <div class="our-team-04">
+                                <div class="box-shadow hover-shadow p-10px white-bg text-center">
+                                    <div class="p-20px-t p-10px-b" style="min-height: 200px">
+                                        <div class="color-extra-dark-gray font-16 font-w-700 font-alt m-5px-b">{{$talkshow->nama}}</div>
+                                        <span class="font-14 font-w-700">{{$talkshow->jabatan}}</span><br>
+                                        <span class="color-dark-gray font-14 font-w-700">{{$talkshow->tema}}</span>
+
+                                    </div>
+                                    <div class="team-img bg-cover bg-no-repeat bg-center-center" style="background-image: url({{Voyager::image($talkshow->foto)}});">
+                                    </div>
+
+                                </div>
+                                {{--<div class="team-img">
                                     <img src="{{Voyager::image($talkshow->foto)}}" title="{{$talkshow->nama}}" alt="{{$talkshow->nama}}">
                                 </div>
                                 <div class="p-20px-tb text-center">
                                     <div class="color-black font-18 font-w-400 letter-spacing-2 text-uppercase m-5px-b">{{$talkshow->nama}}</div>
                                     <span class="font-14 font-w-300 letter-spacing-2">{{$talkshow->jabatan}}</span><br>
                                     <span class="font-14 font-w-300 letter-spacing-2">{{$talkshow->tema}}</span>
-                                </div>
+                                </div>--}}
                             </div> <!-- Our Team -->
                         </div> <!-- Col -->
 
