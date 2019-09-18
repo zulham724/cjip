@@ -1,40 +1,17 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>{{$send->event->nama_kegiatan}}</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>Central Java Investment Business Forum & Central Java Business Expo 2019</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800,900" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style type="text/css">
         @page {
             margin: 180px 50px;
-        }
-
-        #header {
-            position: fixed;
-            left: 0px;
-            top: -180px;
-            right: 0px;
-            height: 150px;
-            background-color: transparent;
-            text-align: center;
-        }
-
-        #footer {
-            position: fixed;
-            left: 0px;
-            bottom: -180px;
-            right: 0px;
-            height: 150px;
-            background-color: transparent;
-            text-align: center;
-        }
-
-        #footer .page:after {
-            content: counter(page, upper-roman);
-        }
-
-        body {
-            margin: 0px;
         }
 
         header {
@@ -45,55 +22,6 @@
             height: 3cm;
         }
 
-
-        /** Define the footer rules **/
-        footer {
-            position: fixed;
-            bottom: 0cm;
-            left: 0cm;
-            right: 0cm;
-            height: 2cm;
-        }
-
-        * {
-            font-family: Verdana, Arial, sans-serif;
-        }
-
-        a {
-            color: #fff;
-            text-decoration: none;
-        }
-
-        table {
-            font-size: x-small;
-        }
-
-        tfoot tr td {
-            font-weight: bold;
-            font-size: x-small;
-        }
-
-        .invoice table {
-            margin: 15px;
-        }
-
-        .invoice h3 {
-            margin-left: 15px;
-        }
-
-        .information {
-            background-image: url("http://cjip.jatengprov.go.id/storage/additional/header_2.png");
-            max-height: 300px;
-            color: #FFF;
-        }
-
-        .information .logo {
-            margin: 5px;
-        }
-
-        .information table {
-            padding: 10px;
-        }
 
         .screen {
             width: 100%;
@@ -136,116 +64,147 @@
         .selected-innerColor {
             background-color: #3366CC;
         }
-    </style>
-
-    <style>
-        * {box-sizing: border-box;}
-        table {
-            font-family: 'Noto Sans JP', sans-serif;
-            border-spacing: 0;
-            width: 90%;
-            max-width: 650px;
-            margin: 0 auto;
-        }
-        th {
-            font-size: 14px;
-            text-align: left;
-            vertical-align: top;
-            width: 130px;
-            padding-top: 23px;
-            border-right: 1px solid #c7c6c6;
-        }
-        td {padding: 20px 0 20px 1rem;}
-
-
-
-
-        /* no related code */
-        body {font-family: 'Noto Sans JP', sans-serif;}
-        table {padding-top: 50px;}
         .page_break { page-break-before: always; }
     </style>
-
-
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 </head>
+
 <body>
 
-{{--FIX THIS--}}
-<div id="header">
-    <img src="http://cjip.jatengprov.go.id/storage/additional/header_2.png" width="100%" height="auto"/>
-</div>
+<main class="container" role="main">
+    <div class="wrapper">
+        <div style="background-size: 100% auto;height: auto;padding-top: 20px;padding-bottom: 100px; position: relative;">
+            <img alt="" src="http://cjip.jatengprov.go.id/storage/additional/header_2.png" style="height: 200px;position: absolute;width: 100%;">
+        </div>
+        <section class="development">
+            <div class="container" >
+                <div class="row" style="padding-left: 30px;padding-right: 30px;">
+                    <div class="col-md-12 col-sm-12" style="padding-top: 90px; ">
+                        <h2 style="color: #455a64;font-family: 'Raleway', sans-serif;font-size: 40px;font-weight: 700;padding-bottom: 20px;margin: 0;
+                      position: absolute;
+                      top: 50%;
+                      left: 50%;
+                      -ms-transform: translate(-50%, -50%);
+                      transform: translate(-50%, -50%); width: 900px;text-align: center;">
+                            Thank You for Join Us
+                        </h2>
+                    </div>
+                    <div class="col-md-12 col-sm-12" style="padding-top: 0;padding-bottom: 100px">
+                        <h2 style="color: #455a64;font-family: 'Raleway', sans-serif;font-size: 30px;font-weight: 700;padding-bottom: 20px;margin: 0;
+                      position: absolute;
+                      top: 50%;
+                      left: 50%;
+                      -ms-transform: translate(-50%, -50%);
+                      transform: translate(-50%, -50%); width: 800px;text-align: center;" >
+                            Central Java Investment Business Forum & Central Java Business Expo 2019
+                        </h2>
+                    </div>
+                    <div class="col-md-4 col-sm-4">
+                        <div class="row" style="border-left: 6px solid #2178b3;margin-left: -3px;top: 0;">
+                            <div class="contact-text">
+                                <h2 style="color: #455a64;font-family: 'Raleway', sans-serif;font-size: 30px;font-weight: 100;padding-bottom: 10px;margin: 0;text-align: left;padding-left: 10px">
+                                    Name
+                                </h2>
+                                <p style="color: #66849a;font-family: 'Raleway', sans-serif;font-size: 20px;font-weight: 100;padding-bottom: 10px;margin: 0;text-align: left;padding-left: 10px">
+                                    <i>Nama</i>
+                                </p>
+                                <h2 style="color: #455a64;font-family: 'Raleway', sans-serif;font-size: 50px;font-weight: 300;padding-bottom: 10px;margin: 0;text-align: left;padding-left: 10px">
+                                    {{$send->nama_investor}}
+                                </h2>
+                            </div>
+                        </div>
+                        <div class="row" style="border-left: 6px solid #2fc6d3;margin-left: -3px;top: 0;">
+                            <div class="contact-text">
+                                <h2 style="color: #455a64;font-family: 'Raleway', sans-serif;font-size: 30px;font-weight: 100;padding-bottom: 10px;margin: 0;text-align: left;padding-left: 10px">
+                                    Interested in
+                                </h2>
+                                <p style="color: #66849a;font-family: 'Raleway', sans-serif;font-size: 20px;font-weight: 100;padding-bottom: 10px;margin: 0;text-align: left;padding-left: 10px">
+                                    <i>Berminat di</i>
+                                </p>
+                                <h2 style="color: #455a64;font-family: 'Raleway', sans-serif;font-size: 50px;font-weight: 300;padding-bottom: 10px;margin: 0;text-align: left;padding-left: 10px">
+                                    {{$send->minat_sektor}}, {{$send->minat_kabkota}}
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8 col-sm-8">
+                        <div class="row" style="border-left: 6px solid #2178b3;margin-left: -3px;top: 0;">
+                            <div class="contact-text">
+                                <h2 style="color: #455a64;font-family: 'Raleway', sans-serif;font-size: 50px;font-weight: 300;padding-bottom: 10px;margin: 0;text-align: left;padding-left: 10px">
+                                    Hotel Bidakara Jakarta
+                                </h2>
+                                <h2 style="color: #455a64;font-family: 'Raleway', sans-serif;font-size: 30px;font-weight: 100;padding-bottom: 10px;margin: 0;text-align: left;padding-left: 10px">
+                                    Birawa Assembly Hall, Hotel Bidakara Jakarta, Jl. Gatot Subroto No.Kav. 71-73, Jakarta
+                                </h2>
+                            </div>
+                        </div>
+                        <div class="row" style="border-left: 6px solid #2fc6d3;margin-left: -3px;top: 0;">
+                            <div class="contact-text">
+                                <h2 style="color: #455a64;font-family: 'Raleway', sans-serif;font-size: 50px;font-weight: 300;padding-bottom: 10px;margin: 0;text-align: left;padding-left: 10px">
+                                    Event Started On
+                                </h2>
+                                <h2 style="color: #455a64;font-family: 'Raleway', sans-serif;font-size: 30px;font-weight: 100;padding-bottom: 10px;margin: 0;text-align: left;padding-left: 10px">
+                                    November, 5th 2019
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
 
-<div id="content">
-    <div class="row">
-        <div class="col-6"><table>
-                <tr>
-                    <th>Company Name</th>
-                    <td>{{$send->perusahaan}}</td>
-                </tr>
-                <tr>
-                    <th>Name</th>
-                    <td>{{$send->nama_investor}}</td>
-                </tr>
-                <tr>
-                    <th>Selected City</th>
-                    <td>{{$send->minat_kabkota}}</td>
-                </tr>
-                <tr>
-                    <th>Selected Sector</th>
-                    <td>{{$send->minat_sektor}}</td>
-                </tr>
-                <tr>
-                    <th>Table Code</th>
-                    <td>{{$send->meja}}</td>
-                </tr>
-            </table></div>
-        <div class="col-6"><img src="data:image/png;base64, {!! base64_encode($send->qr) !!}" alt=""></div>
+                </div>
+            </div>
+        </section>
+        <section class="development">
+            <div class="container" >
+                <div class="row" style="background-image: url('{{asset('mail/img/bg-2.png')}}');background-position: center center;
+                        background-repeat:  no-repeat;">
+                    {{--<div class="col-md-12 col-sm-12" style="padding-top: 20px">
+                        <img src="data:image/png;base64, {!! base64_encode($send->qr) !!}" alt="">
+                    </div>--}}
+                    {{--<div class="page_break"></div>--}}
+                    <div class="col-md-12 col-sm-12" style="padding-top: 20px">
+                        <table id="seatsBlock" style="margin-left:auto; margin-right:auto;min-width: 800px;min-height: 600px;">
+                            <tr style="padding-top:20px;padding-bottom:20px;padding-right:20px;">
+                                <td colspan="{{count($send->col)+1}}" style="align-content: center; padding-top:20px;padding-bottom:20px;padding-right:20px; ">
+                                    <div class="screen">SCREEN</div>
+                                </td>
+                            </tr>
+                            @foreach($send->row as $row1)
+                                <tr>
+                                    <td>{{$row1->row}}</td>
+                                    @foreach($send->col as $col)
+                                        <td>
+                                            @foreach($send->mejas as $meja)
+
+                                                @if((($row1->row).($col->col)) == ($meja->kode_meja))
+                                                    @if($send->meja == (($row1->row).($col->col)))
+
+                                                        <img src="http://cjip.jatengprov.go.id/storage/additional/seated.png"
+                                                             style="width: 50px" alt="">
+
+                                                    @else
+                                                        <img src="http://cjip.jatengprov.go.id/storage/additional/seat.png"
+                                                             style="width: 50px" alt="">
+                                                    @endif
+                                                @endif
+
+                                            @endforeach
+                                        </td>
+
+                                    @endforeach
+                                </tr>
+                            @endforeach
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div style="background-size: 100% auto;height: auto;padding-top: 20px;padding-bottom: 100px; position: relative;">
+            <img alt="" src="http://cjip.jatengprov.go.id/storage/additional/footer.png" style=" height: 200px;position: absolute;width: 100%;">
+        </div>
     </div>
-
-    <div class="page_break"></div>
-    <table id="seatsBlock" style="margin-left:auto; margin-right:auto;">
-        <tr style="padding-top:20px;padding-bottom:20px;padding-right:20px;">
-            <td colspan="{{count($send->col)+1}}" style="align-content: center; padding-top:20px;padding-bottom:20px;padding-right:20px; ">
-                <div class="screen">SCREEN</div>
-            </td>
-        </tr>
-        <tr>
-            <td style="padding-bottom: 16px"></td>
-        </tr>
-        <tr>
-            <td style="padding-bottom: 16px"></td>
-        </tr>
-        @foreach($send->row as $row1)
-            <tr>
-                <td>{{$row1->row}}</td>
-                @foreach($send->col as $col)
-                    <td>
-                        @foreach($send->mejas as $meja)
-
-                            @if((($row1->row).($col->col)) == ($meja->kode_meja))
-                                @if($send->meja == (($row1->row).($col->col)))
-
-                                    <img src="http://cjip.jatengprov.go.id/storage/additional/seated.png"
-                                         style="width: 20px" alt="">
-
-                                @else
-                                    <img src="http://cjip.jatengprov.go.id/storage/additional/seat.png"
-                                         style="width: 20px" alt="">
-                                @endif
-                            @endif
-
-                        @endforeach
-                    </td>
-
-                @endforeach
-            </tr>
-        @endforeach
-    </table>
-</div>
-
-<div id="footer">
-    <img src="http://cjip.jatengprov.go.id/storage/additional/footer.png" width="100%" height="auto"/>
-</div>
+</main>
 
 </body>
+
 </html>

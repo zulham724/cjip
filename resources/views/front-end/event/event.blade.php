@@ -8,7 +8,16 @@
     <meta name="keywords" content="Investasi, CJIBF, Invest, Jawa Tengah">
     <meta name="author" content="wdnsds">
     <meta name="apple-mobile-web-app-capable" content="yes">
-
+    <!--
+    ========================================================================
+    EXCLUSIVE ON themeforest.net
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    Template Name   : Amigo
+    Author          : mital_04
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    Copyright (c) 2018 - Amigo
+    ========================================================================
+    -->
     <title>{{setting('site.title')}}</title>
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
@@ -201,9 +210,6 @@
 <!-- ========== Body Starts ========== -->
 <body data-spy="scroll" data-target=".navbar" data-offset="73">
 
-<div id="loading">
-    <div class="load-circle"><span class="one"></span></div>
-</div>
 
 <!-- ========== Header Start ========== -->
 <header class="header header-transparent">
@@ -266,55 +272,51 @@
     <!-- Home -->
     <section id="home">
         @isset($setting)
-            @php
-                $images = json_decode($setting->carousels, true);
-                //dd($images);
-            @endphp
             <div class="owl-carousel" data-nav-arrow="true" data-items="1" data-md-items="1" data-sm-items="1" data-xs-items="1" data-xx-items="1" data-loop="true" data-space="0">
 
-                    <div class="slider bg-cover bg-no-repeat bg-center-center" style="background-image: url('http://cjip.jatengprov.go.id/storage/additional/Bokeh%20Front.jpg');">
-                        <div class="container">
-                            <div class="row align-items-center full-screen p-100px-tb">
-                                <div class="col-xl-12 col-lg-12 col-md-12 m-50px-t">
+                <div class="slider bg-cover bg-no-repeat bg-center-center" style="background-image: url('http://cjip.jatengprov.go.id/storage/additional/Bokeh%20Front.jpg');">
+                    <div class="container">
+                        <div class="row align-items-center full-screen p-100px-tb">
+                            <div class="col-xl-12 col-lg-12 col-md-12 m-50px-t">
 
-                                    <img src="http://cjip.jatengprov.go.id/storage/additional/logo%20cjibf.png" style="display: block;margin-left: auto;margin-right: auto;max-width: 200px; -webkit-filter: drop-shadow(5px 5px 5px #222); filter: drop-shadow(5px 5px 5px #222);" alt="" >
+                                <img src="http://cjip.jatengprov.go.id/storage/additional/logo%20cjibf.png" style="display: block;margin-left: auto;margin-right: auto;max-width: 200px; -webkit-filter: drop-shadow(5px 5px 5px #222); filter: drop-shadow(5px 5px 5px #222);" alt="" >
 
-                                    <div class="p-30px-t sm-p-5px-t" align="center">
-                                        <a href="#venue" class="m-btn m-10px-r">Join Us</a>
-                                    </div>
+                                <div class="p-30px-t sm-p-5px-t" align="center">
+                                    <a href="#venue" class="m-btn m-10px-r">Join Us</a>
                                 </div>
-                            </div> <!-- row -->
-                        </div> <!-- container -->
-                    </div>
-                    <div class="slider bg-cover bg-no-repeat bg-center-center" style="background-image: url('http://cjip.jatengprov.go.id/storage/additional/Bokeh%20Front2.jpg');">
-                        <div class="container">
-                            <div class="row align-items-center full-screen p-100px-tb">
-                                <div class="col-xl-12 col-lg-12 col-md-12 m-50px-t">
+                            </div>
+                        </div> <!-- row -->
+                    </div> <!-- container -->
+                </div>
+                <div class="slider bg-cover bg-no-repeat bg-center-center" style="background-image: url('http://cjip.jatengprov.go.id/storage/additional/Bokeh%20Front2.jpg');">
+                    <div class="container">
+                        <div class="row align-items-center full-screen p-100px-tb">
+                            <div class="col-xl-12 col-lg-12 col-md-12 m-50px-t">
 
-                                    <img src="http://cjip.jatengprov.go.id/storage/additional/logo%20cjibf.png" style="display: block;margin-left: auto;margin-right: auto;max-width: 200px; -webkit-filter: drop-shadow(5px 5px 5px #222); filter: drop-shadow(5px 5px 5px #222);" alt="" >
+                                <img src="http://cjip.jatengprov.go.id/storage/additional/logo%20cjibf.png" style="display: block;margin-left: auto;margin-right: auto;max-width: 200px; -webkit-filter: drop-shadow(5px 5px 5px #222); filter: drop-shadow(5px 5px 5px #222);" alt="" >
 
-                                    <div class="p-30px-t sm-p-5px-t" align="center">
-                                        <a href="#venue" class="m-btn m-10px-r">Join Us</a>
-                                    </div>
+                                <div class="p-30px-t sm-p-5px-t" align="center">
+                                    <a href="#venue" class="m-btn m-10px-r">Join Us</a>
                                 </div>
-                            </div> <!-- row -->
-                        </div> <!-- container -->
-                    </div>
-                    <div class="slider bg-cover bg-no-repeat bg-center-center" style="background-image: url('http://cjip.jatengprov.go.id/storage/additional/Bokeh%20Front3.jpg');">
-                        <div class="container">
-                            <div class="row align-items-center full-screen p-100px-tb">
-                                <div class="col-xl-12 col-lg-12 col-md-12 m-50px-t">
+                            </div>
+                        </div> <!-- row -->
+                    </div> <!-- container -->
+                </div>
+                <div class="slider bg-cover bg-no-repeat bg-center-center" style="background-image: url('http://cjip.jatengprov.go.id/storage/additional/Bokeh%20Front3.jpg');">
+                    <div class="container">
+                        <div class="row align-items-center full-screen p-100px-tb">
+                            <div class="col-xl-12 col-lg-12 col-md-12 m-50px-t">
 
-                                    <img src="http://cjip.jatengprov.go.id/storage/additional/logo%20cjibf.png" style="display: block;margin-left: auto;margin-right: auto;max-width: 200px; -webkit-filter: drop-shadow(5px 5px 5px #222); filter: drop-shadow(5px 5px 5px #222);" alt="" >
+                                <img src="http://cjip.jatengprov.go.id/storage/additional/logo%20cjibf.png" style="display: block;margin-left: auto;margin-right: auto;max-width: 200px; -webkit-filter: drop-shadow(5px 5px 5px #222); filter: drop-shadow(5px 5px 5px #222);" alt="" >
 
-                                    <div class="p-30px-t sm-p-5px-t" align="center">
-                                        <a href="#venue" class="m-btn m-10px-r">Join Us</a>
-                                    </div>
+                                <div class="p-30px-t sm-p-5px-t" align="center">
+                                    <a href="#venue" class="m-btn m-10px-r">Join Us</a>
                                 </div>
-                            </div> <!-- row -->
-                        </div> <!-- container -->
-                    </div>
-                    <!-- Slider -->
+                            </div>
+                        </div> <!-- row -->
+                    </div> <!-- container -->
+                </div>
+                <!-- Slider -->
 
             </div>
             <h1 class="font-alt font-80 md-font-40 sm-font-30 font-w-700 color-white m-0px m-45px-b md-m-35px-b sm-m-20px-b" align="center"><span class="color-theme">{{$setting->initial_name}}</span></h1>
@@ -323,7 +325,6 @@
         @endisset
     </section>
     <!-- Home End -->
-
 
     <!-- Service Start -->
     <section id="sector" class="section" style="background-image: url({{asset('cjibf/img/300ppi/bg.png')}});">
@@ -378,29 +379,22 @@
             @isset($talkshows)
                 <div class="row">
                     @foreach($talkshows as $talkshow)
-                        <div class="col-12 col-sm-6 col-md-6 col-lg-2 md-m-15px-tb">
-                            <div class="our-team-04">
-                                <div class="box-shadow hover-shadow p-10px white-bg text-center">
-                                    <div class="p-20px-t p-10px-b" style="min-height: 200px">
-                                        <div class="color-extra-dark-gray font-16 font-w-700 font-alt m-5px-b">{{$talkshow->nama}}</div>
-                                        <span class="font-14 font-w-700">{{$talkshow->jabatan}}</span><br>
-                                        <span class="color-dark-gray font-14 font-w-700">{{$talkshow->tema}}</span>
-
-                                    </div>
-                                    <div class="team-img bg-cover bg-no-repeat bg-center-center" style="background-image: url({{Voyager::image($talkshow->foto)}});">
-                                    </div>
-
+                        <div class="col col-half-offset">
+                            <div class="blog-item md-m-15px-tb box-shadow hover-shadow" style="min-height: 700px">
+                                <div class="blog-img">
+                                    <a href="#">
+                                        <img src="{{Voyager::image($talkshow->foto)}}" title="Amigo" alt="Amigo">
+                                    </a>
                                 </div>
-                                {{--<div class="team-img">
-                                    <img src="{{Voyager::image($talkshow->foto)}}" title="{{$talkshow->nama}}" alt="{{$talkshow->nama}}">
+                                <div class="blog-detail">
+                                    <a class="color-extra-dark-gray font-w-500 font-16 text-uppercase font-alt" href="#">{{$talkshow->nama}}</a>
+                                    <div class="entry-date font-12 text-uppercase m-5px-t m-10px-b">{{$talkshow->jabatan}}</div>
+                                    <div class="entry-content">
+                                        <p>{{$talkshow->tema}}</p>
+                                    </div>
                                 </div>
-                                <div class="p-20px-tb text-center">
-                                    <div class="color-black font-18 font-w-400 letter-spacing-2 text-uppercase m-5px-b">{{$talkshow->nama}}</div>
-                                    <span class="font-14 font-w-300 letter-spacing-2">{{$talkshow->jabatan}}</span><br>
-                                    <span class="font-14 font-w-300 letter-spacing-2">{{$talkshow->tema}}</span>
-                                </div>--}}
-                            </div> <!-- Our Team -->
-                        </div> <!-- Col -->
+                            </div>
+                        </div>
 
                     @endforeach
                 </div> <!-- row -->
@@ -472,7 +466,7 @@
                                 </div>
                                 <div class="col-12 col-md-12">
                                     <div class="form-group">
-                                        <input name="password_confirmation" id="repassword" placeholder="Repeat Password" class="input-medium" type="password">
+                                        <input name="password_confirmation" id="password_confirmation" placeholder="Repeat Password" class="input-medium" type="password">
                                     </div>
                                 </div>
                                 <button class="m-btn border-radius-30px box-shadow-large" type="submit" >Register</button>
@@ -610,15 +604,57 @@
 <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
 
 <!-- Plugin Track -->
-<script>var plugin_track = '{{asset('cjibf/plugin/')}}';</script>
 
-{{--<script src="{{asset('cjibf/plugin/magnific/jquery.magnific-popup.min.js')}}"></script>
+
+<script src="{{asset('cjibf/plugin/magnific/jquery.magnific-popup.min.js')}}"></script>
 <script src="{{asset('cjibf/plugin/owl-carousel/js/owl.carousel.min.js')}}"></script>
-<script src="{{asset('cjibf/plugin/isotope/isotope.pkgd.min.js')}}"></script>--}}
+<script src="{{asset('cjibf/plugin/isotope/isotope.pkgd.min.js')}}"></script>
 
 <!-- Custom -->
-<script src="{{asset('cjibf/js/custom.js')}}"></script>
-<script src="{{asset('cjibf/js/mail_send.js')}}"></script>
+<script>
+
+    $(document).ready(
+        function () {
+            var owlslider = jQuery("div.owl-carousel");
+            if(owlslider.length > 0) {
+                owlslider.each(function () {
+                    var $this = $(this),
+                        $items = ($this.data('items')) ? $this.data('items') : 1,
+                        $loop = ($this.attr('data-loop')) ? $this.data('loop') : true,
+                        $navdots = ($this.data('nav-dots')) ? $this.data('nav-dots') : false,
+                        $navarrow = ($this.data('nav-arrow')) ? $this.data('nav-arrow') : false,
+                        $autoplay = ($this.attr('data-autoplay')) ? $this.data('autoplay') : true,
+                        $autospeed = ($this.attr('data-autospeed')) ? $this.data('autospeed') : 5000,
+                        $smartspeed = ($this.attr('data-smartspeed')) ? $this.data('smartspeed') : 1000,
+                        $autohgt = ($this.data('autoheight')) ? $this.data('autoheight') : false,
+                        $space = ($this.attr('data-space')) ? $this.data('space') : 30;
+
+                    $(this).owlCarousel({
+                        loop: $loop,
+                        items: $items,
+                        responsive: {
+                            0:{items: $this.data('xx-items') ? $this.data('xx-items') : 1},
+                            480:{items: $this.data('xs-items') ? $this.data('xs-items') : 1},
+                            768:{items: $this.data('sm-items') ? $this.data('sm-items') : 2},
+                            980:{items: $this.data('md-items') ? $this.data('md-items') : 3},
+                            1200:{items: $items}
+                        },
+                        dots: $navdots,
+                        autoplayTimeout:$autospeed,
+                        smartSpeed: $smartspeed,
+                        autoHeight:$autohgt,
+                        margin:$space,
+                        nav: $navarrow,
+                        navText:["<i class='ti-arrow-left'></i>","<i class='ti-arrow-right'></i>"],
+                        autoplay: $autoplay,
+                        autoplayHoverPause: true
+                    });
+                });
+            }
+        }
+    );
+
+</script>
 <!-- End -->
 <script>
     $(document).ready(function(){
@@ -662,6 +698,7 @@
 
     });
 </script>
+
 </body>
 <!-- ========== End of Body ========== -->
 </html>
