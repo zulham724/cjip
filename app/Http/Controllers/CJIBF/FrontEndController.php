@@ -125,7 +125,7 @@ class FrontEndController extends Controller
 
                 //return view('attach', ['send'=>$sendObj]);
 
-                $pdf = PDF::loadView('attach', ['send'=>$sendObj]);
+                $pdf = PDF::loadView('attach3', ['send'=>$sendObj]);
                 $filename = $sendObj->perusahaan;
                 return $pdf->stream('CJIBF_'.$filename.'.pdf');
 
@@ -177,7 +177,7 @@ class FrontEndController extends Controller
 
             //return view('attach', ['send'=>$sendObj]);
 
-            $pdf = PDF::loadView('attach', ['send'=>$sendObj]);
+            $pdf = PDF::loadView('attach3', ['send'=>$sendObj]);
 
             $filename = $sendObj->perusahaan;
             return $pdf->stream('CJIBF_'.$filename.'.pdf');
@@ -190,6 +190,11 @@ class FrontEndController extends Controller
     }
 
     public function pdf(){
+        $send = CjibfInvestor::first();
+
+        $pdf = PDF::loadView('attach3', ['send' => $send])->setPaper('legal', 'portrait');
+
+        return $pdf->stream();
 
     }
 

@@ -72,6 +72,7 @@ Route::get('/', function(){
 
         Route::get('/project-owner/{id}/{slug}', 'FrontEnd\Home\HomeController@detailProfile')->name('detail.profile');
 
+        Route::get('/tespdf', 'CJIBF\FrontEndController@pdf');
 
         Route::get('/how-can-we-help', 'FrontEnd\Home\HomeController@faq')->name('faq');
 
