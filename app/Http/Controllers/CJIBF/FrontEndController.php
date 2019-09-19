@@ -74,12 +74,16 @@ class FrontEndController extends Controller
         $pengumuman = Pengumuman::all();
         $user_kab_kota = KabkotaUserModel::where('kab_kota_id', $request->kab_kota)->first();
 
+       /* $test = CjibfInvestor::first();*/
+        //dd($test->user->namakota[0]->nama);
+
         //dd($user_kab_kota->user_id);
         //dd($request->all());
         $join = new CjibfInvestor;
         $join->kab_kota_id = $user_kab_kota->user_id;
         $join->profile_id = $request->profil;
         $join->sektor_interest = $request->why;
+
 
         //dd($join);
         $join->save();
@@ -108,7 +112,7 @@ class FrontEndController extends Controller
                 //dd($daftar);
                 $sendObj = new \stdClass();
                 $sendObj->nama_investor = $user_name;
-                $sendObj->minat_kabkota = $request->kab_kota;
+                $sendObj->minat_kabkota = $updateInvestor->user->namakota[0]->nama;
                 $sendObj->minat_sektor = $updateInvestor->sektor_interest;
                 $sendObj->meja = $updateInvestor->meja_id;
                 $sendObj->col = $layout_col;
@@ -125,9 +129,9 @@ class FrontEndController extends Controller
 
                 //return view('attach', ['send'=>$sendObj]);
 
-                $pdf = PDF::loadView('attach3', ['send'=>$sendObj]);
-                $filename = $sendObj->perusahaan;
-                return $pdf->stream('CJIBF_'.$filename.'.pdf');
+                //$pdf = PDF::loadView('attach3', ['send'=>$sendObj]);
+                //$filename = $sendObj->perusahaan;
+                //return $pdf->stream('CJIBF_'.$filename.'.pdf');
 
                 /*$pdf = PDF::loadView('attach', ['send'=>$sendObj])->save($sendObj->perusahaan .'-'.'CJIBF2019-registered-detail.pdf');
                 $attach = Storage::put('public/register/'.$sendObj->perusahaan .'-'.'CJIBF2019-registered-detail.pdf' ,$pdf->output());*/
@@ -136,11 +140,11 @@ class FrontEndController extends Controller
                 //dd($sendObj);
                 //$pdf = PDF::loadView('attach', ['send' => $sendObj])->setPaper('letter','portrait')->save(public_path('CJIBF2019/'.'CJIBF_'.$filename.'.pdf'));
 
-            //Mail::to(Auth::guard('investor')->user()->email)->send(new DaftarCJIBF($sendObj));
+            Mail::to(Auth::guard('investor')->user()->email)->send(new DaftarCJIBF($sendObj));
                 //return PDF::loadView('attach', ['send' => $sendObj])->setPaper($customPaper, $paper_orientation)->stream();
                 //dd($attach);
                 //return $pdf->stream('CJIBF_'.$filename.'.pdf');
-            //return view('front-end.investor.content.cjibf-registered', compact('pengumuman'));
+            return view('front-end.investor.content.cjibf-registered', compact('pengumuman'));
             }
             else{
                 $pengumuman = Pengumuman::all();
@@ -161,7 +165,7 @@ class FrontEndController extends Controller
             //dd($updateInvestor->userId->);
             $sendObj = new \stdClass();
             $sendObj->nama_investor = $user_name;
-            $sendObj->minat_kabkota = $request->kab_kota;
+            $sendObj->minat_kabkota = $updateInvestor->user->namakota[0]->nama;
             $sendObj->minat_sektor = $updateInvestor->sektor_interest;
             $sendObj->meja = $updateInvestor->meja_id;
             $sendObj->col = $layout_col;
@@ -177,13 +181,14 @@ class FrontEndController extends Controller
 
             //return view('attach', ['send'=>$sendObj]);
 
-            $pdf = PDF::loadView('attach3', ['send'=>$sendObj]);
+            //$pdf = PDF::loadView('attach3', ['send'=>$sendObj]);
+            //$filename = $sendObj->perusahaan;
+            //return $pdf->stream('CJIBF_'.$filename.'.pdf');
 
-            $filename = $sendObj->perusahaan;
-            return $pdf->stream('CJIBF_'.$filename.'.pdf');
-        //Mail::to(Auth::guard('investor')->user()->email)->send(new DaftarCJIBF($sendObj));
 
-        //return view('front-end.investor.content.cjibf-registered', compact('pengumuman'));
+        Mail::to(Auth::guard('investor')->user()->email)->send(new DaftarCJIBF($sendObj));
+
+        return view('front-end.investor.content.cjibf-registered', compact('pengumuman'));
             //return $pdf->stream('CJIBF_'.$filename.'.pdf');
         }
 

@@ -46,6 +46,15 @@ class Proyek extends Model
     public function marketplace(){
         return $this->belongsTo(JenisMarketplace::class, 'market_id');
     }
+
+    public function bySector(){
+        return $this->belongsTo(CjibfSektor::class, 'sektor_id');
+    }
+
+    public function byUser(){
+        return $this->belongsTo(User::class, 'kab_kota_id');
+    }
+
     public function search(){
         $this->morphMany(Search::class,'searchable');
     }

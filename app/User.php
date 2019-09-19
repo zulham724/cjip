@@ -50,7 +50,7 @@ class User extends \TCG\Voyager\Models\User
     }
 
     public function namakota(){
-        return $this->belongsToMany(KabKota::class, 'kabkota_user', 'kab_kota_id', 'user_id');
+        return $this->belongsToMany(KabKota::class, 'kabkota_user', 'user_id', 'kab_kota_id');
     }
 
     public function scopeHasRole($query, $role)

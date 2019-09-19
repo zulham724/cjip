@@ -1,4 +1,9 @@
+@php
 
+$sektors = \App\CjibfSektor::all();
+//dd($sektors);
+
+@endphp
 
 <div id="menuEn">
     <ul style="margin: 0 auto;">
@@ -25,6 +30,19 @@
                                 @endforeach
                             </div>
                         @endif
+                    </div>
+                </li>
+                <li>
+                    <div class="menu__dropdown">
+                        <a target="{{ $item->target }}" href="" data-toggle="dropdown" class="link link--gray menu__dropdown-btn">
+                            Sectors
+                            <span><i class="mdi mdi-chevron-down"></i></span>
+                        </a>
+                            <div class="menu__dropdown-content">
+                                @foreach($sektors as $subItem)
+                                    <a class="link link--gray" target="" href="{{route('by.sector', $subItem->name)}}">{{ $subItem->name }}</a>
+                                @endforeach
+                            </div>
                     </div>
                 </li>
             @endif

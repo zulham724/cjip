@@ -35,7 +35,7 @@ class DaftarCJIBF extends Mailable
     {
         //dd(base64_encode($this->send));
         $filename = $this->send->perusahaan;
-        $attach = PDF::loadView('attach', ['send' => $this->send])->setPaper('letter','portrait');
+        $attach = PDF::loadView('attach3', ['send' => $this->send]);
         //dd($attach);
         //$file = Storage::put('CJIBF/daftarCJIBF'.'.pdf', $attach->output());
         return $this->from('cjibf.jateng@gmail.com')
@@ -43,7 +43,7 @@ class DaftarCJIBF extends Mailable
             ->view('maileclipse::templates.attachment')
             ->text('maileclipse::templates.attachment_plain_text')
             /*->attach(storage_path('app/public/CJIBF/'.'CJIBF_'.$filename.'.pdf'))*/
-            ->attachData($attach->output(), $filename.'CJIBF.pdf', [
+            ->attachData($attach->output(), $filename.'_CJIBF.pdf', [
                 'mime' => 'application/pdf',
             ])
             ->with('data', $this->send);

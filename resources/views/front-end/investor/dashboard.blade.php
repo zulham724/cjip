@@ -370,10 +370,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Sharrre/2.0.1/jquery.sharrre.min.js"></script>
 <script src="{{asset('investor/js/extras.1.1.0.min.js')}}"></script>
 <script src="{{asset('investor/js/shards-dashboards.1.1.0.min.js')}}"></script>
-<script src="{{asset('investor/js/shards-dashboards.1.1.0.min.js')}}"></script>
 <script src="{{asset('investor/js/app-blog-new-post.1.1.0.js')}}"></script>
 <script src="{{asset('investor/js/app-components-overview.1.1.0.js')}}"></script>
-<script src="{{asset('js/front-end/loading-js.js')}}"></script>
 
 @yield('js')
 </body>

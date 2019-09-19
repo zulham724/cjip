@@ -68,6 +68,10 @@ Route::get('/', function(){
         Route::get('/ready-to-offer/{id}/{slug}', 'FrontEnd\Home\HomeController@detailRto')->name('detail.rto');
         Route::get('/prospective-project/{id}/{slug}', 'FrontEnd\Home\HomeController@detailPros')->name('detail.pros');
         Route::get('/potential-project/{id}/{slug}', 'FrontEnd\Home\HomeController@detailPot')->name('detail.pot');
+        Route::get('/project/{id}', 'FrontEnd\Home\HomeController@detailProyek')->name('detail.proyek');
+
+        Route::get('/sectors/{slug}', 'FrontEnd\Home\HomeController@bySector')->name('by.sector');
+        Route::get('/city/{id}', 'FrontEnd\Home\HomeController@byCity')->name('by.city');
 
 
         Route::get('/project-owner/{id}/{slug}', 'FrontEnd\Home\HomeController@detailProfile')->name('detail.profile');

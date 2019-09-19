@@ -220,22 +220,20 @@
 @section('header')
     <header id="headerEn" class="header-home">
         <div class="container background background--right background--header background--mobile"
-             style="background-image: url({{Voyager::image(setting('site.bg_rto'))}});">
+             style="background-image: url();">
             <div class="row">
                 <div class="col-12">
-                    <h2 class="header-home__title">{{Voyager::setting('site.title_rto')}}</h2>
-                    <p class="header-home__description">{{Voyager::setting('site.ket_rto')}}</p>
+                    <h2 class="header-home__title">Found {{count($proyeks)}} @if(count($proyeks)>1) Projects @else Project @endif in {{$slug}} Sector</h2>
                 </div>
             </div>
         </div>
     </header>
     <header id="headerId" style="display: none;" class="header-home">
         <div class="container background background--right background--header background--mobile"
-             style="background-image: url({{Voyager::image(setting('site.bg_rto'))}});">
+             style="background-image: url();">
             <div class="row">
                 <div class="col-12">
-                    <h2 class="header-home__title">{{Voyager::setting('site.id_title_rto')}}</h2>
-                    <p class="header-home__description">{{Voyager::setting('site.id_ket_rto')}}</p>
+                    <h2 class="header-home__title">Terdapat {{count($proyeks)}} Proyek di Sektor {{$slug}}</h2>
                 </div>
             </div>
         </div>
@@ -257,29 +255,29 @@
                                         <h6 class="about-app__description-title">Background</h6>
                                         <p style="text-align: justify; text-justify: inter-word;">{{ str_limit($proyek->translate('en')->latar_belakang, $limit = 500, $end = '...') }}</p>
                                     @endisset
-                                        <a href="{{route('detail.rto', ['id'=>$proyek->id,'slug' => str_slug($proyek->project_name, '-')])}}" class="site-btn site-btn--accent header-home__btn">Project's Details</a>
-                                        <a href="{{route('detail.profile', ['id'=>$proyek->profil_id,'slug' => str_slug($proyek->project_name, '-')])}}" class="site-btn site-btn--light header-home__btn">Project's Owner</a>
+                                    <a href="{{route('detail.rto', ['id'=>$proyek->id,'slug' => str_slug($proyek->project_name, '-')])}}" class="site-btn site-btn--accent header-home__btn">Project's Details</a>
+                                    <a href="{{route('detail.profile', ['id'=>$proyek->profil_id,'slug' => str_slug($proyek->project_name, '-')])}}" class="site-btn site-btn--light header-home__btn">Project's Owner</a>
                                 </div>
                             </div>
                             <div class="col-6 about-app__img about-app__img--left">
 
-                                    @isset($proyek->fotos)
-                                        @php
-                                            $images = json_decode($proyek->fotos)
-                                        @endphp
-                                        <div class="carousel">
-                                            @foreach((array) $images as $image)
+                                @isset($proyek->fotos)
+                                    @php
+                                        $images = json_decode($proyek->fotos)
+                                    @endphp
+                                    <div class="carousel">
+                                        @foreach((array) $images as $image)
                                             <div class="item">
                                                 <div class="about-app__img-wrap">
                                                     <img src="{{Voyager::image($image)}}" alt="">
                                                 </div>
                                             </div>
-                                            @endforeach
-                                        </div>
+                                        @endforeach
+                                    </div>
 
-                                    @else
-                                        <img alt="" src="{{'storage/'.Voyager::setting('site.not_found')}}">
-                                    @endisset
+                                @else
+                                    <img alt="" src="{{'storage/'.Voyager::setting('site.not_found')}}">
+                                @endisset
                             </div>
                         </div>
 

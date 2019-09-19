@@ -6,12 +6,14 @@ use App\Award;
 use App\Berita;
 use App\BiayaAir;
 use App\BiayaListrik;
+use App\CjibfSektor;
 use App\Events\FeedAction;
 use App\Faq;
 use App\Feed;
 use App\InfrastrukturPendukung;
 use App\JenisFaq;
 use App\JenisKatUserAir;
+use App\KabkotaUserModel;
 use App\LoiInterest;
 use App\Pariwisata;
 use App\Perikanan;
@@ -185,7 +187,6 @@ class HomeController extends Controller
 
 
         $proyeks = Proyek::whereHas('marketplace', function ($query) {
-
             $query->where('name', '=', 'Prospective Project');
         })->where('status', 1)->paginate(5);
         //dd($proyeks);
@@ -240,6 +241,20 @@ class HomeController extends Controller
         return view('front-end.marketplace.detail.pot', compact('proyek', 'mapsKey'));
     }
 
+    public function detailProyek($id){
+        $proyek = Proyek::findOrFail($id);
+        $mapsKey = 'AIzaSyBGsawbqVs083lGEe8cilVz0FqO0rHt5ZE&amp';
+        SEOTools::setTitle('Detail Project Investasi -'.$proyek->project_name.' - '.$proyek->translate('en')->project_name);
+        SEOTools::setDescription('Here is some potential investment project - '.$proyek->latar_belakang.' - '.$proyek->translate('en')->latar_belakang);
+        SEOTools::opengraph()->setUrl(url()->current());
+        SEOTools::setCanonical(url()->current());
+        SEOTools::opengraph()->addProperty('type', 'articles');
+        SEOTools::twitter()->setSite('@DPMPTSPJateng');
+        SEOTools::jsonLd()->addImage('https://cjip.jatengprov.go.id/storage/settings/August2019/esr0C8HmQss78AAnlaue.png');
+
+        return view('front-end.marketplace.detail.detailproyek', compact('proyek', 'mapsKey'));
+    }
+
     public function detailProfile($id, $slug){
         $profil = ProfilKabupaten::findOrFail($id);
         $mapsKey = 'AIzaSyBGsawbqVs083lGEe8cilVz0FqO0rHt5ZE&amp';
@@ -286,5 +301,36 @@ class HomeController extends Controller
                 echo 'unique';
             }
         }
+    }
+
+    public function bySector($slug){
+        //dd($slug);
+
+        $proyeks = Proyek::whereHas('bySector', function ($query) use ($slug) {
+            //dd($slug);
+            $query->where('name', '=', $slug);
+        })->where('status', 1)->paginate(5);
+        //dd($proyeks);
+        return view('front-end.marketplace.bysector', compact('proyeks', 'slug'));
+    }
+    public function byCity($id){
+        //dd($slug);
+
+        $kabId = KabkotaUserModel::where('kab_kota_id', $id)->first();
+        //dd($kabId);
+        $userId = $kabId->user_id;
+        //dd($userId);
+        $proyeks = Proyek::whereHas('byUser', function ($query) use ($userId) {
+            //dd($slug);
+            $query->where('id', '=', $userId);
+        })->where('status', 1)->get();
+        //dd($proyeks);
+
+        foreach ($proyeks as $proyek){
+            $image = json_decode($proyek->fotos);
+            //dd($proyek->bySector);
+        }
+
+        return view('front-end.marketplace.detail.proyek', compact('proyeks'));
     }
 }

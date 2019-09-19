@@ -28,7 +28,6 @@ class EventController extends Controller
         SEOTools::twitter()->setSite('@DPMPTSPJateng');
         SEOTools::jsonLd()->addImage(Voyager::image($setting->logo));
 
-
         return view('front-end.event.event', compact('setting', 'sectors', 'talkshows', 'cps'));
     }
 }

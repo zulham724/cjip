@@ -1,6 +1,196 @@
 @extends('front-end.investor.dashboard')
 @section('css')
-    <style media="" data-href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">button,hr,input{overflow:visible}audio,canvas,progress,video{display:inline-block}progress,sub,sup{vertical-align:baseline}html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0} menu,article,aside,details,footer,header,nav,section{display:block}h1{font-size:2em;margin:.67em 0}figcaption,figure,main{display:block}figure{margin:1em 40px}hr{box-sizing:content-box;height:0}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}a{background-color:transparent;-webkit-text-decoration-skip:objects}a:active,a:hover{outline-width:0}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:bolder}dfn{font-style:italic}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative}sub{bottom:-.25em}sup{top:-.5em}audio:not([controls]){display:none;height:0}img{border-style:none}svg:not(:root){overflow:hidden}button,input,optgroup,select,textarea{font-family:sans-serif;font-size:100%;line-height:1.15;margin:0}button,input{}button,select{text-transform:none}[type=submit], [type=reset],button,html [type=button]{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:ButtonText dotted 1px}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}[hidden],template{display:none}/*# sourceMappingURL=normalize.min.css.map */</style>
+    <style media=""
+           data-href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">button, hr, input {
+            overflow: visible
+        }
+
+        audio, canvas, progress, video {
+            display: inline-block
+        }
+
+        progress, sub, sup {
+            vertical-align: baseline
+        }
+
+        html {
+            font-family: sans-serif;
+            line-height: 1.15;
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%
+        }
+
+        body {
+            margin: 0
+        }
+
+        menu, article, aside, details, footer, header, nav, section {
+            display: block
+        }
+
+        h1 {
+            font-size: 2em;
+            margin: .67em 0
+        }
+
+        figcaption, figure, main {
+            display: block
+        }
+
+        figure {
+            margin: 1em 40px
+        }
+
+        hr {
+            box-sizing: content-box;
+            height: 0
+        }
+
+        code, kbd, pre, samp {
+            font-family: monospace, monospace;
+            font-size: 1em
+        }
+
+        a {
+            background-color: transparent;
+            -webkit-text-decoration-skip: objects
+        }
+
+        a:active, a:hover {
+            outline-width: 0
+        }
+
+        abbr[title] {
+            border-bottom: none;
+            text-decoration: underline;
+            text-decoration: underline dotted
+        }
+
+        b, strong {
+            font-weight: bolder
+        }
+
+        dfn {
+            font-style: italic
+        }
+
+        mark {
+            background-color: #ff0;
+            color: #000
+        }
+
+        small {
+            font-size: 80%
+        }
+
+        sub, sup {
+            font-size: 75%;
+            line-height: 0;
+            position: relative
+        }
+
+        sub {
+            bottom: -.25em
+        }
+
+        sup {
+            top: -.5em
+        }
+
+        audio:not([controls]) {
+            display: none;
+            height: 0
+        }
+
+        img {
+            border-style: none
+        }
+
+        svg:not(:root) {
+            overflow: hidden
+        }
+
+        button, input, optgroup, select, textarea {
+            font-family: sans-serif;
+            font-size: 100%;
+            line-height: 1.15;
+            margin: 0
+        }
+
+        button, input {
+        }
+
+        button, select {
+            text-transform: none
+        }
+
+        [type=submit], [type=reset], button, html [type=button] {
+            -webkit-appearance: button
+        }
+
+        [type=button]::-moz-focus-inner, [type=reset]::-moz-focus-inner, [type=submit]::-moz-focus-inner, button::-moz-focus-inner {
+            border-style: none;
+            padding: 0
+        }
+
+        [type=button]:-moz-focusring, [type=reset]:-moz-focusring, [type=submit]:-moz-focusring, button:-moz-focusring {
+            outline: ButtonText dotted 1px
+        }
+
+        fieldset {
+            border: 1px solid silver;
+            margin: 0 2px;
+            padding: .35em .625em .75em
+        }
+
+        legend {
+            box-sizing: border-box;
+            color: inherit;
+            display: table;
+            max-width: 100%;
+            padding: 0;
+            white-space: normal
+        }
+
+        progress {
+        }
+
+        textarea {
+            overflow: auto
+        }
+
+        [type=checkbox], [type=radio] {
+            box-sizing: border-box;
+            padding: 0
+        }
+
+        [type=number]::-webkit-inner-spin-button, [type=number]::-webkit-outer-spin-button {
+            height: auto
+        }
+
+        [type=search] {
+            -webkit-appearance: textfield;
+            outline-offset: -2px
+        }
+
+        [type=search]::-webkit-search-cancel-button, [type=search]::-webkit-search-decoration {
+            -webkit-appearance: none
+        }
+
+        ::-webkit-file-upload-button {
+            -webkit-appearance: button;
+            font: inherit
+        }
+
+        summary {
+            display: list-item
+        }
+
+        [hidden], template {
+            display: none
+        }
+
+        /*# sourceMappingURL=normalize.min.css.map */</style>
     <style>
         @import url(//fonts.googleapis.com/css?family=Quicksand:400,700);
 
@@ -59,6 +249,7 @@
             width: 24px;
             height: 32px;
         }
+
         .withanes:after {
             content: '';
             position: absolute;
@@ -87,6 +278,7 @@
             overflow: hidden;
             transition: opacity 250ms ease-in-out, width 0 linear 250ms, transform 250ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
+
         .withanes-name:after {
             width: 0;
             height: 0;
@@ -128,6 +320,7 @@
             background-color: #D13E35;
             transform: rotate(45deg);
         }
+
         .withanes-name > .heart:before, .withanes-name > .heart:after {
             content: '';
             position: absolute;
@@ -139,9 +332,11 @@
             background-color: #D13E35;
             border-radius: 50%;
         }
+
         .withanes-name > .heart:before {
             left: -3px;
         }
+
         .withanes-name > .heart:after {
             top: -3px;
         }
@@ -276,6 +471,7 @@
                 width: 100%;
             }
         }
+
         @media (min-width: 960px) {
             .grid-col_1of12MD {
                 width: 8.3333333333%;
@@ -325,6 +521,7 @@
                 width: 100%;
             }
         }
+
         .blocks {
             margin: -30px 0 0 -30px;
             /* offset blocks horizontal and vertical spacing - must match padding of blocks items */
@@ -535,7 +732,7 @@
             animation: tapWobble 0.4s linear infinite;
         }
 
-        .laptop404 .text{
+        .laptop404 .text {
             position: absolute;
             z-index: 999;
             margin: 0 auto;
@@ -575,6 +772,7 @@
                 transform: rotateZ(0deg);
             }
         }
+
         @keyframes headTilt {
             0% {
                 transform: rotateZ(0deg);
@@ -616,6 +814,7 @@
                 transform: rotateZ(0deg);
             }
         }
+
         @keyframes typeLeft {
             0% {
                 transform: rotateZ(0deg);
@@ -630,6 +829,7 @@
                 transform: rotateZ(0deg);
             }
         }
+
         @keyframes typeRight {
             0% {
                 transform: rotateZ(0deg);
@@ -644,6 +844,7 @@
                 transform: rotateZ(0deg);
             }
         }
+
         @keyframes tapWobble {
             0% {
                 transform: rotateZ(-0.2deg);
@@ -655,6 +856,7 @@
                 transform: rotateZ(-0.2deg);
             }
         }
+
         @keyframes tapRight {
             0% {
                 transform: rotateZ(0deg);
@@ -666,6 +868,7 @@
                 transform: rotateZ(0deg);
             }
         }
+
         @keyframes blink404 {
             0% {
                 background-position: -162px -350px;
@@ -680,6 +883,7 @@
                 background-position: -162px -350px;
             }
         }
+
         @keyframes pan {
             0% {
                 transform: translateX(-2px);
@@ -754,7 +958,115 @@
             @endif
             @isset($events)
 
-                    @if(empty($events))
+                @if(empty($events))
+                    <div class="card-header border-bottom">
+                        <h6 class="m-0">Sorry, this event is not yet started</h6>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item p-3">
+                            <div class="row">
+
+                                <div class="col">
+                                    <div class="container2">
+                                        <div class="error404page">
+                                            <div class="newcharacter404">
+                                                <div class="chair404"></div>
+                                                <div class="leftshoe404"></div>
+                                                <div class="rightshoe404"></div>
+                                                <div class="legs404"></div>
+                                                <div class="torso404">
+                                                    <div class="body404"></div>
+                                                    <div class="leftarm404"></div>
+                                                    <div class="rightarm404"></div>
+                                                    <div class="head404">
+                                                        <div class="eyes404"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="laptop404">
+                                                    <div class="text">
+                                                        @php $site_logo = Voyager::setting('site.logo', ''); @endphp
+                                                        <img class="menu__logo-img"
+                                                             style="max-width: 100px;height: auto"
+                                                             src="{{asset('storage/'.$site_logo)}}" alt="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                @elseif((\Carbon\Carbon::parse($events->tgl_buka)->eq(\Carbon\Carbon::now())) || (\Carbon\Carbon::parse($events->tgl_buka))->lte(\Carbon\Carbon::now()))
+
+                    @isset($registered)
+
+
+                    @else
+                        <div class="card card-small mb-4">
+                            <div class="card-header border-bottom">
+                                <h6 class="m-0">Join Us On CJIBF</h6>
+                                <hr>
+                                <div class="row">
+                                    <div class="col">
+                                        <form action="{{route('join.cjibf')}}" method="post">
+                                            @csrf
+
+                                            <div class="form-group col-md-12">
+                                                <label for="kab_kota">Select City or Regency You Interested in</label>
+                                                <select id="kab_kota" name="kab_kota" class="form-control" required>
+                                                    <option selected>Select city</option>
+                                                    @foreach($cities as $city)
+                                                        <option value="{{$city->user->kab_kota_id}}">{{$city->nama}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-md-12">
+                                                <label for="why">Sector</label>
+                                                <select id="why" name="why" class="form-control" required>
+                                                    <option selected>Select Sector You Interesred in</option>
+                                                    @foreach($sektors as $sektor)
+                                                        <option value="{{$sektor->name}}">{{$sektor->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <input type="text" class="form-control" name="profil"
+                                                   value="{{$profile->id}}" hidden>
+                                            <button type="submit" class="btn btn-accent">Register</button>
+                                        </form>
+                                    </div>
+                                    <div class="col-lg-8 col-md-12 col-sm-12 mb-4">
+                                        <div class="card card-small blog-comments">
+                                            <div class="card-header border-bottom">
+                                                <h6 class="m-0">Available Projects</h6>
+                                            </div>
+                                            <div class="card-body p-0">
+                                                <div id="proyek"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    @endisset
+                @elseif((\Carbon\Carbon::parse($events->tgl_buka))->gt(\Carbon\Carbon::now()))
+                    <div class="card-header border-bottom">
+                        <h6 class="m-0">Please Wait</h6>
+                    </div>
+                    <div class="countdownwrap" style="margin-left: 30%;margin-top: 20px">
+
+                    </div>
+
+                @elseif((\Carbon\Carbon::parse($events->tgl_selesai))->gte(\Carbon\Carbon::now()))
+
+                    <div class="card-header border-bottom">
+                        <h6 class="m-0">Event's End</h6>
+                    </div>
+
+                @else
+                    <div class="card-header border-bottom">
                         <div class="card-header border-bottom">
                             <h6 class="m-0">Sorry, this event is not yet started</h6>
                         </div>
@@ -781,7 +1093,8 @@
                                                     <div class="laptop404">
                                                         <div class="text">
                                                             @php $site_logo = Voyager::setting('site.logo', ''); @endphp
-                                                            <img class="menu__logo-img" style="max-width: 100px;height: auto"
+                                                            <img class="menu__logo-img"
+                                                                 style="max-width: 200px;height: auto"
                                                                  src="{{asset('storage/'.$site_logo)}}" alt="">
                                                         </div>
                                                     </div>
@@ -792,123 +1105,8 @@
                                 </div>
                             </li>
                         </ul>
-
-                    @elseif((\Carbon\Carbon::parse($events->tgl_buka)->eq(\Carbon\Carbon::now())) || (\Carbon\Carbon::parse($events->tgl_buka))->lte(\Carbon\Carbon::now()))
-
-                        @isset($registered)
-
-
-                            @else
-                            <div class="card-header border-bottom">
-                                <h6 class="m-0">Your Company Profile</h6>
-                                <hr>
-                                <div class="row">
-                                    <div class="col">
-                                        <form action="" method="post">
-                                            @csrf
-                                            <div class="form-row">
-                                                <div class="form-group col-md-4">
-                                                    <label for="feFirstName">Name</label>
-                                                    <input type="text" class="form-control" id="feFirstName" name="name" placeholder="Full Name" value="{{$profile->investor_name}}" disabled>
-                                                </div>
-                                                <div class="form-group col-md-4">
-                                                    <label for="position">Position</label>
-                                                    <input type="text" class="form-control" id="position" name="jabatan" placeholder="Position" value="{{$profile->jabatan}}" disabled>
-                                                </div>
-                                                <div class="form-group col-md-4">
-                                                    <label for="phone">Phone</label>
-                                                    <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone" value="{{$profile->phone}}"  disabled>
-                                                </div>
-                                            </div>
-                                            <div class="form-row">
-                                                <div class="form-group col-md-6">
-                                                    <label for="companyname">Company Name</label>
-                                                    <input type="text" class="form-control" id="companyname" name="company_name" placeholder="Email" value="{{$profile->nama_perusahaan}}" disabled>
-                                                </div>
-                                                <div class="form-group col-md-2">
-                                                    <label for="badan_hukum">Corporation</label>
-                                                    <input type="text" class="form-control" id="badan_hukum"  name="badan_hukum" value="{{$profile->badan_hukum}}" disabled>
-                                                </div>
-                                                <div class="form-group col-md-4">
-                                                    <label for="bidang_usaha">Business Field</label>
-                                                    <input type="text" class="form-control" id="bidang_usaha" name="bidang_usaha" value="{{$profile->bidang_usaha}}" disabled>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="feInputAddress">Address</label>
-                                                <input type="text" class="form-control" id="feInputAddress" name="address" placeholder="1234 Main St" value="{{$profile->alamat}}" disabled>
-                                            </div>
-                                            <div class="form-row">
-                                                <div class="form-group col-md-6">
-                                                    <label for="email">Email</label>
-                                                    <input type="email" class="form-control" name="email" id="email" value="{{$profile->userInv->email}}" disabled>
-                                                </div>
-                                                <div class="form-group col-md-6">
-                                                    <label for="country">Country</label>
-                                                    <input type="text" class="form-control" id="country" name="country" value="{{$profile->country}}" disabled>
-                                                </div>
-                                            </div>
-
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        @endisset
-                    @elseif((\Carbon\Carbon::parse($events->tgl_buka))->gt(\Carbon\Carbon::now()))
-                        <div class="card-header border-bottom">
-                            <h6 class="m-0">Please Wait</h6>
-                        </div>
-                        <div class="countdownwrap" style="margin-left: 30%;margin-top: 20px">
-
-                        </div>
-
-                    @elseif((\Carbon\Carbon::parse($events->tgl_selesai))->gte(\Carbon\Carbon::now()))
-
-                        <div class="card-header border-bottom">
-                            <h6 class="m-0">Event's End</h6>
-                        </div>
-
-                    @else
-                        <div class="card-header border-bottom">
-                            <div class="card-header border-bottom">
-                                <h6 class="m-0">Sorry, this event is not yet started</h6>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item p-3">
-                                    <div class="row">
-
-                                        <div class="col">
-                                            <div class="container2">
-                                                <div class="error404page">
-                                                    <div class="newcharacter404">
-                                                        <div class="chair404"></div>
-                                                        <div class="leftshoe404"></div>
-                                                        <div class="rightshoe404"></div>
-                                                        <div class="legs404"></div>
-                                                        <div class="torso404">
-                                                            <div class="body404"></div>
-                                                            <div class="leftarm404"></div>
-                                                            <div class="rightarm404"></div>
-                                                            <div class="head404">
-                                                                <div class="eyes404"></div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="laptop404">
-                                                            <div class="text">
-                                                                @php $site_logo = Voyager::setting('site.logo', ''); @endphp
-                                                                <img class="menu__logo-img" style="max-width: 200px;height: auto"
-                                                                     src="{{asset('storage/'.$site_logo)}}" alt="">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    @endif
+                    </div>
+                @endif
         </div>
 
         @if(((\Carbon\Carbon::parse($events->tgl_buka))->eq(\Carbon\Carbon::now())) || (\Carbon\Carbon::parse($events->tgl_buka))->lte(\Carbon\Carbon::now()))
@@ -919,7 +1117,7 @@
                         <h6 class="m-0">You are already registered on {{$events->nama_kegiatan}}</h6>
                         <p>We have sent you an email or keep your downloaded detail</p>
                         @isset($cps)
-                        <p>Further Informations : </p>
+                            <p>Further Informations : </p>
                             @foreach($cps as $cp)
                                 <h6 class="m-0px">{{$cp->name}} , {{$cp->phone}}</h6><br>
                             @endforeach
@@ -940,7 +1138,7 @@
 
                                     <tr>
                                         <td>{{ $registered->profil->nama_perusahaan}}</td>
-                                        <td>{{ $registered->userId->kabkota->nama }}</td>
+                                        <td>{{ $registered->user->namakota[0]->nama }}</td>
                                         <td>{{ $registered->sektor_interest }}</td>
                                         <td>{{ $registered->meja_id }}</td>
                                     </tr>
@@ -955,43 +1153,10 @@
                     </div>
                 </div>
             @else
-                <div class="card card-small mb-4">
-                    <div class="card-header border-bottom">
-                        <h6 class="m-0">Join Us On CJIBF</h6>
-                        <hr>
-                        <div class="row">
-                            <div class="col">
-                                <form action="{{route('join.cjibf')}}" method="post">
-                                    @csrf
 
-                                    <div class="form-group col-md-12">
-                                        <label for="kab_kota">Select City Which Interest You</label>
-                                        <select id="kab_kota" name="kab_kota" class="form-control" required>
-                                            <option selected>Select city</option>
-                                            @foreach($cities as $city)
-                                                <option value="{{$city->user->kab_kota_id}}">{{$city->nama}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label for="why">Sector</label>
-                                        <select id="why" name="why" class="form-control" required>
-                                            <option selected>Select Sector You Interesred in</option>
-                                            @foreach($sektors as $sektor)
-                                                <option value="{{$sektor->name}}">{{$sektor->name}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <input type="text" class="form-control" name="profil" value="{{$profile->id}}" hidden>
-                                    <button type="submit" class="btn btn-accent">Register</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             @endisset
         @endif
-            @endisset
+        @endisset
 
     </div>
 @endsection
@@ -1034,73 +1199,72 @@
                 update_interval: 11, // ms
 
 
-                init: function(){
+                init: function () {
 
                     $r = ringer;
                     $r.cvs = document.createElement('canvas');
 
                     $r.size = {
-                        w: ($r.r_size + $r.r_thickness) * $r.r_count + ($r.r_spacing*($r.r_count-1)),
+                        w: ($r.r_size + $r.r_thickness) * $r.r_count + ($r.r_spacing * ($r.r_count - 1)),
                         h: ($r.r_size + $r.r_thickness)
                     };
 
 
-
-                    $r.cvs.setAttribute('width',$r.size.w);
-                    $r.cvs.setAttribute('height',$r.size.h);
+                    $r.cvs.setAttribute('width', $r.size.w);
+                    $r.cvs.setAttribute('height', $r.size.h);
                     $r.ctx = $r.cvs.getContext('2d');
                     $(".countdownwrap").append($r.cvs);
                     $r.cvs = $($r.cvs);
                     $r.ctx.textAlign = 'center';
                     $r.actual_size = $r.r_size + $r.r_thickness;
                     $r.countdown_to_time = new Date($r.countdown_to).getTime();
-                    $r.cvs.css({ width: $r.size.w+"px", height: $r.size.h+"px" });
+                    $r.cvs.css({width: $r.size.w + "px", height: $r.size.h + "px"});
                     $r.go();
                 },
                 ctx: null,
-                go: function(){
-                    var idx=0;
+                go: function () {
+                    var idx = 0;
 
                     $r.time = (new Date().getTime()) - $r.countdown_to_time;
 
 
-                    for(var r_key in $r.rings) $r.unit(idx++,r_key,$r.rings[r_key]);
+                    for (var r_key in $r.rings) $r.unit(idx++, r_key, $r.rings[r_key]);
 
-                    setTimeout($r.go,$r.update_interval);
+                    setTimeout($r.go, $r.update_interval);
                 },
-                unit: function(idx,label,ring) {
-                    var x,y, value, ring_secs = ring.s;
-                    value = parseFloat($r.time/ring_secs);
-                    $r.time-=Math.round(parseInt(value)) * ring_secs;
+                unit: function (idx, label, ring) {
+                    var x, y, value, ring_secs = ring.s;
+                    value = parseFloat($r.time / ring_secs);
+                    $r.time -= Math.round(parseInt(value)) * ring_secs;
                     value = Math.abs(value);
 
-                    x = ($r.r_size*.5 + $r.r_thickness*.5);
-                    x +=+(idx*($r.r_size+$r.r_spacing+$r.r_thickness));
-                    y = $r.r_size*.5;
-                    y += $r.r_thickness*.5;
+                    x = ($r.r_size * .5 + $r.r_thickness * .5);
+                    x += +(idx * ($r.r_size + $r.r_spacing + $r.r_thickness));
+                    y = $r.r_size * .5;
+                    y += $r.r_thickness * .5;
 
 
                     // calculate arc end angle
-                    var degrees = 360-(value / ring.max) * 360.0;
+                    var degrees = 360 - (value / ring.max) * 360.0;
                     var endAngle = degrees * (Math.PI / 180);
 
                     $r.ctx.save();
 
-                    $r.ctx.translate(x,y);
-                    $r.ctx.clearRect($r.actual_size*-0.5,$r.actual_size*-0.5,$r.actual_size,$r.actual_size);
+                    $r.ctx.translate(x, y);
+                    $r.ctx.clearRect($r.actual_size * -0.5, $r.actual_size * -0.5, $r.actual_size, $r.actual_size);
 
                     // first circle
                     $r.ctx.strokeStyle = "rgba(128,128,128,0.2)";
                     $r.ctx.beginPath();
-                    $r.ctx.arc(0,0,$r.r_size/2,0,2 * Math.PI, 2);
-                    $r.ctx.lineWidth =$r.r_thickness;
+                    $r.ctx.arc(0, 0, $r.r_size / 2, 0, 2 * Math.PI, 2);
+                    $r.ctx.lineWidth = $r.r_thickness;
                     $r.ctx.stroke();
 
                     // second circle
                     $r.ctx.strokeStyle = "rgba(253, 128, 1, 0.9)";
                     $r.ctx.beginPath();
-                    $r.ctx.arc(0,0,$r.r_size/2,0,endAngle, 1);
-                    $r.ctx.lineWidth =$r.r_thickness;
+                    $r.ctx.arc(0, 0, $r.r_size / 2, 0, endAngle, 1);
+                    $r.ctx.lineWidth = $r.r_thickness;
                     $r.ctx.stroke();
 
                     // label
@@ -1120,6 +1284,21 @@
             ringer.init();
         </script>
     @endisset
+
+    <script>
+        $(document).ready(function(){
+
+
+            $('#kab_kota').change(function(){
+
+                var e = document.getElementById("kab_kota");
+                var id = e.options[e.selectedIndex].value;
+                console.log(id);
+                $('#proyek').load('/city/'+id).fadeIn('slow');
+                refresh();
+            });
+        });
+    </script>
 @endsection
 
 
