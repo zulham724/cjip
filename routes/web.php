@@ -72,6 +72,7 @@ Route::get('/', function(){
 
         Route::get('/sectors/{slug}', 'FrontEnd\Home\HomeController@bySector')->name('by.sector');
         Route::get('/city/{id}', 'FrontEnd\Home\HomeController@byCity')->name('by.city');
+        Route::get('/sector/{id}', 'FrontEnd\Home\HomeController@findBySector')->name('by.sector');
 
 
         Route::get('/project-owner/{id}/{slug}', 'FrontEnd\Home\HomeController@detailProfile')->name('detail.profile');
@@ -187,6 +188,9 @@ Route::get('sarpras/lpk/{id}', 'Frontend\SaranaPrasarana\SarprasController@lpk')
 Route::get('sarpras/bank/{id}', 'Frontend\SaranaPrasarana\SarprasController@bank')->name('maps.bank');
 Route::get('sarpras/ki/{id}', 'Frontend\SaranaPrasarana\SarprasController@mapsKi')->name('maps.ki');
 
+Route::get('/testprofile', function (){
+    return view('front-end.investor.form-profile');
+})->name('testprofile');
 
 Route::middleware('auth:investor')->group(function () {
     Route::get('profile/{id}','FrontEnd\Investor\ProfilController@showProfileForm')->name('form.profile');

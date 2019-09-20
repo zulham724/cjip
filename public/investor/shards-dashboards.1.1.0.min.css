@@ -5803,7 +5803,6 @@ html .ql-toolbar .ql-picker .ql-picker-options {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-flow: row;
-    flex-flow: row
 }
 
 .card-post--aside .card-post__image {

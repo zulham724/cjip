@@ -15,6 +15,7 @@ use App\LayoutRow;
 use App\Mail\DaftarCJIBF;
 use App\Pengumuman;
 use App\ProfileInvestor;
+use App\Proyek;
 use Barryvdh\DomPDF\Facade as PDF;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -57,14 +58,14 @@ class FrontEndController extends Controller
 
     public function join(Request $request){
         //dd($request->all());
-        try {
+        /*try {
             $this->validate($request, [
                 'kab_kota' => 'required',
                 'profil' => 'required',
                 'why' => 'required',
             ]);
         } catch (ValidationException $e) {
-        }
+        }*/
         $user_id = Auth::guard('investor')->user()->id;
         $user_name = Auth::guard('investor')->user()->name;
         $layout_col = LayoutCol::all();
@@ -80,16 +81,17 @@ class FrontEndController extends Controller
         //dd($user_kab_kota->user_id);
         //dd($request->all());
         $join = new CjibfInvestor;
-        $join->kab_kota_id = $user_kab_kota->user_id;
+        $join->kab_kota_id = $request->kabkota;
         $join->profile_id = $request->profil;
-        $join->sektor_interest = $request->why;
-
+        $join->sektor_interest = $request->sektor;
+        $join->project_id = $request->project_id;
 
         //dd($join);
         $join->save();
 
         //dd($join->kota->user->user_id);
         $sisakursi = CjibfTable::where('kabkota_id', $join->kab_kota_id)->first();
+        $project = Proyek::findOrFail($join->project_id);
         //dd($sisakursi);
 
         if ($sisakursi->sisa <= 0){
@@ -120,11 +122,12 @@ class FrontEndController extends Controller
                 $sendObj->event = $event;
                 $sendObj->mejas = $mejas;
                 $sendObj->perusahaan = $updateInvestor->profil->nama_perusahaan;
+                $sendObj->project = $project->project_name;
                 $sendObj->qr = QrCode::format('png')
                     ->errorCorrection('H')
                     ->size(200)
                     ->merge('http://cjip.jatengprov.go.id/storage/additional/cjip-2.png', .3, true)
-                    ->generate($sendObj->event->nama_kegiatan.','.$sendObj->nama_investor.','.$sendObj->perusahaan.','.$sendObj->meja);
+                    ->generate($sendObj->event->nama_kegiatan.','.$sendObj->nama_investor.','.$sendObj->perusahaan.','.$sendObj->meja.','.$sendObj->project);
                 //dd($sendObj);
 
                 //return view('attach', ['send'=>$sendObj]);
@@ -173,6 +176,7 @@ class FrontEndController extends Controller
             $sendObj->event = $event;
             $sendObj->mejas = $mejas;
             $sendObj->perusahaan = $updateInvestor->profil->nama_perusahaan;
+            $sendObj->project = $project;
             $sendObj->qr = QrCode::format('png')
                 ->errorCorrection('H')
                 ->size(200)

@@ -1004,16 +1004,18 @@
 
 
                     @else
-                        <div class="card card-small mb-4">
+
                             <div class="card-header border-bottom">
                                 <h6 class="m-0">Join Us On CJIBF</h6>
                                 <hr>
+                                {{--<form action="{{route('join.cjibf')}}" method="post">
+                                    @csrf--}}
                                 <div class="row">
                                     <div class="col">
-                                        <form action="{{route('join.cjibf')}}" method="post">
-                                            @csrf
 
-                                            <div class="form-group col-md-12">
+
+
+                                            {{--<div class="form-group col-md-12">
                                                 <label for="kab_kota">Select City or Regency You Interested in</label>
                                                 <select id="kab_kota" name="kab_kota" class="form-control" required>
                                                     <option selected>Select city</option>
@@ -1021,34 +1023,37 @@
                                                         <option value="{{$city->user->kab_kota_id}}">{{$city->nama}}</option>
                                                     @endforeach
                                                 </select>
-                                            </div>
+                                            </div>--}}
                                             <div class="form-group col-md-12">
                                                 <label for="why">Sector</label>
                                                 <select id="why" name="why" class="form-control" required>
                                                     <option selected>Select Sector You Interesred in</option>
                                                     @foreach($sektors as $sektor)
-                                                        <option value="{{$sektor->name}}">{{$sektor->name}}</option>
+                                                        <option value="{{$sektor->id}}">{{$sektor->name}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
-                                            <input type="text" class="form-control" name="profil"
-                                                   value="{{$profile->id}}" hidden>
-                                            <button type="submit" class="btn btn-accent">Register</button>
-                                        </form>
-                                    </div>
-                                    <div class="col-lg-8 col-md-12 col-sm-12 mb-4">
-                                        <div class="card card-small blog-comments">
-                                            <div class="card-header border-bottom">
-                                                <h6 class="m-0">Available Projects</h6>
-                                            </div>
-                                            <div class="card-body p-0">
-                                                <div id="proyek"></div>
-                                            </div>
-                                        </div>
+
+
+
                                     </div>
                                 </div>
+
+                                </div>
+                                {{--</form>--}}
                             </div>
-                        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
+
+                <div class="card card-small blog-comments">
+                    <div class="card-header border-bottom">
+                        <h6 class="m-0">Available Projects</h6>
+                    </div>
+                </div>
+            </div>
+            <div id="proyek"></div>
+        </div>
+
 
                     @endisset
                 @elseif((\Carbon\Carbon::parse($events->tgl_buka))->gt(\Carbon\Carbon::now()))
@@ -1289,13 +1294,13 @@
         $(document).ready(function(){
 
 
-            $('#kab_kota').change(function(){
+            $('#why').change(function(){
 
-                var e = document.getElementById("kab_kota");
+                var e = document.getElementById("why");
                 var id = e.options[e.selectedIndex].value;
                 console.log(id);
-                $('#proyek').load('/city/'+id).fadeIn('slow');
-                refresh();
+                $('#proyek').load('/sector/'+id).fadeIn('slow');
+                $('#command').hide();
             });
         });
     </script>

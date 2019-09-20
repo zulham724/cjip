@@ -6,6 +6,7 @@ use App\Award;
 use App\Berita;
 use App\BiayaAir;
 use App\BiayaListrik;
+use App\CjibfEvent;
 use App\CjibfSektor;
 use App\Events\FeedAction;
 use App\Faq;
@@ -332,5 +333,17 @@ class HomeController extends Controller
         }
 
         return view('front-end.marketplace.detail.proyek', compact('proyeks'));
+    }
+    public function findBySector($id){
+        $user = Auth::guard('investor')->user()->id;
+        $profile = ProfileInvestor::where('user_id', $user)->first();
+        $proyeks = Proyek::where('sektor_id', $id)->where('status', 1)->get();
+        //dd($proyeks);
+        foreach ($proyeks as $proyek){
+            //dd($proyek->bySector);
+        }
+        //dd($proyeks[0]->byUser->namakota);
+
+        return view('front-end.marketplace.detail.proyek', compact('proyeks', 'profile'));
     }
 }

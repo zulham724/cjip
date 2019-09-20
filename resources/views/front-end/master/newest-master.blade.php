@@ -26,11 +26,7 @@
 
         gtag('config', 'UA-143558094-1');
     </script>
-    <style>
-        .language { position: absolute; top: 5px; right: 5px; padding: 20px; }
-        .english { display: inline; }
-        .indo { display: none; }
-    </style>
+
     <style>
         .pagination {
             display: inline-block;

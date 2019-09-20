@@ -4552,8 +4552,7 @@ html .ql-toolbar {
   font-weight: 500; }
 
 .card-post--aside {
-  display: flex;
-  flex-flow: row; }
+  display: flex; }
   .card-post--aside .card-post__image {
     border-top-right-radius: 0;
     border-top-left-radius: 0.625rem;

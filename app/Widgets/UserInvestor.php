@@ -32,7 +32,7 @@ class UserInvestor extends AbstractWidget
             'text'   => __('voyager::dimmer.user_text', ['count' => $count, 'string' => Str::lower($string)]),
             'button' => [
                 'text' => __('voyager::dimmer.user_link_text'),
-                'link' => route('voyager.user-investors.index'),
+                'link' => '#',
             ],
             'image' => voyager_asset('images/widget-backgrounds/01.jpg'),
         ]));

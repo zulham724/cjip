@@ -28,4 +28,8 @@ class CjibfInvestor extends Model
     public function user(){
         return $this->belongsTo(User::class, 'kab_kota_id');
     }
+
+    public function proyeks(){
+        return $this->belongsTo(Proyek::class, 'project_id');
+    }
 }
