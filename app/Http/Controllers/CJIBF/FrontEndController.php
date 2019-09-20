@@ -198,6 +198,122 @@ class FrontEndController extends Controller
 
     }
 
+    public function joinManual(Request $request){
+        //dd($request->all());
+        /*try {
+            $this->validate($request, [
+                'kab_kota' => 'required',
+                'profil' => 'required',
+                'why' => 'required',
+            ]);
+        } catch (ValidationException $e) {
+        }*/
+        $user_id = Auth::guard('investor')->user()->id;
+        $user_name = Auth::guard('investor')->user()->name;
+        $layout_col = LayoutCol::all();
+        $layout_row = LayoutRow::all();
+        $event = CjibfEvent::first();
+        $mejas = CjibfTable::all();
+        $pengumuman = Pengumuman::all();
+        $user_kab_kota = KabkotaUserModel::where('kab_kota_id', $request->kab_kota)->first();
+
+       /* $test = CjibfInvestor::first();*/
+        //dd($test->user->namakota[0]->nama);
+
+        //dd($user_kab_kota->user_id);
+        //dd($request->all());
+        $join = new CjibfInvestor;
+        $join->kab_kota_id = $request->kab_kota_manual;
+        $join->profile_id = $request->profil;
+        $join->sektor_interest = $request->sektor_manual;
+
+        //dd($join);
+        $join->save();
+
+        //dd($join->kota->user->user_id);
+        $sisakursi = CjibfTable::where('kabkota_id', $join->kab_kota_id)->first();
+
+        //dd($sisakursi);
+
+        if ($sisakursi->sisa <= 0){
+            /* $cadangans = CjibfTable::with('jenis')->where('jenis_meja', 8)->where('sisa', '>', 0)->first();*/
+            $cadangans = CjibfTable::whereHas('jenis', function ($query){
+                $query->where('nama', 'Cadangan')->where('sisa', '>', 0);
+            })->first();
+
+
+            if (isset($cadangans)){
+                $cadangans->sisa = ($cadangans->sisa)-1;
+                $cadangans->update();
+
+                $updateInvestor = CjibfInvestor::where('id', $join->id)->first();
+                $updateInvestor->meja_id = $cadangans->kode_meja;
+                //dd($updateInvestor);
+                $updateInvestor->update();
+
+
+                //dd($daftar);
+                $sendObj = new \stdClass();
+                $sendObj->nama_investor = $user_name;
+                $sendObj->minat_kabkota = $updateInvestor->user->namakota[0]->nama;
+                $sendObj->minat_sektor = $updateInvestor->sektor_interest;
+                $sendObj->meja = $updateInvestor->meja_id;
+                $sendObj->col = $layout_col;
+                $sendObj->row = $layout_row;
+                $sendObj->event = $event;
+                $sendObj->mejas = $mejas;
+                $sendObj->perusahaan = $updateInvestor->profil->nama_perusahaan;
+                $sendObj->qr = QrCode::format('png')
+                    ->errorCorrection('H')
+                    ->size(200)
+                    ->merge('http://cjip.jatengprov.go.id/storage/additional/cjip-2.png', .3, true)
+                    ->generate($sendObj->event->nama_kegiatan.','.$sendObj->nama_investor.','.$sendObj->perusahaan.','.$sendObj->meja);
+
+            Mail::to(Auth::guard('investor')->user()->email)->send(new DaftarCJIBF($sendObj));
+
+            return view('front-end.investor.content.cjibf-registered', compact('pengumuman'));
+            }
+            else{
+                $pengumuman = Pengumuman::all();
+                return view('front-end.investor.content.full', compact('pengumuman'));
+            }
+
+        }
+        else{
+            $sisakursi->sisa = ($sisakursi->sisa)-1;
+            $sisakursi->update();
+            //dd($sisakursi);
+
+            $updateInvestor = CjibfInvestor::where('id', $join->id)->first();
+            $updateInvestor->meja_id = $sisakursi->kode_meja;
+
+            $updateInvestor->update();
+            //dd($updateInvestor);
+            //dd($updateInvestor->userId->);
+            $sendObj = new \stdClass();
+            $sendObj->nama_investor = $user_name;
+            $sendObj->minat_kabkota = $updateInvestor->user->namakota[0]->nama;
+            $sendObj->minat_sektor = $updateInvestor->sektor_interest;
+            $sendObj->meja = $updateInvestor->meja_id;
+            $sendObj->col = $layout_col;
+            $sendObj->row = $layout_row;
+            $sendObj->event = $event;
+            $sendObj->mejas = $mejas;
+            $sendObj->perusahaan = $updateInvestor->profil->nama_perusahaan;
+            $sendObj->qr = QrCode::format('png')
+                ->errorCorrection('H')
+                ->size(200)
+                ->merge('http://cjip.jatengprov.go.id/storage/additional/cjip-2.png', .3, true)
+                ->generate($sendObj->event->nama_kegiatan.','.$sendObj->nama_investor.','.$sendObj->perusahaan.','.$sendObj->meja);
+
+        Mail::to(Auth::guard('investor')->user()->email)->send(new DaftarCJIBF($sendObj));
+
+        return view('front-end.investor.content.cjibf-registered', compact('pengumuman'));
+            //return $pdf->stream('CJIBF_'.$filename.'.pdf');
+        }
+
+    }
+
     public function pdf(){
         $send = CjibfInvestor::first();
 

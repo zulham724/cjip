@@ -48,7 +48,7 @@ class SocialController extends Controller
     public function Callback($provider){
         $userSocial =   Socialite::driver($provider)->stateless()->user();
         $users       =   UserInvestor::where(['email' => $userSocial->getEmail()])->first();
-        //dd($users);
+        dd($userSocial);
         if($users){
             Auth::guard('investor')->login($users);
             return redirect('/dashboard/'.$users->id);

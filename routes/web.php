@@ -188,10 +188,6 @@ Route::get('sarpras/lpk/{id}', 'Frontend\SaranaPrasarana\SarprasController@lpk')
 Route::get('sarpras/bank/{id}', 'Frontend\SaranaPrasarana\SarprasController@bank')->name('maps.bank');
 Route::get('sarpras/ki/{id}', 'Frontend\SaranaPrasarana\SarprasController@mapsKi')->name('maps.ki');
 
-Route::get('/testprofile', function (){
-    return view('front-end.investor.form-profile');
-})->name('testprofile');
-
 Route::middleware('auth:investor')->group(function () {
     Route::get('profile/{id}','FrontEnd\Investor\ProfilController@showProfileForm')->name('form.profile');
     Route::get('dashboard/{id}','FrontEnd\Investor\ProfilController@dashboard')->name('dashboard.investor');
@@ -205,7 +201,8 @@ Route::middleware('auth:investor')->group(function () {
 
 
     Route::get('register-cjibf', 'CJIBF\FrontEndController@front')->name('frontend.cjibf');
-    Route::post('register-cjibf', 'CJIBF\FrontEndController@join')->name('join.cjibf');
+    Route::post('register-cjibf-join', 'CJIBF\FrontEndController@join')->name('join.cjibf');
+    Route::post('register-cjibf', 'CJIBF\FrontEndController@joinManual')->name('join.manual');
 
 
     Route::get('company_profile/','FrontEnd\Investor\ProfilController@daftar')->name('daftar');

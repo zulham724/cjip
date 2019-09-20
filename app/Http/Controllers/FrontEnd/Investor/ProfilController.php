@@ -46,6 +46,7 @@ class ProfilController extends Controller
             'address' => 'required',
             'country' => 'required',
         ]);
+        //dd($request->all());
 
         $profile = new ProfileInvestor();
         $profile->user_id = Auth::guard('investor')->user()->id;
@@ -103,14 +104,14 @@ class ProfilController extends Controller
         $profile->update();
 
         return redirect()->back()->with(['success' => 'Your Company Profiles has been updated',
-                                        'error' => 'Failed to update your Company Profiles']);
+            'error' => 'Failed to update your Company Profiles']);
     }
 
 
     public function investment(){
 
         $profile = ProfileInvestor::where('user_id', Auth::guard('investor')->user()->id)->first();
-       // dd($investment);
+        // dd($investment);
         $sektors = Sektor::all();
         $cities = KabKota::all();
         $pengumuman = Pengumuman::all();
@@ -165,7 +166,7 @@ class ProfilController extends Controller
         $user = Auth::guard('investor')->user()->id;
         $profil = ProfileInvestor::where('user_id', $user)->first();
 
-       // dd($request->filled('rp'));
+        // dd($request->filled('rp'));
 
         if ($request->filled('rp')){
             $rp = $request->input('rp');

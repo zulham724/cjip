@@ -1039,20 +1039,9 @@
                                     </div>
                                 </div>
 
-                                </div>
                                 {{--</form>--}}
                             </div>
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
 
-                <div class="card card-small blog-comments">
-                    <div class="card-header border-bottom">
-                        <h6 class="m-0">Available Projects</h6>
-                    </div>
-                </div>
-            </div>
-            <div id="proyek"></div>
-        </div>
 
 
                     @endisset
@@ -1158,7 +1147,53 @@
                     </div>
                 </div>
             @else
+                <div class="row" style="padding-top: 50px">
+                    <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
 
+                        <div class="card card-small blog-comments">
+                            <div class="card-header border-bottom">
+                                <h6 class="m-0">Available Projects</h6>
+                            </div>
+                        </div>
+                        <div id="command" style="padding-left: 30px;padding-top: 30px; background-color: #ff4a52">
+                            <h3 class="m-0" style="padding-bottom: 30px" align="center">Select Sector First</h3>
+                        </div>
+                    </div>
+
+                    <div id="proyek"></div>
+                </div>
+                <div class="row" style="padding-top: 50px">
+                    <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
+                        <div class="card-header border-bottom">
+                            <h6 class="m-0">Can't find what you looking for? Or Already got your own project?</h6>
+                            <form action="{{route('join.manual')}}" method="post">
+                                @csrf
+                            <div class="row">
+
+                                    <div class="col">
+                                        <div class="form-group col-md-12">
+                                            <label for="kab_kota_manual">Select City or Regency</label>
+                                            <select id="kab_kota_manual" name="kab_kota_manual" class="form-control" required>
+                                                <option selected>Select city</option>
+                                                @foreach($cities as $city)
+                                                    <option value="{{$city->user->kab_kota_id}}">{{$city->nama}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label for="sektor_manual">Sector</label>
+                                            <input type="text" class="form-control" name="sektor_manual">
+                                        </div>
+                                        <input type="text" class="form-control" name="profil" value="{{$profile->id}}" hidden>
+                                        <button type="submit" class="btn btn-accent"> <i class="far fa-send mr-1"></i>Submit</button>
+                                    </div>
+                            </div>
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
             @endisset
         @endif
         @endisset
