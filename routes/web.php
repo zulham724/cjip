@@ -70,9 +70,10 @@ Route::get('/', function(){
         Route::get('/potential-project/{id}/{slug}', 'FrontEnd\Home\HomeController@detailPot')->name('detail.pot');
         Route::get('/project/{id}', 'FrontEnd\Home\HomeController@detailProyek')->name('detail.proyek');
 
-        Route::get('/sectors/{slug}', 'FrontEnd\Home\HomeController@bySector')->name('by.sector');
+        Route::get('/sectors/{slug}', 'FrontEnd\Home\HomeController@bySector')->name('sector.fo');
         Route::get('/city/{id}', 'FrontEnd\Home\HomeController@byCity')->name('by.city');
         Route::get('/sector/{id}', 'FrontEnd\Home\HomeController@findBySector')->name('by.sector');
+        Route::get('/interest-sector/{id}', 'FrontEnd\Home\HomeController@findInterestBySector')->name('interest.sector');
 
 
         Route::get('/project-owner/{id}/{slug}', 'FrontEnd\Home\HomeController@detailProfile')->name('detail.profile');

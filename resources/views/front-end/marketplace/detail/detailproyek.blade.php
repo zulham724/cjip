@@ -1,6 +1,5 @@
 @extends('front-end.master.newest-master')
 @section('css')
-    <link rel="stylesheet" href="{{asset('css/front-end/youtube.css')}}">
     <style>
         .pagination {
             display: inline-block;
@@ -23,8 +22,6 @@
             background-color: #ddd;
             border-radius: 5px;
         }
-    </style>
-    <style>
         .divider {
             padding:0;
             margin:0;

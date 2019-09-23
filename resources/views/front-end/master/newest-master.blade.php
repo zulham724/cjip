@@ -177,9 +177,8 @@
 <script src="{{asset('js/front-end/vendor/jquery-2.2.4.min.js')}}"></script>
 <script src="{{asset('js/front-end/vendor/jquery.waypoints.js')}}"></script>
 <script src="{{asset('js/front-end/menu.js')}}"></script>
-<script src="{{asset('js/front-end/topbar.js')}}"></script>
+{{--<script src="{{asset('js/front-end/topbar.js')}}"></script>--}}
 <script src="{{asset('js/front-end/mobile-menu.js')}}"></script>
-<script src="{{asset('js/front-end/style-switcher.js')}}"></script>
 <script>
 
     $(document).ready(function(){

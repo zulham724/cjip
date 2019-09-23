@@ -279,7 +279,11 @@ class HomeController extends Controller
         SEOTools::twitter()->setSite('@DPMPTSPJateng');
         SEOTools::jsonLd()->addImage('https://cjip.jatengprov.go.id/storage/settings/August2019/esr0C8HmQss78AAnlaue.png');
 
-        $faqs = Faq::all();
+        $faqs = Faq::all()->groupBy('jenis_faq');
+        //dd($faqs);
+        foreach ($faqs as $key => $faq){
+            //dd($key);
+        }
         $jns_faq = JenisFaq::all();
         //dd($proyeks);
         //$proyeks = Proyek::with('marketplace');
@@ -345,5 +349,17 @@ class HomeController extends Controller
         //dd($proyeks[0]->byUser->namakota);
 
         return view('front-end.marketplace.detail.proyek', compact('proyeks', 'profile'));
+    }
+    public function findInterestBySector($id){
+        $user = Auth::guard('investor')->user()->id;
+        $profile = ProfileInvestor::where('user_id', $user)->first();
+        $proyeks = Proyek::where('sektor_id', $id)->where('status', 1)->get();
+        //dd($proyeks);
+        foreach ($proyeks as $proyek){
+            //dd($proyek->bySector);
+        }
+        //dd($proyeks[0]->byUser->namakota);
+
+        return view('front-end.investor.content.interest', compact('proyeks', 'profile'));
     }
 }

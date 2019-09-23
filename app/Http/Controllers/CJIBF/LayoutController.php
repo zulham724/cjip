@@ -16,6 +16,7 @@ use App\LayoutRow;
 use App\LayoutSetting;
 use App\Lois;
 use App\ProfileInvestor;
+use App\Proyek;
 use App\User;
 use App\UserInvestor;
 use function GuzzleHttp\Promise\all;
@@ -104,11 +105,22 @@ class LayoutController extends Controller
         $sektors = CjibfSektor::all();
         $peserta = CjibfInvestor::findOrFail($id);
         //dd($peserta->id);
+        //dd($peserta);
         return view('cjibf.partials.add-loi', compact('profile', 'sektors', 'peserta'));
     }
 
+    /**
+     * @param Request $request
+     * @param $profil_id
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function addLoi(Request $request, $profil_id, $id){
         //dd($request->all());
+        $peta = $request->maps;
+        $lat = (float) $peta['lat'];
+        $lng = (float) $peta['lng'];
+        //dd($peta['lat']);
         $peserta = CjibfInvestor::findOrFail($id);
         //dd($peserta);
         $profile = ProfileInvestor::findOrFail($profil_id);
@@ -131,9 +143,33 @@ class LayoutController extends Controller
             $storethisusd = 0;
         }
 
+        if (is_null($peserta->project_id)){
+            $project = new Proyek();
+            $project->project_name = $request->project_name;
+            $project->lingkup_pekerjaan = $request->lingkup_pekerjaan;
+            $project->eksisting = $request->eksisting;
+            $project->luas_lahan = $request->luas_lahan;
+            $project->status_kepemilikan = $request->status_kepemilikan;
+            $project->skema_investasi = $request->skema_investasi;
+            $project->npv = $request->npv;
+            $project->irr = $request->irr;
+            $project->bc_ratio = $request->bc_ratio;
+            $project->kab_kota_id = $request->kab_kota_id;
+            $project->location = DB::raw("ST_GeomFromText('POINT({$lng} {$lat})')");
+            //dd($project);
+            $project->save();
+        }
+
+        //dd($project);
+
 
         $loi = new Lois();
-        $loi->kab_kota_id = Auth::user()->id;
+        if (is_null($peserta->project_id)){
+            $loi->kab_kota_id = $request->kab_kota_id;
+        }
+        else{
+            $loi->kab_kota_id = Auth::user()->id;
+        }
         $loi->nama_perusahaan = $profile->nama_perusahaan;
         $loi->alamat_perusahaan = $profile->alamat;
         $loi->bidang_usaha = $request->sektor;
@@ -151,6 +187,12 @@ class LayoutController extends Controller
         }
         $loi->lokasi_investasi = $request->lokasi;
         $loi->cjibf = 1;
+        if (is_null($peserta->project_id)){
+            $loi->project_id = $project->id;
+        }
+        else{
+            $loi->project_id = $peserta->project_id;
+        }
         //dd($loi);
         $loi->save();
 

@@ -1,6 +1,5 @@
 @extends('front-end.master.newest-master')
 @section('css')
-    <link rel="stylesheet" href="{{asset('css/front-end/youtube.css')}}">
     <style>
         .pagination {
             display: inline-block;
@@ -23,9 +22,6 @@
             background-color: #ddd;
             border-radius: 5px;
         }
-    </style>
-    <style>
-
         .carousel{
             width:100%;
             max-width:1280px;
@@ -257,8 +253,14 @@
                                         <h6 class="about-app__description-title">Background</h6>
                                         <p style="text-align: justify; text-justify: inter-word;">{{ str_limit($proyek->translate('en')->latar_belakang, $limit = 500, $end = '...') }}</p>
                                     @endisset
-                                    <a href="{{route('detail.pros', ['id'=>$proyek->id,'slug' => str_slug($proyek->project_name, '-')])}}" class="site-btn site-btn--accent header-home__btn">Project's Details</a>
-                                    <a href="{{route('detail.profile', ['id'=>$proyek->profil_id,'slug' => str_slug($proyek->project_name, '-')])}}" class="site-btn site-btn--light header-home__btn">Project's Owner</a>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <a href="{{route('detail.pros', ['id'=>$proyek->id,'slug' => str_slug($proyek->project_name, '-')])}}" class="site-btn site-btn--accent header-home__btn">Project Detail</a>
+                                            </div>
+                                            <div class="col-6">
+                                                <a href="{{route('detail.profile', ['id'=>$proyek->profil_id,'slug' => str_slug($proyek->project_name, '-')])}}" class="site-btn site-btn--light header-home__btn">Project Owner</a>
+                                            </div>
+                                        </div>
                                 </div>
                             </div>
                             <div class="col-6 about-app__img about-app__img--left">
@@ -306,8 +308,14 @@
                                         <h6 class="about-app__description-title">Latar Belakang</h6>
                                         <p style="text-align: justify; text-justify: inter-word;">{{ str_limit($proyek->latar_belakang, $limit = 500, $end = '...') }}</p>
                                     @endisset
-                                    <a href="{{route('detail.pros', ['id'=>$proyek->id,'slug' => str_slug($proyek->project_name, '-')])}}" class="site-btn site-btn--accent header-home__btn">Detail Proyek</a>
-                                    <a href="{{route('detail.profile', ['id'=>$proyek->profil_id,'slug' => str_slug($proyek->project_name, '-')])}}" class="site-btn site-btn--light header-home__btn">Pemilik Proyek</a>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <a href="{{route('detail.pros', ['id'=>$proyek->id,'slug' => str_slug($proyek->project_name, '-')])}}" class="site-btn site-btn--accent header-home__btn">Detail Proyek</a>
+                                            </div>
+                                            <div class="col-6">
+                                                <a href="{{route('detail.profile', ['id'=>$proyek->profil_id,'slug' => str_slug($proyek->project_name, '-')])}}" class="site-btn site-btn--light header-home__btn">Pemilik Proyek</a>
+                                            </div>
+                                        </div>
                                 </div>
                             </div>
 
@@ -340,6 +348,11 @@
                 <hr>
             @endforeach
 
+        </div>
+        <div class="container">
+            <div class="col-md-8 col-md-offset-2">
+                {{$proyeks->links('pagination.page')}}
+            </div>
         </div>
     </div>
 

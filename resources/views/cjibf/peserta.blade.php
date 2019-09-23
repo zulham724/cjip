@@ -44,7 +44,7 @@
                                             <button class="btn btn-warning">Isi</button>
                                         </a>
                                     @else
-                                        @if(is_null($pesertakab->loi->nilai_usd))
+                                        @if(is_null($pesertakab->loi->nilai_usd) || ($pesertakab->loi->nilai_usd) == 0)
                                             Rp. {{number_format($pesertakab->loi->nilai_rp)}}
                                         @else
                                             USD {{number_format($pesertakab->loi->nilai_usd)}}

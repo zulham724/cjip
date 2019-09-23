@@ -1013,28 +1013,15 @@
                                 <div class="row">
                                     <div class="col">
 
-
-
-                                            {{--<div class="form-group col-md-12">
-                                                <label for="kab_kota">Select City or Regency You Interested in</label>
-                                                <select id="kab_kota" name="kab_kota" class="form-control" required>
-                                                    <option selected>Select city</option>
-                                                    @foreach($cities as $city)
-                                                        <option value="{{$city->user->kab_kota_id}}">{{$city->nama}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>--}}
                                             <div class="form-group col-md-12">
                                                 <label for="why">Sector</label>
                                                 <select id="why" name="why" class="form-control" required>
-                                                    <option selected>Select Sector You Interesred in</option>
+                                                    <option selected disabled>Select Sector You Interesred in</option>
                                                     @foreach($sektors as $sektor)
                                                         <option value="{{$sektor->id}}">{{$sektor->name}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
-
-
 
                                     </div>
                                 </div>
@@ -1176,7 +1163,7 @@
                                             <select id="kab_kota_manual" name="kab_kota_manual" class="form-control" required>
                                                 <option selected>Select city</option>
                                                 @foreach($cities as $city)
-                                                    <option value="{{$city->user->kab_kota_id}}">{{$city->nama}}</option>
+                                                    <option value="{{$city->usernya[0]->id}}">{{$city->nama}}</option>
                                                 @endforeach
                                             </select>
                                         </div>

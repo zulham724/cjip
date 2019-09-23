@@ -42,29 +42,37 @@
 
                 <div class="row faq">
                     <div id="top" class="col-9 col-t-12">
-                        @foreach($faqs as $faq)
-                            <div class="faq__content">
-                                <div id="{{str_replace(' ', '', $faq->jenis->translate('en')->name)}}" class="faq__chapter chapter">
-                                    <h3 class="faq__chapter-title">{{$faq->jenis->translate('en')->name}}</h3>
+                        <div class="faq__content">
+                        @foreach($faqs as $key => $faq)
+
+                            @foreach($jns_faq->where('id', $key) as $jenis)
+                                <div id="{{str_replace(' ', '', $jenis->translate('en')->name)}}" class="faq__chapter chapter">
+                                    <h3 class="faq__chapter-title">{{$jenis->translate('en')->name}}</h3>
+                            @endforeach
+
+                                    @foreach($faq as $f)
                                     <div class="faq__card card">
-                                        <h4 class="faq__card-title">{{$faq->translate('en')->question}}
+                                        <h4 class="faq__card-title">{{$f->translate('en')->question}}
                                             <span class="faq__card-icon"><i class="mdi mdi-chevron-down"></i></span>
                                         </h4>
                                         <div class="faq__card-description">
-                                            <p>{!! $faq->translate('en')->answer !!}
+                                            <p>{!! $f->translate('en')->answer !!}
                                             </p>
                                         </div>
                                     </div>
-
+                                    @endforeach
                                 </div>
-                            </div>
+
                         @endforeach
+                        </div>
                     </div>
                     <div class="col-3 d-t-none">
                         <nav class="sidebar" id="menu">
                             <ul class="sidebar__list">
-                                @foreach($jns_faq as $faqid)
-                                    <li class="sidebar__item @if($loop->first) active @endif"><a href="#{{str_replace(' ', '', $faqid->translate('en')->name)}}">{{$faqid->translate('en')->name}}</a></li>
+                                @foreach($faqs as $key => $faq)
+                                    @foreach($jns_faq->where('id', $key) as $jenis)
+                                    <li class="sidebar__item @if($loop->parent->first) active @else @endif"><a href="#{{str_replace(' ', '', $jenis->translate('en')->name)}}">{{$jenis->translate('en')->name}}</a></li>
+                                    @endforeach
                                 @endforeach
                             </ul>
                         </nav>
@@ -74,7 +82,7 @@
 
         </section>
     </div>
-    <div id="contentId" style="display: none">
+    {{--<div id="contentId" style="display: none">
         <section class="section section--first">
             <div class="container">
 
@@ -111,44 +119,14 @@
             </div>
 
         </section>
+    </div>--}}
+    <div id="endMenu" class="section section--last">
+        <img alt="" class="section__img" src="{{asset('images/frontend/img_backgroud_footer.png')}}">
     </div>
-
-    {{--{{$proyeks->links('pagination.page')}}--}}
 @endsection
 
 
 @section('js')
-    {{--@if($videos->isNotEmpty())
-        <script>
-            var tag = document.createElement('script');
-            tag.src = "https://www.youtube.com/iframe_api";
-            var firstScriptTag = document.getElementsByTagName('script')[0];
-            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-            var player;
-            var idnya = document.getElementById('idnya');
-
-            //console.log({{$id}});
-
-            function onYouTubeIframeAPIReady() {
-                player = new YT.Player('player', {
-                    height: '315',
-                    width: '560',
-                    videoId: '{{$id}}',
-                    events: {
-                        'onReady': function() {
-                            $(".video-thumb").click(function() {
-                                var $this = $(this);
-                                if (!$this.hasClass("active")) {
-                                    player.loadVideoById($this.attr("data-video"));
-                                    $this.addClass("active").siblings().removeClass("active");
-                                }
-                            });
-                        }
-                    }
-                });
-            }
-        </script>
-    @endif--}}
 
     <script src="{{asset('js/front-end/faq.js')}}"></script>
     <script src="{{asset('js/front-end/sidebar.js')}}"></script>

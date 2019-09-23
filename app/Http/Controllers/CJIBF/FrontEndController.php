@@ -37,7 +37,8 @@ class FrontEndController extends Controller
         $pengumuman = Pengumuman::all();
         $registered = CjibfInvestor::where('profile_id', $profile->id)->first();
 
-//        /dd($cities);
+
+        //dd($cities->usernya[0]->id);
         //dd($registered->userId->kabkota->nama);
 
         //dd($profile);

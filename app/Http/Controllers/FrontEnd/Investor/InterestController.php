@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\FrontEnd\Investor;
 
+use App\CjibfSektor;
 use App\Feed;
 use App\KabKota;
 use App\LoiInterest;
+use App\Lois;
 use App\ProfileInvestor;
 use App\Sektor;
 use App\Berita;
+use App\Widgets\Loi;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -23,7 +26,7 @@ class InterestController extends Controller
     public function showInterestForm(){
 
         $perusahaan = ProfileInvestor::all()->first();
-        $sektors = Sektor::all();
+        $sektors = CjibfSektor::all();
         $cities = KabKota::all();
         //dd($cities);
         foreach ($cities as $city){
@@ -41,11 +44,7 @@ class InterestController extends Controller
      * @throws \Illuminate\Validation\ValidationException
      */
     public function storeInterest(Request $request){
-        $this->validate($request, [
-            'sektor' => 'required',
-            'kab_kota' => 'required',
-            'lokasi' => 'required',
-        ]);
+        //dd($request->all());
 
        // dd(Input::rew('kab_kota'));
 
@@ -55,41 +54,18 @@ class InterestController extends Controller
         $profil = ProfileInvestor::where('user_id', $user)->first();
 
 
-        if ($request->filled('rp')){
-            $rp = $request->input('rp');
-            $storethis = (string)str_replace(',', '',$rp);
-            /*dd($storethis);*/
-        }
-        else {
-            $storethis = 0;
-        }
+        $post = new Lois();
 
-        if ($request->has('usd')){
-            $iki = $request->input('usd');
-            $storethisusd = (string)str_replace(',', '',$iki);
-            /*dd($storethis);*/
-        }
-        else {
-            $storethisusd = 0;
-        }
-
-        /*$jml = Loi::with('nilai_investasi');*/
-
-        $post = new LoiInterest();
-        if ($storethisusd == 0) {
-            $post->nilai_usd = 0;
-            $post->nilai_rp = $storethis;
-        }
-        elseif ($storethis == 0) {
-            $post->nilai_rp = 0;
-            $post->nilai_usd = $storethisusd;
-        }
-
+        $post->kab_kota_id = $request->kabkota;
+        $post->nama_perusahaan = $profil->nama_perusahaan;
+        $post->alamat_perusahaan = $profil->alamat;
+        $post->bidang_usaha = $profil->bidang_usaha;
+        $post->nama_pengusaha = $profil->investor_name;
+        $post->jabatan_pengusaha = $profil->jabatan;
+        $post->phone = $profil->phone;
+        $post->email = $profil->userInv->email;
         $post->user_id = $user;
-        $post->profile_id = $profil->id;
-        $post->sektor_id = $request->sektor;
-        $post->kab_kota_id = $request->input('kab_kota');
-        $post->lokasi_investasi = $request->input('lokasi');
+        $post->project_id = $request->project_id;
         //dd($post);
 
         $post->save();
