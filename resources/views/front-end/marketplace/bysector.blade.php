@@ -216,20 +216,22 @@
 @section('header')
     <header id="headerEn" class="header-home">
         <div class="container background background--right background--header background--mobile"
-             style="background-image: url();">
+             style="background-image: url({{Voyager::image(setting('site.bg_bysector'))}});">
             <div class="row">
                 <div class="col-12">
-                    <h2 class="header-home__title">Found {{count($proyeks)}} @if(count($proyeks)>1) Projects @else Project @endif in {{$slug}} Sector</h2>
+                    <h2 class="header-home__title">Found {{$proyeks->total()}} @if($proyeks->total()>1) Projects @else Project @endif in {{$slug}} Sector</h2>
+
                 </div>
             </div>
         </div>
     </header>
     <header id="headerId" style="display: none;" class="header-home">
         <div class="container background background--right background--header background--mobile"
-             style="background-image: url();">
+             style="background-image: url({{Voyager::image(setting('site.bg_bysector'))}});">
             <div class="row">
                 <div class="col-12">
-                    <h2 class="header-home__title">Terdapat {{count($proyeks)}} Proyek di Sektor {{$slug}}</h2>
+                    <h2 class="header-home__title">Terdapat {{$proyeks->total()}} Proyek di Sektor {{$slug}}</h2>
+
                 </div>
             </div>
         </div>
@@ -251,31 +253,31 @@
                                         <h6 class="about-app__description-title">Background</h6>
                                         <p style="text-align: justify; text-justify: inter-word;">{{ str_limit($proyek->translate('en')->latar_belakang, $limit = 500, $end = '...') }}</p>
                                     @endisset
-                                        <div class="row">
-                                            <div class="col-12">
-                                                @if($proyek->market_id == 1)
-                                                    <div class="site-btn site-btn--light header-home__btn" style="margin-bottom: 30px; width: 100%; color: #24c829" disabled><i class="mdi mdi-star">Ready To Offer</i></div>
-                                                @elseif($proyek->market_id == 2)
-                                                    <div class="site-btn site-btn--light header-home__btn" style="margin-bottom: 30px; width: 100%; color: #c8b735" disabled><i class="mdi mdi-star-half">Prospective Project</i></div>
-                                                @else
-                                                    <div class="site-btn site-btn--light header-home__btn" style="margin-bottom: 30px; width: 100%; color: #c82333" disabled><i class="mdi mdi-star-outline">Potential Project</i></div>
-                                                @endif
-                                            </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            @if($proyek->market_id == 1)
+                                                <div class="site-btn site-btn--light header-home__btn" style="margin-bottom: 30px; width: 100%; color: #24c829" disabled><i class="mdi mdi-star">Ready To Offer</i></div>
+                                            @elseif($proyek->market_id == 2)
+                                                <div class="site-btn site-btn--light header-home__btn" style="margin-bottom: 30px; width: 100%; color: #c8b735" disabled><i class="mdi mdi-star-half">Prospective Project</i></div>
+                                            @else
+                                                <div class="site-btn site-btn--light header-home__btn" style="margin-bottom: 30px; width: 100%; color: #c82333" disabled><i class="mdi mdi-star-outline">Potential Project</i></div>
+                                            @endif
                                         </div>
-                                        <div class="row">
-                                            <div class="col-6">
-                                                @if($proyek->market_id == 1)
-                                                    <a href="{{route('detail.rto', ['id'=>$proyek->id,'slug' => str_slug($proyek->project_name, '-')])}}" class="site-btn site-btn--accent header-home__btn" style="margin-bottom: 30px">Project's Details</a>
-                                                @elseif($proyek->market_id == 2)
-                                                    <a href="{{route('detail.pros', ['id'=>$proyek->id,'slug' => str_slug($proyek->project_name, '-')])}}" class="site-btn site-btn--accent header-home__btn" style="margin-bottom: 30px">Project's Details</a>
-                                                @else
-                                                    <a href="{{route('detail.pot', ['id'=>$proyek->id,'slug' => str_slug($proyek->project_name, '-')])}}" class="site-btn site-btn--accent header-home__btn" style="margin-bottom: 30px">Project's Details</a>
-                                                @endif
-                                            </div>
-                                            <div class="col-6">
-                                                <a href="{{route('detail.profile', ['id'=>$proyek->profil_id,'slug' => str_slug($proyek->project_name, '-')])}}" class="site-btn site-btn--light header-home__btn" style="margin-bottom: 30px">Project's Owner</a>
-                                            </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            @if($proyek->market_id == 1)
+                                                <a href="{{route('detail.rto', ['id'=>$proyek->id,'slug' => str_slug($proyek->project_name, '-')])}}" class="site-btn site-btn--accent header-home__btn" style="margin-bottom: 30px">Project's Details</a>
+                                            @elseif($proyek->market_id == 2)
+                                                <a href="{{route('detail.pros', ['id'=>$proyek->id,'slug' => str_slug($proyek->project_name, '-')])}}" class="site-btn site-btn--accent header-home__btn" style="margin-bottom: 30px">Project's Details</a>
+                                            @else
+                                                <a href="{{route('detail.pot', ['id'=>$proyek->id,'slug' => str_slug($proyek->project_name, '-')])}}" class="site-btn site-btn--accent header-home__btn" style="margin-bottom: 30px">Project's Details</a>
+                                            @endif
                                         </div>
+                                        <div class="col-6">
+                                            <a href="{{route('detail.profile', ['id'=>$proyek->profil_id,'slug' => str_slug($proyek->project_name, '-')])}}" class="site-btn site-btn--light header-home__btn" style="margin-bottom: 30px">{{$proyek->byUser->namakota[0]->nama}}</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-6 about-app__img about-app__img--left">
@@ -328,32 +330,32 @@
                                         <h6 class="about-app__description-title">Latar Belakang</h6>
                                         <p style="text-align: justify; text-justify: inter-word;">{{ str_limit($proyek->latar_belakang, $limit = 500, $end = '...') }}</p>
                                     @endisset
-                                        <div class="row">
-                                            <div class="col-12">
-                                                @if($proyek->market_id == 1)
-                                                    <div class="site-btn site-btn--light header-home__btn" style="margin-bottom: 30px; width: 100%; color: #24c829" disabled><i class="mdi mdi-star">Siap Ditawarkan</i></div>
-                                                @elseif($proyek->market_id == 2)
-                                                    <div class="site-btn site-btn--light header-home__btn" style="margin-bottom: 30px; width: 100%; color: #c8b735" disabled><i class="mdi mdi-star-half">Proyek Prospektif</i></div>
-                                                @else
-                                                    <div class="site-btn site-btn--light header-home__btn" style="margin-bottom: 30px; width: 100%; color: #c82333" disabled><i class="mdi mdi-star-outline">Proyek Potensial</i></div>
-                                                @endif
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-6">
-                                                @if($proyek->market_id == 1)
-                                                    <a href="{{route('detail.rto', ['id'=>$proyek->id,'slug' => str_slug($proyek->project_name, '-')])}}" class="site-btn site-btn--accent header-home__btn" style="margin-bottom: 30px">Detail Proyek</a>
-                                                @elseif($proyek->market_id == 2)
-                                                    <a href="{{route('detail.pros', ['id'=>$proyek->id,'slug' => str_slug($proyek->project_name, '-')])}}" class="site-btn site-btn--accent header-home__btn" style="margin-bottom: 30px">Detail Proyek</a>
-                                                @else
-                                                    <a href="{{route('detail.pot', ['id'=>$proyek->id,'slug' => str_slug($proyek->project_name, '-')])}}" class="site-btn site-btn--accent header-home__btn" style="margin-bottom: 30px">Detail Proyek</a>
-                                                @endif
-                                            </div>
-                                            <div class="col-6">
-                                                <a href="{{route('detail.profile', ['id'=>$proyek->profil_id,'slug' => str_slug($proyek->project_name, '-')])}}" class="site-btn site-btn--light header-home__btn" style="margin-bottom: 30px">Pemilik Proyek</a>
-                                            </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            @if($proyek->market_id == 1)
+                                                <div class="site-btn site-btn--light header-home__btn" style="margin-bottom: 30px; width: 100%; color: #24c829" disabled><i class="mdi mdi-star">Siap Ditawarkan</i></div>
+                                            @elseif($proyek->market_id == 2)
+                                                <div class="site-btn site-btn--light header-home__btn" style="margin-bottom: 30px; width: 100%; color: #c8b735" disabled><i class="mdi mdi-star-half">Proyek Prospektif</i></div>
+                                            @else
+                                                <div class="site-btn site-btn--light header-home__btn" style="margin-bottom: 30px; width: 100%; color: #c82333" disabled><i class="mdi mdi-star-outline">Proyek Potensial</i></div>
+                                            @endif
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            @if($proyek->market_id == 1)
+                                                <a href="{{route('detail.rto', ['id'=>$proyek->id,'slug' => str_slug($proyek->project_name, '-')])}}" class="site-btn site-btn--accent header-home__btn" style="margin-bottom: 30px">Detail Proyek</a>
+                                            @elseif($proyek->market_id == 2)
+                                                <a href="{{route('detail.pros', ['id'=>$proyek->id,'slug' => str_slug($proyek->project_name, '-')])}}" class="site-btn site-btn--accent header-home__btn" style="margin-bottom: 30px">Detail Proyek</a>
+                                            @else
+                                                <a href="{{route('detail.pot', ['id'=>$proyek->id,'slug' => str_slug($proyek->project_name, '-')])}}" class="site-btn site-btn--accent header-home__btn" style="margin-bottom: 30px">Detail Proyek</a>
+                                            @endif
+                                        </div>
+                                        <div class="col-6">
+                                            <a href="{{route('detail.profile', ['id'=>$proyek->profil_id,'slug' => str_slug($proyek->project_name, '-')])}}" class="site-btn site-btn--light header-home__btn" style="margin-bottom: 30px">Pemilik Proyek</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="col-6 about-app__img about-app__img--left">

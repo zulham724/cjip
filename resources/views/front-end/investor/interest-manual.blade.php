@@ -246,15 +246,7 @@
                 </div>
 
                 <div id="proyek"></div>
-                {{--<form class="form__form" action="{{route('store.interest')}}" method="post">
-                    @csrf
-                    <div class="form__form-group form__form-group--without-label">
 
-                        <div class="form__input-icon-wrap">
-                            <span class="form__input-icon"><i class="mdi mdi-chevron-down"></i></span>
-                        </div>
-                    </div>
-                </form>--}}
             </div>
         </div>
     </div>

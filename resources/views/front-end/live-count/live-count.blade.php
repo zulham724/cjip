@@ -34,7 +34,7 @@
                     <div class="col-12 col-sm-12 text-center ">
                         <h1 class="page-title">Total Rencana Nilai Investasi Jawa Tengah</h1>
                         <hr>
-                        <h1 class="page-title">Total Rencana Nilai Investasi Jawa Tengah</h1>
+                        <h1 class="page-title">Estimated Investment Value in Central Java</h1>
                     </div>
                 </div>
                 <!-- End Page Header -->

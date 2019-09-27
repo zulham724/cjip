@@ -571,8 +571,8 @@
 
 
         .error404page {
-            max-width: 300px;
-            max-height: 600px;
+            width: 300px;
+            height: 700px;
             position: absolute;
             top: 50%;
             left: 50%;
@@ -1163,7 +1163,7 @@
                                             <select id="kab_kota_manual" name="kab_kota_manual" class="form-control" required>
                                                 <option selected>Select city</option>
                                                 @foreach($cities as $city)
-                                                    <option value="{{$city->usernya[0]->id}}">{{$city->nama}}</option>
+                                                    <option value="{{$city->user->kab_kota_id}}">{{$city->nama}}</option>
                                                 @endforeach
                                             </select>
                                         </div>

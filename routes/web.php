@@ -76,6 +76,11 @@ Route::get('/', function(){
         Route::get('/interest-sector/{id}', 'FrontEnd\Home\HomeController@findInterestBySector')->name('interest.sector');
 
 
+        Route::get('/location-on-maps', 'FrontEnd\Home\HomeController@maps')->name('cluster.maps');
+
+
+
+
         Route::get('/project-owner/{id}/{slug}', 'FrontEnd\Home\HomeController@detailProfile')->name('detail.profile');
 
         Route::get('/tespdf', 'CJIBF\FrontEndController@pdf');

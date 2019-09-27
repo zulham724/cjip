@@ -267,7 +267,8 @@
 
                                     @isset($proyek->fotos)
                                         @php
-                                            $images = json_decode($proyek->fotos)
+                                            $images = json_decode($proyek->fotos);
+
                                         @endphp
                                         <div class="carousel">
                                             @foreach((array) $images as $image)

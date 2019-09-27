@@ -270,10 +270,9 @@
                         <h3 class="section__title">{{ $proyek->translate('en')->project_name }}</h3>
                         <div class="row about-app">
                             <div class="col-12 about-app__img about-app__img--left">
-
                                 @isset($proyek->fotos)
                                     @php
-                                        $images = json_decode($proyek->fotos)
+                                        $images = json_decode($proyek->fotos);
                                     @endphp
                                     <div class="carousel">
                                         @foreach((array) $images as $image)
@@ -289,7 +288,7 @@
                                     <img alt="" src="{{'storage/'.Voyager::setting('site.not_found')}}">
                                 @endisset
                             </div>
-                            <div class="col-12" style="padding-top: 80px;text-align: justify">
+                            <div class="col-12" style="padding-top: 100px;text-align: justify">
                                 <h4 class="about-app__description-title">Background</h4>
                                 <p>{{$proyek->translate('en')->latar_belakang}}</p>
                             </div>
@@ -696,6 +695,7 @@
             title: 'Hello World!'
         });
     </script>
+
     {{--{!! ($chart->script()) !!}--}}
 @endsection
 

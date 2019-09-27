@@ -198,6 +198,12 @@
             $("#headerId").hide();
             $("#contentId").hide();
         });
+        $("#open").click(function(){
+            $("#openthis").slideToggle("fast");
+        });
+        $("#opensector").click(function(){
+            $("#openthissector").slideToggle("fast");
+        });
     });
 
 

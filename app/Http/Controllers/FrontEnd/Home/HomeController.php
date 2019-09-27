@@ -29,6 +29,7 @@ use App\Umr;
 use App\User;
 use App\UserInvestor;
 use Artesaos\SEOTools\Facades\SEOTools;
+use Cornford\Googlmapper\Facades\MapperFacade as Mapper;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -361,5 +362,45 @@ class HomeController extends Controller
         //dd($proyeks[0]->byUser->namakota);
 
         return view('front-end.investor.content.interest', compact('proyeks', 'profile'));
+    }
+
+    public function maps(){
+        $proyeks = Proyek::where('status', 1)->get();
+
+        foreach ($proyeks as $proyek){
+            $images = json_decode($proyek->fotos);
+            //dd($images[0]);
+        }
+
+
+        //dd(asText($proyek->location));
+
+        Mapper::location('Central Java')->map(['zoom' => 8, 'center' => true, 'marker' => false, 'type' => 'ROAD']);
+
+        foreach ($proyeks as $proyek){
+            $images = json_decode($proyek->fotos);
+
+            //dd(json_encode($proyek->getCoordinates()));
+            ;
+            $array = $proyek->getCoordinates();
+            //dd((float)$array[0]['lat']);
+            Mapper::informationWindow((float)$array[0]['lat'], (float)$array[0]['lng'], '<div id="iw-container">'.
+                '<div class="iw-title">'.$proyek->marketplace->name.'</div>'.
+                '<div class="iw-content">'.
+                '<div class="iw-subTitle">'.$proyek->project_name.'</div>' .
+                '<img src='.'"'.Voyager::image($images[0]).'"'.' alt='.'"'.$proyek->project_name.'"'.' height="115" width="83">' .
+                '<p>'.$proyek->latar_belakang.'</p>'.
+                '<div class="iw-subTitle"><a style="font-weight: 300;color: #c82333" href='.'"'.route('detail.proyek', $proyek->id).'"'.'>Detail</a></div>' .
+                '</div>' .
+                '<div class="iw-bottom-gradient"></div>' .
+                '</div>',
+                ['icon' => 'http://cjip.jatengprov.go.id/storage/additional/icon_1.png']
+            );
+        }
+
+        //dd($array);
+        $mapsKey = 'AIzaSyBGsawbqVs083lGEe8cilVz0FqO0rHt5ZE&amp';
+
+        return view('front-end.marketplace.bylocation', compact('array', 'mapsKey'));
     }
 }

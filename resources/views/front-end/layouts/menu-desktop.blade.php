@@ -7,9 +7,9 @@ $sektors = \App\CjibfSektor::all();
 
 <div id="menuEn">
     <ul style="margin: 0 auto;">
-
         @foreach($items->load('translations') as $item)
-            @if($item->translate('en')->children->count() == null)
+
+        @if($item->translate('en')->children->count() == null)
                 <li>
                     <a href="{{url($item->url)}}" class="link link--gray">
                         {{$item->translate('en')->title}}
@@ -17,22 +17,52 @@ $sektors = \App\CjibfSektor::all();
                 </li>
 
             @else
-                <li>
-                    <div class="menu__dropdown">
-                        <a target="{{ $item->target }}" href="{{ url($item->url) }}" data-toggle="dropdown" class="link link--gray menu__dropdown-btn">
-                            {{ $item->translate('en')->title }}
-                            <span><i class="mdi mdi-chevron-down"></i></span>
-                        </a>
-                        @if($item->children->count())
-                            <div class="menu__dropdown-content">
-                                @foreach($item->children as $subItem)
-                                    <a class="link link--gray" target="{{ $subItem->target }}" href="{{ url($subItem->url) }}">{{ $subItem->translate('en')->title }}</a>
-                                @endforeach
-                            </div>
-                        @endif
-                    </div>
-                </li>
-                <li>
+            @if($item->translate('en')->title == 'Investment Opportunities')
+                    <li>
+                        <div class="menu__dropdown">
+                            <a target="{{ $item->target }}" href="{{ url($item->url) }}" data-toggle="dropdown" class="link link--gray menu__dropdown-btn">
+                                {{ $item->translate('en')->title }}
+                                <span><i class="mdi mdi-chevron-down"></i></span>
+                            </a>
+                            @if($item->children->count())
+                                <div class="menu__dropdown-content">
+                                    @foreach($item->children as $subItem)
+                                        @if($subItem->children->count())
+
+                                            <div class="menu__dropdown d-t-none">
+                                                <a class="link link--gray menu__dropdown-btn" id="open">{{ $subItem->translate('en')->title }}
+                                                    <span><i class="mdi mdi-chevron-down"></i></span>
+                                                </a>
+                                                <div style="margin-left: 20px; margin-top: 5px;display: none" id="openthis" >
+                                                    @foreach($subItem->children as $susubItem)
+                                                        <a class="link link--gray" target="{{ $susubItem->target }}" href="{{ url($susubItem->url) }}">{{ $susubItem->translate('en')->title }}</a>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        @else
+                                            @if($subItem->translate('en')->title == 'Sector')
+                                                <div class="menu__dropdown d-t-none">
+                                                    <a class="link link--gray menu__dropdown-btn" id="opensector">{{ $subItem->translate('en')->title }}
+                                                        <span><i class="mdi mdi-chevron-down"></i></span>
+                                                    </a>
+                                                    <div style="margin-left: 20px; margin-top: 5px;display: none" id="openthissector" >
+                                                        @foreach($sektors as $subItem)
+                                                            <a class="link link--gray" target="" href="{{route('sector.fo', $subItem->name)}}">{{ $subItem->name }}</a>
+                                                        @endforeach
+                                                    </div>
+                                                </div>
+                                            @else
+                                            <a class="link link--gray" target="{{ $subItem->target }}" href="{{ url($subItem->url) }}">{{ $subItem->translate('en')->title }}</a>
+                                            @endif
+                                        @endif
+                                    @endforeach
+                                </div>
+                            @endif
+                        </div>
+                    </li>
+            @endif
+
+               {{-- <li>
                     <div class="menu__dropdown">
                         <a target="{{ $item->target }}" href="" data-toggle="dropdown" class="link link--gray menu__dropdown-btn">
                             Sectors
@@ -44,7 +74,7 @@ $sektors = \App\CjibfSektor::all();
                                 @endforeach
                             </div>
                     </div>
-                </li>
+                </li>--}}
             @endif
         @endforeach
 
@@ -57,15 +87,16 @@ $sektors = \App\CjibfSektor::all();
                     <div class="believe">
 
                         <a href="{{route('dashboard.investor', Auth::guard('investor')->user()->id)}}">
-                            <img alt="{{Auth::guard('investor')->user()->name}}" class="believe__avatar" src="
+                            <img alt="{{Auth::guard('investor')->user()->name}}" class="believe__avatar"
                         @if(empty(Auth::guard('investor')->user()->image))
 
-                            {{Voyager::image(setting('site.avatar'))}}
+                            src="{{Voyager::image(setting('site.avatar'))}}"
 
                             @else
-                            {{Auth::guard('investor')->user()->image}}
-                                    "/>
+                            src="{{Auth::guard('investor')->user()->image}}"
+
                             @endif
+                                    />
                         </a>
                     </div>
                 </div>
