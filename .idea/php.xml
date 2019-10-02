@@ -138,6 +138,8 @@
       <path value="$PROJECT_DIR$/vendor/cornford/googlmapper" />
       <path value="$PROJECT_DIR$/vendor/akibtanjim/currency-converter" />
       <path value="$PROJECT_DIR$/vendor/ixudra/curl" />
+      <path value="$PROJECT_DIR$/vendor/mrclay/minify" />
+      <path value="$PROJECT_DIR$/vendor/htmlmin/htmlmin" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />

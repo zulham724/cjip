@@ -28,6 +28,7 @@
     </script>
 
     <style>
+
         .pagination {
             display: inline-block;
         }
@@ -179,6 +180,7 @@
 <script src="{{asset('js/front-end/menu.js')}}"></script>
 {{--<script src="{{asset('js/front-end/topbar.js')}}"></script>--}}
 <script src="{{asset('js/front-end/mobile-menu.js')}}"></script>
+
 <script>
 
     $(document).ready(function(){
@@ -220,5 +222,6 @@
 
 
 </script>
+
 
 @yield('js')

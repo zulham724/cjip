@@ -45,25 +45,57 @@
                 </div>
                 <div class="col-4 col-md-12 col-sm-12">
                     @isset($profile)
-                    <form action="{{route('store.interest')}}" method="post">
-                        @csrf
-                        <input type="text" class="form-control" name="profil" value="{{$profile->id}}" hidden>
+{{--                    <form action="{{route('store.interest')}}" method="post">--}}
+
+                        {{--<input type="text" class="form-control" name="profil" value="{{$profile->id}}" hidden>
                         <input type="text" class="form-control" name="kabkota" value="{{$proyek->kab_kota_id}}" hidden>
                         <input type="text" class="form-control" name="sektor" value="{{$proyek->bySector->name}}" hidden>
-                        <input type="text" class="form-control" name="project_id" value="{{$proyek->id}}" hidden>
+                        <input type="text" class="form-control" name="project_id" value="{{$proyek->id}}" hidden>--}}
                         <div class="my-auto ml-auto" align="center">
-                            <button type="submit" class="site-btn site-btn--accent header-home__btn"><i class="mdi mdi-star mdi-spin">Invest Here</i></button>
+                            <button type="submit" class="site-btn site-btn--accent header-home__btn" data-toggle="modal" data-target="#myModal"><i class="mdi mdi-star mdi-spin">Invest Here</i></button>
                         </div>
-                    </form>
+{{--                    </form>--}}
                     @else
-                        <a href="{{route('form.profile', Auth::guard('investor')->id)}}">
+                        <a href="{{route('form.profile', Auth::guard('investor')->user()->id)}}">
                             <button class="site-btn site-btn--invert header-home__btn"><i class="mdi-minus-circle mdi-spin">Isi Profil Perusahaan Terlebih Dahulu</i></button>
                         </a>
                     @endisset
                 </div>
             </div>
         </div>
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
 
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" style="background-color: transparent;" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">{{$proyek->translate('en')->project_name}}, {{$proyek->project_name}}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure want to invest in {{$proyek->translate('en')->project_name}} Project?</p><br>
+                        <p>We will contact you as soon as possible</p>
+                    </div>
+                    @isset($profile)
+                    <form action="{{route('store.interest')}}" method="post">
+                        @csrf
+                        <input type="text" class="form-control" name="profil" value="{{$profile->id}}" hidden>
+                        <input type="text" class="form-control" name="kabkota" value="{{$proyek->kab_kota_id}}" hidden>
+                        <input type="text" class="form-control" name="sektor" value="{{$proyek->bySector->name}}" hidden>
+                        <input type="text" class="form-control" name="project_id" value="{{$proyek->id}}" hidden>
+
+                    <div class="modal-footer">
+                        <button type="submit" class="site-btn site-btn--accent header-home__btn">Sure</button>
+                        <button type="button" class="site-btn site-btn--invert header-home__btn" data-dismiss="modal">Cancel</button>
+                    </div>
+                    </form>
+                    @endisset
+                </div>
+
+            </div>
+        </div>
     </div>
     @endforeach
+    <!-- Modal -->
+
 </div>

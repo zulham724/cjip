@@ -173,6 +173,8 @@ return [
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
         Cornford\Googlmapper\MapperServiceProvider::class,
+        HTMLMin\HTMLMin\HTMLMinServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
@@ -238,6 +240,7 @@ return [
         'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
         'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
         'Mapper' => Cornford\Googlmapper\Facades\MapperFacade::class,
+        'HTMLMin' => HTMLMin\HTMLMin\Facades\HTMLMin::class,
     ],
 
 ];

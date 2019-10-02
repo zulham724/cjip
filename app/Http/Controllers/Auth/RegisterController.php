@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use App\Http\Controllers\Controller;
 use App\UserInvestor;
+use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -75,6 +76,15 @@ class RegisterController extends Controller
 
     public function showInvestorRegisterForm()
     {
+        SEOTools::setTitle('Register to Central Java Investment Platform');
+        SEOTools::setDescription('Register to Central Java Investment Platform you can easily select our investment project and we are here to help');
+        SEOTools::opengraph()->setUrl(url()->current());
+        SEOTools::addImages('https://cjip.jatengprov.go.id/storage/settings/August2019/esr0C8HmQss78AAnlaue.png');
+        SEOTools::setCanonical(url()->current());
+        SEOTools::opengraph()->addProperty('type', 'website');
+        SEOTools::twitter()->setSite('@DPMPTSPJateng');
+        SEOTools::jsonLd()->addImage('https://cjip.jatengprov.go.id/storage/settings/August2019/esr0C8HmQss78AAnlaue.png');
+
         return view('login-investor', ['url' => 'investor']);
     }
 

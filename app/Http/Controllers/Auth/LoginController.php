@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use TCG\Voyager\Facades\Voyager;
 
 class LoginController extends Controller
 {
@@ -41,6 +43,15 @@ class LoginController extends Controller
 
     public function showInvestorLoginForm()
     {
+        SEOTools::setTitle('Login to Central Java Investment Platform');
+        SEOTools::setDescription('by Login in to Central Java Investment Platform you can easily select our investment project and we are here to help');
+        SEOTools::opengraph()->setUrl(url()->current());
+        SEOTools::addImages('https://cjip.jatengprov.go.id/storage/settings/August2019/esr0C8HmQss78AAnlaue.png');
+        SEOTools::setCanonical(url()->current());
+        SEOTools::opengraph()->addProperty('type', 'website');
+        SEOTools::twitter()->setSite('@DPMPTSPJateng');
+        SEOTools::jsonLd()->addImage('https://cjip.jatengprov.go.id/storage/settings/August2019/esr0C8HmQss78AAnlaue.png');
+
         return view('login_client', ['url' => 'investor']);
     }
 
