@@ -2,12 +2,12 @@
 
 namespace App\Widgets;
 
-use App\CjibfInvestor;
+use App\ProfileInvestor;
 use Arrilot\Widgets\AbstractWidget;
 use Illuminate\Support\Str;
 use TCG\Voyager\Facades\Voyager;
 
-class UserInvestor extends AbstractWidget
+class ProfilInvestor extends AbstractWidget
 {
     /**
      * The configuration array.
@@ -22,17 +22,17 @@ class UserInvestor extends AbstractWidget
      */
     public function run()
     {
-        $count = \App\UserInvestor::all()->count();
-        //dd($count);
-        $string = trans_choice('User Investor', $count);
-        //dd($string);
+        $count = ProfileInvestor::all()->count();
+
+        $string = trans_choice('Investor Profile', $count);
+
         return view('voyager::dimmer', array_merge($this->config, [
             'icon'   => 'voyager-group',
             'title'  => "{$count} {$string}",
             'text'   => __('voyager::dimmer.user_text', ['count' => $count, 'string' => Str::lower($string)]),
             'button' => [
                 'text' => __('voyager::dimmer.user_link_text'),
-                'link' => '#',
+                'link' => route('voyager.lois.index'),
             ],
             'image' => voyager_asset('images/widget-backgrounds/01.jpg'),
         ]));

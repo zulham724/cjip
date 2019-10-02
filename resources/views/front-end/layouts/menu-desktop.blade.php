@@ -52,7 +52,7 @@ $sektors = \App\CjibfSektor::all();
                                                     </div>
                                                 </div>
                                             @else
-                                            <a class="link link--gray" target="{{ $subItem->target }}" href="{{ url($subItem->url) }}">{{ $subItem->translate('en')->title }}</a>
+                                                <a class="link link--gray" target="{{ $subItem->target }}" href="{{ url($subItem->url) }}">{{ $subItem->translate('en')->title }}</a>
                                             @endif
                                         @endif
                                     @endforeach
@@ -62,19 +62,7 @@ $sektors = \App\CjibfSektor::all();
                     </li>
             @endif
 
-               {{-- <li>
-                    <div class="menu__dropdown">
-                        <a target="{{ $item->target }}" href="" data-toggle="dropdown" class="link link--gray menu__dropdown-btn">
-                            Sectors
-                            <span><i class="mdi mdi-chevron-down"></i></span>
-                        </a>
-                            <div class="menu__dropdown-content">
-                                @foreach($sektors as $subItem)
-                                    <a class="link link--gray" target="" href="{{route('sector.fo', $subItem->name)}}">{{ $subItem->name }}</a>
-                                @endforeach
-                            </div>
-                    </div>
-                </li>--}}
+
             @endif
         @endforeach
 
@@ -151,34 +139,51 @@ $sektors = \App\CjibfSektor::all();
                 </li>
 
             @else
-                <li>
-                    <div class="menu__dropdown">
-                        <a target="{{ $item->target }}" href="{{ url($item->url) }}" data-toggle="dropdown" class="link link--gray menu__dropdown-btn">
-                            {{ $item->title }}
-                            <span><i class="mdi mdi-chevron-down"></i></span>
-                        </a>
-                        @if($item->children->count())
-                            <div class="menu__dropdown-content">
-                                @foreach($item->children as $subItem)
-                                    <a class="link link--gray" target="{{ $subItem->target }}" href="{{ url($subItem->url) }}">{{ $subItem->title }}</a>
-                                @endforeach
-                            </div>
-                        @endif
-                    </div>
-                </li>
-                <li>
-                    <div class="menu__dropdown">
-                        <a target="{{ $item->target }}" href="" data-toggle="dropdown" class="link link--gray menu__dropdown-btn">
-                            Sectors
-                            <span><i class="mdi mdi-chevron-down"></i></span>
-                        </a>
-                        <div class="menu__dropdown-content">
-                            @foreach($sektors as $subItem)
-                                <a class="link link--gray" target="" href="{{route('sector.fo', $subItem->name)}}">{{ $subItem->name }}</a>
-                            @endforeach
+                @if($item->title == 'Peluang Investasi')
+                    <li>
+                        <div class="menu__dropdown">
+                            <a target="{{ $item->target }}" href="{{ url($item->url) }}" data-toggle="dropdown" class="link link--gray menu__dropdown-btn">
+                                {{ $item->title }}
+                                <span><i class="mdi mdi-chevron-down"></i></span>
+                            </a>
+                            @if($item->children->count())
+                                <div class="menu__dropdown-content">
+                                    @foreach($item->children as $subItemId)
+                                        @if($subItemId->children->count())
+
+                                            <div class="menu__dropdown d-t-none">
+                                                <a class="link link--gray menu__dropdown-btn" id="openid">{{ $subItemId->title }}
+                                                    <span><i class="mdi mdi-chevron-down"></i></span>
+                                                </a>
+                                                <div style="margin-left: 20px; margin-top: 5px;display: none" id="openthisid" >
+                                                    @foreach($subItemId->children as $susubItemId)
+                                                        <a class="link link--gray" target="{{ $susubItemId->target }}" href="{{ url($susubItemId->url) }}">{{ $susubItemId->title }}</a>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        @else
+                                            @if($subItemId->title == 'Sektor')
+                                                <div class="menu__dropdown d-t-none">
+                                                    <a class="link link--gray menu__dropdown-btn" id="opensectorid">{{ $subItemId->title }}
+                                                        <span><i class="mdi mdi-chevron-down"></i></span>
+                                                    </a>
+                                                    <div style="margin-left: 20px; margin-top: 5px;display: none" id="openthissectorid" >
+                                                        @foreach($sektors as $subItem)
+                                                            <a class="link link--gray" target="" href="{{route('sector.fo', $subItem->name)}}">{{ $subItem->name }}</a>
+                                                        @endforeach
+                                                    </div>
+                                                </div>
+                                            @else
+                                                <a class="link link--gray" target="{{ $subItemId->target }}" href="{{ url($subItemId->url) }}">{{ $subItemId->title }}</a>
+                                            @endif
+                                        @endif
+                                    @endforeach
+                                </div>
+                            @endif
                         </div>
-                    </div>
-                </li>
+                    </li>
+                @endif
+
             @endif
         @endforeach
 

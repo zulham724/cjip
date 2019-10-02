@@ -149,6 +149,7 @@ return [
             'App\\Widgets\\UserInvestor',
             'App\\Widgets\\Loi',
             'App\\Widgets\\Project',
+            'App\\Widgets\\ProfilInvestor',
         ],
 
     ],

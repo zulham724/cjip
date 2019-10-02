@@ -213,7 +213,7 @@ return [
         | Display an animation effect for markers. (NONE|DROP|BOUNCE)
         |
         */
-        'animation' => 'BOUNCE',
+        'animation' => 'DROP',
 
     ],
 
@@ -265,7 +265,7 @@ return [
         | The maximum zoom level that a marker can be part of a cluster.
         |
         */
-        'zoom' => null,
+        'zoom' => 10,
 
         /*
         |--------------------------------------------------------------------------

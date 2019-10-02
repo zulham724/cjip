@@ -1,6 +1,5 @@
 @extends('front-end.master.newest-master')
 @section('css')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.2/css/uikit.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.uikit.min.css">
 @endsection
 @section('header')
@@ -10,7 +9,7 @@
              style="background-image: url({{Voyager::image(setting('site.bg_why'))}});">
             <div class="row">
                 <div class="col-12">
-                    <h2 class="header-home__title">{{Voyager::setting('site.title_why')}}</h2>
+                    <h1 class="header-home__title">{{Voyager::setting('site.title_why')}}</h1>
                     <p class="header-home__description">{{Voyager::setting('site.ket_why')}}</p>
                     <div class="header-home__btns header-home__btns-mobile">
                         <a href="/event" class="site-btn site-btn--accent header-home__btn">Join CJIBF</a>
@@ -24,7 +23,7 @@
              style="background-image: url({{Voyager::image(setting('site.bg_why'))}});">
             <div class="row">
                 <div class="col-12">
-                    <h2 class="header-home__title">{{Voyager::setting('site.id_title_why')}}</h2>
+                    <h1 class="header-home__title">{{Voyager::setting('site.id_title_why')}}</h1>
                     <p class="header-home__description">{{Voyager::setting('site.id_ket_why')}}</p>
                     <div class="header-home__btns header-home__btns-mobile">
                         <a href="/event" class="site-btn site-btn--accent header-home__btn">Daftar CJIBF</a>

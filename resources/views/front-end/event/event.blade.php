@@ -4,24 +4,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="{{setting('site.title')}}">
+    {!! SEO::generate() !!}
     <meta name="keywords" content="Investasi, CJIBF, Invest, Jawa Tengah">
     <meta name="author" content="wdnsds">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <!--
-    ========================================================================
-    EXCLUSIVE ON themeforest.net
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    Template Name   : Amigo
-    Author          : mital_04
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    Copyright (c) 2018 - Amigo
-    ========================================================================
-    -->
+
     <title>{{setting('site.title')}}</title>
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-
+    <link rel="icon" href="http://cjip.jatengprov.go.id/storage/additional/logo%20cjibf.png" type="image/png">
     <!-- Plugin CSS -->
     <link href="{{asset('cjibf/plugin/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('cjibf/plugin/font-awesome/css/fontawesome-all.min.css')}}" rel="stylesheet">
@@ -30,11 +21,7 @@
     <link href="{{asset('cjibf/plugin/themify-icons/themify-icons.css')}}" rel="stylesheet">
     {{--<link href="{{asset('cjibf/plugin/owl-carousel/css/owl.carousel.min.css')}}" rel="stylesheet">--}}
     <style>
-        /**
- * Owl Carousel v2.2.1
- * Copyright 2013-2017 David Deutsch
- * Licensed under  ()
- */
+
         .owl-carousel, .owl-carousel .owl-item {
             -webkit-tap-highlight-color: transparent;
             position: relative

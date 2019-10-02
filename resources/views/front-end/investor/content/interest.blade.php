@@ -44,6 +44,7 @@
                     <a href="{{route('detail.profile', ['id'=>$proyek->profil_id,'slug' => str_slug($proyek->project_name, '-')])}}" class="site-btn site-btn--light header-home__btn" style="margin-bottom: 30px">{{$proyek->byUser->namakota[0]->nama}}</a>
                 </div>
                 <div class="col-4 col-md-12 col-sm-12">
+                    @isset($profile)
                     <form action="{{route('store.interest')}}" method="post">
                         @csrf
                         <input type="text" class="form-control" name="profil" value="{{$profile->id}}" hidden>
@@ -53,8 +54,12 @@
                         <div class="my-auto ml-auto" align="center">
                             <button type="submit" class="site-btn site-btn--accent header-home__btn"><i class="mdi mdi-star mdi-spin">Invest Here</i></button>
                         </div>
-
                     </form>
+                    @else
+                        <a href="{{route('form.profile', Auth::guard('investor')->id)}}">
+                            <button class="site-btn site-btn--invert header-home__btn"><i class="mdi-minus-circle mdi-spin">Isi Profil Perusahaan Terlebih Dahulu</i></button>
+                        </a>
+                    @endisset
                 </div>
             </div>
         </div>

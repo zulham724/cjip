@@ -60,7 +60,8 @@ class SocialController extends Controller
                 'provider_id'   => $userSocial->getId(),
                 'provider'      => $provider,
             ]);
-            return redirect()->route('homey2');
+            Auth::guard('investor')->login($user);
+            return redirect('/profile/'.$user->id);
         }
     }
 

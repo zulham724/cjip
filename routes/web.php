@@ -89,12 +89,12 @@ Route::get('/', function(){
 
         Route::get('/news', 'FrontEnd\News\NewsController@news')->name('news');
         Route::get('/news/{id}', 'FrontEnd\News\NewsController@readBerita')->name('berita.detail');
-
+/*
         Route::get('/profile_jateng', 'FrontEnd\Profile\ProfileController@profile')->name('profile_jateng');
 
-        Route::get('/profile_jateng/{id}', 'FrontEnd\Profile\ProfileController@profileDetail')->name('detail.profile_jateng');
+        Route::get('/profile_jateng/{id}', 'FrontEnd\Profile\ProfileController@profileDetail')->name('detail.profile_jateng');*/
 
-        Route::get('/event', 'FrontEnd\Home\EventController@event')->name('event');
+        Route::get('/cjibf-cjibe-2019', 'FrontEnd\Home\EventController@event')->name('event');
 
 
 
@@ -104,43 +104,43 @@ Route::get('/', function(){
         Route::get('/reloadchart', 'CJIBF\LiveController@reloadchart')->name('chart.reload');
 
 
-        Route::get('/x', 'FrontEnd\Provinsi\VideoPlayerController@home')->name('homey');
+        /*Route::get('/x', 'FrontEnd\Provinsi\VideoPlayerController@home')->name('homey');*/
 
         Route::post('/checkemail', 'FrontEnd\Home\HomeController@checkEmail')->name('checkemail');
 
-        Route::get('/sidebar', 'FrontEnd\Home\HomeController@sidebar')->name('sidebar');
+        /*Route::get('/sidebar', 'FrontEnd\Home\HomeController@sidebar')->name('sidebar');
         Route::get('/menu', 'FrontEnd\Provinsi\VideoPlayerController@menu')->name('menu');
-        Route::get('/search', 'FrontEnd\Home\SearchController@search')->name('search');
+        Route::get('/search', 'FrontEnd\Home\SearchController@search')->name('search');*/
 
-        Route::post('/feed/{id}/like', 'FrontEnd\Home\HomeController@likes')->name('likes.count');
+        /*Route::post('/feed/{id}/like', 'FrontEnd\Home\HomeController@likes')->name('likes.count');
 
         Route::get('pariwisata/', 'FrontEnd\Potensi\PariwisataController@pariwisata')->name('only.pariwisata');
         Route::get('perikanan/', 'FrontEnd\Potensi\PerikananController@perikanan')->name('only.perikanan');
         Route::get('pertanian/', 'FrontEnd\Potensi\PertanianController@pertanian')->name('only.pertanian');
         Route::get('perkebunan/', 'FrontEnd\Potensi\PerkebunanController@perkebunan')->name('only.perkebunan');
-        Route::get('peternakan/', 'FrontEnd\Potensi\PeternakanController@peternakan')->name('only.peternakan');
+        Route::get('peternakan/', 'FrontEnd\Potensi\PeternakanController@peternakan')->name('only.peternakan');*/
 
         /*Route::get('/pariwisata', 'FrontEnd\Provinsi\VideoPlayerController@pariwisata')->name('pariwisata');*/
-        Route::get('/pariwisata/{id}', 'FrontEnd\Provinsi\VideoPlayerController@readPariwisata')->name('pariwisata.detail');
-        Route::get('/pariwisata/maps/{id}', 'FrontEnd\Provinsi\VideoPlayerController@mapsPariwisata')->name('pariwisata.maps');
+        /*Route::get('/pariwisata/{id}', 'FrontEnd\Provinsi\VideoPlayerController@readPariwisata')->name('pariwisata.detail');
+        Route::get('/pariwisata/maps/{id}', 'FrontEnd\Provinsi\VideoPlayerController@mapsPariwisata')->name('pariwisata.maps');*/
 
         /*Route::get('/perikanan', 'FrontEnd\Provinsi\VideoPlayerController@perikanan')->name('perikanan');*/
-        Route::get('/perikanan/{id}', 'FrontEnd\Provinsi\VideoPlayerController@readPerikanan')->name('perikanan.detail');
+        /*Route::get('/perikanan/{id}', 'FrontEnd\Provinsi\VideoPlayerController@readPerikanan')->name('perikanan.detail');*/
 
         /*Route::get('/pertanian', 'FrontEnd\Provinsi\VideoPlayerController@pertanian')->name('pertanian');*/
-        Route::get('/pertanian/{id}', 'FrontEnd\Provinsi\VideoPlayerController@readPertanian')->name('pertanian.detail');
+        /*Route::get('/pertanian/{id}', 'FrontEnd\Provinsi\VideoPlayerController@readPertanian')->name('pertanian.detail');*/
 
         /*Route::get('/perkebunan', 'FrontEnd\Provinsi\VideoPlayerController@perkebunan')->name('perkebunan');*/
-        Route::get('/perkebunan/{id}', 'FrontEnd\Provinsi\VideoPlayerController@readPerkebunan')->name('perkebunan.detail');
+        /*Route::get('/perkebunan/{id}', 'FrontEnd\Provinsi\VideoPlayerController@readPerkebunan')->name('perkebunan.detail');*/
 
         /*Route::get('/peternakan', 'FrontEnd\Provinsi\VideoPlayerController@peternakan')->name('peternakan');*/
-        Route::get('/peternakan/{id}', 'FrontEnd\Provinsi\VideoPlayerController@readPeternakan')->name('peternakan.detail');
+        /*Route::get('/peternakan/{id}', 'FrontEnd\Provinsi\VideoPlayerController@readPeternakan')->name('peternakan.detail');
 
         Route::get('/sarpras', 'FrontEnd\SaranaPrasarana\SarprasController@sarpras')->name('sarpras');
 
         Route::get('/kajian', 'FrontEnd\Kajian\KajianController@kajian')->name('kajian');
 
-        Route::get('/regulasi', 'FrontEnd\Regulasi\RegulasiController@regulasi')->name('regulasi');
+        Route::get('/regulasi', 'FrontEnd\Regulasi\RegulasiController@regulasi')->name('regulasi');*/
 
 
 
@@ -179,7 +179,7 @@ Route::get('register/', 'Auth\RegisterController@showInvestorRegisterForm')->nam
 Route::post('register/', 'Auth\RegisterController@createInvestor')->name('investor.register');
 Route::get('login/{provider}', 'Auth\SocialController@redirect');
 Route::get('login/{provider}/callback','Auth\SocialController@Callback');
-
+/*
 Route::get('sarpras/{sarpras}', 'Frontend\SaranaPrasarana\SarprasController@detail')->name('sarpras2');
 Route::get('sarpras/bandara/{id}', 'Frontend\SaranaPrasarana\SarprasController@bandara')->name('maps.bandara');
 Route::get('sarpras/pelabuhan/{id}', 'Frontend\SaranaPrasarana\SarprasController@pelabuhan')->name('maps.pelabuhan');
@@ -192,7 +192,7 @@ Route::get('sarpras/smk/{id}', 'Frontend\SaranaPrasarana\SarprasController@smk')
 Route::get('sarpras/bpk/{id}', 'Frontend\SaranaPrasarana\SarprasController@bpk')->name('maps.bpk');
 Route::get('sarpras/lpk/{id}', 'Frontend\SaranaPrasarana\SarprasController@lpk')->name('maps.lpk');
 Route::get('sarpras/bank/{id}', 'Frontend\SaranaPrasarana\SarprasController@bank')->name('maps.bank');
-Route::get('sarpras/ki/{id}', 'Frontend\SaranaPrasarana\SarprasController@mapsKi')->name('maps.ki');
+Route::get('sarpras/ki/{id}', 'Frontend\SaranaPrasarana\SarprasController@mapsKi')->name('maps.ki');*/
 
 Route::middleware('auth:investor')->group(function () {
     Route::get('profile/{id}','FrontEnd\Investor\ProfilController@showProfileForm')->name('form.profile');

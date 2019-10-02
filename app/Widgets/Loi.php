@@ -44,6 +44,6 @@ class Loi extends AbstractWidget
      */
     public function shouldBeDisplayed()
     {
-        return app('VoyagerAuth')->user()->can('browse', Voyager::model('User'));
+        return app('VoyagerAuth')->user();
     }
 }

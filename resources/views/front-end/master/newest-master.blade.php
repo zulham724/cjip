@@ -61,10 +61,10 @@
                 <a href="/">
                     @php $site_logo = Voyager::setting('site.logo', ''); @endphp
                     <img class="menu__logo-img" style="max-width: 50px;height: auto"
-                         src="{{asset('storage/'.$site_logo)}}" alt="">
-                    <p class="menu__logo-title">
+                         src="{{asset('storage/'.$site_logo)}}" alt="Logo Central Java Investment Platform">
+                    <h1 class="menu__logo-title">
                         {{setting('site.title')}}
-                    </p>
+                    </h1>
                 </a>
             </div>
             <div class="menu__item d-t-none">
@@ -91,7 +91,7 @@
         <div class="mobile-menu__logo">
             @php $site_logo = Voyager::setting('site.logo', ''); @endphp
             <img class="menu__logo-img" style="max-width: 50px;height: auto" src="{{asset('storage/'.$site_logo)}}"
-                 alt="">
+                 alt="Logo Central Java Investment Platform">
         </div>
         <button type="button" class="mobile-menu__close">
             <span><i class="mdi mdi-close" aria-hidden="true"></i></span>
@@ -127,7 +127,7 @@
     <div class="row">
         <div class="col-12">
             <a href="/">
-                <img style="max-width: 50px;height: auto" src="{{asset('storage/'.$site_logo)}}" alt="">
+                <img style="max-width: 50px;height: auto" src="{{asset('storage/'.$site_logo)}}" alt="Footer Central Java Investment Platform">
             </a>
             <nav class="footer-menu__nav">
                 <ul>
@@ -203,6 +203,18 @@
         });
         $("#opensector").click(function(){
             $("#openthissector").slideToggle("fast");
+        });
+        $("#openid").click(function(){
+            $("#openthisid").slideToggle("fast");
+        });
+        $("#opensectorid").click(function(){
+            $("#openthissectorid").slideToggle("fast");
+        });
+        $("#openmobile").click(function(){
+            $("#openthismobile").slideToggle("fast");
+        });
+        $("#opensectormobile").click(function(){
+            $("#openthissectormobile").slideToggle("fast");
         });
     });
 

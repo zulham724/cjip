@@ -20,9 +20,10 @@ class EventController extends Controller
         $talkshows = TalkshowSpeaker::all();
         $cps = CjibfCp::all();
 
-        SEOTools::setTitle($setting->nama_kegiatan);
+        SEOTools::setTitle('CJIBF & CJIBE 2019 - '.$setting->nama_kegiatan);
         SEOTools::setDescription($setting->keterangan);
         SEOTools::opengraph()->setUrl(url()->current());
+        SEOTools::addImages(Voyager::image($setting->logo));
         SEOTools::setCanonical(url()->current());
         SEOTools::opengraph()->addProperty('type', 'articles');
         SEOTools::twitter()->setSite('@DPMPTSPJateng');
