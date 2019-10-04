@@ -1,6 +1,6 @@
 @extends('front-end.master.newest-master')
 @section('css')
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.uikit.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.uikit.min.css">
 @endsection
 @section('header')
 
@@ -1088,11 +1088,11 @@
             });
         });
     </script>
-    <script src="{{asset('js/front-end/faq.js')}}"></script>
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.uikit.min.js"></script>
+    <script type="application/javascript" src="{{asset('js/front-end/faq.js')}}"></script>
+    <script type="application/javascript" src="https://code.highcharts.com/highcharts.js"></script>
+    <script type="application/javascript" src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script type="application/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="application/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.uikit.min.js"></script>
     <script>
         $(document).ready(function() {
             $('#wagestable').DataTable({

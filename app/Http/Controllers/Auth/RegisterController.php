@@ -5,12 +5,15 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use App\Http\Controllers\Controller;
 use App\UserInvestor;
+use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\SEOTools;
+use Artesaos\SEOTools\Facades\TwitterCard;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use TCG\Voyager\Facades\Voyager;
 
 class RegisterController extends Controller
 {
@@ -79,11 +82,20 @@ class RegisterController extends Controller
         SEOTools::setTitle('Register to Central Java Investment Platform');
         SEOTools::setDescription('Register to Central Java Investment Platform you can easily select our investment project and we are here to help');
         SEOTools::opengraph()->setUrl(url()->current());
-        SEOTools::addImages('https://cjip.jatengprov.go.id/storage/settings/August2019/esr0C8HmQss78AAnlaue.png');
+        SEOTools::addImages(Voyager::image(setting('site.logo')));
         SEOTools::setCanonical(url()->current());
         SEOTools::opengraph()->addProperty('type', 'website');
-        SEOTools::twitter()->setSite('@DPMPTSPJateng');
-        SEOTools::jsonLd()->addImage('https://cjip.jatengprov.go.id/storage/settings/August2019/esr0C8HmQss78AAnlaue.png');
+        SEOTools::jsonLd()->addImage(Voyager::image(setting('site.logo')));
+
+        TwitterCard::addValue('card', Voyager::image(setting('site.logo')))
+            ->setType('summary_large_image')
+            ->setImage(Voyager::image(setting('site.logo')))
+            ->setTitle('Register to Central Java Investment Platform')
+            ->setDescription('Register to Central Java Investment Platform you can easily select our investment project and we are here to help')
+            ->setUrl(url()->current())
+            ->setSite('@DPMPTSPJateng');
+
+        SEOMeta::addKeyword('registerr, masuk, daftar, investasi, jawa tengah, investasi, investment, indonesia, FDI indonesia, industrial park, indonesia investment, central java, invest central java');
 
         return view('login-investor', ['url' => 'investor']);
     }

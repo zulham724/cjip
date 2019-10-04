@@ -13,8 +13,8 @@ class NewsController extends Controller
     public function news(){
             $news = Berita::where('status', 1)->get();
 
-            SEOTools::setTitle('Central Java Investment News');
-            SEOTools::setDescription('Register to Central Java Investment Platform you can easily select our investment project and we are here to help');
+            SEOTools::setTitle('News - Central Java Investment News');
+            SEOTools::setDescription('News about Investment in Central Java, Indonesia');
             SEOTools::opengraph()->setUrl(url()->current());
             SEOTools::addImages('https://cjip.jatengprov.go.id/storage/settings/August2019/esr0C8HmQss78AAnlaue.png');
             SEOTools::setCanonical(url()->current());

@@ -99,7 +99,7 @@
 }
 
 .slick-loading .slick-list {
-    background: #fff slick-image-url("ajax-loader.gif") 50% no-repeat
+    background: #fff url("../ajax-loader.gif") 50% no-repeat
 }
 
 .slick-next, .slick-prev {
@@ -244,13 +244,7 @@
 /*! lightgallery - v1.6.9 - 2018-04-03
 * http://sachinchoolur.github.io/lightGallery/
 * Copyright (c) 2018 Sachin N; Licensed GPLv3 */
-@font-face {
-    font-family: lg;
-    src: url(../../fonts/lg.eot?n1z373);
-    src: url(../../fonts/lg.eot?#iefixn1z373) format("embedded-opentype"), url(../../fonts/lg.woff?n1z373) format("woff"), url(../../fonts/lg.ttf?n1z373) format("truetype"), url(../../fonts/lg.svg?n1z373#lg) format("svg");
-    font-weight: 400;
-    font-style: normal
-}
+
 
 .lg-icon {
     font-family: lg;
@@ -451,7 +445,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
     transition: transform .25s cubic-bezier(0, 0, .25, 1) 0s
 }
 
-.lg-outer .lg-thumb-outer.lg-grab .lg-thumb-item {
+/*.lg-outer .lg-thumb-outer.lg-grab .lg-thumb-item {
     cursor: -webkit-grab;
     cursor: -o-grab;
     cursor: -ms-grab;
@@ -464,7 +458,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
     cursor: -o-grabbing;
     cursor: -ms-grabbing;
     cursor: grabbing
-}
+}*/
 
 .lg-outer .lg-thumb-outer.lg-dragging .lg-thumb {
     transition-duration: 0s !important
@@ -591,34 +585,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
     overflow: auto
 }
 
-.lg-outer .lg-has-vimeo .lg-video-play {
-    background: url(../img/vimeo-play.png) no-repeat scroll 0 0 transparent
-}
 
-.lg-outer .lg-has-vimeo:hover .lg-video-play {
-    background: url(../img/vimeo-play.png) no-repeat scroll 0 -58px transparent
-}
-
-.lg-outer .lg-has-html5 .lg-video-play {
-    background: transparent url(../img/video-play.png) no-repeat scroll 0 0;
-    height: 64px;
-    margin-left: -32px;
-    margin-top: -32px;
-    width: 64px;
-    opacity: .8
-}
-
-.lg-outer .lg-has-html5:hover .lg-video-play {
-    opacity: 1
-}
-
-.lg-outer .lg-has-youtube .lg-video-play {
-    background: url(../img/youtube-play.png) no-repeat scroll 0 0 transparent
-}
-
-.lg-outer .lg-has-youtube:hover .lg-video-play {
-    background: url(../img/youtube-play.png) no-repeat scroll 0 -60px transparent
-}
 
 .lg-outer .lg-video-object {
     width: 100% !important;
@@ -987,20 +954,6 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
     opacity: 1
 }
 
-.lg-outer.lg-grab img.lg-object {
-    cursor: -webkit-grab;
-    cursor: -o-grab;
-    cursor: -ms-grab;
-    cursor: grab
-}
-
-.lg-outer.lg-grabbing img.lg-object {
-    cursor: move;
-    cursor: -webkit-grabbing;
-    cursor: -o-grabbing;
-    cursor: -ms-grabbing;
-    cursor: grabbing
-}
 
 .lg-outer .lg {
     height: 100%;
@@ -1022,10 +975,6 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
     white-space: nowrap
 }
 
-.lg-outer .lg-item {
-    background: url(../img/loading.gif) no-repeat scroll 50% transparent;
-    display: none !important
-}
 
 .lg-outer.lg-css3 .lg-current, .lg-outer.lg-css3 .lg-next-slide, .lg-outer.lg-css3 .lg-prev-slide, .lg-outer.lg-css .lg-current {
     display: inline-block !important
@@ -2241,6 +2190,7 @@ h6 {
     cursor: default
 }
 
+/*noinspection ALL*/
 .site-btn.site-btn--max-width {
     width: -webkit-max-content;
     width: -moz-max-content;
@@ -3017,6 +2967,7 @@ h6 {
     position: relative
 }
 
+/*noinspection ALL*/
 .menu .menu__dropdown-content {
     transition: all .6s;
     opacity: 0;
@@ -3142,7 +3093,7 @@ h6 {
     .menu.menu--active .menu__mobile-button {
         top: 6px
     }
-}
+
 
 .svg-element {
     fill: #ff5c72;
@@ -3242,6 +3193,7 @@ h6 {
     }
 }
 
+/*noinspection ALL*/
 @media screen and (max-width: 468px) {
     .footer-menu .footer-menu__nav ul {
         display: -ms-flexbox;
@@ -3389,7 +3341,6 @@ h6 {
 }
 
 .video__video {
-    background-image: url(../img/img_video.png);
     background-position: 50%;
     background-size: cover;
     position: relative;
@@ -3661,6 +3612,7 @@ h6 {
     margin-right: 15px
 }
 
+/*noinspection ALL*/
 .carousel .carousel__slide-img {
     max-width: 620px;
     margin: auto 0 auto auto;
@@ -4793,6 +4745,7 @@ h6 {
     }
 }
 
+/*noinspection ALL*/
 @media screen and (max-width: 990px) {
     .pricing .pricing__plan {
         width: 50%
@@ -5213,6 +5166,7 @@ h6 {
     opacity: 1
 }
 
+/*noinspection ALL*/
 .form .form__input::-webkit-contacts-auto-fill-button {
     visibility: hidden;
     pointer-events: none;
@@ -5747,7 +5701,6 @@ h6 {
 }
 
 .style-switcher .style-switcher__control:after {
-    content: url(../img/img_color.png);
     position: absolute;
     color: #fff;
     pointer-events: none;
@@ -6042,6 +5995,7 @@ h6 {
     font-weight: 300
 }
 
+/*noinspection ALL*/
 .start-page .section.section--gradient .preview__content {
     margin-left: 0;
     max-width: -webkit-fit-content;
@@ -7386,6 +7340,7 @@ h6 {
     }
 }
 
+/*noinspection ALL*/
 @media screen and (max-width: 468px) {
     .post .post__socials {
         -ms-flex-pack: justify;

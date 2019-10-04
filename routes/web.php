@@ -17,6 +17,7 @@
 
 
 use Illuminate\Support\Facades\Redirect;
+use Spatie\Sitemap\SitemapGenerator;
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
@@ -60,7 +61,15 @@ Route::get('/', function(){
 
 
         Route::get('/', 'FrontEnd\Home\HomeController@home')->name('homey2');
+        Route::get('sitemap-generate', 'SitemapController@sitemap');
+        /*Route::get('sitemap', function(){
 
+            SitemapGenerator::create('127.0.0.1:8000')->writeToFile('sitemap.xml');
+
+            return 'sitemap created';
+
+        });*/
+        Route::get('/investment-opportunities', 'FrontEnd\Home\HomeController@investmentOpportunities')->name('investment-opportunities');
         Route::get('/ready-to-offer', 'FrontEnd\Home\HomeController@readyToOffer')->name('ready-to-offer');
         Route::get('/prospective-project', 'FrontEnd\Home\HomeController@prospectiveProject')->name('prospective-project');
         Route::get('/potential-project', 'FrontEnd\Home\HomeController@potentialProject')->name('potential-project');

@@ -46,10 +46,10 @@ class HomeController extends Controller
         SEOTools::setDescription(Voyager::setting('site.ket_why'));
         SEOTools::opengraph()->setUrl(url()->current());
         SEOTools::setCanonical(url()->current());
-        SEOTools::opengraph()->addProperty('type', 'website');
         SEOTools::addImages(Voyager::image(setting('site.bg_why')));
-        SEOTools::twitter()->setSite('@DPMPTSPJateng');
-        SEOTools::jsonLd()->addImage('https://cjip.jatengprov.go.id/storage/settings/August2019/esr0C8HmQss78AAnlaue.png');
+        SEOTools::opengraph()->addProperty('type', 'website')->setSiteName('Central Java Investment Platform')->setDescription(Voyager::setting('site.ket_why'));
+        SEOTools::twitter()->setSite('@DPMPTSPJateng')->setImages('https://cjip.jatengprov.go.id/storage/settings/August2019/esr0C8HmQss78AAnlaue.png')->setDescription(Voyager::setting('site.ket_why'));
+        SEOTools::jsonLd()->addImage('https://cjip.jatengprov.go.id/storage/settings/August2019/esr0C8HmQss78AAnlaue.png')->setUrl(url()->current())->setDescription(Voyager::setting('site.ket_why'));
 
 
         $test = Proyek::with('translations')->get();
@@ -146,9 +146,9 @@ class HomeController extends Controller
         SEOTools::opengraph()->setUrl(url()->current());
         SEOTools::setCanonical(url()->current());
         SEOTools::addImages(Voyager::image(setting('site.bg_rto')));
-        SEOTools::opengraph()->addProperty('type', 'website');
-        SEOTools::twitter()->setSite('@DPMPTSPJateng');
-        SEOTools::jsonLd()->addImage('https://cjip.jatengprov.go.id/storage/settings/August2019/esr0C8HmQss78AAnlaue.png');
+        SEOTools::opengraph()->addProperty('type', 'website')->setSiteName('Central Java Investment Platform')->setDescription(Voyager::setting('site.ket_rto'));
+        SEOTools::twitter()->setSite('@DPMPTSPJateng')->setImages('https://cjip.jatengprov.go.id/storage/settings/August2019/esr0C8HmQss78AAnlaue.png')->setDescription(Voyager::setting('site.ket_rto'));
+        SEOTools::jsonLd()->addImage(Voyager::image(setting('site.bg_rto')))->setUrl(url()->current())->setDescription(Voyager::setting('site.ket_rto'));
 
         $proyeks = Proyek::whereHas('marketplace', function ($query) {
             $query->where('name', '=', 'Ready to Offer');
@@ -174,28 +174,28 @@ class HomeController extends Controller
         SEOTools::opengraph()->setUrl(url()->current());
         SEOTools::addImages(Voyager::image($images[0]));
         SEOTools::setCanonical(url()->current());
-        SEOTools::opengraph()->addProperty('type', 'articles');
-        SEOTools::twitter()->setSite('@DPMPTSPJateng');
-        SEOTools::jsonLd()->addImage('https://cjip.jatengprov.go.id/storage/settings/August2019/esr0C8HmQss78AAnlaue.png');
+        SEOTools::opengraph()->addProperty('type', 'articles')->setSiteName('Central Java Investment Platform')->setDescription($proyek->translate('en')->latar_belakang.' - '.$proyek->latar_belakang);
+        SEOTools::twitter()->setSite('@DPMPTSPJateng')->setImages(Voyager::image($images[0]))->setDescription($proyek->translate('en')->latar_belakang.' - '.$proyek->latar_belakang);
+        SEOTools::jsonLd()->addImage(Voyager::image($images[0]))->setUrl(url()->current())->setDescription($proyek->translate('en')->latar_belakang.' - '.$proyek->latar_belakang);
 
         return view('front-end.marketplace.detail.rto', compact('proyek', 'mapsKey'));
 
     }
 
     public function prospectiveProject(){
+        $proyeks = Proyek::whereHas('marketplace', function ($query) {
+            $query->where('name', '=', 'Prospective Project');
+        })->where('status', 1)->paginate(5);
         SEOTools::setTitle('Prospective Projects');
         SEOTools::setDescription(Voyager::setting('site.ket_pros'));
         SEOTools::opengraph()->setUrl(url()->current());
         SEOTools::addImages(Voyager::image(setting('site.bg_pros')));
         SEOTools::setCanonical(url()->current());
-        SEOTools::opengraph()->addProperty('type', 'articles');
-        SEOTools::twitter()->setSite('@DPMPTSPJateng');
-        SEOTools::jsonLd()->addImage('https://cjip.jatengprov.go.id/storage/settings/August2019/esr0C8HmQss78AAnlaue.png');
+        SEOTools::opengraph()->addProperty('type', 'articles')->setSiteName('Central Java Investment Platform')->setDescription(Voyager::setting('site.ket_pros'));
+        SEOTools::twitter()->setSite('@DPMPTSPJateng')->setImages(Voyager::image(setting('site.bg_pros')))->setDescription(Voyager::setting('site.ket_pros'));
+        SEOTools::jsonLd()->addImage(Voyager::image(setting('site.bg_pros')))->setUrl(url()->current())->setDescription(Voyager::setting('site.ket_pros'));
 
 
-        $proyeks = Proyek::whereHas('marketplace', function ($query) {
-            $query->where('name', '=', 'Prospective Project');
-        })->where('status', 1)->paginate(5);
         //dd($proyeks);
         //$proyeks = Proyek::with('marketplace');
         return view('front-end.marketplace.prospective', compact('proyeks'));
@@ -210,9 +210,9 @@ class HomeController extends Controller
         SEOTools::opengraph()->setUrl(url()->current());
         SEOTools::addImages(Voyager::image($images[0]));
         SEOTools::setCanonical(url()->current());
-        SEOTools::opengraph()->addProperty('type', 'articles');
-        SEOTools::twitter()->setSite('@DPMPTSPJateng');
-        SEOTools::jsonLd()->addImage('https://cjip.jatengprov.go.id/storage/settings/August2019/esr0C8HmQss78AAnlaue.png');
+        SEOTools::opengraph()->addProperty('type', 'articles')->setSiteName('Central Java Investment Platform')->setDescription($proyek->translate('en')->latar_belakang.' - '.$proyek->latar_belakang);
+        SEOTools::twitter()->setSite('@DPMPTSPJateng')->setImages(Voyager::image($images[0]))->setDescription($proyek->translate('en')->latar_belakang.' - '.$proyek->latar_belakang);
+        SEOTools::jsonLd()->addImage(Voyager::image($images[0]))->setUrl(url()->current())->setDescription($proyek->translate('en')->latar_belakang.' - '.$proyek->latar_belakang);
 
         return view('front-end.marketplace.detail.pros', compact('proyek', 'mapsKey'));
     }
@@ -223,9 +223,9 @@ class HomeController extends Controller
         SEOTools::opengraph()->setUrl(url()->current());
         SEOTools::addImages(Voyager::image(setting('site.bg_pot')));
         SEOTools::setCanonical(url()->current());
-        SEOTools::opengraph()->addProperty('type', 'articles');
-        SEOTools::twitter()->setSite('@DPMPTSPJateng');
-        SEOTools::jsonLd()->addImage('https://cjip.jatengprov.go.id/storage/settings/August2019/esr0C8HmQss78AAnlaue.png');
+        SEOTools::opengraph()->addProperty('type', 'articles')->setSiteName('Central Java Investment Platform')->setDescription(Voyager::setting('site.ket_pot'));
+        SEOTools::twitter()->setSite('@DPMPTSPJateng')->setImages(Voyager::image(setting('site.bg_pot')))->setDescription(Voyager::setting('site.ket_pot'));
+        SEOTools::jsonLd()->addImage(Voyager::image(setting('site.bg_pros')))->setUrl(url()->current())->setDescription(Voyager::setting('site.ket_pot'));
 
 
         $proyeks = Proyek::whereHas('marketplace', function ($query) {
@@ -246,9 +246,9 @@ class HomeController extends Controller
         SEOTools::opengraph()->setUrl(url()->current());
         SEOTools::addImages(Voyager::image($images[0]));
         SEOTools::setCanonical(url()->current());
-        SEOTools::opengraph()->addProperty('type', 'articles');
-        SEOTools::twitter()->setSite('@DPMPTSPJateng');
-        SEOTools::jsonLd()->addImage('https://cjip.jatengprov.go.id/storage/settings/August2019/esr0C8HmQss78AAnlaue.png');
+        SEOTools::opengraph()->addProperty('type', 'articles')->setSiteName('Central Java Investment Platform')->setDescription($proyek->translate('en')->latar_belakang.' - '.$proyek->latar_belakang);
+        SEOTools::twitter()->setSite('@DPMPTSPJateng')->setImages(Voyager::image($images[0]))->setDescription($proyek->translate('en')->latar_belakang.' - '.$proyek->latar_belakang);
+        SEOTools::jsonLd()->addImage(Voyager::image($images[0]))->setUrl(url()->current())->setDescription($proyek->translate('en')->latar_belakang.' - '.$proyek->latar_belakang);
 
         return view('front-end.marketplace.detail.pot', compact('proyek', 'mapsKey'));
     }
@@ -256,13 +256,15 @@ class HomeController extends Controller
     public function detailProyek($id){
         $proyek = Proyek::findOrFail($id);
         $mapsKey = 'AIzaSyBGsawbqVs083lGEe8cilVz0FqO0rHt5ZE&amp';
+        $images = json_decode($proyek->fotos);
+
         SEOTools::setTitle('Detail Project Investasi -'.$proyek->translate('en')->project_name.' - '.$proyek->project_name);
         SEOTools::setDescription('Here is some potential investment project - '.$proyek->translate('en')->latar_belakang.' - '.$proyek->latar_belakang);
         SEOTools::opengraph()->setUrl(url()->current());
         SEOTools::setCanonical(url()->current());
-        SEOTools::opengraph()->addProperty('type', 'articles');
-        SEOTools::twitter()->setSite('@DPMPTSPJateng');
-        SEOTools::jsonLd()->addImage('https://cjip.jatengprov.go.id/storage/settings/August2019/esr0C8HmQss78AAnlaue.png');
+        SEOTools::opengraph()->addProperty('type', 'articles')->setSiteName('Central Java Investment Platform')->setDescription($proyek->translate('en')->latar_belakang.' - '.$proyek->latar_belakang);
+        SEOTools::twitter()->setSite('@DPMPTSPJateng')->setImages(Voyager::image($images[0]))->setDescription($proyek->translate('en')->latar_belakang.' - '.$proyek->latar_belakang);
+        SEOTools::jsonLd()->addImage(Voyager::image($images[0]))->setUrl(url()->current())->setDescription($proyek->translate('en')->latar_belakang.' - '.$proyek->latar_belakang);
 
         return view('front-end.marketplace.detail.detailproyek', compact('proyek', 'mapsKey'));
     }
@@ -271,12 +273,12 @@ class HomeController extends Controller
         $profil = ProfilKabupaten::findOrFail($id);
         $mapsKey = 'AIzaSyBGsawbqVs083lGEe8cilVz0FqO0rHt5ZE&amp';
         SEOTools::setTitle($profil->profil.' - '.$profil->translate('en')->profil);
-        SEOTools::setDescription('Here is some ready to offered investment project - '.$profil->translate('en')->profil.' - '.$profil->profil);
+        SEOTools::setDescription($profil->translate('en')->profil.' - '.$profil->profil);
         SEOTools::opengraph()->setUrl(url()->current());
         SEOTools::setCanonical(url()->current());
-        SEOTools::opengraph()->addProperty('type', 'articles');
-        SEOTools::twitter()->setSite('@DPMPTSPJateng');
-        SEOTools::jsonLd()->addImage('https://cjip.jatengprov.go.id/storage/settings/August2019/esr0C8HmQss78AAnlaue.png');
+        SEOTools::opengraph()->addProperty('type', 'articles')->setSiteName('Central Java Investment Platform')->setDescription($profil->translate('en')->profil.' - '.$profil->profil);
+        SEOTools::twitter()->setSite('@DPMPTSPJateng')->setImages('https://cjip.jatengprov.go.id/storage/settings/August2019/esr0C8HmQss78AAnlaue.png')->setDescription($profil->translate('en')->profil.' - '.$profil->profil);
+        SEOTools::jsonLd()->addImage('https://cjip.jatengprov.go.id/storage/settings/August2019/esr0C8HmQss78AAnlaue.png')->setUrl(url()->current())->setDescription($profil->translate('en')->profil.' - '.$profil->profil);
 
         return view('front-end.marketplace.detail.profil', compact('profil', 'mapsKey'));
     }
@@ -287,9 +289,9 @@ class HomeController extends Controller
         SEOTools::opengraph()->setUrl(url()->current());
         SEOTools::setCanonical(url()->current());
         SEOTools::addImages(Voyager::image(setting('site.bg_why')));
-        SEOTools::opengraph()->addProperty('type', 'articles');
-        SEOTools::twitter()->setSite('@DPMPTSPJateng');
-        SEOTools::jsonLd()->addImage('https://cjip.jatengprov.go.id/storage/settings/August2019/esr0C8HmQss78AAnlaue.png');
+        SEOTools::opengraph()->addProperty('type', 'articles')->setSiteName('Central Java Investment Platform')->setDescription('Frequently Asked Question about investment in Central Java - Pertanyaan yang sering muncul ketika Anda ingin berinvestasi di Provinsi Jawa Tengah');
+        SEOTools::twitter()->setSite('@DPMPTSPJateng')->setImages(Voyager::image(setting('site.bg_why')))->setDescription('Frequently Asked Question about investment in Central Java - Pertanyaan yang sering muncul ketika Anda ingin berinvestasi di Provinsi Jawa Tengah');
+        SEOTools::jsonLd()->addImage(Voyager::image(setting('site.bg_why')))->setUrl(url()->current())->setDescription('Frequently Asked Question about investment in Central Java - Pertanyaan yang sering muncul ketika Anda ingin berinvestasi di Provinsi Jawa Tengah');
 
         $faqs = Faq::all()->groupBy('jenis_faq');
         //dd($faqs);
@@ -334,9 +336,9 @@ class HomeController extends Controller
         SEOTools::opengraph()->setUrl(url()->current());
         SEOTools::setCanonical(url()->current());
         SEOTools::addImages(Voyager::image(setting('site.bg_why')));
-        SEOTools::opengraph()->addProperty('type', 'articles');
-        SEOTools::twitter()->setSite('@DPMPTSPJateng');
-        SEOTools::jsonLd()->addImage('https://cjip.jatengprov.go.id/storage/settings/August2019/esr0C8HmQss78AAnlaue.png');
+        SEOTools::opengraph()->addProperty('type', 'articles')->setSiteName('Central Java Investment Platform')->setDescription('Central Java Investment on Sector '.$slug);
+        SEOTools::twitter()->setSite('@DPMPTSPJateng')->setImages(Voyager::image(setting('site.bg_why')))->setDescription('Central Java Investment on Sector '.$slug);
+        SEOTools::jsonLd()->addImage(Voyager::image(setting('site.bg_why')))->setUrl(url()->current())->setDescription('Central Java Investment on Sector '.$slug);
 
         //dd($proyeks);
         return view('front-end.marketplace.bysector', compact('proyeks', 'slug'));
@@ -364,9 +366,9 @@ class HomeController extends Controller
         SEOTools::opengraph()->setUrl(url()->current());
         SEOTools::setCanonical(url()->current());
         SEOTools::addImages(Voyager::image(setting('site.bg_why')));
-        SEOTools::opengraph()->addProperty('type', 'articles');
-        SEOTools::twitter()->setSite('@DPMPTSPJateng');
-        SEOTools::jsonLd()->addImage('https://cjip.jatengprov.go.id/storage/settings/August2019/esr0C8HmQss78AAnlaue.png');
+        SEOTools::opengraph()->addProperty('type', 'articles')->setSiteName('Central Java Investment Platform')->setDescription('Central Java Investment on  City/Regency'.$user->name);
+        SEOTools::twitter()->setSite('@DPMPTSPJateng')->setImages(Voyager::image(setting('site.bg_why')))->setDescription('Central Java Investment on  City/Regency'.$user->name);
+        SEOTools::jsonLd()->addImage(Voyager::image(setting('site.bg_why')))->setUrl(url()->current())->setDescription('Central Java Investment on City/Regency '.$user->name);
 
 
         return view('front-end.marketplace.detail.proyek', compact('proyeks'));
@@ -408,9 +410,9 @@ class HomeController extends Controller
         SEOTools::opengraph()->setUrl(url()->current());
         SEOTools::setCanonical(url()->current());
         SEOTools::addImages(Voyager::image(setting('site.bg_why')));
-        SEOTools::opengraph()->addProperty('type', 'articles');
-        SEOTools::twitter()->setSite('@DPMPTSPJateng');
-        SEOTools::jsonLd()->addImage('https://cjip.jatengprov.go.id/storage/settings/August2019/esr0C8HmQss78AAnlaue.png');
+        SEOTools::opengraph()->addProperty('type', 'website')->setSiteName('Central Java Investment Platform')->setDescription('Discover all Central Java Investment Projects using Maps, Temukan semua projek investasi Jawa Tengah melalui peta');
+        SEOTools::twitter()->setSite('@DPMPTSPJateng')->setImages(Voyager::image(setting('site.bg_why')))->setDescription('Discover all Central Java Investment Projects using Maps, Temukan semua projek investasi Jawa Tengah melalui peta');
+        SEOTools::jsonLd()->addImage(Voyager::image(setting('site.bg_why')))->setUrl(url()->current())->setDescription('Discover all Central Java Investment Projects using Maps, Temukan semua projek investasi Jawa Tengah melalui peta');
 
 
         //dd(asText($proyek->location));
@@ -476,5 +478,22 @@ class HomeController extends Controller
         $mapsKey = 'AIzaSyBGsawbqVs083lGEe8cilVz0FqO0rHt5ZE&amp';
 
         return view('front-end.marketplace.bylocation', compact('array', 'mapsKey'));
+    }
+
+    public function investmentOpportunities(){
+        $proyeks = Proyek::where('status', 1)->paginate(10);
+        $mapsKey = 'AIzaSyBGsawbqVs083lGEe8cilVz0FqO0rHt5ZE&amp';
+
+        SEOTools::setTitle('Potential Projects');
+        SEOTools::setDescription('Here is some potential investment projects investment project - '.Voyager::setting('site.ket_why'));
+        SEOTools::opengraph()->setUrl(url()->current());
+        SEOTools::addImages(Voyager::image(setting('site.bg_why')));
+        SEOTools::setCanonical(url()->current());
+        SEOTools::opengraph()->addProperty('type', 'website')->setSiteName('Central Java Investment Platform')->setDescription('Discover all Central Java Investment Projects, Temukan semua projek investasi Jawa Tengah');
+        SEOTools::twitter()->setSite('@DPMPTSPJateng')->setImages(Voyager::image(setting('site.bg_why')))->setDescription('Discover all Central Java Investment Projects, Temukan semua projek investasi Jawa Tengah');
+        SEOTools::jsonLd()->addImage(Voyager::image(setting('site.bg_why')))->setUrl(url()->current())->setDescription('Discover all Central Java Investment Projects, Temukan semua projek investasi Jawa Tengah');
+
+        return view('front-end.investment-opportunities', compact('proyeks', 'mapsKey'));
+
     }
 }

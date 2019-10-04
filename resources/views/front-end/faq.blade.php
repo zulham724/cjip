@@ -128,8 +128,8 @@
 
 @section('js')
 
-    <script src="{{asset('js/front-end/faq.js')}}"></script>
-    <script src="{{asset('js/front-end/sidebar.js')}}"></script>
+    <script type="application/javascript" src="{{asset('js/front-end/faq.js')}}"></script>
+    <script type="application/javascript" src="{{asset('js/front-end/sidebar.js')}}"></script>
     <script>
         var header = document.getElementById("menu");
         var btns = header.getElementsByClassName("sidebar__item");

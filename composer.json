@@ -31,6 +31,7 @@
         "qoraiche/laravel-mail-editor": "^1.2",
         "renatomarinho/laravel-page-speed": "^1.8",
         "simplesoftwareio/simple-qrcode": "~2",
+        "spatie/laravel-sitemap": "^5.5",
         "tcg/voyager": "^1.2",
         "teamtnt/laravel-scout-tntsearch-driver": "^7.0"
     },
