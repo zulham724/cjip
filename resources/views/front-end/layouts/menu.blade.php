@@ -51,7 +51,7 @@
                 <ul class="mobile-menu__ul">
                     @foreach($sektors as $subItem)
                         <li class="mobile-menu__li">
-                            <a class="link link--gray" target="" href="{{route('by.sector', $subItem->name)}}">{{ $subItem->name }}</a>
+                            <a class="link link--gray" target="" href="{{route('sector.fo', $subItem->name)}}">{{ $subItem->name }}</a>
                         </li>
                     @endforeach
                 </ul>
