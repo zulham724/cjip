@@ -155,7 +155,7 @@ class HomeController extends Controller
         SEOTools::setDescription(substr(Voyager::setting('site.ket_rto'), 0, 155));
         SEOTools::opengraph()->setUrl(url()->current());
         SEOTools::setCanonical(url()->current());
-        SEOTools::addImages(Voyager::image(setting('site.bg_rto')));
+        SEOTools::addImages(Voyager::image(setting('site.bg_why')));
         SEOTools::opengraph()->addProperty('type', 'website')->setSiteName('Central Java Investment Platform')->setDescription(substr(Voyager::setting('site.ket_rto'), 0, 155));
         SEOTools::jsonLd()->addImage(Voyager::image(setting('site.bg_rto')))->setUrl(url()->current())->setDescription(substr(Voyager::setting('site.ket_rto'), 0, 155));
 
@@ -212,16 +212,16 @@ class HomeController extends Controller
             $query->where('name', '=', 'Prospective Project');
         })->where('status', 1)->paginate(5);
         SEOTools::setTitle('Prospective Projects - Central Java Investment Platform');
-        SEOTools::setDescription(Voyager::setting('site.ket_pros'));
+        SEOTools::setDescription(substr(Voyager::setting('site.ket_pros'), 0, 155));
         SEOTools::opengraph()->setUrl(url()->current());
-        SEOTools::addImages(Voyager::image(setting('site.bg_pros')));
+        SEOTools::addImages(Voyager::image(setting('site.bg_why')));
         SEOTools::setCanonical(url()->current());
-        SEOTools::opengraph()->addProperty('type', 'articles')->setSiteName('Prospective Projects - Central Java Investment Platform')->setDescription(Voyager::setting('site.ket_pros'));
-        SEOTools::jsonLd()->addImage(Voyager::image(setting('site.bg_pros')))->setUrl(url()->current())->setDescription(Voyager::setting('site.ket_pros'));
+        SEOTools::opengraph()->addProperty('type', 'articles')->setSiteName('Prospective Projects - Central Java Investment Platform')->setDescription(substr(Voyager::setting('site.ket_pros'), 0, 155));
+        SEOTools::jsonLd()->addImage(Voyager::image(setting('site.bg_pros')))->setUrl(url()->current())->setDescription(substr(Voyager::setting('site.ket_pros'), 0, 155));
 
-        TwitterCard::addValue('card', Voyager::image(setting('site.bg_pros')))
+        TwitterCard::addValue('card', substr(Voyager::setting('site.ket_pros'), 0, 155))
             ->setType('summary_large_image')
-            ->setImage(Voyager::image(setting('site.bg_pros')))
+            ->setImage(Voyager::image(setting('site.bg_why')))
             ->setTitle('Prospective Projects - Central Java Investment Platform')
             ->setDescription(Voyager::setting('site.ket_pros'))
             ->setUrl(url()->current())
@@ -245,9 +245,9 @@ class HomeController extends Controller
         SEOTools::opengraph()->addProperty('type', 'articles')->setSiteName('Central Java Investment Platform')->setDescription('A Prospective Investment Project in the '.$proyek->bySector->name. ' sector in the city of '.$proyek->byUser->namakota[0]->nama.', Central Java, Indonesia');
         SEOTools::jsonLd()->addImage(Voyager::image($images[0]))->setUrl(url()->current())->setDescription('A Prospective Investment Project in the '.$proyek->bySector->name. ' sector in the city of '.$proyek->byUser->namakota[0]->nama.', Central Java, Indonesia');
 
-        TwitterCard::addValue('card', Voyager::image(setting('site.bg_pros')))
+        TwitterCard::addValue('card', Voyager::image(setting('site.bg_why')))
             ->setType('summary_large_image')
-            ->setImage(Voyager::image(setting('site.bg_pros')))
+            ->setImage(Voyager::image(setting('site.bg_why')))
             ->setTitle('Prospective Projects Central Java Investment Platform')
             ->setDescription('A Prospective Investment Project in the '.$proyek->bySector->name. ' sector in the city of '.$proyek->byUser->namakota[0]->nama.', Central Java, Indonesia')
             ->setUrl(url()->current())
@@ -258,18 +258,18 @@ class HomeController extends Controller
 
     public function potentialProject(){
         SEOTools::setTitle('Potential Projects - Central Java Investment Platform');
-        SEOTools::setDescription(Voyager::setting('site.ket_pot'));
+        SEOTools::setDescription(substr(Voyager::setting('site.ket_pot'), 0, 155));
         SEOTools::opengraph()->setUrl(url()->current());
-        SEOTools::addImages(Voyager::image(setting('site.bg_pot')));
+        SEOTools::addImages(Voyager::image(setting('site.bg_why')));
         SEOTools::setCanonical(url()->current());
-        SEOTools::opengraph()->addProperty('type', 'articles')->setSiteName('Central Java Investment Platform')->setDescription(Voyager::setting('site.ket_pot'));
-        SEOTools::jsonLd()->addImage(Voyager::image(setting('site.bg_pot')))->setUrl(url()->current())->setDescription(Voyager::setting('site.ket_pot'));
+        SEOTools::opengraph()->addProperty('type', 'articles')->setSiteName('Central Java Investment Platform')->setDescription(substr(Voyager::setting('site.ket_pot'), 0, 155));
+        SEOTools::jsonLd()->addImage(Voyager::image(setting('site.bg_why')))->setUrl(url()->current())->setDescription(substr(Voyager::setting('site.ket_pot'), 0, 155));
 
         TwitterCard::addValue('card', Voyager::image(setting('site.bg_pot')))
             ->setType('summary_large_image')
-            ->setImage(Voyager::image(setting('site.bg_pot')))
+            ->setImage(Voyager::image(setting('site.bg_why')))
             ->setTitle('Potential Projects - Central Java Investment Platform')
-            ->setDescription(Voyager::setting('site.ket_pot'))
+            ->setDescription(substr(Voyager::setting('site.ket_pot'), 0, 155))
             ->setUrl(url()->current())
             ->setSite('@DPMPTSPJateng');
 
