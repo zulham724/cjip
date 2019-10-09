@@ -50,8 +50,8 @@ class LoginController extends Controller
         SEOTools::opengraph()->setUrl(url()->current());
         SEOTools::addImages(Voyager::image(setting('site.logo')));
         SEOTools::setCanonical(url()->current());
-        SEOTools::opengraph()->addProperty('type', 'website');
-        SEOTools::jsonLd()->addImage(Voyager::image(setting('site.logo')));
+        SEOTools::opengraph()->addProperty('type', 'website')->setSiteName('Login to Central Java Investment Platform')->setDescription('Login to Central Java Investment Platform you can easily select our investment project and we are here to help');
+        SEOTools::jsonLd()->addImage(Voyager::image(setting('site.logo')))->setUrl(url()->current())->setDescription('Login to Central Java Investment Platform you can easily select our investment project and we are here to help');
 
         TwitterCard::addValue('card', Voyager::image(setting('site.logo')))
             ->setType('summary_large_image')

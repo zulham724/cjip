@@ -4,22 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {!! SEOMeta::generate() !!}
     {!! SEO::generate() !!}
     {!! Twitter::generate() !!}
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="alternate" hreflang="en-us" href="http://cjip.jatengprov.go.id" />
+    <link rel="alternate" hreflang="x-default" href="http://cjip.jatengprov.go.id" />
     <link rel="stylesheet" href="{{asset('css/front-end/main.css')}}" type="text/css" id="main_style">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,800" rel="stylesheet">
-    <link href="https://cdn.materialdesignicons.com/2.0.46/css/materialdesignicons.min.css" type="text/css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,800" rel="stylesheet" type="text/css">
+    <link href="https://cdn.materialdesignicons.com/2.0.46/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
     {{-- <link rel="stylesheet" href="{{asset('css/slider.css')}}">--}}
     <title>{{setting('site.title')}}</title>
     @php $title_logo = Voyager::setting('site.logo', ''); @endphp
     <link rel="icon" href="{{asset('storage/'.$title_logo)}}" type="image/png">
     <link rel="stylesheet" href="{{asset('css/front-end/nav.css')}}" type="text/css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" type="text/css">
-    @yield('css')
+@yield('css')
 <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-143558094-1"></script>
-    <script>
+    <script type="application/javascript">
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());

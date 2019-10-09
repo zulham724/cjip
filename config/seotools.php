@@ -13,7 +13,7 @@ return [
         'defaults'       => [
             'title'        => false, // set false to total remove
             'titleBefore'  => false, // Put defaults.title before page title, like 'It's Over 9000! - Dashboard'
-            'description'  => 'All Central Java Investment Project to be Offered, You Can Select in Which Project You Would Like To Invest', // set false to total remove
+            'description'  => 'Central Java is the best place in Indonesia to expand your investment. We present what you are looking for', // set false to total remove
             'separator'    => ' - ',
             'keywords'     => [],
             'canonical'    => false, // Set null for using Url::current(), set false to total remove
@@ -38,7 +38,7 @@ return [
          */
         'defaults' => [
             'title'       => false, // set false to total remove
-            'description' => 'All Central Java Investment Project to be Offered, You Can Select in Which Project You Would Like To Invest', // set false to total remove
+            'description' => 'Central Java is the best place in Indonesia to expand your investment. We present what you are looking for', // set false to total remove
             'url'         => 'https://cjip.jatengprov.go.id', // Set null for using Url::current(), set false to total remove
             'type'        => false,
             'site_name'   => false,
@@ -60,7 +60,7 @@ return [
          */
         'defaults' => [
             'title'       => false, // set false to total remove
-            'description' => 'All Central Java Investment Project to be Offered, You Can Select in Which Project You Would Like To Invest', // set false to total remove
+            'description' => 'Central Java is the best place in Indonesia to expand your investment. We present what you are looking for', // set false to total remove
             'url'         => 'https://cjip.jatengprov.go.id', // Set null for using Url::current(), set false to total remove
             'type'        => 'WebPage',
             'images'      => [],

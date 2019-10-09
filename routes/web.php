@@ -81,7 +81,6 @@ Route::get('/', function(){
 
         Route::get('/sectors/{slug}', 'FrontEnd\Home\HomeController@bySector')->name('sector.fo');
         Route::get('/city/{id}', 'FrontEnd\Home\HomeController@byCity')->name('by.city');
-        Route::get('/sector/{id}', 'FrontEnd\Home\HomeController@findBySector')->name('by.sector');
         Route::get('/interest-sector/{id}', 'FrontEnd\Home\HomeController@findInterestBySector')->name('interest.sector');
 
 
@@ -226,6 +225,7 @@ Route::middleware('auth:investor')->group(function () {
     Route::post('loi/','FrontEnd\Investor\InterestController@storeInterest')->name('store.interest');
 
     Route::get('mail/daftar-cjibf','Mail\CJIBF\DaftarCjibfController@send')->name('daftar.cjibf');
+    Route::get('/sector/{id}', 'FrontEnd\Home\HomeController@findBySector')->name('by.sector');
 
 });
 
