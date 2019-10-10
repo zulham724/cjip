@@ -139,6 +139,52 @@ if (starts_with(app('VoyagerAuth')->user()->avatar, 'http://') || starts_with(ap
     }
     @endif
 </script>
+<script>
+
+    var alarmInput = $('#alarm_action');
+    alarmInput.on('change', function () {
+        var rp = $('#rp');
+        var usd = $('#usd');
+        //this == alarmInput within this change handler
+        switch ($(this).val()) {
+            case 'rupiah':
+                rp.show();
+                usd.hide();
+                break;
+            case 'dollar':
+                rp.hide();
+                usd.show();
+                break;
+        }
+    });
+</script>
+<script src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
+<script>
+    $('#rp').inputmask("numeric", {
+        radixPoint: ".",
+        groupSeparator: ".",
+        digits: 3,
+        autoGroup: true,
+        /* prefix: 'Rp. ',*/ //Space after $, this will not truncate the first character.
+        rightAlign: false,
+        oncleared: function () {
+            self.Value('');
+        }
+    });
+</script>
+<script>
+    $('#usd').inputmask("numeric", {
+        radixPoint: ".",
+        groupSeparator: ".",
+        digits: 3,
+        autoGroup: true,
+        /* prefix: 'Rp. ',*/ //Space after $, this will not truncate the first character.
+        rightAlign: false,
+        oncleared: function () {
+            self.Value('');
+        }
+    });
+</script>
 @include('voyager::media.manager')
 @yield('javascript')
 @stack('javascript')

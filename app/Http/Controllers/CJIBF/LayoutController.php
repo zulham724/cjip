@@ -156,7 +156,7 @@ class LayoutController extends Controller
             $project->bc_ratio = $request->bc_ratio;
             $project->kab_kota_id = $request->kab_kota_id;
             $project->location = DB::raw("ST_GeomFromText('POINT({$lng} {$lat})')");
-            //dd($project);
+            dd($project);
             $project->save();
         }
 

@@ -1,12 +1,12 @@
-@extends('voyager::master')
+@extends('vendor.voyager.master')
 @section('css')
-    <link rel="stylesheet" href="{{asset('css/front-end/cjibf.css')}}">
-    <link rel="stylesheet" href="{{asset('css/cjibf.css')}}">
+    {{--<link rel="stylesheet" href="{{asset('css/front-end/cjibf.css')}}">--}}
+    {{--<link rel="stylesheet" href="{{asset('css/cjibf.css')}}">--}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="{{asset('css/front-end/main.css')}}" id="main_style">
     <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,800" rel="stylesheet">
     <link href="https://cdn.materialdesignicons.com/2.0.46/css/materialdesignicons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('sass')}}">
+    {{--<link rel="stylesheet" href="{{asset('sass')}}">--}}
 @endsection
 @section('page_header')
     <h1 class="page-title">
@@ -282,48 +282,5 @@
         }
     </script>
 
-    <script>
-        $('#rp').inputmask("numeric", {
-            radixPoint: ".",
-            groupSeparator: ".",
-            digits: 3,
-            autoGroup: true,
-            /* prefix: 'Rp. ',*/ //Space after $, this will not truncate the first character.
-            rightAlign: false,
-            oncleared: function () {
-                self.Value('');
-            }
-        });
-    </script>
-    <script>
-        $('#usd').inputmask("numeric", {
-            radixPoint: ".",
-            groupSeparator: ".",
-            digits: 3,
-            autoGroup: true,
-            /* prefix: 'Rp. ',*/ //Space after $, this will not truncate the first character.
-            rightAlign: false,
-            oncleared: function () {
-                self.Value('');
-            }
-        });
-    </script>
-    <script>
-        var alarmInput = $('#alarm_action');
-        alarmInput.on('change', function () {
-            var rp = $('#rp');
-            var usd = $('#usd');
-            //this == alarmInput within this change handler
-            switch ($(this).val()) {
-                case 'rupiah':
-                    rp.show();
-                    usd.hide();
-                    break;
-                case 'dollar':
-                    rp.hide();
-                    usd.show();
-                    break;
-            }
-        });
-    </script>
+
 @endsection
