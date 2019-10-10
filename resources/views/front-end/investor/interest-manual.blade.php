@@ -1,147 +1,216 @@
 @extends('front-end.master.newest-master')
 @section('css')
     <style>
+        .pagination {
+            display: inline-block;
+        }
 
-        .modal-open {
-            overflow: hidden;
+        .pagination a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
         }
-        .modal {
-            position: fixed;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            z-index: 1050;
-            display: none;
-            overflow: hidden;
-            -webkit-overflow-scrolling: touch;
-            outline: 0;
+
+        .pagination a.active {
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
         }
-        .modal.fade .modal-dialog {
-            -webkit-transform: translate(0, -25%);
-            -ms-transform: translate(0, -25%);
-            -o-transform: translate(0, -25%);
-            transform: translate(0, -25%);
-            -webkit-transition: -webkit-transform 0.3s ease-out;
-            -o-transition: -o-transform 0.3s ease-out;
-            transition: transform 0.3s ease-out;
+
+        .pagination a:hover:not(.active) {
+            background-color: #ddd;
+            border-radius: 5px;
         }
-        .modal.in .modal-dialog {
-            -webkit-transform: translate(0, 0);
-            -ms-transform: translate(0, 0);
-            -o-transform: translate(0, 0);
-            transform: translate(0, 0);
+        .carousel{
+            width:100%;
+            max-width:1280px;
+            max-height:600px;
+            font-family: 'Open Sans', sans-serif;
         }
-        .modal-open .modal {
-            overflow-x: hidden;
-            overflow-y: auto;
-        }
-        .modal-dialog {
+        .carousel .item {
             position: relative;
-            width: auto;
-            margin: 10px;
         }
-        .modal-content {
-            position: relative;
-            background-color: #ffffff;
-            -webkit-background-clip: padding-box;
-            background-clip: padding-box;
-            border: 1px solid #999999;
-            border: 1px solid rgba(0, 0, 0, 0.2);
-            border-radius: 6px;
-            -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
-            box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
-            outline: 0;
+        .carousel .item .imageContainer {
+            display:block;
+            width:100%;
+            position:relative;
+            max-height:600px;
         }
-        .modal-backdrop {
-            position: fixed;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            z-index: 1040;
-            background-color: #000000;
-        }
-        .modal-backdrop.fade {
-            filter: alpha(opacity=0);
-            opacity: 0;
-        }
-        .modal-backdrop.in {
-            filter: alpha(opacity=50);
-            opacity: 0.5;
-        }
-        .modal-header {
-            padding: 15px;
-            border-bottom: 1px solid #e5e5e5;
-        }
-        .modal-header .close {
-            margin-top: -2px;
-        }
-        .modal-title {
-            margin: 0;
-            line-height: 1.42857143;
-        }
-        .modal-body {
-            position: relative;
-            padding: 15px;
-        }
-        .modal-footer {
-            padding: 15px;
-            text-align: right;
-            border-top: 1px solid #e5e5e5;
-        }
-        .modal-footer .btn + .btn {
-            margin-bottom: 0;
-            margin-left: 5px;
-        }
-        .modal-footer .btn-group .btn + .btn {
-            margin-left: -1px;
-        }
-        .modal-footer .btn-block + .btn-block {
-            margin-left: 0;
-        }
-        .modal-scrollbar-measure {
+
+        .carousel .item .imageContainer:before{
+            content:"";
             position: absolute;
-            top: -9999px;
-            width: 50px;
-            height: 50px;
-            overflow: scroll;
+            top:0px;
+            left:0px;
+            color:red;
+            width:100%;
+            height:100%;
+            background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.75) 90%, rgba(0,0,0,0.75) 100%); /* FF3.6+ */
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(90%,rgba(0,0,0,0.75)), color-stop(100%,rgba(0,0,0,0.75))); /* Chrome,Safari4+ */
+            background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.75) 90%,rgba(0,0,0,0.75) 100%); /* Chrome10+,Safari5.1+ */
+            background: -o-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.75) 90%,rgba(0,0,0,0.75) 100%); /* Opera 11.10+ */
+            background: -ms-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.75) 90%,rgba(0,0,0,0.75) 100%); /* IE10+ */
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.75) 90%,rgba(0,0,0,0.75) 100%); /* W3C */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#bf000000',GradientType=0 ); /* IE6-9 */
         }
-        @media (min-width: 768px) {
-            .modal-dialog {
-                width: 600px;
-                margin: 30px auto;
+
+        .carousel .item img {
+            display:block;
+            width:100%;
+        }
+
+        .carousel .item .overlay {
+            z-index: 999;
+            position:absolute;
+            bottom:0px;
+            left:0px;
+            right:0px;
+            color:#fff;
+            padding: 30px 0px 70px 0px;
+
+        }
+
+        .carousel .item .overlay h3{
+            text-align: center;
+            font-size: 40px;
+            font-weight: 300;
+            padding-bottom: 20px;
+            width: 70%;
+            margin: 0 auto;
+        }
+        .carousel .item .overlay p{
+            text-align: center;
+            width: 60%;
+            margin: 0 auto;
+            font-size: 16px;
+            font-weight: 300;
+            line-height: 29px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+
+        .carousel .slick-dots{
+            position:absolute;
+            bottom:10px;
+            z-index: 999;
+        }
+
+        .slick-dots li button:before
+        {
+            color: #fff;
+        }
+
+        .slick-dots li.slick-active button:before
+        {
+            color: #fff;
+        }
+
+        @media only screen and (min-width: 901px) and (max-width: 1100px) {
+            .carousel {
+                max-height:600px;
             }
-            .modal-content {
-                -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            .carousel .item .imageContainer{
+                max-height:600px;
             }
-            .modal-sm {
-                width: 300px;
+
+            .carousel .item .overlay{
+                padding-bottom: 55px;
+            }
+            .carousel .item .overlay h3{
+                width: 80%;
+                font-size: 34px;
+                line-height: 40px;
+                padding-bottom:10px;
+            }
+            .carousel .item .overlay p{
+                width: 65%;
+                font-size:15px;
+                line-height: 25px;
             }
         }
-        @media (min-width: 992px) {
-            .modal-lg {
-                width: 900px;
+
+        @media only screen and (min-width: 651px) and (max-width: 900px) {
+            .carousel .item .overlay{
+                padding-bottom: 50px;
+            }
+            .carousel .item .overlay h3{
+                width: 80%;
+                font-size: 26px;
+                line-height: 30px;
+                padding-bottom:10px;
+            }
+            .carousel .item .overlay p{
+                width: 70%;
+                font-size:14px;
+                line-height: 20px;
             }
         }
-        .clearfix:before,
-        .clearfix:after,
-        .modal-header:before,
-        .modal-header:after,
-        .modal-footer:before,
-        .modal-footer:after {
-            display: table;
-            content: " ";
+
+        @media only screen and (max-width: 650px) {
+            .carousel .item .overlay{
+                position: relative;
+                background: inherit;
+                color:#000;
+                padding: 25px 20px 40px 20px;
+            }
+            .carousel .item .overlay h3{
+                width: 100%;
+                text-align: left;
+                color: rgba(0,0,0,0.9);
+                font-size: 27px;
+                font-weight: 400;
+                padding-bottom:10px;
+            }
+            .carousel .item .overlay p{
+                width: 100%;
+                text-align: left;
+                color: rgba(102, 102, 102, 0.9);
+                font-size:17px;
+            }
+
+            .carousel .slick-dots{
+                bottom: -3px;
+            }
+            .slick-dots li button:before
+            {
+                color: #000;
+            }
+
+            .slick-dots li.slick-active button:before
+            {
+                color: #000;
+            }
+
         }
-        .clearfix:after,
-        .modal-header:after,
-        .modal-footer:after {
-            clear: both;
+
+        @media only screen and (max-width: 550px) {
+            .carousel .item .overlay{
+                padding: 15px 15px 40px 15px;
+            }
+            .carousel .item .overlay h3{
+                font-size: 24px;
+                line-height: 29px;
+            }
+            .carousel .item .overlay p{
+                font-size:13px;
+                line-height: 21px;
+            }
         }
+
+        @media only screen and (max-width: 450px) {
+            .carousel .item .overlay h3{
+                font-size: 20px;
+                line-height: 25px;
+            }
+            .carousel .item .overlay p{
+                font-size:13px;
+                line-height: 21px;
+            }
+        }
+
+        @import url('https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,600,700,300,800');
     </style>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 @endsection
 @section('header')
     <header class="header-home header-home--color">
@@ -161,47 +230,34 @@
 @endsection
 @section('content')
 <div class="container">
-    @if($cjibf->is_open == 1)
-        <div class="col-12 col-m-12">
-            <div class="card post__card post__card--comments">
-                <p class="card__title" style="text-align: center"><strong style="color: #ff5c72">{{$cjibf->nama_kegiatan}}</strong> is open <strong style="color: #ff5c72">Register NOW !!!</strong></p>
-                <div class="post__write-comment post__write-comment--main form form--comment" style="text-align: center">
-                    @if(Auth::guard('investor'))
-                        <div class="header-home__btns header-home__btns-mobile">
-                            <a href="{{route('frontend.cjibf')}}" class="site-btn site-btn--accent header-home__btn">Join CJIBF</a>
-                        </div>
-                        @else
-                        <div class="header-home__btns header-home__btns-mobile">
-                            <a href="/event" class="site-btn site-btn--accent header-home__btn">Register CJIBF</a>
-                        </div>
-                    @endif
+    <div class="col-12 col-m-12">
+        <div class="card post__card post__card--comments">
+            <p class="card__title" style="text-align: center">Select <strong style="color: #ff5c72">sectors</strong> in which you like to <strong style="color: #ff5c72">invest</strong></p>
+            <div class="post__write-comment post__write-comment--main form form--comment">
+                <select class="form__input form__input--select js-field__sector" name="sektor" id="sektor" title="Sector">
+                    <option value="" selected disabled>Select Sektor</option>
+                @foreach($sektors as $sector)
+                        <option value="{{$sector->id}}">{{$sector->name}}</option>
+                    @endforeach
+                </select>
 
+                <div id="command" style="padding-left: 30px;padding-top: 30px; background-color: #ff4a52">
+                    <h3 class="m-0" style="padding-bottom: 30px" align="center">Select Sector First</h3>
                 </div>
-            </div>
-        </div>
-        @else
-        <div class="col-12 col-m-12">
-            <div class="card post__card post__card--comments">
-                <p class="card__title" style="text-align: center">Select <strong style="color: #ff5c72">sectors</strong> in which you like to <strong style="color: #ff5c72">invest</strong></p>
-                <div class="post__write-comment post__write-comment--main form form--comment">
-                    <select class="form__input form__input--select js-field__sector" name="sektor" id="sektor" title="Sector">
-                        <option value="" selected disabled>Select Sektor</option>
-                        @foreach($sektors as $sector)
-                            <option value="{{$sector->id}}">{{$sector->name}}</option>
-                        @endforeach
-                    </select>
 
-                    <div id="command" style="padding-left: 30px;padding-top: 30px; background-color: #ff4a52">
-                        <h3 class="m-0" style="padding-bottom: 30px" align="center">Select Sector First</h3>
+                <div id="proyek"></div>
+                {{--<form class="form__form" action="{{route('store.interest')}}" method="post">
+                    @csrf
+                    <div class="form__form-group form__form-group--without-label">
+
+                        <div class="form__input-icon-wrap">
+                            <span class="form__input-icon"><i class="mdi mdi-chevron-down"></i></span>
+                        </div>
                     </div>
-
-                    <div id="proyek"></div>
-
-                </div>
+                </form>--}}
             </div>
         </div>
-    @endif
-
+    </div>
 </div>
 @endsection
 

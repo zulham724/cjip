@@ -115,6 +115,7 @@ Route::get('/', function(){
         /*Route::get('/x', 'FrontEnd\Provinsi\VideoPlayerController@home')->name('homey');*/
 
         Route::post('/checkemail', 'FrontEnd\Home\HomeController@checkEmail')->name('checkemail');
+        Route::get('/failed', 'CJIBF\FrontEndController@failed')->name('failed');
 
         /*Route::get('/sidebar', 'FrontEnd\Home\HomeController@sidebar')->name('sidebar');
         Route::get('/menu', 'FrontEnd\Provinsi\VideoPlayerController@menu')->name('menu');
@@ -179,6 +180,7 @@ Route::post('/conversation/send', 'Chat\ContactsController@send');
     return view('home');
 
 })->name('home');*/
+
 
 
 Route::get('login/', 'Auth\LoginController@showInvestorLoginForm')->name('show.login');
