@@ -81,7 +81,6 @@ Route::get('/', function(){
 
         Route::get('/sectors/{slug}', 'FrontEnd\Home\HomeController@bySector')->name('sector.fo');
         Route::get('/city/{id}', 'FrontEnd\Home\HomeController@byCity')->name('by.city');
-        Route::get('/sector/{id}', 'FrontEnd\Home\HomeController@findBySector')->name('by.sector');
         Route::get('/interest-sector/{id}', 'FrontEnd\Home\HomeController@findInterestBySector')->name('interest.sector');
 
 
@@ -116,6 +115,7 @@ Route::get('/', function(){
         /*Route::get('/x', 'FrontEnd\Provinsi\VideoPlayerController@home')->name('homey');*/
 
         Route::post('/checkemail', 'FrontEnd\Home\HomeController@checkEmail')->name('checkemail');
+        Route::get('/failed', 'CJIBF\FrontEndController@failed')->name('failed');
 
         /*Route::get('/sidebar', 'FrontEnd\Home\HomeController@sidebar')->name('sidebar');
         Route::get('/menu', 'FrontEnd\Provinsi\VideoPlayerController@menu')->name('menu');
@@ -182,6 +182,7 @@ Route::post('/conversation/send', 'Chat\ContactsController@send');
 })->name('home');*/
 
 
+
 Route::get('login/', 'Auth\LoginController@showInvestorLoginForm')->name('show.login');
 Route::post('login/', 'Auth\LoginController@investorLogin')->name('investor.login');
 Route::get('register/', 'Auth\RegisterController@showInvestorRegisterForm')->name('show.register');
@@ -226,6 +227,7 @@ Route::middleware('auth:investor')->group(function () {
     Route::post('loi/','FrontEnd\Investor\InterestController@storeInterest')->name('store.interest');
 
     Route::get('mail/daftar-cjibf','Mail\CJIBF\DaftarCjibfController@send')->name('daftar.cjibf');
+    Route::get('/sector/{id}', 'FrontEnd\Home\HomeController@findBySector')->name('by.sector');
 
 });
 

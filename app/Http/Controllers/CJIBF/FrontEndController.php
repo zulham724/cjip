@@ -59,6 +59,35 @@ class FrontEndController extends Controller
         return view('front-end.investor.content.cjibf', compact('events', 'profile', 'cities', 'sektors', 'pengumuman', 'registered'));
     }
 
+    public function failed(){
+        $layout_col = LayoutCol::all();
+        $layout_row = LayoutRow::all();
+        $event = CjibfEvent::first();
+        $mejas = CjibfTable::all();
+        $pengumuman = Pengumuman::all();
+
+        $sendObj2 = new \stdClass();
+        $sendObj2->nama_investor = 'Ika Andi Apriliyana';
+        $sendObj2->minat_kabkota = 'Kabupaten Wonosobo';
+        $sendObj2->minat_sektor = 'Tourism';
+        $sendObj2->meja = 'C8';
+        $sendObj2->col = $layout_col;
+        $sendObj2->row = $layout_row;
+        $sendObj2->event = $event;
+        $sendObj2->mejas = $mejas;
+        $sendObj2->perusahaan = 'SENTOSA BANGUN PROPERTY';
+        $sendObj2->project = '';
+        $sendObj2->qr = QrCode::format('png')
+            ->errorCorrection('H')
+            ->size(200)
+            ->merge('http://cjip.jatengprov.go.id/storage/additional/cjip-2.png', .3, true)
+            ->generate($sendObj2->event->nama_kegiatan.','.$sendObj2->nama_investor.','.$sendObj2->perusahaan.','.$sendObj2->meja.','.$sendObj2->project);
+
+        Mail::to('andiapril1234@gmail.com')->send(new DaftarCJIBF($sendObj2));
+
+        return 'email sent';
+    }
+
     public function join(Request $request){
         //dd($request->all());
         /*try {
@@ -131,6 +160,10 @@ class FrontEndController extends Controller
                     ->size(200)
                     ->merge('http://cjip.jatengprov.go.id/storage/additional/cjip-2.png', .3, true)
                     ->generate($sendObj->event->nama_kegiatan.','.$sendObj->nama_investor.','.$sendObj->perusahaan.','.$sendObj->meja.','.$sendObj->project);
+
+
+
+
                 //dd($sendObj);
 
                 //return view('attach', ['send'=>$sendObj]);

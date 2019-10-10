@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\FrontEnd\Investor;
 
+use App\CjibfEvent;
 use App\CjibfSektor;
 use App\Feed;
 use App\KabKota;
@@ -35,8 +36,8 @@ class InterestController extends Controller
         $intersts = LoiInterest::all();
         $populers = Feed::orderByViews()->take(5)->get();
         $news = Berita::take(5)->get();
-
-        return view('front-end.investor.interest-manual', compact('perusahaan', 'sektors', 'cities', 'intersts', 'populers', 'news'));
+        $cjibf = CjibfEvent::first();
+        return view('front-end.investor.interest-manual', compact('cjibf','perusahaan', 'sektors', 'cities', 'intersts', 'populers', 'news'));
     }
 
     /**

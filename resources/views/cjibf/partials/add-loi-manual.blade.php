@@ -1,28 +1,29 @@
-@extends('voyager::master')
+@extends('vendor.voyager.master')
+
 @section('css')
-    <link rel="stylesheet" href="{{asset('css/front-end/cjibf.css')}}">
+    {{--<link rel="stylesheet" href="{{asset('css/front-end/cjibf.css')}}">
     <link rel="stylesheet" href="{{asset('css/cjibf.css')}}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="{{asset('css/front-end/main.css')}}" id="main_style">
     <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,800" rel="stylesheet">
-    <link href="https://cdn.materialdesignicons.com/2.0.46/css/materialdesignicons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('sass')}}">
+    <link href="https://cdn.materialdesignicons.com/2.0.46/css/materialdesignicons.min.css" rel="stylesheet">--}}
+    {{--<link rel="stylesheet" href="{{asset('sass')}}">--}}
 @endsection
 @section('page_header')
     <h1 class="page-title">
         {{ 'Input Rencana Realisasi' }}
     </h1>
-    @include('voyager::multilingual.language-selector')
 @stop
 @section('content')
     <form action="{{route('loi-cjibf.manual')}}" method="post">
+        @csrf
     <div class="col-lg-6 ">
         <div class="card">
             <div class="card-header border-bottom">
                 <h6 class="m-0">Company Details</h6>
             </div>
 
-                @csrf
+
             <ul class="list-group list-group-flush">
                 <li class="list-group-item p-3">
                     <div class="row">
@@ -149,7 +150,45 @@
 
 @endsection
 
-@section('javascript')
+{{--@section('javascript')
+    <script>
+        console.log('lkalksldkoaksdokos');
+        /*var alarmInput = $('#alarm_action');
+        alarmInput.on('change', function () {
+            var rp = $('#rp');
+            var usd = $('#usd');
+            //this == alarmInput within this change handler
+            switch ($(this).val()) {
+                case 'rupiah':
+                    rp.show();
+                    usd.hide();
+                    break;
+                case 'dollar':
+                    rp.hide();
+                    usd.show();
+                    break;
+            }
+        });*/
+    </script>
+    <script>
+
+        var alarmInput = $('#alarm_action');
+        alarmInput.on('change', function () {
+            var rp = $('#rp');
+            var usd = $('#usd');
+            //this == alarmInput within this change handler
+            switch ($(this).val()) {
+                case 'rupiah':
+                    rp.show();
+                    usd.hide();
+                    break;
+                case 'dollar':
+                    rp.hide();
+                    usd.show();
+                    break;
+            }
+        });
+    </script>
     <script src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
     <script>
         $('#rp').inputmask("numeric", {
@@ -177,22 +216,5 @@
             }
         });
     </script>
-    <script>
-        var alarmInput = $('#alarm_action');
-        alarmInput.on('change', function () {
-            var rp = $('#rp');
-            var usd = $('#usd');
-            //this == alarmInput within this change handler
-            switch ($(this).val()) {
-                case 'rupiah':
-                    rp.show();
-                    usd.hide();
-                    break;
-                case 'dollar':
-                    rp.hide();
-                    usd.show();
-                    break;
-            }
-        });
-    </script>
-@endsection
+
+@endsection--}}
