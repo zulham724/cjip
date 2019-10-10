@@ -161,26 +161,47 @@
 @endsection
 @section('content')
 <div class="container">
-    <div class="col-12 col-m-12">
-        <div class="card post__card post__card--comments">
-            <p class="card__title" style="text-align: center">Select <strong style="color: #ff5c72">sectors</strong> in which you like to <strong style="color: #ff5c72">invest</strong></p>
-            <div class="post__write-comment post__write-comment--main form form--comment">
-                <select class="form__input form__input--select js-field__sector" name="sektor" id="sektor" title="Sector">
-                    <option value="" selected disabled>Select Sektor</option>
-                @foreach($sektors as $sector)
-                        <option value="{{$sector->id}}">{{$sector->name}}</option>
-                    @endforeach
-                </select>
+    @if($cjibf->is_open == 1)
+        <div class="col-12 col-m-12">
+            <div class="card post__card post__card--comments">
+                <p class="card__title" style="text-align: center"><strong style="color: #ff5c72">{{$cjibf->nama_kegiatan}}</strong> is open <strong style="color: #ff5c72">Register NOW !!!</strong></p>
+                <div class="post__write-comment post__write-comment--main form form--comment" style="text-align: center">
+                    @if(Auth::guard('investor'))
+                        <div class="header-home__btns header-home__btns-mobile">
+                            <a href="{{route('frontend.cjibf')}}" class="site-btn site-btn--accent header-home__btn">Join CJIBF</a>
+                        </div>
+                        @else
+                        <div class="header-home__btns header-home__btns-mobile">
+                            <a href="/event" class="site-btn site-btn--accent header-home__btn">Register CJIBF</a>
+                        </div>
+                    @endif
 
-                <div id="command" style="padding-left: 30px;padding-top: 30px; background-color: #ff4a52">
-                    <h3 class="m-0" style="padding-bottom: 30px" align="center">Select Sector First</h3>
                 </div>
-
-                <div id="proyek"></div>
-
             </div>
         </div>
-    </div>
+        @else
+        <div class="col-12 col-m-12">
+            <div class="card post__card post__card--comments">
+                <p class="card__title" style="text-align: center">Select <strong style="color: #ff5c72">sectors</strong> in which you like to <strong style="color: #ff5c72">invest</strong></p>
+                <div class="post__write-comment post__write-comment--main form form--comment">
+                    <select class="form__input form__input--select js-field__sector" name="sektor" id="sektor" title="Sector">
+                        <option value="" selected disabled>Select Sektor</option>
+                        @foreach($sektors as $sector)
+                            <option value="{{$sector->id}}">{{$sector->name}}</option>
+                        @endforeach
+                    </select>
+
+                    <div id="command" style="padding-left: 30px;padding-top: 30px; background-color: #ff4a52">
+                        <h3 class="m-0" style="padding-bottom: 30px" align="center">Select Sector First</h3>
+                    </div>
+
+                    <div id="proyek"></div>
+
+                </div>
+            </div>
+        </div>
+    @endif
+
 </div>
 @endsection
 
