@@ -12,7 +12,7 @@
                     <h1 class="header-home__title">{{Voyager::setting('site.title_why')}}</h1>
                     <p class="header-home__description">{{Voyager::setting('site.ket_why')}}</p>
                     <div class="header-home__btns header-home__btns-mobile">
-                        <a href="/event" class="site-btn site-btn--accent header-home__btn">Join CJIBF</a>
+                        <a href="{{route('event')}}" class="site-btn site-btn--accent header-home__btn">Join CJIBF</a>
                     </div>
                 </div>
             </div>
