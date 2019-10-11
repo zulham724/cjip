@@ -9,6 +9,9 @@
     {!! Twitter::generate() !!}
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="revisit-after" content="1 days">
+    <meta name="expires" content="never">
+    <meta name="robots" content="index,follow">
     <link rel="alternate" hreflang="en-us" href="http://cjip.jatengprov.go.id" />
     <link rel="alternate" hreflang="x-default" href="http://cjip.jatengprov.go.id" />
     <link rel="stylesheet" href="{{asset('css/front-end/main.css')}}" type="text/css" id="main_style">
