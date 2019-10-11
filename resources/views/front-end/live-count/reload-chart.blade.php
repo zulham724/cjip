@@ -30,12 +30,12 @@
             type: 'column'
         },
         title: {
-            text: 'Data extracted from a HTML table in the page'
+            text: 'Estimated Investment Values by Sector'
         },
         yAxis: {
             allowDecimals: false,
             title: {
-                text: 'Units'
+                text: 'Values'
             }
         },
         tooltip: {
