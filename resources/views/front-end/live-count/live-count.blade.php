@@ -114,29 +114,29 @@
 <script>
     $(document).ready( function(){
         $('#auto').load('/reload');
-        refresh();
+        refreshauto();
     });
 
-    function refresh()
+    function refreshauto()
     {
         setTimeout( function() {
             $('#auto').load('/reload').fadeIn('slow');
-            refresh();
-        }, 200);
+            refreshauto();
+        }, 10000);
     }
 </script>
 <script>
     $(document).ready( function(){
         $('#autototal').load('/reloadtotal');
-        refresh();
+        refreshtotal();
     });
 
-    function refresh()
+    function refreshtotal()
     {
         setTimeout( function() {
             $('#autototal').load('/reloadtotal').fadeIn('slow');
-            refresh();
-        }, 200);
+            refreshtotal();
+        }, 10000);
     }
 </script>
 <script>
@@ -150,7 +150,7 @@
         setTimeout( function() {
             $('#autochart').load('/reloadchart').fadeIn('slow');
             refresh();
-        }, 10000);
+        }, 50000);
     }
 </script>
 </body>
