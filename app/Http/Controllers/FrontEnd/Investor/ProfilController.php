@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\FrontEnd\Investor;
 
+use App\CjibfEvent;
 use App\CjibfSektor;
 use App\KabKota;
 use App\LoiInterest;
@@ -26,8 +27,9 @@ class ProfilController extends Controller
         $user = UserInvestor::findOrFail($id);
         $sektors = CjibfSektor::all();
         $pengumuman = Pengumuman::all();
+        $cjibf = CjibfEvent::first();
 
-        return view('front-end.investor.form-profile', compact('user', 'sektors', 'pengumuman'));
+        return view('front-end.investor.form-profile', compact('user', 'sektors', 'pengumuman', 'cjibf'));
     }
 
     /**
@@ -120,7 +122,9 @@ class ProfilController extends Controller
 
         $user = Auth::guard('investor')->user();
         //dd($user);
-        return view('front-end.investor.content.investment', compact( 'profile', 'sektors','cities', 'user', 'lois', 'pengumuman'));
+        $cjibf = CjibfEvent::first();
+
+        return view('front-end.investor.content.investment', compact( 'cjibf','profile', 'sektors','cities', 'user', 'lois', 'pengumuman'));
     }
 
     public function investmentEdit($id){

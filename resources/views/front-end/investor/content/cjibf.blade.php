@@ -1001,8 +1001,46 @@
                 @elseif((\Carbon\Carbon::parse($events->tgl_buka)->eq(\Carbon\Carbon::now())) || (\Carbon\Carbon::parse($events->tgl_buka))->lte(\Carbon\Carbon::now()))
 
                     @isset($registered)
+                            <div class="card card-small mb-4">
+                                <div class="card-header border-bottom">
+                                    <h6 class="m-0">You are already registered on {{$events->nama_kegiatan}}</h6>
+                                    <p>We have sent you an email or keep your downloaded detail</p>
+                                    @isset($cps)
+                                        <p>Further Informations : </p>
+                                        @foreach($cps as $cp)
+                                            <h6 class="m-0px">{{$cp->name}} , {{$cp->phone}}</h6><br>
+                                        @endforeach
+                                    @endisset
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col">
+                                            <table id="example" class="table mb-0" style="width:100%; text-align: center">
+                                                <thead class="bg-light">
+                                                <tr style="text-align: center !important;">
+                                                    <th>Company Name</th>
+                                                    <th>Selected City</th>
+                                                    <th>Selected Sector</th>
+                                                    <th>Table</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
 
+                                                <tr>
+                                                    <td>{{ $registered->profil->nama_perusahaan}}</td>
+                                                    <td>{{ $registered->user->namakota[0]->nama }}</td>
+                                                    <td>{{ $registered->sektor_interest }}</td>
+                                                    <td>{{ $registered->meja_id }}</td>
+                                                </tr>
 
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <hr>
+
+                                </div>
+                            </div>
                     @else
 
                             <div class="card-header border-bottom">
@@ -1095,42 +1133,7 @@
             @isset($registered)
                 <div class="card card-small mb-4">
                     <div class="card-header border-bottom">
-                        <h6 class="m-0">You are already registered on {{$events->nama_kegiatan}}</h6>
-                        <p>We have sent you an email or keep your downloaded detail</p>
-                        @isset($cps)
-                            <p>Further Informations : </p>
-                            @foreach($cps as $cp)
-                                <h6 class="m-0px">{{$cp->name}} , {{$cp->phone}}</h6><br>
-                            @endforeach
-                        @endisset
-                        <hr>
-                        <div class="row">
-                            <div class="col">
-                                <table id="example" class="table mb-0" style="width:100%; text-align: center">
-                                    <thead class="bg-light">
-                                    <tr style="text-align: center !important;">
-                                        <th>Company Name</th>
-                                        <th>Selected City</th>
-                                        <th>Selected Sector</th>
-                                        <th>Table</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-
-                                    <tr>
-                                        <td>{{ $registered->profil->nama_perusahaan}}</td>
-                                        <td>{{ $registered->user->namakota[0]->nama }}</td>
-                                        <td>{{ $registered->sektor_interest }}</td>
-                                        <td>{{ $registered->meja_id }}</td>
-                                    </tr>
-
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-
-                        <hr>
-
+                        <h6 class="m-0">Thank You :)</h6>
                     </div>
                 </div>
             @else
@@ -1161,7 +1164,7 @@
                                         <div class="form-group col-md-12">
                                             <label for="kab_kota_manual">Select City or Regency</label>
                                             <select id="kab_kota_manual" name="kab_kota_manual" class="form-control" required>
-                                                <option selected>Select city</option>
+                                                <option value="">Select city</option>
                                                 @foreach($cities as $city)
                                                     <option value="{{$city->usernya[0]->id}}">{{$city->nama}}</option>
                                                 @endforeach

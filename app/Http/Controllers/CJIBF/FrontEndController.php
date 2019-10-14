@@ -236,14 +236,13 @@ class FrontEndController extends Controller
 
     public function joinManual(Request $request){
         //dd($request->all());
-        /*try {
+        try {
             $this->validate($request, [
-                'kab_kota' => 'required',
-                'profil' => 'required',
-                'why' => 'required',
+                'kab_kota_manual' => 'required',
+                'sektor_manual' => 'required'
             ]);
         } catch (ValidationException $e) {
-        }*/
+        }
         $user_id = Auth::guard('investor')->user()->id;
         $user_name = Auth::guard('investor')->user()->name;
         $layout_col = LayoutCol::all();

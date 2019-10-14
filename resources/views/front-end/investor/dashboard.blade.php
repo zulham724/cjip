@@ -124,7 +124,7 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     @yield('css')
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-143558094-1"></script>
-    <script>
+    <script type="application/javascript">
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
