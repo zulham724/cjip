@@ -68,6 +68,7 @@ return [
         'resources/views/vendor/maileclipse',
         'resources/views/vendor/voyager',
         'resources/views/cjibf',
+        'vendor/tcg/voyager',
     ],
 
 ];
