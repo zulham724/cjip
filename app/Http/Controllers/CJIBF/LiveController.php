@@ -38,7 +38,7 @@ class LiveController extends Controller
         $graphics = Lois::groupBy('bidang_usaha')
             ->selectRaw('*, sum(nilai_usd) as sumusd, sum(nilai_rp) as sumrp')
             ->get();
-
+        //dd($graphics);
         if (isset($lois)){
             $rp = Lois::where('cjibf', 1)->sum('nilai_rp');
             //dd($rp);

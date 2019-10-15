@@ -25,6 +25,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
 use function Sodium\increment;
 use TCG\Voyager\Facades\Voyager;
 use test\Mockery\ReturnTypeObjectTypeHint;
@@ -117,6 +118,13 @@ class LayoutController extends Controller
      */
     public function addLoi(Request $request, $profil_id, $id){
         //dd($request->all());
+
+        $this->validate($request, [
+            'project_name' => 'required',
+            'lingkup_pekerjaan' => 'required',
+            'luas_lahan' => 'required',
+            'status_kepemilikan' => 'required',
+        ]);
         $peta = $request->maps;
         $lat = (float) $peta['lat'];
         $lng = (float) $peta['lng'];
@@ -124,6 +132,7 @@ class LayoutController extends Controller
         $peserta = CjibfInvestor::findOrFail($id);
         //dd($peserta);
         $profile = ProfileInvestor::findOrFail($profil_id);
+        //dd($request->all());
 
         if ($request->filled('rp')){
             $rp = $request->input('rp');
@@ -156,7 +165,7 @@ class LayoutController extends Controller
             $project->bc_ratio = $request->bc_ratio;
             $project->kab_kota_id = $request->kab_kota_id;
             $project->location = DB::raw("ST_GeomFromText('POINT({$lng} {$lat})')");
-            dd($project);
+            //dd($project);
             $project->save();
         }
 
@@ -211,8 +220,45 @@ class LayoutController extends Controller
         return view('cjibf.partials.add-loi-manual', compact( 'sektors'));
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws ValidationException
+     */
     public function addLoiManual(Request $request){
-        //dd($request->all());
+        dd($request->all());
+        $this->validate($request, [
+            'project_name' => 'required',
+            'lingkup_pekerjaan' => 'required',
+            'luas_lahan' => 'required',
+            'status_kepemilikan' => 'required',
+            'investor_name' => 'required',
+            'jabatan' => 'required',
+            'nama_perusahaan' => 'required',
+            'badan_hukum' => 'required',
+            'bidang_usaha' => 'required',
+            'alamat' => 'required',
+            'email' => 'required',
+            'country' => 'required',
+        ]);
+        $peta = $request->maps;
+        $lat = (float) $peta['lat'];
+        $lng = (float) $peta['lng'];
+
+        $project = new Proyek();
+        $project->project_name = $request->project_name;
+        $project->lingkup_pekerjaan = $request->lingkup_pekerjaan;
+        $project->eksisting = $request->eksisting;
+        $project->luas_lahan = $request->luas_lahan;
+        $project->status_kepemilikan = $request->status_kepemilikan;
+        $project->skema_investasi = $request->skema_investasi;
+        $project->npv = $request->npv;
+        $project->irr = $request->irr;
+        $project->bc_ratio = $request->bc_ratio;
+        $project->kab_kota_id = Auth::user()->id;
+        $project->location = DB::raw("ST_GeomFromText('POINT({$lng} {$lat})')");
+        //dd($project);
+        $project->save();
 
         if ($request->filled('rp')){
             $rp = $request->input('rp');
