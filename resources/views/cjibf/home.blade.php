@@ -94,6 +94,7 @@
         <h1 class="page-title">
             Setting Event
         </h1>
+        {{--{{ menu('admin') }}--}}
         {{--<div class="box">
         <a href="#popup1" class="btn btn-danger" id="bulk_delete_btn">
             <i class="voyager-trash"></i>
@@ -106,13 +107,12 @@
             <a href="{{route('reset')}}" class="btn btn-danger" id="bulk_delete_btn"><i class="voyager-trash"></i> <span>Reset Event</span></a>
             <a href="{{route('live.count')}}" class="btn btn-success" id="bulk_delete_btn"><i class="voyager-dollar"></i> <span>Live Count</span></a>
             @endif
-
-
     </div>
-
 @stop
+
 @section('content')
     <div class="container">
+
         <div class="row justify-content-center">
             <main>
                 @if (app('VoyagerAuth')->user()->hasRole('admin'))

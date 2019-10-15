@@ -1,4 +1,4 @@
-@extends('vendor.voyager.master')
+@extends('master')
 @section('css')
     {{--<link rel="stylesheet" href="{{asset('css/front-end/cjibf.css')}}">--}}
     {{--<link rel="stylesheet" href="{{asset('css/cjibf.css')}}">--}}
@@ -24,9 +24,11 @@
                         <div class="card" style="width: 100%">
                             <div class="card-header border-bottom">
                                 <h6 class="m-0">Company Details</h6>
+
                             </div>
                             <div class="col-12">
                                 <div class="row">
+
                                     <div class="form-group col-md-4">
                                         <label for="feFirstName">Name</label>
                                         <input type="text" class="form-control" id="feFirstName" name="name"
@@ -47,14 +49,24 @@
                                 <h6 class="m-0">Project Details</h6>
                             </div>
                             <div class="col-12">
-
+                                    <div class="row">
+                                        @if (count($errors) > 0)
+                                            <div class="alert alert-danger">
+                                                <ul>
+                                                    @foreach ($errors->all() as $error)
+                                                        <li>{{ $error }}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        @endif
+                                    </div>
                                     @if(is_null($peserta->project_id))
                                     <div class="row" style="padding-top: 20px">
                                         <div class="col-4">
-                                            <input type="text" class="form-control" name="project_name" placeholder="Project Name">
+                                            <input type="text" class="form-control" name="project_name" placeholder="Project Name" required>
                                         </div>
                                         <div class="col-4">
-                                            <input type="text" class="form-control" name="lingkup_pekerjaan" placeholder="Lingkup Pekerjaan">
+                                            <input type="text" class="form-control" name="lingkup_pekerjaan" placeholder="Lingkup Pekerjaan" required>
                                         </div>
                                         <div class="col-4">
                                             <input type="text" class="form-control" name="eksisting" placeholder="Eksisting">
@@ -63,10 +75,10 @@
 
                                     <div class="row">
                                         <div class="col-4">
-                                            <input type="text" class="form-control" name="luas_lahan" placeholder="Luas Lahan">
+                                            <input type="text" class="form-control" name="luas_lahan" placeholder="Luas Lahan" required>
                                         </div>
                                         <div class="col-4">
-                                            <input type="text" class="form-control" name="status_kepemilikan" placeholder="Status Kepemilikan">
+                                            <input type="text" class="form-control" name="status_kepemilikan" placeholder="Status Kepemilikan" required>
                                         </div>
                                         <div class="col-4">
                                             <input type="text" class="form-control" name="skema_investasi" placeholder="Skema Investasi">
@@ -173,7 +185,6 @@
 @endsection
 
 @section('javascript')
-    <script src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
     <script type="text/javascript" src="{{asset('js/map/app.js')}}"></script>
     <script type="text/javascript">
         function getLocation() {
@@ -281,6 +292,50 @@
 
         }
     </script>
+    <script>
 
-
+        var alarmInput = $('#alarm_action');
+        alarmInput.on('change', function () {
+            var rp = $('#rp');
+            var usd = $('#usd');
+            //this == alarmInput within this change handler
+            switch ($(this).val()) {
+                case 'rupiah':
+                    rp.show();
+                    usd.hide();
+                    break;
+                case 'dollar':
+                    rp.hide();
+                    usd.show();
+                    break;
+            }
+        });
+    </script>
+    <script src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
+    <script>
+        $('#rp').inputmask("numeric", {
+            radixPoint: ".",
+            groupSeparator: ".",
+            digits: 3,
+            autoGroup: true,
+            /* prefix: 'Rp. ',*/ //Space after $, this will not truncate the first character.
+            rightAlign: false,
+            oncleared: function () {
+                self.Value('');
+            }
+        });
+    </script>
+    <script>
+        $('#usd').inputmask("numeric", {
+            radixPoint: ".",
+            groupSeparator: ".",
+            digits: 3,
+            autoGroup: true,
+            /* prefix: 'Rp. ',*/ //Space after $, this will not truncate the first character.
+            rightAlign: false,
+            oncleared: function () {
+                self.Value('');
+            }
+        });
+    </script>
 @endsection

@@ -67,6 +67,7 @@ return [
         'resources/views/vendor/markdown',
         'resources/views/vendor/maileclipse',
         'resources/views/vendor/voyager',
+        'resources/views/cjibf',
     ],
 
 ];

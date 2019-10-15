@@ -1,4 +1,4 @@
-@extends('voyager::master')
+@extends('master')
 @section('css')
     <link rel="stylesheet" href="{{asset('css/front-end/cjibf.css')}}">
     <link rel="stylesheet" href="{{asset('css/cjibf.css')}}">
