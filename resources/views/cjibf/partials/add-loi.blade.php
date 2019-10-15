@@ -62,40 +62,15 @@
                                     </div>
                                     @if(is_null($peserta->project_id))
                                     <div class="row" style="padding-top: 20px">
-                                        <div class="col-4">
+                                        <div class="col-6">
                                             <input type="text" class="form-control" name="project_name" placeholder="Project Name" required>
                                         </div>
-                                        <div class="col-4">
-                                            <input type="text" class="form-control" name="lingkup_pekerjaan" placeholder="Lingkup Pekerjaan" required>
-                                        </div>
-                                        <div class="col-4">
-                                            <input type="text" class="form-control" name="eksisting" placeholder="Eksisting">
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-4">
+                                        <div class="col-6">
                                             <input type="text" class="form-control" name="luas_lahan" placeholder="Luas Lahan" required>
                                         </div>
-                                        <div class="col-4">
-                                            <input type="text" class="form-control" name="status_kepemilikan" placeholder="Status Kepemilikan" required>
-                                        </div>
-                                        <div class="col-4">
-                                            <input type="text" class="form-control" name="skema_investasi" placeholder="Skema Investasi">
-                                        </div>
                                     </div>
 
-                                    <div class="row">
-                                        <div class="col-4">
-                                            <input type="text" class="form-control" name="npv" placeholder="NPV">
-                                        </div>
-                                        <div class="col-4">
-                                            <input type="text" class="form-control" name="irr" placeholder="IRR">
-                                        </div>
-                                        <div class="col-4">
-                                            <input type="text" class="form-control" name="bc_ratio" placeholder="BC Ration">
-                                        </div>
-                                    </div>
+
                                     @if(Auth::user()->hasRole('kab'))
                                         <input type="hidden" value="{{Auth::user()->id}}" name="kab_kota_id">
                                     @endif
@@ -144,6 +119,11 @@
                                     @if(is_null($peserta->project_id))
                                         <label for="project">Investor Tidak Memilih Proyek, Silahkan Isi Manual</label>
                                     <input type="text" value="{{$peserta->id}}" hidden >
+                                    <div class="form-group col-md-12">
+                                        <label for="lokasi">Location</label>
+                                        <input type="text" class="form-control" id="lokasi" name="lokasi"
+                                               placeholder="Detail Location" required>
+                                    </div>
                                     @else
                                         <div class="form-group col-md-12">
                                             <label for="project">Project</label>

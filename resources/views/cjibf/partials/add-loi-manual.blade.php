@@ -96,65 +96,44 @@
         </div>
     </div>
         <div class="col-lg-6">
-            <div class="card">
-                <div class="card-header border-bottom">
-                    <h6 class="m-0">Project</h6>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item p-3">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="row" style="padding-top: 20px">
-                                    <div class="col-4">
-                                        <input type="text" class="form-control" name="project_name" placeholder="Project Name" required>
-                                    </div>
-                                    <div class="col-4">
-                                        <input type="text" class="form-control" name="lingkup_pekerjaan" placeholder="Lingkup Pekerjaan" required>
-                                    </div>
-                                    <div class="col-4">
-                                        <input type="text" class="form-control" name="eksisting" placeholder="Eksisting">
-                                    </div>
-                                </div>
 
-                                <div class="row">
-                                    <div class="col-4">
-                                        <input type="text" class="form-control" name="luas_lahan" placeholder="Luas Lahan" required>
-                                    </div>
-                                    <div class="col-4">
-                                        <input type="text" class="form-control" name="status_kepemilikan" placeholder="Status Kepemilikan" required>
-                                    </div>
-                                    <div class="col-4">
-                                        <input type="text" class="form-control" name="skema_investasi" placeholder="Skema Investasi">
-                                    </div>
-                                </div>
+                <div class="card">
+                    <div class="card-header border-bottom">
+                        <h6 class="m-0">Project</h6>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item p-3">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="row" style="padding-top: 20px">
+                                        <div class="col-6">
+                                            <input type="text" class="form-control" name="project_name" placeholder="Project Name" required>
+                                        </div>
+                                        <div class="col-6">
+                                            <input type="text" class="form-control" name="luas_lahan" placeholder="Luas Lahan" required>
+                                        </div>
 
-                                <div class="row">
-                                    <div class="col-4">
-                                        <input type="text" class="form-control" name="npv" placeholder="NPV">
                                     </div>
-                                    <div class="col-4">
-                                        <input type="text" class="form-control" name="irr" placeholder="IRR">
-                                    </div>
-                                    <div class="col-4">
-                                        <input type="text" class="form-control" name="bc_ratio" placeholder="BC Ration">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <a href="javascript:void(0)" onclick="loadthemappicker()" class="btn btn-sm btn-success"><i class="fa fa-map"></i> Pilih Lokasi</a>
 
-                                        <input type="hidden" name="maps[lat]" value="{{ config('voyager.googlemaps.center.lat') }}" id="lat"/>
-                                        <input type="hidden" name="maps[lng]" value="{{ config('voyager.googlemaps.center.lng') }}" id="lng"/>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <a href="javascript:void(0)" onclick="loadthemappicker()" class="btn btn-sm btn-success"><i class="fa fa-map"></i> Pilih Lokasi</a>
 
-                                        <p id="koordinat"></p>
-                                        <div id="map_piker" style="height: 250px!important;"></div>
+                                            <input type="hidden" name="maps[lat]" value="{{ config('voyager.googlemaps.center.lat') }}" id="lat"/>
+                                            <input type="hidden" name="maps[lng]" value="{{ config('voyager.googlemaps.center.lng') }}" id="lng"/>
+
+                                            <p id="koordinat"></p>
+                                            <div id="map_piker" style="height: 250px!important;"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+                        </li>
+                    </ul>
+                </div>
+
+
+
         </div>
     <div class="col-lg-12" style="padding-top: 20px">
         <div class="card">
@@ -166,43 +145,43 @@
                     <div class="row">
                         <div class="col-12">
 
-                                <div class="form-row">
-                                    <div class="form-group col-md-12">
-                                        <label for="sektor">Sector</label>
-                                        <select id="why" name="why" class="form-control" required>
-                                            <option selected>Select Sector You Interesred in</option>
-                                            @foreach($sektors as $sektor)
-                                                <option value="{{$sektor->name}}">{{$sektor->name}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="sektor">Sector</label>
+                                    <select id="why" name="why" class="form-control" required>
+                                        <option selected>Select Sector You Interesred in</option>
+                                        @foreach($sektors as $sektor)
+                                            <option value="{{$sektor->name}}">{{$sektor->name}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-12">
-                                        <label for="lokasi">Location</label>
-                                        <input type="text" class="form-control" id="lokasi" name="lokasi"
-                                               placeholder="Detail Location" required>
-                                    </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="lokasi">Location</label>
+                                    <input type="text" class="form-control" id="lokasi" name="lokasi"
+                                           placeholder="Detail Location" required>
                                 </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-12">
-                                        <label for="inv">Investment Value</label>
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <select id="alarm_action" class="form-control" required>
-                                                    <option selected>Choose...</option>
-                                                    <option value='rupiah'>Rupiah</option>
-                                                    <option value='dollar'>US Dollar</option>
-                                                </select>
-                                            </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="inv">Investment Value</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <select id="alarm_action" class="form-control" required>
+                                                <option selected>Choose...</option>
+                                                <option value='rupiah'>Rupiah</option>
+                                                <option value='dollar'>US Dollar</option>
+                                            </select>
                                         </div>
-                                        <input class="form-control" name="rp" placeholder="Rupiah" id="rp"
-                                               style="display: none"/>
-                                        <input class="form-control" name="usd" id="usd" placeholder="USD"
-                                               style="display: none"/>
                                     </div>
+                                    <input class="form-control" name="rp" placeholder="Rupiah" id="rp"
+                                           style="display: none"/>
+                                    <input class="form-control" name="usd" id="usd" placeholder="USD"
+                                           style="display: none"/>
                                 </div>
-                                <button type="submit" class="btn btn-primary btn-block">Invest Now !!!</button>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Invest Now !!!</button>
 
                         </div>
                     </div>

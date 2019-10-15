@@ -121,9 +121,7 @@ class LayoutController extends Controller
 
         $this->validate($request, [
             'project_name' => 'required',
-            'lingkup_pekerjaan' => 'required',
             'luas_lahan' => 'required',
-            'status_kepemilikan' => 'required',
         ]);
         $peta = $request->maps;
         $lat = (float) $peta['lat'];
@@ -184,6 +182,7 @@ class LayoutController extends Controller
         $loi->bidang_usaha = $request->sektor;
         $loi->nama_pengusaha = $profile->investor_name;
         $loi->jabatan_pengusaha = $profile->jabatan;
+        $loi->lokasi_investasi = $request->lokasi;
         $loi->phone = $profile->phone;
         $loi->email = $profile->userInv->email;
         if ($storethisusd == 0) {
@@ -226,12 +225,10 @@ class LayoutController extends Controller
      * @throws ValidationException
      */
     public function addLoiManual(Request $request){
-        dd($request->all());
+        //dd($request->all());
         $this->validate($request, [
             'project_name' => 'required',
-            'lingkup_pekerjaan' => 'required',
             'luas_lahan' => 'required',
-            'status_kepemilikan' => 'required',
             'investor_name' => 'required',
             'jabatan' => 'required',
             'nama_perusahaan' => 'required',
