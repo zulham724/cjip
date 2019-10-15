@@ -20,7 +20,7 @@ class FeedbackController extends Controller
         }
         $feedback = new Feedback();
         $feedback->feedback = $request->feedback;
-        $feedback->rate = $request->rate;
+        $feedback->rate = $request->rating;
         $feedback->user_id = $request->user;
         $feedback->save();
 
