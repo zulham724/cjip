@@ -111,7 +111,7 @@
                                         <div class="form-group col-md-12">
                                             <label for="sektor">Sector</label>
                                             <input type="text" class="form-control" id="sektor" name="sektor"
-                                                   placeholder="Business Field (Industry, Tourism, etc)"
+                                                   placeholder="Sector"
                                                    value="{{$profile->sektors->sektor_interest}}" required>
                                         </div>
 

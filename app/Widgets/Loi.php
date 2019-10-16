@@ -4,6 +4,7 @@ namespace App\Widgets;
 
 use App\Lois;
 use Arrilot\Widgets\AbstractWidget;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use TCG\Voyager\Facades\Voyager;
 
@@ -22,8 +23,15 @@ class Loi extends AbstractWidget
      */
     public function run()
     {
-        $count = Lois::all()->count();
-        $string = trans_choice('LoI', $count);
+        if (Auth::user()->hasRole('kab')){
+            $count = Lois::where('kab_kota_id', Auth::user()->id)->count();
+            $string = trans_choice('LoI', $count);
+        }
+        else{
+            $count = Lois::all()->count();
+            $string = trans_choice('LoI', $count);
+        }
+
 
         return view('voyager::dimmer', array_merge($this->config, [
             'icon'   => 'voyager-group',

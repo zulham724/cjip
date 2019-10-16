@@ -2,12 +2,12 @@
 
 namespace App\Widgets;
 
-use App\CjibfInvestor;
+use App\ProfileInvestor;
 use Arrilot\Widgets\AbstractWidget;
 use Illuminate\Support\Str;
 use TCG\Voyager\Facades\Voyager;
 
-class UserInvestor extends AbstractWidget
+class Download extends AbstractWidget
 {
     /**
      * The configuration array.
@@ -22,19 +22,19 @@ class UserInvestor extends AbstractWidget
      */
     public function run()
     {
-        $count = \App\UserInvestor::all()->count();
-        //dd($count);
-        $string = trans_choice('User Investor', $count);
-        //dd($string);
+        $count = ProfileInvestor::all()->count();
+
+        $string = trans_choice('Investor Profile', $count);
+
         return view('voyager::dimmer', array_merge($this->config, [
             'icon'   => 'voyager-group',
-            'title'  => "{$count} {$string}",
-            'text'   => __('voyager::dimmer.user_text', ['count' => $count, 'string' => Str::lower($string)]),
+            'title'  => "LoI CJIBF 2019",
+            'text'   => "Download Panduan Teknis Pelaksanaan One on One Meeting",
             'button' => [
-                'text' => __('voyager::dimmer.user_link_text'),
-                'link' => '#',
+                'text' => 'Download',
+                'link' => 'http://cjip.jatengprov.go.id/storage/Buku%20Panduan/Panduan%20LoI%20CJIBF.pdf',
             ],
-            'image' => voyager_asset('images/widget-backgrounds/01.jpg'),
+            'image' => voyager_asset('images/widget-backgrounds/03.jpg'),
         ]));
     }
 
@@ -45,6 +45,6 @@ class UserInvestor extends AbstractWidget
      */
     public function shouldBeDisplayed()
     {
-        return app('VoyagerAuth')->user()->hasRole('admin');
+        return app('VoyagerAuth')->user();
     }
 }

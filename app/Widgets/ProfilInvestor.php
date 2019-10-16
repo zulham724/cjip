@@ -45,6 +45,6 @@ class ProfilInvestor extends AbstractWidget
      */
     public function shouldBeDisplayed()
     {
-        return app('VoyagerAuth')->user();
+        return app('VoyagerAuth')->user()->hasRole('admin');
     }
 }
