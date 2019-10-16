@@ -150,6 +150,7 @@ return [
             'App\\Widgets\\Loi',
             'App\\Widgets\\Project',
             'App\\Widgets\\ProfilInvestor',
+            'App\\Widgets\\Download',
         ],
 
     ],
