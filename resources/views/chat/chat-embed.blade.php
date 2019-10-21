@@ -1,6 +1,7 @@
 @extends('voyager::master')
 
 @section('content')
+    @if(Auth::user()->hasRole('admin'))
     <div class="container">
         <div class="row justify-content-center">
             <iframe src="https://dashboard.tawk.to" width="100%" height="800">
@@ -8,4 +9,5 @@
             </iframe>
         </div>
     </div>
+    @endif
 @endsection
