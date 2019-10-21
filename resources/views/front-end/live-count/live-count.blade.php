@@ -122,7 +122,7 @@
         setTimeout( function() {
             $('#auto').load('/reload').fadeIn('slow');
             refreshauto();
-        }, 10000);
+        }, 200);
     }
 </script>
 <script>
@@ -136,7 +136,7 @@
         setTimeout( function() {
             $('#autototal').load('/reloadtotal').fadeIn('slow');
             refreshtotal();
-        }, 10000);
+        }, 200);
     }
 </script>
 <script>
@@ -150,7 +150,7 @@
         setTimeout( function() {
             $('#autochart').load('/reloadchart').fadeIn('slow');
             refresh();
-        }, 50000);
+        }, 10000);
     }
 </script>
 </body>

@@ -174,7 +174,7 @@ return [
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
         Cornford\Googlmapper\MapperServiceProvider::class,
         HTMLMin\HTMLMin\HTMLMinServiceProvider::class,
-
+        Maatwebsite\Excel\ExcelServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -241,6 +241,7 @@ return [
         'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
         'Mapper' => Cornford\Googlmapper\Facades\MapperFacade::class,
         'HTMLMin' => HTMLMin\HTMLMin\Facades\HTMLMin::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ],
 
 ];
