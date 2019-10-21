@@ -63,10 +63,10 @@
                                     @if(is_null($peserta->project_id))
                                     <div class="row" style="padding-top: 20px">
                                         <div class="col-6">
-                                            <input type="text" class="form-control" name="project_name" placeholder="Project Name" required>
+                                            <input type="text" class="form-control" name="project_name" placeholder="Project Name"  required>
                                         </div>
                                         <div class="col-6">
-                                            <input type="text" class="form-control" name="luas_lahan" placeholder="Luas Lahan" required>
+                                            <input type="text" class="form-control" name="luas_lahan" placeholder="Luas Lahan"  required>
                                         </div>
                                     </div>
 
