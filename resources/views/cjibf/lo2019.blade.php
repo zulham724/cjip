@@ -106,14 +106,16 @@
                                 {{--@if(Auth::user()->hasRole('LO'))--}}
                                     @foreach($investor as $invloi)
                                         <tr>
-                                            <td>{{$loop->iteration}}</td>
-                                            <td>{{$invloi->profil->nama_perusahaan}}</td>
-                                            <td>{{$invloi->loi->phone}}</td>
-                                            <td>{{$invloi->loi->email}}</td>
-                                            <td>{{$invloi->userId->kabkota->nama}}</td>
-                                            <td>{{$invloi->loi->nilai_usd}}</td>
-                                            <td>{{$invloi->loi->nilai_rp}}</td>
-                                            <td>{{$invloi->loi->bidang_usaha}}</td>
+                                            @isset($invloi->loi)
+                                                <td>{{$loop->iteration}}</td>
+                                                <td>{{$invloi->profil->nama_perusahaan}}</td>
+                                                <td>{{$invloi->loi->phone}}</td>
+                                                <td>{{$invloi->loi->email}}</td>
+                                                <td>{{$invloi->userId->kabkota->nama}}</td>
+                                                <td>{{$invloi->loi->nilai_usd}}</td>
+                                                <td>{{$invloi->loi->nilai_rp}}</td>
+                                                <td>{{$invloi->loi->bidang_usaha}}</td>
+                                            @endisset
                                         </tr>
 
                                     @endforeach
