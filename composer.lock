@@ -133,16 +133,16 @@
         },
         {
             "name": "algolia/scout-extended",
-            "version": "v1.7.0",
+            "version": "v1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/algolia/scout-extended.git",
-                "reference": "32a7940efdfe43416bf820540e7ba7ecf7387b71"
+                "reference": "ea5cec58af8f726fe1f5848082c0a5f84ffbd3b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/algolia/scout-extended/zipball/32a7940efdfe43416bf820540e7ba7ecf7387b71",
-                "reference": "32a7940efdfe43416bf820540e7ba7ecf7387b71",
+                "url": "https://api.github.com/repos/algolia/scout-extended/zipball/ea5cec58af8f726fe1f5848082c0a5f84ffbd3b8",
+                "reference": "ea5cec58af8f726fe1f5848082c0a5f84ffbd3b8",
                 "shasum": ""
             },
             "require": {
@@ -205,7 +205,7 @@
                 "scout",
                 "search"
             ],
-            "time": "2019-08-28T09:18:09+00:00"
+            "time": "2019-10-14T11:00:44+00:00"
         },
         {
             "name": "arrilot/laravel-widgets",
@@ -876,16 +876,16 @@
         },
         {
             "name": "cornford/googlmapper",
-            "version": "v2.35.0",
+            "version": "v2.35.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bradcornford/Googlmapper.git",
-                "reference": "69c0c1ad4da05c8f0f1b14efdeb9f0fd08318222"
+                "reference": "3d180bfed327e5d218fc09ca3da5d561e6fbf30a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bradcornford/Googlmapper/zipball/69c0c1ad4da05c8f0f1b14efdeb9f0fd08318222",
-                "reference": "69c0c1ad4da05c8f0f1b14efdeb9f0fd08318222",
+                "url": "https://api.github.com/repos/bradcornford/Googlmapper/zipball/3d180bfed327e5d218fc09ca3da5d561e6fbf30a",
+                "reference": "3d180bfed327e5d218fc09ca3da5d561e6fbf30a",
                 "shasum": ""
             },
             "require": {
@@ -932,7 +932,7 @@
                 "maps",
                 "streetview"
             ],
-            "time": "2019-09-23T15:21:58+00:00"
+            "time": "2019-10-16T09:40:11+00:00"
         },
         {
             "name": "cyrildewit/eloquent-viewable",
@@ -2210,16 +2210,16 @@
         },
         {
             "name": "jaybizzle/crawler-detect",
-            "version": "v1.2.85",
+            "version": "v1.2.86",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JayBizzle/Crawler-Detect.git",
-                "reference": "185ff3e00a5b7821eadfce8fe767fcd89193f578"
+                "reference": "1835311c4f458b2f59bbfec05ebfc64ac382b6ee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JayBizzle/Crawler-Detect/zipball/185ff3e00a5b7821eadfce8fe767fcd89193f578",
-                "reference": "185ff3e00a5b7821eadfce8fe767fcd89193f578",
+                "url": "https://api.github.com/repos/JayBizzle/Crawler-Detect/zipball/1835311c4f458b2f59bbfec05ebfc64ac382b6ee",
+                "reference": "1835311c4f458b2f59bbfec05ebfc64ac382b6ee",
                 "shasum": ""
             },
             "require": {
@@ -2255,27 +2255,27 @@
                 "crawlerdetect",
                 "php crawler detect"
             ],
-            "time": "2019-10-05T13:27:35+00:00"
+            "time": "2019-10-15T20:54:57+00:00"
         },
         {
             "name": "justinrainbow/json-schema",
-            "version": "5.2.8",
+            "version": "5.2.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/justinrainbow/json-schema.git",
-                "reference": "dcb6e1006bb5fd1e392b4daa68932880f37550d4"
+                "reference": "44c6787311242a979fa15c704327c20e7221a0e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/justinrainbow/json-schema/zipball/dcb6e1006bb5fd1e392b4daa68932880f37550d4",
-                "reference": "dcb6e1006bb5fd1e392b4daa68932880f37550d4",
+                "url": "https://api.github.com/repos/justinrainbow/json-schema/zipball/44c6787311242a979fa15c704327c20e7221a0e4",
+                "reference": "44c6787311242a979fa15c704327c20e7221a0e4",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "~2.2.20",
+                "friendsofphp/php-cs-fixer": "~2.2.20||~2.15.1",
                 "json-schema/json-schema-test-suite": "1.2.0",
                 "phpunit/phpunit": "^4.8.35"
             },
@@ -2321,7 +2321,7 @@
                 "json",
                 "schema"
             ],
-            "time": "2019-01-14T23:55:14+00:00"
+            "time": "2019-09-25T14:49:45+00:00"
         },
         {
             "name": "larapack/doctrine-support",
@@ -2814,16 +2814,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.55",
+            "version": "1.0.57",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "33c91155537c6dc899eacdc54a13ac6303f156e6"
+                "reference": "0e9db7f0b96b9f12dcf6f65bc34b72b1a30ea55a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/33c91155537c6dc899eacdc54a13ac6303f156e6",
-                "reference": "33c91155537c6dc899eacdc54a13ac6303f156e6",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/0e9db7f0b96b9f12dcf6f65bc34b72b1a30ea55a",
+                "reference": "0e9db7f0b96b9f12dcf6f65bc34b72b1a30ea55a",
                 "shasum": ""
             },
             "require": {
@@ -2894,7 +2894,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2019-08-24T11:17:19+00:00"
+            "time": "2019-10-16T21:01:05+00:00"
         },
         {
             "name": "league/glide",
@@ -3493,16 +3493,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.25.1",
+            "version": "2.25.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "d59c6cea9c4a3547bb6c0dfec451319abdaa4fb1"
+                "reference": "443fe5f1498147e0fbc792142b5dc43e2e8a533f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/d59c6cea9c4a3547bb6c0dfec451319abdaa4fb1",
-                "reference": "d59c6cea9c4a3547bb6c0dfec451319abdaa4fb1",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/443fe5f1498147e0fbc792142b5dc43e2e8a533f",
+                "reference": "443fe5f1498147e0fbc792142b5dc43e2e8a533f",
                 "shasum": ""
             },
             "require": {
@@ -3556,7 +3556,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2019-10-05T15:52:23+00:00"
+            "time": "2019-10-14T14:18:59+00:00"
         },
         {
             "name": "nicmart/tree",
@@ -7059,7 +7059,7 @@
         },
         {
             "name": "tightenco/collect",
-            "version": "v6.2.0",
+            "version": "v6.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tightenco/collect.git",
@@ -7443,8 +7443,8 @@
             "authors": [
                 {
                     "name": "Filipe Dobreira",
-                    "homepage": "https://github.com/filp",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "homepage": "https://github.com/filp"
                 }
             ],
             "description": "php error handling for cool kids",
@@ -7559,25 +7559,25 @@
         },
         {
             "name": "maximebf/debugbar",
-            "version": "v1.15.0",
+            "version": "v1.15.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/maximebf/php-debugbar.git",
-                "reference": "30e7d60937ee5f1320975ca9bc7bcdd44d500f07"
+                "reference": "6c4277f6117e4864966c9cb58fb835cee8c74a1e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/maximebf/php-debugbar/zipball/30e7d60937ee5f1320975ca9bc7bcdd44d500f07",
-                "reference": "30e7d60937ee5f1320975ca9bc7bcdd44d500f07",
+                "url": "https://api.github.com/repos/maximebf/php-debugbar/zipball/6c4277f6117e4864966c9cb58fb835cee8c74a1e",
+                "reference": "6c4277f6117e4864966c9cb58fb835cee8c74a1e",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0",
+                "php": ">=5.6",
                 "psr/log": "^1.0",
-                "symfony/var-dumper": "^2.6|^3.0|^4.0"
+                "symfony/var-dumper": "^2.6|^3|^4"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4.0|^5.0"
+                "phpunit/phpunit": "^5"
             },
             "suggest": {
                 "kriswallsmith/assetic": "The best way to manage assets",
@@ -7587,7 +7587,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.14-dev"
+                    "dev-master": "1.15-dev"
                 }
             },
             "autoload": {
@@ -7616,7 +7616,7 @@
                 "debug",
                 "debugbar"
             ],
-            "time": "2017-12-15T11:13:46+00:00"
+            "time": "2019-09-24T14:55:42+00:00"
         },
         {
             "name": "mockery/mockery",
