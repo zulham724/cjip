@@ -16,6 +16,7 @@ return [
         'namespace'                    => null,
         'default_avatar'               => 'users/default.png',
         'redirect'                     => '/admin',
+        'redirect-lo'                  => '/admin/loi-cjibf-2019',
     ],
 
     /*

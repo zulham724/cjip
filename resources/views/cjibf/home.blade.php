@@ -101,8 +101,10 @@
             <span>Reset Event</span>
         </a>
         </div>--}}
-            @if(Auth::user()->hasRole('kab'))
 
+            @if(Auth::user()->hasRole('kab'))
+            @elseif(Auth::user()->hasRole('LO'))
+            <a href="{{route('lo.setting', Auth::user()->id)}}" class="btn btn-success">LO kesini</a>
             @else
             {{--<a href="{{route('reset')}}" class="btn btn-danger" id="bulk_delete_btn"><i class="voyager-trash"></i> <span>Reset Event</span></a>--}}
             <a href="{{route('live.count')}}" class="btn btn-success" id="bulk_delete_btn"><i class="voyager-dollar"></i> <span>Live Count</span></a>
@@ -190,6 +192,8 @@
                     <section id="content1">
                         @include('cjibf.peserta')
                     </section>
+                @elseif(Auth::user()->hasRole('LO'))
+                    <a href="{{route('lo.setting', Auth::user()->id)}}" class="btn btn-success">LO kesini</a>
                 @endif
 
             </main>

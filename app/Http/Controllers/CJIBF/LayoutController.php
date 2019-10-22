@@ -117,17 +117,21 @@ class LayoutController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
     public function addLoi(Request $request, $profil_id, $id){
-        //dd($request->all());
 
-        $this->validate($request, [
-            'project_name' => 'required',
-            'luas_lahan' => 'required',
-        ]);
+        $peserta = CjibfInvestor::findOrFail($id);
+        //dd(is_null($peserta->project_id));
+        if (is_null($peserta->project_id)){
+            $this->validate($request, [
+                'project_name' => 'required',
+                'luas_lahan' => 'required',
+            ]);
+        }
+
         $peta = $request->maps;
         $lat = (float) $peta['lat'];
         $lng = (float) $peta['lng'];
         //dd($peta['lat']);
-        $peserta = CjibfInvestor::findOrFail($id);
+
         //dd($peserta);
         $profile = ProfileInvestor::findOrFail($profil_id);
         //dd($request->all());

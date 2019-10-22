@@ -22,6 +22,7 @@ class LOController extends Controller
 
         $lo = SettingLo::with('meja')->where('user_lo', $id)->first();
 
+<<<<<<< HEAD
         foreach ($lo->meja as $m){
             $meja = $m->kode_meja;
             //dd($meja);
@@ -37,6 +38,17 @@ class LOController extends Controller
 
         }
 
+=======
+        //dd($lo->meja[1]->kode_meja);
+
+            $investor_daftar = CjibfInvestor::where('meja_id', $lo->meja[0]->kode_meja)->orWhere('meja_id', $lo->meja[1]->kode_meja)->get();
+            //dd($investor_daftar);
+
+            $investor = CjibfInvestor::has('loi')->with('loi')->where('meja_id', $lo->meja[0]->kode_meja)->orWhere('meja_id', $lo->meja[1]->kode_meja)->get();
+
+
+            return view('cjibf.lo2019', compact('investor', 'investor_daftar'));
+>>>>>>> 5bdb1b243385406d3dcd000dde6fffc3c509f179
 
     }
 }
