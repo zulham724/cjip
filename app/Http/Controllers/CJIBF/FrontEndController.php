@@ -67,15 +67,15 @@ class FrontEndController extends Controller
         $pengumuman = Pengumuman::all();
 
         $sendObj2 = new \stdClass();
-        $sendObj2->nama_investor = 'Catur Tri Komariyanto';
-        $sendObj2->minat_kabkota = 'Kota Tegal';
-        $sendObj2->minat_sektor = 'Docking and repairing ship';
-        $sendObj2->meja = 'E10';
+        $sendObj2->nama_investor = 'Satya Nugraha';
+        $sendObj2->minat_kabkota = 'Kota Semarang';
+        $sendObj2->minat_sektor = 'Agricultur/horticultur';
+        $sendObj2->meja = 'G7';
         $sendObj2->col = $layout_col;
         $sendObj2->row = $layout_row;
         $sendObj2->event = $event;
         $sendObj2->mejas = $mejas;
-        $sendObj2->perusahaan = 'Sarana Samudra Aparatus, PT';
+        $sendObj2->perusahaan = 'Xin Silu Indonesia, PT';
         $sendObj2->project = '';
         $sendObj2->qr = QrCode::format('png')
             ->errorCorrection('H')
@@ -83,7 +83,7 @@ class FrontEndController extends Controller
             ->merge('http://cjip.jatengprov.go.id/storage/additional/cjip-2.png', .3, true)
             ->generate($sendObj2->event->nama_kegiatan.','.$sendObj2->nama_investor.','.$sendObj2->perusahaan.','.$sendObj2->meja.','.$sendObj2->project);
 
-        Mail::to('catur_tgl@yahoo.com')->send(new DaftarCJIBF($sendObj2));
+        Mail::to('xinsilu_indonesia@yahoo.com')->send(new DaftarCJIBF($sendObj2));
 
         return 'email sent';
     }
