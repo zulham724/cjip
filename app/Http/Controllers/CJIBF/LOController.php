@@ -24,12 +24,14 @@ class LOController extends Controller
 
 
             $investor_daftar = CjibfInvestor::where('meja_id', $lo->meja[0]->kode_meja)->orWhere('meja_id', $lo->meja[1]->kode_meja)->get();
+            $meja1 = CjibfInvestor::where('meja_id', $lo->meja[0]->kode_meja)->get();
+            $meja2 = CjibfInvestor::where('meja_id', $lo->meja[1]->kode_meja)->get();
             //dd($investor_daftar);
 
             $investor = CjibfInvestor::has('loi')->with('loi')->where('meja_id', $lo->meja[0]->kode_meja)->orWhere('meja_id', $lo->meja[1]->kode_meja)->get();
 
 
-            return view('cjibf.lo2019', compact('investor', 'investor_daftar'));
+            return view('cjibf.lo2019', compact('investor', 'investor_daftar', 'meja1', 'meja2'));
 
 
     }

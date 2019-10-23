@@ -11,15 +11,20 @@
 @stop
 @section('content')
     <div class="page-content browse container-fluid">
+
         @include('voyager::alerts')
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <div class="panel panel-bordered">
                     <div class="panel-body">
 
                         <div class="table-responsive">
                             <h1 class="page-title">
-                                Investor terdaftar
+                                @if($meja1->isEmpty())
+                                    MEJA KOSONG
+                                @else
+                                MEJA {{$meja1[0]->meja_id}}
+                                @endif
                             </h1>
                             <table id="dataTable" class="table table-hover">
 
@@ -35,6 +40,9 @@
                                         Sektor
                                     </th>
                                     <th>
+                                        Phone
+                                    </th>
+                                    <th>
                                         Kab/Kota
                                     </th>
                                     <th>
@@ -44,16 +52,83 @@
                                 </thead>
                                 <tbody>
                                 {{--@if(Auth::user()->hasRole('LO'))--}}
-                                    @foreach($investor_daftar as $inv)
+                                @if($meja1->isEmpty())
+
+                                @else
+                                    @foreach($meja1 as $inv1)
                                         <tr>
                                             <td>{{$loop->iteration}}</td>
-                                            <td>{{$inv->profil->nama_perusahaan}}</td>
-                                            <td>{{$inv->sektor_interest}}</td>
-                                            <td>{{$inv->userId->kabkota->nama}}</td>
-                                            <td>{{$inv->meja_id}}</td>
+                                            <td>{{$inv1->profil->nama_perusahaan}}</td>
+                                            <td>{{$inv1->sektor_interest}}</td>
+                                            <td>{{$inv1->profil->phone}}</td>
+                                            <td>{{$inv1->userId->kabkota->nama}}</td>
+                                            <td>{{$inv1->meja_id}}</td>
+                                        </tr>
+                                    @endforeach
+                                @endif
+
+                                {{--@endif--}}
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-bordered">
+                    <div class="panel-body">
+
+                        <div class="table-responsive">
+                            <h1 class="page-title">
+                                @if($meja2->isEmpty())
+                                    MEJA KOSONG
+                                @else
+                                    MEJA {{$meja2[0]->meja_id}}
+                                @endif
+                            </h1>
+                            <table id="dataTable" class="table table-hover">
+
+                                <thead>
+                                <tr>
+                                    <th>
+                                        No
+                                    </th>
+                                    <th>
+                                        Nama Perusahaan
+                                    </th>
+                                    <th>
+                                        Sektor
+                                    </th>
+                                    <th>
+                                        Phone
+                                    </th>
+                                    <th>
+                                        Kab/Kota
+                                    </th>
+                                    <th>
+                                        Meja
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {{--@if(Auth::user()->hasRole('LO'))--}}
+                                @if($meja2->isEmpty())
+
+                                @else
+                                    @foreach($meja2 as $inv2)
+                                        <tr>
+                                            <td>{{$loop->iteration}}</td>
+                                            <td>{{$inv2->profil->nama_perusahaan}}</td>
+                                            <td>{{$inv2->sektor_interest}}</td>
+                                            <td>{{$inv2->profil->phone}}</td>
+                                            <td>{{$inv2->userId->kabkota->nama}}</td>
+                                            <td>{{$inv2->meja_id}}</td>
                                         </tr>
 
                                     @endforeach
+                                @endif
+
                                 {{--@endif--}}
                                 </tbody>
                             </table>

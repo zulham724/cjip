@@ -11,13 +11,11 @@ class FeedbackController extends Controller
 {
     public function feedback(Request $request){
         //dd($request->all());
-        try {
+
             $this->validate($request, [
-                'feedback' => 'required',
                 'rating' => 'required'
             ]);
-        } catch (ValidationException $e) {
-        }
+
         $feedback = new Feedback();
         $feedback->feedback = $request->feedback;
         $feedback->rate = $request->rating;
