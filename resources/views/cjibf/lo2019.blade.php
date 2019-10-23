@@ -112,7 +112,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {{--@if(Auth::user()->hasRole('LO'))--}}
+
                                 @if($meja2->isEmpty())
 
                                 @else
