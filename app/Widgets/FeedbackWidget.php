@@ -34,10 +34,10 @@ class FeedbackWidget extends AbstractWidget
 
         return view('voyager::dimmer', array_merge($this->config, [
             'icon'   => 'voyager-group',
-            'title'  => "LoI CJIBF 2019",
+            'title'  => "User Satisfaction",
             'text'   => $count->count()." Responden.",
             'button' => [
-                'text' => $cast.' %',
+                'text' => number_format($cast, 2).' %',
                 'link' => '',
             ],
             'image' => voyager_asset('images/widget-backgrounds/03.jpg'),
