@@ -1042,7 +1042,7 @@
                                             <input type="text" class="form-control" name="sektor_manual">
                                         </div>
                                         <input type="text" class="form-control" name="profil" value="{{$profile->id}}" hidden>
-                                        <button type="submit" class="btn btn-accent"> <i class="far fa-send mr-1"></i>Submit</button>
+                                        <button type="submit" id="cjibf2" class="btn btn-accent"> <i class="far fa-send mr-1"></i>Submit</button>
                                     </div>
                                 </div>
 
@@ -1169,6 +1169,14 @@
                 $('#proyek').load('/sector/'+id).fadeIn('slow');
                 $('#command').hide();
             });
+        });
+        $('#cjibf1').click(function() {
+            $('#cjibf1').attr('disabled','disabled');
+            $('#cjibf2').attr('disabled','disabled');
+        });
+        $('#cjibf2').click(function() {
+            $('#cjibf2').attr('disabled','disabled');
+            $('#cjibf1').attr('disabled','disabled');
         });
     </script>
 @endsection
