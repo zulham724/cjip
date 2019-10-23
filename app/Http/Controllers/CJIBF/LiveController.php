@@ -73,15 +73,16 @@ class LiveController extends Controller
     }
     public function reloadchart(){
         $lois = Lois::where('cjibf', 1)->orderBy('created_at', 'desc')->get();
-
-        $graphics = Lois::groupBy('bidang_usaha')
+        $graphics = Lois::where('cjibf', 1)->groupBy('bidang_usaha')
             ->selectRaw('*, sum(nilai_usd) as sumusd, sum(nilai_rp) as sumrp')
             ->get();
+        //dd($graphics[0]->sumusd);
 
         if (isset($lois)){
             $rp = Lois::where('cjibf', 1)->sum('nilai_rp');
             //dd($rp);
             $usd = Lois::where('cjibf', 1)->sum('nilai_usd');
+
         }
         else{
             $rp = "0";
