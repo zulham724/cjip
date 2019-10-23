@@ -1,27 +1,5 @@
 @extends('front-end.master.newest-master')
 
-
-@section('search')
-    <div class="container">
-        <div class="row search">
-            <div class="col-12 col-m-12">
-                <div class="card form">
-                    <p class="card__title">Search</p>
-                    <form class="form_form" action="{{route('search')}}">
-                        <div class="form__form-group form__form-group--without-label">
-                            <input class="form__input js-field__search" type="text" name="search" id="search"
-                                   placeholder="I am looking for...">
-                            <button type="submit" class="form__input-icon"
-                                    style="background-color: transparent; background-repeat: no-repeat; border: none; overflow: hidden; outline: none;z-index: 100">
-                                <i class="mdi mdi-magnify"></i>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-@endsection
 @section('header')
     <header class="header-home header-home--color">
 

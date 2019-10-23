@@ -65,6 +65,12 @@ class LayoutController extends Controller
         //dd($pesertas);
         $events = CjibfEvent::all();
 
+        $user_info = CjibfInvestor::groupBy('kab_kota_id')->select('kab_kota_id', DB::raw('count(*) as total'))->get();
+        $sector_info = CjibfInvestor::groupBy('sektor_interest')->select('sektor_interest', DB::raw('count(*) as totalsektor'))->get();
+        //dd($sector_info);
+        //dd($user_info[0]->user->namakota[0]->nama);
+        //dd($user_info[0]);
+
         //dd($user->kota);
         if (app('VoyagerAuth')->user()->hasRole('kab')){
             $pesertakabs = CjibfInvestor::where('kab_kota_id', $user->id)->get();
@@ -91,7 +97,9 @@ class LayoutController extends Controller
                 'kabkotas',
                 'cjibf',
                 'events',
-                'pesertas'
+                'pesertas',
+                'user_info',
+                'sector_info'
             ));
         }
 

@@ -122,6 +122,9 @@
                     <input id="tab1" type="radio" name="tabs" style="display: none" checked>
                     <label for="tab1">Participants</label>
 
+                    <input id="tab6" type="radio" name="tabs" style="display: none">
+                    <label for="tab6">General Report</label>
+
                     <input id="tab2" type="radio" name="tabs" style="display: none">
                     <label for="tab2">Layout's Setting</label>
 
@@ -138,6 +141,9 @@
 
                     <section id="content1">
                         @include('cjibf.peserta')
+                    </section>
+                    <section id="content6">
+                        @include('cjibf.report')
                     </section>
                     <section id="content2">
                         @include('cjibf.layout')
@@ -156,6 +162,9 @@
                     <input id="tab1" type="radio" name="tabs" style="display: none" checked>
                     <label for="tab1">Participants</label>
 
+                    <input id="tab6" type="radio" name="tabs" style="display: none">
+                    <label for="tab6">General Report</label>
+
                     <input id="tab2" type="radio" name="tabs" style="display: none">
                     <label for="tab2">Layout's Setting</label>
 
@@ -172,6 +181,9 @@
 
                     <section id="content1">
                         @include('cjibf.peserta')
+                    </section>
+                    <section id="content6">
+                        @include('cjibf.report')
                     </section>
                     <section id="content2">
                         @include('cjibf.layout')
