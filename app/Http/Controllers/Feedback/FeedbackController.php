@@ -10,7 +10,7 @@ use Illuminate\Validation\ValidationException;
 class FeedbackController extends Controller
 {
     public function feedback(Request $request){
-        //dd($request->all());
+
 
             $this->validate($request, [
                 'rating' => 'required'
