@@ -59,7 +59,7 @@
                         <input type="text" class="form-control" name="sektor" value="{{$proyek->bySector->name}}" hidden>
                         <input type="text" class="form-control" name="project_id" value="{{$proyek->id}}" hidden>
                         <div class="my-auto ml-auto" align="center">
-                            <button type="submit" class="btn btn-accent"> <i class="far fa-send mr-1"></i> Select This Project</button>
+                            <button type="submit" id="cjibf1" class="btn btn-accent"> <i class="far fa-send mr-1"></i> Select This Project</button>
                         </div>
 
                     </form>
