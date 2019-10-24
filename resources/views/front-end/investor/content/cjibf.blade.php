@@ -1170,13 +1170,6 @@
                 $('#command').hide();
             });
         });
-        $('#cjibf1').click(function() {
-            $('#cjibf1').attr('disabled','disabled');
-            $('#cjibf2').attr('disabled','disabled');
-        });
-        $('#cjibf2').click(function() {
-            $('#cjibf2').attr('disabled','disabled');
-            $('#cjibf1').attr('disabled','disabled');
-        });
+
     </script>
 @endsection
