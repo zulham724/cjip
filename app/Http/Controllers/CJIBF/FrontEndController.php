@@ -312,8 +312,9 @@ class FrontEndController extends Controller
             }
             else{
                 $kota = $request->kab_kota_manual;
+                $user = User::findOrFail($kota);
                 $pengumuman = Pengumuman::all();
-                return view('front-end.investor.content.full', compact('pengumuman', 'kota'));
+                return view('front-end.investor.content.full', compact('pengumuman', 'user'));
             }
 
         }
