@@ -16,6 +16,7 @@ use App\Mail\DaftarCJIBF;
 use App\Pengumuman;
 use App\ProfileInvestor;
 use App\Proyek;
+use App\User;
 use Barryvdh\DomPDF\Facade as PDF;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -105,35 +106,38 @@ class FrontEndController extends Controller
         $event = CjibfEvent::first();
         $mejas = CjibfTable::all();
         $pengumuman = Pengumuman::all();
-        $user_kab_kota = KabkotaUserModel::where('kab_kota_id', $request->kab_kota)->first();
-
+        $user_kab_kota = KabkotaUserModel::where('kab_kota_id', $request->kabkota)->first();
+        //dd($user_kab_kota);
        /* $test = CjibfInvestor::first();*/
         //dd($test->user->namakota[0]->nama);
 
         //dd($user_kab_kota->user_id);
         //dd($request->all());
-        $join = new CjibfInvestor;
-        $join->kab_kota_id = $request->kabkota;
-        $join->profile_id = $request->profil;
-        $join->sektor_interest = $request->sektor;
-        $join->project_id = $request->project_id;
 
-        //dd($join);
-        $join->save();
 
         //dd($join->kota->user->user_id);
-        $sisakursi = CjibfTable::where('kabkota_id', $join->kab_kota_id)->first();
-        $project = Proyek::findOrFail($join->project_id);
+        $sisakursi = CjibfTable::where('kabkota_id', $request->kabkota)->first();
+        $project = Proyek::findOrFail($request->project_id);
         //dd($sisakursi);
 
         if ($sisakursi->sisa <= 0){
+
             /* $cadangans = CjibfTable::with('jenis')->where('jenis_meja', 8)->where('sisa', '>', 0)->first();*/
             $cadangans = CjibfTable::whereHas('jenis', function ($query){
                 $query->where('nama', 'Cadangan')->where('sisa', '>', 0);
             })->first();
 
 
+
             if (isset($cadangans)){
+                $join = new CjibfInvestor;
+                $join->kab_kota_id = $request->kabkota;
+                $join->profile_id = $request->profil;
+                $join->sektor_interest = $request->sektor;
+                $join->project_id = $request->project_id;
+
+                //dd($join);
+                $join->save();
                 $cadangans->sisa = ($cadangans->sisa)-1;
                 $cadangans->update();
 
@@ -162,23 +166,6 @@ class FrontEndController extends Controller
                     ->generate($sendObj->event->nama_kegiatan.','.$sendObj->nama_investor.','.$sendObj->perusahaan.','.$sendObj->meja.','.$sendObj->project);
 
 
-
-
-                //dd($sendObj);
-
-                //return view('attach', ['send'=>$sendObj]);
-
-                //$pdf = PDF::loadView('attach3', ['send'=>$sendObj]);
-                //$filename = $sendObj->perusahaan;
-                //return $pdf->stream('CJIBF_'.$filename.'.pdf');
-
-                /*$pdf = PDF::loadView('attach', ['send'=>$sendObj])->save($sendObj->perusahaan .'-'.'CJIBF2019-registered-detail.pdf');
-                $attach = Storage::put('public/register/'.$sendObj->perusahaan .'-'.'CJIBF2019-registered-detail.pdf' ,$pdf->output());*/
-                //dd($attach);
-            //$filename = $sendObj->perusahaan;
-                //dd($sendObj);
-                //$pdf = PDF::loadView('attach', ['send' => $sendObj])->setPaper('letter','portrait')->save(public_path('CJIBF2019/'.'CJIBF_'.$filename.'.pdf'));
-
             Mail::to(Auth::guard('investor')->user()->email)->send(new DaftarCJIBF($sendObj));
                 //return PDF::loadView('attach', ['send' => $sendObj])->setPaper($customPaper, $paper_orientation)->stream();
                 //dd($attach);
@@ -186,12 +173,24 @@ class FrontEndController extends Controller
             return view('front-end.investor.content.cjibf-registered', compact('pengumuman'));
             }
             else{
+                $kota = $request->kabkota;
+                $user = User::findOrFail($kota);
+                //dd($user->namakota);
                 $pengumuman = Pengumuman::all();
-                return view('front-end.investor.content.full', compact('pengumuman'));
+                return view('front-end.investor.content.full', compact('pengumuman', 'user'));
             }
 
         }
         else{
+            $join = new CjibfInvestor;
+            $join->kab_kota_id = $request->kabkota;
+            $join->profile_id = $request->profil;
+            $join->sektor_interest = $request->sektor;
+            $join->project_id = $request->project_id;
+
+            //dd($join);
+            $join->save();
+
             $sisakursi->sisa = ($sisakursi->sisa)-1;
             $sisakursi->update();
             //dd($sisakursi);
@@ -257,27 +256,30 @@ class FrontEndController extends Controller
 
         //dd($user_kab_kota->user_id);
         //dd($request->all());
-        $join = new CjibfInvestor;
-        $join->kab_kota_id = $request->kab_kota_manual;
-        $join->profile_id = $request->profil;
-        $join->sektor_interest = $request->sektor_manual;
 
-        //dd($join);
-        $join->save();
 
         //dd($join->kota->user->user_id);
-        $sisakursi = CjibfTable::where('kabkota_id', $join->kab_kota_id)->first();
+        $sisakursi = CjibfTable::where('kabkota_id', $request->kab_kota_manual)->first();
 
         //dd($sisakursi);
 
         if ($sisakursi->sisa <= 0){
+
             /* $cadangans = CjibfTable::with('jenis')->where('jenis_meja', 8)->where('sisa', '>', 0)->first();*/
             $cadangans = CjibfTable::whereHas('jenis', function ($query){
                 $query->where('nama', 'Cadangan')->where('sisa', '>', 0);
             })->first();
-
+            //dd(isset($cadangans));
 
             if (isset($cadangans)){
+                $join = new CjibfInvestor;
+                $join->kab_kota_id = $request->kab_kota_manual;
+                $join->profile_id = $request->profil;
+                $join->sektor_interest = $request->sektor_manual;
+
+                //dd($join);
+                $join->save();
+
                 $cadangans->sisa = ($cadangans->sisa)-1;
                 $cadangans->update();
 
@@ -309,12 +311,21 @@ class FrontEndController extends Controller
             return view('front-end.investor.content.cjibf-registered', compact('pengumuman'));
             }
             else{
+                $kota = $request->kab_kota_manual;
                 $pengumuman = Pengumuman::all();
-                return view('front-end.investor.content.full', compact('pengumuman'));
+                return view('front-end.investor.content.full', compact('pengumuman', 'kota'));
             }
 
         }
         else{
+            $join = new CjibfInvestor;
+            $join->kab_kota_id = $request->kab_kota_manual;
+            $join->profile_id = $request->profil;
+            $join->sektor_interest = $request->sektor_manual;
+
+            //dd($join);
+            $join->save();
+
             $sisakursi->sisa = ($sisakursi->sisa)-1;
             $sisakursi->update();
             //dd($sisakursi);

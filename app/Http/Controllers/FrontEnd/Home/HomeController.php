@@ -7,6 +7,7 @@ use App\Berita;
 use App\BiayaAir;
 use App\BiayaListrik;
 use App\CjibfEvent;
+use App\CjibfInvestor;
 use App\CjibfSektor;
 use App\Events\FeedAction;
 use App\Faq;
@@ -44,6 +45,9 @@ class HomeController extends Controller
 {
     public function home(){
 
+
+        //$cjibf = CjibfInvestor::where('meja_id', 'G3')->get();
+        //dd($cjibf);
         SEOTools::setTitle('Home - Central Java Investment Bussiness Platform');
         SEOTools::setDescription(Voyager::setting('site.ket_why'));
         SEOTools::opengraph()->setUrl(url()->current());
