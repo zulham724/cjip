@@ -71,6 +71,7 @@ Route::get('/', function(){
 
 
         Route::get('/', 'FrontEnd\Home\HomeController@home')->name('homey2');
+        Route::get('/bkpm', 'FrontEnd\Home\HomeController@bkpm')->name('bkpm');
         Route::get('sitemap-generate', 'SitemapController@sitemap');
         /*Route::get('sitemap', function(){
 

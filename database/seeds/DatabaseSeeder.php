@@ -11,6 +11,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(KabkotauserSeeder::class);
+        $this->call(BKPMSeeder::class);
     }
 }
