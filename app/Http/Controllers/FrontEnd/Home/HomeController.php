@@ -66,8 +66,14 @@ class HomeController extends Controller
 
         SEOMeta::addKeyword('jawa tengah, investasi, investment, indonesia, FDI indonesia, industrial park, indonesia investment, central java, invest central java');
 
-        $test = Proyek::with('translations')->get();
+        $test = Proyek::where('status', 1)->get();
+        //dd($test);
+        foreach ($test as $t){
 
+            $total[] = (int)str_replace(['Rp', '.', ',', '%', ': Dairy goat cultivation area Rp 97.213.602.800 and Goat milk processing factory Rp 62.762.973.308', 'Total ', ' (22% Pemerintah Kota, 38% Swasta, 40% CSR)'], '', $t->nilai_investasi);
+
+        }
+        dd(array_sum($total));
 
         $mapsKey = 'AIzaSyBGsawbqVs083lGEe8cilVz0FqO0rHt5ZE&amp';
         $feeds = Feed::orderByViews()->paginate(8);

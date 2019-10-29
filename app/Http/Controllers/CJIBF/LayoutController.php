@@ -70,6 +70,15 @@ class LayoutController extends Controller
         $sector_info = CjibfInvestor::groupBy('sektor_interest')->select('sektor_interest', DB::raw('count(*) as totalsektor'))->get();
         $country_info = CjibfInvestor::with('profil')->get()->groupBy('profil.country');
 
+        foreach ($mejas as $meja){
+            if ($meja->sisa != 0){
+                $total = CjibfInvestor::with('profil')->where('meja_id', 'G8')->get();
+                /*$total = CjibfTable::where('sisa', '!=', 0)->sum('sisa');*/
+                //$total = CjibfTable::where('sisa', '!=', 0)->sum('sisa');
+                dd($total);
+            }
+        }
+
         //dd($country_info);
         //dd($sector_info);
         //dd($user_info[0]->user->namakota[0]->nama);

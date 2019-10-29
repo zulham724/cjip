@@ -1,7 +1,9 @@
 <?php
 
 use App\CjibfInvestor;
+use App\UserInvestor;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class CjibfSeeder extends Seeder
 {

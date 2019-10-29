@@ -36,15 +36,15 @@ class BKPMSeeder extends Seeder
             ]);
 
             $profil = ProfileInvestor::create([
-               'user_id' => $user->id,
-               'investor_name' => $user->name,
-               'jabatan' => '-',
-               'phone' => '-',
-               'nama_perusahaan' => $investor['perusahaan'],
-               'bidang_usaha' => '-',
-               'alamat' => '-',
-               'country' => '-',
-               'badan_hukum' => 'PT',
+                'user_id' => $user->id,
+                'investor_name' => $user->name,
+                'jabatan' => '-',
+                'phone' => '-',
+                'nama_perusahaan' => $investor['perusahaan'],
+                'bidang_usaha' => '-',
+                'alamat' => '-',
+                'country' => 'China',
+                'badan_hukum' => 'PT',
             ]);
         }
     }

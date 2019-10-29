@@ -153,6 +153,10 @@ return [
             'App\\Widgets\\ProfilInvestor',
             'App\\Widgets\\Download',
             'App\\Widgets\\FeedbackWidget',
+            'App\\Widgets\\UserCJIBF',
+            'App\\Widgets\\CJIBFNegara',
+            'App\\Widgets\\CJIBFSektor',
+            'App\\Widgets\\CJIBFLokasi',
         ],
 
     ],
