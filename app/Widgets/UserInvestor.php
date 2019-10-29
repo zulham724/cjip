@@ -45,6 +45,6 @@ class UserInvestor extends AbstractWidget
      */
     public function shouldBeDisplayed()
     {
-        return app('VoyagerAuth')->user()->hasRole('admin');
+        return app('VoyagerAuth')->user()->hasRole(['admin', 'Kabid PDI']);
     }
 }

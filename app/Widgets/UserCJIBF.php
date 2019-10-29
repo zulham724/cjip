@@ -2,13 +2,12 @@
 
 namespace App\Widgets;
 
-use App\Feedback;
-use App\ProfileInvestor;
+use App\CjibfInvestor;
 use Arrilot\Widgets\AbstractWidget;
 use Illuminate\Support\Str;
 use TCG\Voyager\Facades\Voyager;
 
-class FeedbackWidget extends AbstractWidget
+class UserCJIBF extends AbstractWidget
 {
     /**
      * The configuration array.
@@ -23,24 +22,19 @@ class FeedbackWidget extends AbstractWidget
      */
     public function run()
     {
-        $count = Feedback::all();
-        $sum = Feedback::all()->sum('rate');
-
-        $csat1 = ($sum/$count->count())*5;
-        $cast = ($csat1/25)*100;
-        //dd($cast);
-
-        $string = trans_choice('User Satisfaction', $cast." %");
-
+        $count = \App\CjibfInvestor::all()->count();
+        //dd($count);
+        $string = trans_choice('Peserta CJIBF 2019', $count);
+        //dd($string);
         return view('voyager::dimmer', array_merge($this->config, [
             'icon'   => 'voyager-group',
-            'title'  => "User Satisfaction",
-            'text'   => $count->count()." Responden.",
+            'title'  => "{$count} {$string}",
+            'text'   => __('voyager::dimmer.user_text', ['count' => $count, 'string' => Str::lower($string)]),
             'button' => [
-                'text' => number_format($cast, 2).' %',
-                'link' => '',
+                'text' => "Download Rekap Peserta",
+                'link' => route('rekap-pendaftar'),
             ],
-            'image' => voyager_asset('images/widget-backgrounds/03.jpg'),
+            'image' => voyager_asset('images/widget-backgrounds/01.jpg'),
         ]));
     }
 
@@ -51,6 +45,6 @@ class FeedbackWidget extends AbstractWidget
      */
     public function shouldBeDisplayed()
     {
-        return app('VoyagerAuth')->user()->hasRole(['admin', 'Promosi', 'Kabid PDI']);
+        return app('VoyagerAuth')->user()->hasRole(['admin', 'Kabid PDI']);
     }
 }
