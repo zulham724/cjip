@@ -73,7 +73,7 @@ class HomeController extends Controller
             $total[] = (int)str_replace(['Rp', '.', ',', '%', ': Dairy goat cultivation area Rp 97.213.602.800 and Goat milk processing factory Rp 62.762.973.308', 'Total ', ' (22% Pemerintah Kota, 38% Swasta, 40% CSR)'], '', $t->nilai_investasi);
 
         }
-        dd(array_sum($total));
+        //dd(array_sum($total));
 
         $mapsKey = 'AIzaSyBGsawbqVs083lGEe8cilVz0FqO0rHt5ZE&amp';
         $feeds = Feed::orderByViews()->paginate(8);
