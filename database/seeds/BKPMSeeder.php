@@ -14,8 +14,7 @@ class BKPMSeeder extends Seeder
      */
     public function run()
     {
-        $investors =
-            [
+        $investors = [
                 [
                     'name' => "YANG YUELU",
                     'perusahaan' => "Shandong Wood and Wood Products Circulation Association",

@@ -62,11 +62,15 @@ class LayoutController extends Controller
         $kabkotas = User::where('role_id', 3)->get();
         $cjibf = CjibfEvent::first();
         $pesertas = CjibfInvestor::with('profil', 'loi')->paginate(20);
+        $pesertas2 = CjibfInvestor::all();
         //dd($pesertas);
         $events = CjibfEvent::all();
 
         $user_info = CjibfInvestor::groupBy('kab_kota_id')->select('kab_kota_id', DB::raw('count(*) as total'))->get();
         $sector_info = CjibfInvestor::groupBy('sektor_interest')->select('sektor_interest', DB::raw('count(*) as totalsektor'))->get();
+        $country_info = CjibfInvestor::with('profil')->get()->groupBy('profil.country');
+
+        //dd($country_info);
         //dd($sector_info);
         //dd($user_info[0]->user->namakota[0]->nama);
         //dd($user_info[0]);
@@ -99,7 +103,9 @@ class LayoutController extends Controller
                 'events',
                 'pesertas',
                 'user_info',
-                'sector_info'
+                'sector_info',
+                'country_info',
+                'pesertas2'
             ));
         }
 

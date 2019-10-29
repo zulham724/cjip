@@ -54,6 +54,9 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/cetakmeja-daftar-hadir', 'CJIBF\DaftarHadirController@cetakMeja')->name('cetakpermeja.daftar-hadir');
 
     Route::get('/rekap-pendaftar', 'CJIBF\RekapPendaftarController@cetakRekap')->name('rekap-pendaftar');
+    Route::get('/rekap-lokasi', 'CJIBF\RekapPendaftarController@cetakLokasi')->name('rekap-lokasi');
+    Route::get('/rekap-sektor', 'CJIBF\RekapPendaftarController@cetakSektor')->name('rekap-sektor');
+    Route::get('/rekap-negara', 'CJIBF\RekapPendaftarController@cetakNegara')->name('rekap-negara');
 
     Route::get('/loi-cjibf-2019/', 'CJIBF\LOController@lo')->name('lo');
     Route::get('/loi-cjibf-2019/{id}', 'CJIBF\LOController@loSetting')->name('lo.setting');
