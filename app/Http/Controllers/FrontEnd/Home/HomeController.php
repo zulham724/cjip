@@ -46,6 +46,7 @@ class HomeController extends Controller
     public function home(){
 
 
+
         //$cjibf = CjibfInvestor::where('meja_id', 'G3')->get();
         //dd($cjibf);
         SEOTools::setTitle('Home - Central Java Investment Bussiness Platform');

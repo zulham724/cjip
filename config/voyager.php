@@ -157,6 +157,7 @@ return [
             'App\\Widgets\\CJIBFNegara',
             'App\\Widgets\\CJIBFSektor',
             'App\\Widgets\\CJIBFLokasi',
+            'App\\Widgets\\ProjectReadiness',
         ],
 
     ],
