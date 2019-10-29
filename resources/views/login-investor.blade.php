@@ -34,7 +34,7 @@
                                     <input type="text" class="form__input js-field__text" name="name" placeholder="John Doe" required autofocus>
 
                                     <label class="form__label">Email</label>
-                                    <input class="form__input js-field__email" id="email" type="email"
+                                    <input class="form__input js-field__email" id="email" onblur="duplicateEmail(this)" type="email"
                                            name="email" required autofocus
                                            placeholder="example@mail.com">
                                     <span class="form-validation" id="error_email"></span>
@@ -83,45 +83,30 @@
 
 @section('js')
     <script>
-        $(document).ready(function(){
+        function duplicateEmail(element){
+            var email = $(element).val();
 
-            $('#email').blur(function(){
-                var error_email = '';
-                var email = $('#email').val();
-                var _token = $('input[name="_token"]').val();
-                var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-                //console.log(email)
-                if(!filter.test(email))
-                {
-                    $('#error_email').html('<label class="text-danger">Invalid Email</label>');
-                    $('#email').addClass('has-error');
-                    $('#register').attr('disabled', 'disabled');
-                }
-                else
-                {
-                    $.ajax({
-                        url:"{{ route('checkemail') }}",
-                        method:"POST",
-                        data:{email:email, _token:_token},
-                        success:function(result)
-                        {
-                            if(result == 'unique')
-                            {
-                                $('#error_email').html('<label class="text-success">Email Available</label>');
-                                $('#email').removeClass('has-error');
-                                $('#register').attr('disabled', false);
-                            }
-                            else
-                            {
-                                $('#error_email').html('<label class="text-danger">This Email Already Exist</label>');
-                                $('#email').addClass('has-error');
-                                $('#register').attr('disabled', 'disabled');
-                            }
-                        }
-                    })
+            $.ajax({
+                type: "POST",
+                url: '{{url('checkemail')}}',
+                data: {email:email, _token: '{{csrf_token()}}'},
+                dataType: "json",
+                success: function(res) {
+
+                    if(res.exists){
+                        $('#error_email').html('<label style="color: #c82333; font-weight: bold">This Email Already Exist</label>');
+                        $('#email').addClass('has-error');
+                        $('#register').attr('disabled', true);
+                    }else{
+                        $('#error_email').html('<label style="color: forestgreen; font-weight: bold">Email Available</label>');
+                        $('#email').removeClass('has-error');
+                        $('#register').attr('disabled', false);
+                    }
+                },
+                error: function (jqXHR, exception) {
+
                 }
             });
-
-        });
+        }
     </script>
 @endsection

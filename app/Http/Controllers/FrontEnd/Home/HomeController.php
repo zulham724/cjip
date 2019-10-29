@@ -382,20 +382,13 @@ class HomeController extends Controller
     }
 
     public function checkEmail(Request $request){
-        if($request->get('email'))
-        {
-            $email = $request->get('email');
-            $data = DB::table("user_investors")
-                ->where('email', $email)
-                ->count();
-            if($data > 0)
-            {
-                echo 'not_unique';
-            }
-            else
-            {
-                echo 'unique';
-            }
+        $email = $request->input('email');
+        $isExists = UserInvestor::where('email',$email)->first();
+        //dd($isExists);
+        if($isExists){
+            return response()->json(array("exists" => true));
+        }else{
+            return response()->json(array("exists" => false));
         }
     }
 

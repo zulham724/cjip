@@ -74,6 +74,7 @@ Route::get('/', function(){
 
 
         Route::get('/', 'FrontEnd\Home\HomeController@home')->name('homey2');
+        Route::post('/checkemail', 'FrontEnd\Home\HomeController@checkEmail')->name('checkemail');
         Route::get('/bkpm', 'FrontEnd\Home\HomeController@bkpm')->name('bkpm');
         Route::get('sitemap-generate', 'SitemapController@sitemap');
         /*Route::get('sitemap', function(){
@@ -128,7 +129,7 @@ Route::get('/', function(){
 
         /*Route::get('/x', 'FrontEnd\Provinsi\VideoPlayerController@home')->name('homey');*/
 
-        Route::post('/checkemail', 'FrontEnd\Home\HomeController@checkEmail')->name('checkemail');
+
         Route::get('/failed', 'CJIBF\FrontEndController@failed')->name('failed');
 
         /*Route::get('/sidebar', 'FrontEnd\Home\HomeController@sidebar')->name('sidebar');
