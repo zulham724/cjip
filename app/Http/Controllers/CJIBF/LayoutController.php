@@ -75,7 +75,7 @@ class LayoutController extends Controller
                 $total = CjibfInvestor::with('profil')->where('meja_id', 'G8')->get();
                 /*$total = CjibfTable::where('sisa', '!=', 0)->sum('sisa');*/
                 //$total = CjibfTable::where('sisa', '!=', 0)->sum('sisa');
-                dd($total);
+                //dd($total);
             }
         }
 
