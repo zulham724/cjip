@@ -15,6 +15,7 @@
                         <tr>
                             <th>No</th>
                             <th>Company</th>
+                            <th>Negara</th>
                             <th>Sector</th>
                             <th>Lokasi</th>
                             <th>USD</th>
@@ -27,6 +28,7 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $loi->nama_perusahaan }}</td>
+                                    <td>{{$asal->where('nama_perusahaan', $loi->nama_perusahaan)}}</td>
 
                                     <td>@isset($loi->sektor){{ $loi->sektor->sektor_interest }} @else - @endisset</td>
 

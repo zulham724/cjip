@@ -11,7 +11,7 @@
         <tbody>
         @foreach($graphics as $graphic)
             <tr>
-                <th>{{$graphic->bidang_usaha}}</th>
+                <th>@isset($graphic->sektor){{ $graphic->sektor->sektor_interest }} @else Others @endisset</th>
                 <td>{{$graphic->sumrp}}</td>
                 <td>{{$graphic->sumusd}}</td>
             </tr>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\CJIBF;
 use App\CjibfInvestor;
 use App\CjibfSektor;
 use App\Lois;
+use App\ProfileInvestor;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -39,6 +40,8 @@ class LiveController extends Controller
             ->selectRaw('*, sum(nilai_usd) as sumusd, sum(nilai_rp) as sumrp')
             ->get();
         //dd($graphics);
+
+        $asal = ProfileInvestor::all();
         if (isset($lois)){
             $rp = Lois::where('cjibf', 1)->sum('nilai_rp');
             //dd($rp);
@@ -48,7 +51,7 @@ class LiveController extends Controller
             $rp = "0";
             $usd = "0";
         }
-        return view('front-end.live-count.reload', compact('lois', 'rp', 'usd', 'graphics'
+        return view('front-end.live-count.reload', compact('lois', 'rp', 'usd', 'graphics', 'asal'
         ));
     }
 
@@ -76,7 +79,7 @@ class LiveController extends Controller
         $graphics = Lois::where('cjibf', 1)->groupBy('bidang_usaha')
             ->selectRaw('*, sum(nilai_usd) as sumusd, sum(nilai_rp) as sumrp')
             ->get();
-        //dd($graphics[0]->sumusd);
+        //dd($lois[0]);
 
         if (isset($lois)){
             $rp = Lois::where('cjibf', 1)->sum('nilai_rp');
