@@ -31,7 +31,7 @@
                                     <td>@isset($loi->sektor){{ $loi->sektor->sektor_interest }} @else - @endisset</td>
 
 
-                                    <td>@isset($loi->kota){{ $loi->kota->kabkota->nama }} @else - @endisset</td>
+                                    <td>@isset($loi->kota){{ $loi->kota[0]->nama }} @else - @endisset</td>
                                     <td>{{ number_format($loi->nilai_usd) }}</td>
                                     <td>{{ number_format($loi->nilai_rp) }}</td>
                                 </tr>
