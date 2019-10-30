@@ -62,6 +62,9 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/rekap-project-by-sector', 'CJIBF\RekapPendaftarController@rekapProjectSector')->name('rekap-project-sektor');
     Route::get('/rekap-project-by-city', 'CJIBF\RekapPendaftarController@rekapProjectKabkota')->name('rekap-project-kabkota');
 
+
+    Route::get('/rekap-loi', 'CJIBF\RekapPendaftarController@rekapLoI')->name('rekap-loi');
+
     Route::get('/loi-cjibf-2019/', 'CJIBF\LOController@lo')->name('lo');
     Route::get('/loi-cjibf-2019/{id}', 'CJIBF\LOController@loSetting')->name('lo.setting');
 

@@ -26,6 +26,9 @@ class Lois extends Model
 
     public function kota(){
         return $this->belongsToMany(KabKota::class, 'kabkota_user', 'user_id', 'kab_kota_id');
+    }
 
+    public function loi(){
+        return $this->belongsTo(ProfileInvestor::class, 'nama_perusahaan', 'nama_perusahaan');
     }
 }
