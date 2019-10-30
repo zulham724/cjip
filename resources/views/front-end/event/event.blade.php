@@ -266,7 +266,6 @@
                         <div class="row align-items-center full-screen p-100px-tb">
                             <div class="col-xl-12 col-lg-12 col-md-12 m-50px-t">
 
-                                <img src="http://cjip.jatengprov.go.id/storage/additional/logo%20cjibf.png" style="display: block;margin-left: auto;margin-right: auto;max-width: 200px; -webkit-filter: drop-shadow(5px 5px 5px #222); filter: drop-shadow(5px 5px 5px #222);" alt="" >
 
                                 <div class="p-30px-t sm-p-5px-t" align="center">
                                     <a href="#venue" class="m-btn m-10px-r">Join Us</a>
@@ -280,7 +279,6 @@
                         <div class="row align-items-center full-screen p-100px-tb">
                             <div class="col-xl-12 col-lg-12 col-md-12 m-50px-t">
 
-                                <img src="http://cjip.jatengprov.go.id/storage/additional/logo%20cjibf.png" style="display: block;margin-left: auto;margin-right: auto;max-width: 200px; -webkit-filter: drop-shadow(5px 5px 5px #222); filter: drop-shadow(5px 5px 5px #222);" alt="" >
 
                                 <div class="p-30px-t sm-p-5px-t" align="center">
                                     <a href="#venue" class="m-btn m-10px-r">Join Us</a>
@@ -294,7 +292,6 @@
                         <div class="row align-items-center full-screen p-100px-tb">
                             <div class="col-xl-12 col-lg-12 col-md-12 m-50px-t">
 
-                                <img src="http://cjip.jatengprov.go.id/storage/additional/logo%20cjibf.png" style="display: block;margin-left: auto;margin-right: auto;max-width: 200px; -webkit-filter: drop-shadow(5px 5px 5px #222); filter: drop-shadow(5px 5px 5px #222);" alt="" >
 
                                 <div class="p-30px-t sm-p-5px-t" align="center">
                                     <a href="#venue" class="m-btn m-10px-r">Join Us</a>
