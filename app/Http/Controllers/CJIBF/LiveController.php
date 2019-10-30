@@ -13,7 +13,7 @@ class LiveController extends Controller
     public function live(){
 
         $lois = Lois::where('cjibf', 1)->orderBy('created_at', 'desc')->get();
-
+        //dd($lois);
         $graphics = Lois::groupBy('bidang_usaha')
             ->selectRaw('*, sum(nilai_usd) as sumusd, sum(nilai_rp) as sumrp')
             ->get();
@@ -34,7 +34,7 @@ class LiveController extends Controller
 
     public function reload(){
         $lois = Lois::where('cjibf', 1)->orderBy('created_at', 'desc')->get();
-
+        //dd($lois[0]->kota[0]->nama);
         $graphics = Lois::groupBy('bidang_usaha')
             ->selectRaw('*, sum(nilai_usd) as sumusd, sum(nilai_rp) as sumrp')
             ->get();

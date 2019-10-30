@@ -25,6 +25,7 @@ class Lois extends Model
     }
 
     public function kota(){
-        return $this->belongsTo(KabkotaUserModel::class, 'kab_kota_id', 'kab_kota_id');
+        return $this->belongsToMany(KabKota::class, 'kabkota_user', 'user_id', 'kab_kota_id');
+
     }
 }
