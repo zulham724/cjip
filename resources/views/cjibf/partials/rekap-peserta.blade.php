@@ -24,7 +24,13 @@
                     <td>{{ $peserta->profil->jabatan }}</td>
                     <td>{{ $peserta->profil->phone }}</td>
                     <td>{{ $peserta->profil->userInv->email }}</td>
-                    <td>{{$meja}}</td>
+                    <td>
+                        @isset($meja)
+                            {{$meja}}
+                            @else
+                            Input Manual
+                        @endisset
+                    </td>
                 </tr>
                 @endif
             @endforeach
