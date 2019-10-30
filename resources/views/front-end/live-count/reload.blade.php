@@ -27,8 +27,11 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $loi->nama_perusahaan }}</td>
-                                    <td>{{ $loi->sektor->sektor_interest }}</td>
-                                    <td>{{ $loi->kota->kabkota->nama }}</td>
+
+                                    <td>@isset($loi->sektor){{ $loi->sektor->sektor_interest }} @else - @endisset</td>
+
+
+                                    <td>@isset($loi->kota){{ $loi->kota->kabkota->nama }} @else - @endisset</td>
                                     <td>{{ number_format($loi->nilai_usd) }}</td>
                                     <td>{{ number_format($loi->nilai_rp) }}</td>
                                 </tr>
