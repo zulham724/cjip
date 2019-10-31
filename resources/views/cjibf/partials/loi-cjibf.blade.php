@@ -7,7 +7,7 @@
     </tr>
     </thead>
     <tbody>
-
+    @isset($loi_country)
         @foreach($loi_country as $loi)
 
             <tr>
@@ -22,7 +22,7 @@
                 </td>
             </tr>
         @endforeach
-
+    @endisset
 
     </tbody>
 </table>

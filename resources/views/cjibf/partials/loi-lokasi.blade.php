@@ -7,7 +7,7 @@
     </tr>
     </thead>
     <tbody>
-
+    @isset($graphics)
     @foreach($graphics as $loi)
 
         <tr>
@@ -22,7 +22,7 @@
             </td>
         </tr>
     @endforeach
-
+    @endisset
 
     </tbody>
 </table>
