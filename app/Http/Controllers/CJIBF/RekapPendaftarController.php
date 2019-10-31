@@ -53,14 +53,14 @@ class RekapPendaftarController extends Controller
 
     public function rekapLoI(){
 
-        $graphics = Lois::with('kabkota')->where('cjibf', 1)->get();
-        //dd($graphics);
         $loi_country = DB::table('lois')
             ->join('profile_investors', 'profile_investors.nama_perusahaan' , '=', 'lois.nama_perusahaan')
-            ->select( 'profile_investors.country as country', DB::raw("sum(lois.nilai_rp) as sumrp"), DB::raw("sum(lois.nilai_usd) as sumusd"))
             ->where('cjibf', '=', 1)
+            ->select( 'profile_investors.country as country', DB::raw("sum(lois.nilai_rp) as sumrp"))
             ->groupBy('profile_investors.country')
             ->get();
+
+        //dd($loi_country);
 
         return Excel::download(new ExportLoiCjibf(), 'rekap-loi-cjibf-by-country-2019.xlsx');
 

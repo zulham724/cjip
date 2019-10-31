@@ -7,6 +7,7 @@
     </tr>
     </thead>
     <tbody>
+    @isset($graphics)
     @foreach($graphics as $graphic)
         <tr>
             <th>@isset($graphic->sektor){{ $graphic->sektor->sektor_interest }} @else Others @endisset</th>
@@ -14,6 +15,6 @@
             <td>USD $ {{number_format($graphic->sumusd)}}</td>
         </tr>
     @endforeach
-
+    @endisset
     </tbody>
 </table>
