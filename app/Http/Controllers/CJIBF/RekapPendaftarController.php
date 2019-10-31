@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\CJIBF;
 
 use App\CjibfInvestor;
+use App\Exports\ExportLoiCjibf;
 use App\Exports\ExportProject;
 use App\Exports\ExportProjectKabkota;
 use App\Exports\ExportProjectSector;
@@ -12,6 +13,7 @@ use App\Exports\ExportRekapPendaftar;
 use App\Exports\ExportRekapSektor;
 use App\Lois;
 use App\ProfileInvestor;
+use App\Widgets\Loi;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -50,29 +52,18 @@ class RekapPendaftarController extends Controller
     }
 
     public function rekapLoI(){
-        $lois = Lois::with('loi')->where('cjibf', 1)->orderBy('created_at', 'desc')->get();
-        //dd($lois);
 
+        $graphics = Lois::with('kabkota')->where('cjibf', 1)->get();
+        //dd($graphics);
+        $loi_country = DB::table('lois')
+            ->join('profile_investors', 'profile_investors.nama_perusahaan' , '=', 'lois.nama_perusahaan')
+            ->select( 'profile_investors.country as country', DB::raw("sum(lois.nilai_rp) as sumrp"), DB::raw("sum(lois.nilai_usd) as sumusd"))
+            ->where('cjibf', '=', 1)
+            ->groupBy('profile_investors.country')
+            ->get();
 
-        Excel::create('Rekap LoI CJIBF 2019', function($excel) {
+        return Excel::download(new ExportLoiCjibf(), 'rekap-loi-cjibf-by-country-2019.xlsx');
 
-
-            $excel->sheet('NEGARA', function($sheet) {
-                $loi_country = DB::table('lois')
-                    ->join('profile_investors', 'profile_investors.nama_perusahaan' , '=', 'lois.nama_perusahaan')
-                    ->select( 'profile_investors.country as country', DB::raw("sum(lois.nilai_rp) as sumrp"))
-                    ->where('cjibf', '=', 1)
-                    ->groupBy('profile_investors.country')
-                    ->get();
-                $sheet->loadView('cjibf.partials.loi-cjibf', compact('loi_country'));
-            });
-
-            $excel->sheet('Second sheet', function($sheet) {
-
-                $sheet->loadView('view_second');
-            });
-
-        });
 
     }
 }

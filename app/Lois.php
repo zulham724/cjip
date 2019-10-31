@@ -23,6 +23,9 @@ class Lois extends Model
     public function sektor(){
         return $this->belongsTo(CjibfInvestor::class, 'id', 'loi_id');
     }
+    public function kabkota(){
+        return $this->belongsTo(User::class,  'kab_kota_id');
+    }
 
     public function kota(){
         return $this->belongsToMany(KabKota::class, 'kabkota_user', 'user_id', 'kab_kota_id');
