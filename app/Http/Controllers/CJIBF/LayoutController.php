@@ -328,7 +328,7 @@ class LayoutController extends Controller
         $user = new UserInvestor();
         $user->name = $request->investor_name;
         $user->email = $request->email;
-        $user->password = Hash::make($request->nama_perusahaan);
+        $user->password = Hash::make('cjip2019');
         $user->save();
 
         $profil = new ProfileInvestor();

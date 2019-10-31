@@ -158,6 +158,7 @@ return [
             'App\\Widgets\\CJIBFSektor',
             'App\\Widgets\\CJIBFLokasi',
             'App\\Widgets\\ProjectReadiness',
+            'App\\Widgets\\RekapLoi',
         ],
 
     ],

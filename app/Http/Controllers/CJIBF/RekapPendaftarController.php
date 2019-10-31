@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\CJIBF;
 
 use App\CjibfInvestor;
+use App\Exports\ExportLoiCjibf;
 use App\Exports\ExportProject;
 use App\Exports\ExportProjectKabkota;
 use App\Exports\ExportProjectSector;
@@ -10,8 +11,12 @@ use App\Exports\ExportRekapLokasi;
 use App\Exports\ExportRekapNegara;
 use App\Exports\ExportRekapPendaftar;
 use App\Exports\ExportRekapSektor;
+use App\Lois;
+use App\ProfileInvestor;
+use App\Widgets\Loi;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 
 class RekapPendaftarController extends Controller
@@ -43,6 +48,22 @@ class RekapPendaftarController extends Controller
     }
     public function rekapProjectKabkota(){
         return Excel::download(new ExportProjectKabkota(), 'rekap-cjibf-by-country-2019.xlsx');
+
+    }
+
+    public function rekapLoI(){
+
+        $graphics = Lois::with('kabkota')->where('cjibf', 1)->get();
+        //dd($graphics);
+        $loi_country = DB::table('lois')
+            ->join('profile_investors', 'profile_investors.nama_perusahaan' , '=', 'lois.nama_perusahaan')
+            ->select( 'profile_investors.country as country', DB::raw("sum(lois.nilai_rp) as sumrp"), DB::raw("sum(lois.nilai_usd) as sumusd"))
+            ->where('cjibf', '=', 1)
+            ->groupBy('profile_investors.country')
+            ->get();
+
+        return Excel::download(new ExportLoiCjibf(), 'rekap-loi-cjibf-by-country-2019.xlsx');
+
 
     }
 }
