@@ -34,7 +34,7 @@ class CJIBFSektor extends AbstractWidget
                 'text' => 'Rekap Peserta CJIBF 2019 berdasarkan Sektor',
                 'link' => route('rekap-sektor'),
             ],
-            'image' => voyager_asset('images/widget-backgrounds/01.jpg'),
+            'image' => asset('images/widget/sektor.jpg'),
         ]));
     }
 

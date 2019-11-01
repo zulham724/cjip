@@ -28,7 +28,11 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $loi->nama_perusahaan }}</td>
-                                    <td>{{$asal->where('nama_perusahaan', $loi->nama_perusahaan)}}</td>
+                                    <td>
+                                        @if($asal->where('nama_perusahaan', $loi->nama_perusahaan))
+                                            {{$asal[0]->country}}
+                                        @endif
+                                    </td>
 
                                     <td>@isset($loi->sektor){{ $loi->sektor->sektor_interest }} @else - @endisset</td>
 

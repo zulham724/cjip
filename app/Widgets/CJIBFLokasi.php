@@ -34,7 +34,7 @@ class CJIBFLokasi extends AbstractWidget
                 'text' => 'Rekap Peserta CJIBF 2019 berdasarkan Lokasi',
                 'link' => route('rekap-lokasi'),
             ],
-            'image' => voyager_asset('images/widget-backgrounds/01.jpg'),
+            'image' => asset('images/widget/lokasi.jpg'),
         ]));
     }
 

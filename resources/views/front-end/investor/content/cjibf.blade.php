@@ -786,7 +786,7 @@
 
             @if(!isset($events))
                 <div class="card-header border-bottom">
-                    <h6 class="m-0">Sorry, this event is not yet started</h6>
+                    <h6 class="m-0">Sorry, Registration for this event is closed.</h6>
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item p-3">

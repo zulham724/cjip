@@ -34,7 +34,7 @@ class CJIBFNegara extends AbstractWidget
                 'text' => 'Rekap Peserta CJIBF 2019 berdasarkan Negara',
                 'link' => route('rekap-negara'),
             ],
-            'image' => voyager_asset('images/widget-backgrounds/01.jpg'),
+            'image' => asset('images/widget/negara.jpg'),
         ]));
     }
 

@@ -34,7 +34,7 @@ class UserInvestor extends AbstractWidget
                 'text' => __('voyager::dimmer.user_link_text'),
                 'link' => '#',
             ],
-            'image' => voyager_asset('images/widget-backgrounds/01.jpg'),
+            'image' => asset('images/widget/investor2.jpg'),
         ]));
     }
 
