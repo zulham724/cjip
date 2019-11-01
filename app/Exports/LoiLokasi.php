@@ -17,9 +17,7 @@ class LoiLokasi implements FromView, WithTitle
      */
     public function view(): View
     {
-        $graphics = Lois::with(['kabkota' => function($query){
-            $query->groupBy('name');
-        }])->where('cjibf', 1)
+        $graphics = Lois::where('cjibf', 1)->groupBy('kab_kota_id')
             ->selectRaw('*, sum(nilai_usd) as sumusd, sum(nilai_rp) as sumrp')
             ->get();
 
