@@ -53,11 +53,7 @@ class RekapPendaftarController extends Controller
 
     public function rekapLoI(){
 
-        $graphics = Lois::with(['kabkota' => function($query){
-            $query->groupBy('name');
-        }])->where('cjibf', 1)
-            ->selectRaw('*, sum(nilai_usd) as sumusd, sum(nilai_rp) as sumrp')
-            ->get();
+
 
         //dd($graphics);
 

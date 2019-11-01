@@ -3,7 +3,8 @@
     <tr style="text-align: center !important;">
         <th scope="col" class="border-0" style="text-align: center">#</th>
         <th scope="col" class="border-0" style="text-align: center">Negara</th>
-        <th scope="col" class="border-0" style="text-align: center">Total Rencana Investasi</th>
+        <th>RP</th>
+        <th>USD</th>
     </tr>
     </thead>
     <tbody>
@@ -14,11 +15,18 @@
             <td>{{$loop->iteration}}</td>
             <td>{{$loi->kabkota->namakota[0]->nama}}</td>
             <td>
-                @if($loi->sumrp)
+                @isset($loi->sumrp)
                     Rp. {{number_format($loi->sumrp)}}
                 @else
+                    -
+                @endisset
+            </td>
+            <td>
+                @isset($loi->sumusd)
                     USD $ {{number_format($loi->sumusd)}}
-                @endif
+                @else
+                    -
+                @endisset
             </td>
         </tr>
     @endforeach
