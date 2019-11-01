@@ -77,9 +77,15 @@
                             <span class="focus-input100"></span>
                         </div>
 
-                        <div class="form-group col-lg-12">
+                        <div class="form-group col-lg-6">
                             <span class="control-label">Tanggal LoI</span>
                             <input class="form-control" type="date" name="tgl_ttd" value="{{Carbon\Carbon::parse($dataTypeContent->tgl_ttd)->format('yyyy-MM-dd')}}" >
+                            <span class="focus-input100"></span>
+                        </div>
+
+                        <div class="form-group col-lg-6">
+                            <span class="control-label">Asal Negara</span>
+                            <input class="form-control" type="text" name="asal_negara" value="{{$dataTypeContent->asal_negara}}" >
                             <span class="focus-input100"></span>
                         </div>
 

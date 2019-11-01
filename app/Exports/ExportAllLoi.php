@@ -18,7 +18,7 @@ class ExportAllLoi implements FromView, WithTitle
      */
     public function view(): View
     {
-        $lois = Lois::with('kabkota')->where('cjibf', 1)->get();
+        $lois = Lois::where('cjibf', 1)->get();
         $asal = ProfileInvestor::all();
         return view('cjibf.partials.loi-all', compact('lois', 'asal'));
     }
