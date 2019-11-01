@@ -34,7 +34,7 @@ class ProjectReadiness extends AbstractWidget
                 'text' => 'Download',
                 'link' => route('rekap-project'),
             ],
-            'image' => voyager_asset('images/widget-backgrounds/03.jpg'),
+            'image' => asset('images/widget/readiness.jpg'),
         ]));
     }
 

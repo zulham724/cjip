@@ -41,7 +41,7 @@ class Loi extends AbstractWidget
                 'text' => __('voyager::dimmer.user_link_text'),
                 'link' => route('voyager.lois.index'),
             ],
-            'image' => voyager_asset('images/widget-backgrounds/01.jpg'),
+            'image' => asset('images/widget/loi.jpg'),
         ]));
     }
 

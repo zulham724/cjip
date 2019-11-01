@@ -40,7 +40,7 @@ class FeedbackWidget extends AbstractWidget
                 'text' => number_format($cast, 2).' %',
                 'link' => '',
             ],
-            'image' => voyager_asset('images/widget-backgrounds/03.jpg'),
+            'image' => asset('images/widget/satisfaction.jpg'),
         ]));
     }
 

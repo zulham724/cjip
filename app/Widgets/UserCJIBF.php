@@ -34,7 +34,7 @@ class UserCJIBF extends AbstractWidget
                 'text' => "Download Rekap Peserta",
                 'link' => route('rekap-pendaftar'),
             ],
-            'image' => voyager_asset('images/widget-backgrounds/01.jpg'),
+            'image' => asset('images/widget/event.jpg'),
         ]));
     }
 

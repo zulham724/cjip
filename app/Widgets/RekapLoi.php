@@ -33,7 +33,7 @@ class RekapLoi extends AbstractWidget
                 'text' => "Rekap Loi",
                 'link' => route('rekap-loi'),
             ],
-            'image' => voyager_asset('images/widget-backgrounds/02.jpg'),
+            'image' => asset('images/widget/loi.jpg'),
         ]));
     }
 
