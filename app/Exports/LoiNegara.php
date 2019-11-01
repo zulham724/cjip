@@ -18,9 +18,9 @@ class LoiNegara implements FromView, WithTitle
     {
         $loi_country = DB::table('lois')
             ->join('profile_investors', 'profile_investors.nama_perusahaan' , '=', 'lois.nama_perusahaan')
-            ->select( 'profile_investors.country as country', DB::raw("sum(lois.nilai_rp) as sumrp"), DB::raw("sum(lois.nilai_usd) as sumusd"))
+            ->select( 'lois.asal_negara as country', DB::raw("sum(lois.nilai_rp) as sumrp"), DB::raw("sum(lois.nilai_usd) as sumusd"))
             ->where('cjibf', '=', 1)
-            ->groupBy('profile_investors.country')
+            ->groupBy('lois.asal_negara')
             ->get();
 
         return view('cjibf.partials.loi-cjibf', compact('loi_country'));

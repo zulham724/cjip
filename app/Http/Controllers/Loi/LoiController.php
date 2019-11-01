@@ -112,6 +112,7 @@ class LoiController extends Controller
         $post->email = $request->input('email');
         $post->lokasi_investasi = $request->input('lokasi_investasi');
         $post->kab_kota_id = Auth::user()->id;
+        $post->asal_negara = $request->input('asal_negara');
         //dd($post);
         $post->save();
 
@@ -227,6 +228,8 @@ class LoiController extends Controller
         if (view()->exists("voyager::$slug.browse")) {
             $view = "voyager::$slug.browse";
         }
+
+        //dd($dataTypeContent);
 
         return Voyager::view($view, compact(
             'actions',
@@ -368,7 +371,7 @@ class LoiController extends Controller
     {
 
         $slug = $this->getSlug($request);
-//dd($request->all());
+        //dd($request->all());
         $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
 
         // Compatibility with Model binding.
@@ -415,6 +418,8 @@ class LoiController extends Controller
         $data->email = $request->email;
         $data->lokasi_investasi = $request->lokasi_investasi;
         $data->tgl_ttd = $request->tgl_ttd;
+        $data->asal_negara = $request->asal_negara;
+
         if ($request->filled('rp')){
             $rp = $request->input('rp');
             $storethis = (string)str_replace(',', '',$rp);

@@ -2,7 +2,7 @@
     <thead class="bg-light">
     <tr style="text-align: center !important;">
         <th scope="col" class="border-0" style="text-align: center">#</th>
-        <th scope="col" class="border-0" style="text-align: center">Negara</th>
+        <th scope="col" class="border-0" style="text-align: center">Lokasi</th>
         <th>RP</th>
         <th>USD</th>
     </tr>

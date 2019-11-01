@@ -212,6 +212,7 @@ class LayoutController extends Controller
         $loi->lokasi_investasi = $request->lokasi;
         $loi->phone = $profile->phone;
         $loi->email = $profile->userInv->email;
+        $loi->asal_negara = $profile->country;
         if ($storethisusd == 0) {
             $loi->nilai_usd = 0;
             $loi->nilai_rp = $storethis;
@@ -302,6 +303,23 @@ class LayoutController extends Controller
             $storethisusd = 0;
         }
 
+        $user = new UserInvestor();
+        $user->name = $request->investor_name;
+        $user->email = $request->email;
+        $user->password = Hash::make('cjip2019');
+        $user->save();
+
+        $profil = new ProfileInvestor();
+        $profil->user_id = $user->id;
+        $profil->investor_name = $request->investor_name;
+        $profil->jabatan = $request->jabatan;
+        $profil->phone = $request->phone;
+        $profil->nama_perusahaan = $request->nama_perusahaan;
+        $profil->bidang_usaha = $request->bidang_usaha;
+        $profil->badan_hukum = $request->badan_hukum;
+        $profil->country = $request->country;
+        //dd($profil);
+        $profil->save();
 
         $loi = new Lois();
         $loi->kab_kota_id = Auth::user()->id;
@@ -312,6 +330,7 @@ class LayoutController extends Controller
         $loi->jabatan_pengusaha = $request->jabatan;
         $loi->phone = $request->phone;
         $loi->email = $request->email;
+        $loi->asal_negara = $profil->country;
         if ($storethisusd == 0) {
             $loi->nilai_usd = 0;
             $loi->nilai_rp = $storethis;
@@ -325,23 +344,8 @@ class LayoutController extends Controller
         $loi->save();
         //dd($loi);
 
-        $user = new UserInvestor();
-        $user->name = $request->investor_name;
-        $user->email = $request->email;
-        $user->password = Hash::make('cjip2019');
-        $user->save();
 
-        $profil = new ProfileInvestor();
-        $profil->user_id = $user->id;
-        $profil->investor_name = $loi->nama_pengusaha;
-        $profil->jabatan = $loi->jabatan_pengusaha;
-        $profil->phone = $loi->phone;
-        $profil->nama_perusahaan = $loi->nama_perusahaan;
-        $profil->bidang_usaha = $request->bidang_usaha;
-        $profil->badan_hukum = $request->badan_hukum;
-        $profil->country = $request->country;
-        //dd($profil);
-        $profil->save();
+
 
         $peserta = new CjibfInvestor();
         $peserta->kab_kota_id = $loi->kab_kota_id;
