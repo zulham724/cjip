@@ -45,9 +45,14 @@
                                         </a>
                                     @else
                                         @if(is_null($pesertakab->loi->nilai_usd) || ($pesertakab->loi->nilai_usd) == 0)
-                                            Rp. {{number_format($pesertakab->loi->nilai_rp)}}
+                                            @isset($pesertakab->loi->nilai_rp)
+                                                Rp. {{number_format($pesertakab->loi->nilai_rp)}}
+                                            @endisset
                                         @else
+                                            @isset($pesertakab->loi->nilai_usd)
                                             USD {{number_format($pesertakab->loi->nilai_usd)}}
+
+                                            @endisset
                                         @endif
 
                                     @endif
@@ -56,11 +61,20 @@
                         @endforeach
 
                     @else
+                        @isset($pesertas)
                         @foreach($pesertas as $peserta)
                             <tr>
                                 <td>{{$loop->iteration}}</td>
-                                <td>{{$peserta->profil->nama_perusahaan}}, {{$peserta->profil->badan_hukum}}</td>
-                                <td>{{$peserta->user->name}}</td>
+                                <td>
+                                    @isset($peserta->profil->nama_perusahaan)
+                                    {{$peserta->profil->nama_perusahaan}}, {{$peserta->profil->badan_hukum}}
+                                    @endisset
+                                </td>
+                                <td>
+                                    @isset($peserta->user->name)
+                                    {{$peserta->user->name}}
+                                    @endisset
+                                </td>
                                 <td>{{$peserta->sektor_interest}}</td>
                                 <td>{{$peserta->meja_id}}</td>
                                 <td>
@@ -69,16 +83,18 @@
                                             <button class="btn btn-warning">Isi</button>
                                         </a>
                                     @else
-                                        @if($peserta->loi->nilai_usd == 0)
-                                            Rp. {{number_format($peserta->loi->nilai_rp)}}
-                                        @else
-                                            USD {{number_format($peserta->loi->nilai_usd)}}
-                                        @endif
-
+                                        @isset($peserta->loi->nilai_usd)
+                                            @if($peserta->loi->nilai_usd == 0)
+                                                Rp. {{number_format($peserta->loi->nilai_rp)}}
+                                            @else
+                                                USD {{number_format($peserta->loi->nilai_usd)}}
+                                            @endif
+                                        @endisset
                                     @endif
                                 </td>
                             </tr>
                         @endforeach
+                        @endisset
                     @endif
 
                     </tbody>

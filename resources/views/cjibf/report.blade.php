@@ -24,7 +24,7 @@
                         @foreach($user_info as $kab)
                             <tr>
                                 <td>{{$loop->iteration}}</td>
-                                <td>{{$kab->user->namakota[0]->nama}}</td>
+                                <td>@isset($kab->user){{$kab->user->namakota[0]->nama}}@endisset</td>
                                 <td>{{$kab->total}}</td>
                             </tr>
                         @endforeach
