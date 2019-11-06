@@ -16,14 +16,14 @@
             <td>{{$loi->kabkota->namakota[0]->nama}}</td>
             <td>
                 @isset($loi->sumrp)
-                    Rp. {{number_format($loi->sumrp)}}
+                    {{number_format($loi->sumrp)}}
                 @else
                     -
                 @endisset
             </td>
             <td>
                 @isset($loi->sumusd)
-                    USD $ {{number_format($loi->sumusd)}}
+                    {{number_format($loi->sumusd)}}
                 @else
                     -
                 @endisset

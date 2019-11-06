@@ -11,9 +11,9 @@
                 <div class="col-12">
                     <h1 class="header-home__title">{{Voyager::setting('site.title_why')}}</h1>
                     <p class="header-home__description">{{Voyager::setting('site.ket_why')}}</p>
-                    <div class="header-home__btns header-home__btns-mobile">
+                    {{--<div class="header-home__btns header-home__btns-mobile">
                         <a href="{{route('event')}}" class="site-btn site-btn--accent header-home__btn">Join CJIBF</a>
-                    </div>
+                    </div>--}}
                 </div>
             </div>
         </div>
@@ -25,9 +25,9 @@
                 <div class="col-12">
                     <h1 class="header-home__title">{{Voyager::setting('site.id_title_why')}}</h1>
                     <p class="header-home__description">{{Voyager::setting('site.id_ket_why')}}</p>
-                    <div class="header-home__btns header-home__btns-mobile">
+                    {{--<div class="header-home__btns header-home__btns-mobile">
                         <a href="{{route('event')}}" class="site-btn site-btn--accent header-home__btn">Daftar CJIBF</a>
-                    </div>
+                    </div>--}}
                 </div>
             </div>
         </div>

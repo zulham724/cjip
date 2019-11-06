@@ -28,8 +28,8 @@
 
 
                 <td>{{$loi->kabkota->namakota[0]->nama}}</td>
-                <td>USD $ {{ number_format($loi->nilai_usd) }}</td>
-                <td>Rp. {{ number_format($loi->nilai_rp) }}</td>
+                <td>{{ $loi->nilai_usd }}</td>
+                <td>{{ $loi->nilai_rp }}</td>
             </tr>
         @endforeach
     @endisset
