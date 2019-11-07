@@ -24,7 +24,7 @@
                     @endisset
                 </td>
 
-                <td>@isset($loi->sektor){{ $loi->sektor->sektor_interest }} @else - @endisset</td>
+                <td>{{$loi->bidang_usaha}}</td>
 
 
                 <td>{{$loi->kabkota->namakota[0]->nama}}</td>

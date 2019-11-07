@@ -18,7 +18,7 @@ class LoiSektor implements FromView, WithTitle
     public function view(): View
     {
         $graphics = Lois::where('cjibf', 1)->groupBy('bidang_usaha')
-            ->selectRaw('*, sum(nilai_usd) as sumusd, sum(nilai_rp) as sumrp')
+            ->selectRaw('*, sum(nilai_usd) as sumusd, sum(nilai_rp) as sumrp, count(*) as total')
             ->get();
 
         return view('cjibf.partials.loi-sektor', compact('graphics'));

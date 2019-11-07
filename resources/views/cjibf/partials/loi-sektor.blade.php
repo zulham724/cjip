@@ -2,6 +2,7 @@
     <thead>
     <tr>
         <th>Sectors</th>
+        <th>Jumlah Proyek</th>
         <th>Rp</th>
         <th>USD</th>
     </tr>
@@ -10,7 +11,8 @@
     @isset($graphics)
     @foreach($graphics as $graphic)
         <tr>
-            <th>@isset($graphic->sektor){{ $graphic->sektor->sektor_interest }} @else Others @endisset</th>
+            <th>{{ $graphic->bidang_usaha }}</th>
+            <th>{{ $graphic->total }}</th>
             <td>{{$graphic->sumrp}}</td>
             <td>{{$graphic->sumusd}}</td>
         </tr>

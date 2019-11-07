@@ -61,10 +61,15 @@ class RekapPendaftarController extends Controller
             ->where('cjibf', '=', 1)
             ->groupBy('lois.asal_negara')
             ->get();
-        $graphics = Lois::where('cjibf', 1)->groupBy('kab_kota_id')
-            ->selectRaw('*, sum(nilai_usd) as sumusd, sum(nilai_rp) as sumrp')
+
+        $graphics = Lois::where('cjibf', 1)->groupBy('bidang_usaha')
+            ->selectRaw('*, sum(nilai_usd) as sumusd, sum(nilai_rp) as sumrp, count(*) as total')
             ->get();
         //dd($graphics);
+        /*foreach ($graphics as $g){
+            dump($g->bidang_usaha);
+        }
+        die();*/
 
         //dd($loi_country);
 

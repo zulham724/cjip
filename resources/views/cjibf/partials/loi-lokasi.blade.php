@@ -29,7 +29,22 @@
                 @endisset
             </td>
         </tr>
+
     @endforeach
+    <tr>
+        <td>
+            TOTAL
+        </td>
+        <td>
+            {{count($graphics)}}
+        </td>
+        <td>
+            {{$graphics->sum('nilai_rp')}}
+        </td>
+        <td>
+            {{$graphics->sum('nilai_usd')}}
+        </td>
+    </tr>
     @endisset
 
     </tbody>
