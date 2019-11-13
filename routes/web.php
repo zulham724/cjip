@@ -80,10 +80,15 @@ Route::get('/', function(){
 });
 
 
+
         Route::get('/', 'FrontEnd\Home\HomeController@home')->name('homey2');
         Route::post('/checkemail', 'FrontEnd\Home\HomeController@checkEmail')->name('checkemail');
         Route::get('/bkpm', 'FrontEnd\Home\HomeController@bkpm')->name('bkpm');
         Route::get('sitemap-generate', 'SitemapController@sitemap');
+
+
+        Route::get('buku-sementara', 'SementaraController@import');
+        Route::get('buku', 'SementaraController@download');
         /*Route::get('sitemap', function(){
 
             SitemapGenerator::create('127.0.0.1:8000')->writeToFile('sitemap.xml');
