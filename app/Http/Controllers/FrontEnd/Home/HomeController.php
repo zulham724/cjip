@@ -87,8 +87,8 @@ class HomeController extends Controller
         $umks = Umr::all()->groupBy(['kab_kota_id', 'tahun']);
         $min = Umr::min('nilai_umr');
         $max = Umr::max('nilai_umr');
-        $min_umk = Umr::where('nilai_umr', $min)->first();
-        $max_umk = Umr::where('nilai_umr', $max)->first();
+        $min_umk = Umr::where('nilai_umr', $min)->where('tahun', '2020')->first();
+        $max_umk = Umr::where('nilai_umr', $max)->where('tahun', '2020')->first();
         //dd($min_umk->kab->kota->kabkota->nama);
 
 
